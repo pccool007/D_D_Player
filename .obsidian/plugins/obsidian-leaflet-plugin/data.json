@@ -1,0 +1,808 @@
+{
+  "mapMarkers": [
+    {
+      "id": "Vilenought-Main-Map",
+      "lastAccessed": 1694785048919,
+      "markers": [
+        {
+          "id": "ID_382918584aea",
+          "type": "Town",
+          "loc": [
+            -0.9758453369140625,
+            2.2626953125
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": "Harrowgate",
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_ab0929289bdb",
+          "type": "Town",
+          "loc": [
+            -1.1064453125,
+            2.25
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": "Vaykar",
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Worlds/Lymnevia/Locations/Continent/Vilenought/Vilenought Information.md"
+      ]
+    },
+    {
+      "id": "TBD",
+      "lastAccessed": 1695137094495,
+      "markers": [
+        {
+          "id": "ID_c85988e98aea",
+          "type": "Town",
+          "loc": [
+            -35.19580078125,
+            72.58251953125
+          ],
+          "link": "Vaykar",
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": "Dwarven town",
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Worlds/Lymnevia/Locations/Continent/Vilenought/Nordic Vilenought/Krov/Krov.md"
+      ]
+    },
+    {
+      "id": "ud-1",
+      "lastAccessed": 1717702772910,
+      "markers": [
+        {
+          "id": "ID_4b8a68f9c85a",
+          "type": "default",
+          "loc": [
+            -2.244140625,
+            3.3271625380845142
+          ],
+          "layer": "%5B%5Bnightfall_38x38.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Campaigns/The Mistsmash/sessions/030_20240606.md"
+      ]
+    },
+    {
+      "id": "vilenought_leaflet_map",
+      "lastAccessed": 1725548200053,
+      "markers": [
+        {
+          "id": "ID_ebcbca3ac938",
+          "type": "City",
+          "loc": [
+            -160.39999389648438,
+            23.649901846884575
+          ],
+          "link": "Kayip tupinak",
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.12317657211919049,
+            0.6265624761581421
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_e98a78a8c869",
+          "type": "Town",
+          "loc": [
+            -35.32382774353027,
+            71.79712803907967
+          ],
+          "link": "Vaykar",
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_9afb8b2a1afb",
+          "type": "City",
+          "loc": [
+            -181.06875038146973,
+            50.856244029940704
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.2648762709892745,
+            0.7072998061776161
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_6b3adb1beb99",
+          "type": "Town",
+          "loc": [
+            -217.39258003234863,
+            48.772125995812566
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_4bbbda59f979",
+          "type": "Town",
+          "loc": [
+            -162.1476593017578,
+            69.06938292522987
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_9acb4afa3a28",
+          "type": "Town",
+          "loc": [
+            -46.486328125,
+            84.95963359547869
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_4be9db7a9938",
+          "type": "Town",
+          "loc": [
+            -30.892578125,
+            72.58462143601288
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_ab085a9b6b2a",
+          "type": "Ruins",
+          "loc": [
+            -29.59375,
+            54.51875232221955
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.2839518350115601,
+            0.1156005859375
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_a8580b6a2b98",
+          "type": "City",
+          "loc": [
+            -234.736328125,
+            155.89722023167263
+          ],
+          "layer": "%5B%5BClear_Vilenought.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Worlds/Lymnevia/Locations/Continent/Vilenought/Vilenought.md"
+      ]
+    },
+    {
+      "id": "wildmount-Main-Map",
+      "lastAccessed": 1753814355640,
+      "markers": [
+        {
+          "id": "ID_09f91bf88aa9",
+          "type": "City",
+          "loc": [
+            -7.803125023841858,
+            13.22734426040067
+          ],
+          "link": "Rosohna",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.7282150818629186,
+            0.6053333351828836
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_4b489909fb6b",
+          "type": "City",
+          "loc": [
+            -5.65312507618265,
+            8.973438346184835
+          ],
+          "link": "Rexxentrum",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.4940215519620038,
+            0.4385454604553813
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_b95ba9cba998",
+          "type": "City",
+          "loc": [
+            -7.414941251277924,
+            9.114281672696775
+          ],
+          "link": "Zadash",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_bae9b95929a8",
+          "type": "City",
+          "loc": [
+            -3.489843726158142,
+            11.176953312203342
+          ],
+          "link": "Uthodurn",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.6153333436395818,
+            0.2707272708777225
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_e8887aab8b7a",
+          "type": "Ruins",
+          "loc": [
+            -4.386816442012787,
+            9.568595845763637
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_cb0ad99a5b7b",
+          "type": "Town",
+          "loc": [
+            -5.236328125,
+            9.966014844218545
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.5486666236817092,
+            0.4062121212121212
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_6a4b590b4a88",
+          "type": "Ruins",
+          "loc": [
+            -7.41259765625,
+            9.70159895408413
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_f8298b18581b",
+          "type": "Outpost",
+          "loc": [
+            -7.515625,
+            9.046886398453458
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.4980651436567925,
+            0.583030303030303
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_ab69e928189a",
+          "type": "Town",
+          "loc": [
+            -8.468847692012787,
+            9.247569805581252
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_08e8aacbea0b",
+          "type": "Town",
+          "loc": [
+            -8.08984375,
+            9.31953413476317
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_b81be858dbb9",
+          "type": "City",
+          "loc": [
+            -6.2421875,
+            9.981262089960747
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.549506041941925,
+            0.48424242424242425
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_ba88186b8908",
+          "type": "Town",
+          "loc": [
+            -11.469921946525574,
+            3.507032301990858
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_8939c9b849e9",
+          "type": "City",
+          "loc": [
+            -10.274023473262787,
+            8.495509059686222
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_9a2ba82b2a8a",
+          "type": "Ruins",
+          "loc": [
+            -4.3508055955171585,
+            10.226686979540592
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_f8fa493b586b",
+          "type": "Ruins",
+          "loc": [
+            -11.770393404193673,
+            8.570363005097091
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.4718307374849151,
+            0.9130971852950243
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_0939eb09aa1b",
+          "type": "Ruins",
+          "loc": [
+            -7.033007502555847,
+            12.932721534821468
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_f978299a486a",
+          "type": "Town",
+          "loc": [
+            -5.4890056902835695,
+            8.807314395354506
+          ],
+          "link": "Odessloe",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.48487580327112983,
+            0.42581377476139204
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_4a19f99bdba8",
+          "type": "City",
+          "loc": [
+            -8.316016252109868,
+            10.12108885087902
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.5572040313602213,
+            0.6451212607697352
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_68e9881bfaa9",
+          "type": "Town",
+          "loc": [
+            -6.65996118842311,
+            10.815958639962258
+          ],
+          "link": "Bladegarden",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_3a09da9a2959",
+          "type": "Outpost",
+          "loc": [
+            -7.875651001930237,
+            11.960289207964962
+          ],
+          "link": "Arbor Exemplar",
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.6584589327395765,
+            0.6109595928770123
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_383b296b5a39",
+          "type": "City",
+          "loc": [
+            -8.82769775390625,
+            6.35709777907819
+          ],
+          "layer": "%5B%5BWildmouth.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Campaigns/The Golden Company/world.md"
+      ]
+    }
+  ],
+  "defaultMarker": {
+    "type": "default",
+    "iconName": "map-marker",
+    "color": "#dddddd",
+    "transform": {
+      "size": 6,
+      "x": 0,
+      "y": -2
+    }
+  },
+  "markerIcons": [
+    {
+      "type": "Town",
+      "iconName": "home",
+      "color": "#5cac0c",
+      "alpha": 1,
+      "layer": true,
+      "transform": {
+        "size": 6,
+        "x": 0,
+        "y": -2
+      },
+      "isImage": false,
+      "tags": [],
+      "minZoom": null,
+      "maxZoom": null
+    },
+    {
+      "type": "City",
+      "iconName": "building",
+      "color": "#1331c3",
+      "alpha": 1,
+      "layer": true,
+      "transform": {
+        "size": 6,
+        "x": 0,
+        "y": -2
+      },
+      "isImage": false,
+      "tags": [],
+      "minZoom": null,
+      "maxZoom": null
+    },
+    {
+      "type": "Ruins",
+      "iconName": "square",
+      "color": "#ca902b",
+      "alpha": 1,
+      "layer": true,
+      "transform": {
+        "size": 6,
+        "x": 0,
+        "y": -2
+      },
+      "isImage": false,
+      "tags": [],
+      "minZoom": null,
+      "maxZoom": null
+    },
+    {
+      "type": "Outpost",
+      "iconName": "broadcast-tower",
+      "color": "#000000",
+      "alpha": 1,
+      "layer": true,
+      "transform": {
+        "size": 6,
+        "x": 0,
+        "y": -2
+      },
+      "isImage": false,
+      "tags": [],
+      "minZoom": null,
+      "maxZoom": null
+    },
+    {
+      "type": "Country",
+      "iconName": "birthday-cake",
+      "color": "#7fbf6e",
+      "alpha": 1,
+      "layer": true,
+      "transform": {
+        "size": 6,
+        "x": 0,
+        "y": -2
+      },
+      "isImage": false,
+      "tags": [],
+      "minZoom": null,
+      "maxZoom": null
+    }
+  ],
+  "color": "#dddddd",
+  "lat": 39.983334,
+  "long": -82.98333,
+  "notePreview": true,
+  "layerMarkers": true,
+  "previousVersion": "6.0.5",
+  "version": {
+    "major": 6,
+    "minor": 0,
+    "patch": 5
+  },
+  "warnedAboutMapMarker": false,
+  "copyOnClick": false,
+  "displayMarkerTooltips": "hover",
+  "displayOverlayTooltips": true,
+  "configDirectory": null,
+  "mapViewEnabled": true,
+  "mapViewParameters": {
+    "darkMode": "false",
+    "defaultZoom": "1",
+    "distanceMultiplier": 1,
+    "drawColor": "#3388ff",
+    "geojson": [],
+    "geojsonColor": "#3388ff",
+    "gpx": [],
+    "gpxColor": "#3388ff",
+    "height": "600px",
+    "image": "[[Clear_Vilenought.jpg]]",
+    "imageOverlay": [],
+    "isMapView": false,
+    "layers": [
+      "[[Clear_Vilenought.jpg]]"
+    ],
+    "linksFrom": [],
+    "linksTo": [],
+    "marker": [],
+    "commandMarker": [],
+    "markerFile": [],
+    "markerFolder": [],
+    "markerTag": [],
+    "maxZoom": "5",
+    "minZoom": "1",
+    "osmLayer": true,
+    "overlay": [],
+    "overlayColor": "blue",
+    "scale": "1",
+    "showAllMarkers": false,
+    "tileServer": [],
+    "verbose": false,
+    "zoomDelta": 1,
+    "zoomFeatures": false,
+    "id": "vilenought_leaflet_map",
+    "width": "640px",
+    "lat": "50",
+    "long": "50",
+    "unit": "meters",
+    "filterTag": []
+  },
+  "enableDraw": true,
+  "defaultUnitType": "imperial",
+  "defaultTile": "https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png",
+  "defaultTileDark": "https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png",
+  "defaultAttribution": "Map tiles by <a href=\"http://stamen.com\">Stamen Design</a>, under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. Data by <a href=\"http://openstreetmap.org\">OpenStreetMap</a>, under <a href=\"http://www.openstreetmap.org/copyright\">ODbL</a>.",
+  "defaultTileSubdomains": "a,b,c"
+}

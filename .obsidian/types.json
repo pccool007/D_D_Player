@@ -1,0 +1,17 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "type": "text",
+    "location": "multitext",
+    "curse": "checkbox",
+    "status": "multitext",
+    "terrain": "multitext",
+    "subType": "multitext",
+    "rarity": "multitext",
+    "language": "multitext",
+    "description_key_words": "multitext",
+    "urls": "multitext"
+  }
+}

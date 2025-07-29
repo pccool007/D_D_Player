@@ -1,0 +1,913 @@
+{
+  "choices": [
+    {
+      "id": "432c1eb0-c131-41ba-b16b-59e75e3f7024",
+      "name": "Template - Create New Campaign",
+      "type": "Template",
+      "command": true,
+      "templatePath": "Templates/Campaign Manager.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "Campaigns/{{VALUE}}/Campaign Manager"
+      },
+      "folder": {
+        "enabled": false,
+        "folders": [],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": false,
+      "openFileInNewTab": {
+        "enabled": true,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default",
+      "fileExistsMode": "Increment the file name",
+      "setFileExistsBehavior": false
+    },
+    {
+      "id": "7b832c29-b057-404f-8783-b48be21398cb",
+      "name": "---GM---",
+      "type": "Template",
+      "command": true,
+      "templatePath": "",
+      "fileNameFormat": {
+        "enabled": false,
+        "format": ""
+      },
+      "folder": {
+        "enabled": false,
+        "folders": [],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": false,
+      "openFileInMode": "default",
+      "fileExistsMode": "Increment the file name",
+      "setFileExistsBehavior": false
+    },
+    {
+      "id": "7b92d459-1b72-4920-a11a-996bcfd7073a",
+      "name": "Template - Add Location GM",
+      "type": "Template",
+      "command": true,
+      "templatePath": "Templates/Game Master Templates/Location-GM.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{value}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [],
+        "chooseWhenCreatingNote": true,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": false,
+      "openFileInNewTab": {
+        "enabled": true,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default",
+      "fileExistsMode": "Increment the file name",
+      "setFileExistsBehavior": false
+    },
+    {
+      "id": "b2a31794-0737-4a93-a272-403e43f32b80",
+      "name": "Template - Add Faction GM",
+      "type": "Template",
+      "command": true,
+      "templatePath": "Templates/Game Master Templates/Faction-GM.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{value}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "Worlds/Lymnevia/Factions"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": false,
+      "openFileInNewTab": {
+        "enabled": true,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default",
+      "fileExistsMode": "Increment the file name",
+      "setFileExistsBehavior": false
+    },
+    {
+      "id": "fd9a9e93-9025-4f05-aa55-30783e4983cc",
+      "name": "Template - Add NPC GM",
+      "type": "Template",
+      "command": true,
+      "templatePath": "Templates/Game Master Templates/NPC's-GM.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{value}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "Worlds/Lymnevia/NPC's"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": false,
+      "openFileInNewTab": {
+        "enabled": true,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default",
+      "fileExistsMode": "Increment the file name",
+      "setFileExistsBehavior": false
+    },
+    {
+      "id": "a190f7a0-51e5-42f3-9334-78ceef697a16",
+      "name": "Macro - Add Session Gm",
+      "type": "Macro",
+      "command": true,
+      "macroId": "d06efd2e-fe34-49e3-8df5-eac264fc2730"
+    },
+    {
+      "id": "b2316845-aed9-4513-a6f7-0d1d966c684e",
+      "name": "Macro - Add a New Magic Item",
+      "type": "Macro",
+      "command": true,
+      "macroId": "9e03ed2a-001f-47c7-8111-c8abf5795dd2"
+    },
+    {
+      "id": "b2991ee3-e486-4cec-94ba-3fbbc98abcba",
+      "name": "Macro - Add Establishment GM",
+      "type": "Macro",
+      "command": true,
+      "macroId": "94f3e1a4-323e-46c6-bf73-d8a5e453d785"
+    },
+    {
+      "id": "ce7bea71-6aea-46f4-8cab-a7d1565100ff",
+      "name": "Macro - Add Quest GM",
+      "type": "Macro",
+      "command": true,
+      "macroId": "4fbcbb99-e454-40e0-a75a-13d3291993c1"
+    },
+    {
+      "id": "b8d57bef-307c-471e-bd9f-fbd06a0a93a9",
+      "name": "Template - Add Dungeon GM",
+      "type": "Macro",
+      "command": true,
+      "macroId": "53bceebb-2218-451a-898b-a3ad5d3929d6"
+    },
+    {
+      "id": "a81b9ed6-34b5-4e1d-a9e3-945daabd7788",
+      "name": "---Player---",
+      "type": "Template",
+      "command": true,
+      "templatePath": "",
+      "fileNameFormat": {
+        "enabled": false,
+        "format": ""
+      },
+      "folder": {
+        "enabled": false,
+        "folders": [],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": false,
+      "openFileInMode": "default",
+      "fileExistsMode": "Increment the file name",
+      "setFileExistsBehavior": false
+    },
+    {
+      "id": "29824033-23bd-49d9-83e6-72a81ce7b066",
+      "name": "Marco - Add New Faction Player",
+      "type": "Macro",
+      "command": true,
+      "macroId": "21341dc4-3eb5-44aa-adcd-7d31d0d46f28"
+    },
+    {
+      "id": "13e5416d-4287-4816-8d8d-c547ece4b91b",
+      "name": "Macro - Add Session Player",
+      "type": "Macro",
+      "command": true,
+      "macroId": "31b144f9-2401-4ba4-b1ee-862f2fed1cb6"
+    },
+    {
+      "id": "e6bf6926-c175-48da-8f5b-33b2271b6b30",
+      "name": "Macro - Add a NPC Player",
+      "type": "Macro",
+      "command": true,
+      "macroId": "0331cf1f-d8c0-49f7-a152-ecc3a2525319"
+    },
+    {
+      "id": "0bc7c2b3-2fc9-47b4-9f6a-f87431f93c7c",
+      "name": "Macro - Add a Location player",
+      "type": "Macro",
+      "command": true,
+      "macroId": "1cd67699-00fa-4c70-8333-6c83b0840842"
+    },
+    {
+      "id": "4a85560a-ab1b-4d39-ba11-566c2d0b5411",
+      "name": "Macro - Add new Quest Player",
+      "type": "Macro",
+      "command": true,
+      "macroId": "32a40d90-ce33-45c0-a56b-fcf2db6b413f"
+    },
+    {
+      "id": "f53e42a0-d9ff-4de2-8fed-749fd7e1821b",
+      "name": "Macro - Add a Establisment Player",
+      "type": "Macro",
+      "command": true,
+      "macroId": "8cdb0e4d-8ee4-477e-8d94-209d1a77d019"
+    }
+  ],
+  "macros": [
+    {
+      "name": "Macro - Add Session Gm",
+      "id": "d06efd2e-fe34-49e3-8df5-eac264fc2730",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "6bab7994-210d-44b9-afc0-dc4b75a586b0",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Create New Gm Session",
+          "type": "NestedChoice",
+          "id": "fe9d4a1d-250c-452e-bb2f-8251e9b97d38",
+          "choice": {
+            "id": "6b684ce2-c52d-407f-a482-af912c9efaf3",
+            "name": "Create New Gm Session",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Game Master Templates/session-gm.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{VALUE:thisGameFilename}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/sessions"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Nothing",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add session Player",
+      "id": "c95e4a8e-b7af-4c3a-b657-875bebc85dc0",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "69924bc2-9fc8-44e4-b458-9733acf8465c",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Create new session Player",
+          "type": "NestedChoice",
+          "id": "db8a2084-0e00-4257-b91d-ef459d4b85e0",
+          "choice": {
+            "id": "e48eb60f-fdf5-4072-8cc6-8791c5fb5780",
+            "name": "Create new session Player",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/session-player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{VALUE:thisGameFilename}}_{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/sessions"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add a New Magic Item",
+      "id": "9e03ed2a-001f-47c7-8111-c8abf5795dd2",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "d434aa6b-b53e-4371-a709-782bd7600230",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Magic Item Template",
+          "type": "NestedChoice",
+          "id": "18f61991-12fd-486d-af1e-b0c74b6edabb",
+          "choice": {
+            "id": "75a1f5f8-7828-4ddc-9c9c-b8dbec914b28",
+            "name": "Magic Item Template",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/magic item.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/Items"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add a NPC Player",
+      "id": "0331cf1f-d8c0-49f7-a152-ecc3a2525319",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "997af209-abb3-49a7-9b6e-cd5a397bb55a",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "4e323706-7982-4585-9789-709730fc4326",
+          "choice": {
+            "id": "6c1fe36f-f365-4355-a29a-be154af54925",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/NPC's-Player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/world/NPC's"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add a Location player",
+      "id": "1cd67699-00fa-4c70-8333-6c83b0840842",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "37118e53-6756-48ec-af9d-23015d316d48",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "5799e673-4012-4b3c-b10d-a9beff096aa8",
+          "choice": {
+            "id": "782a79f0-d45c-4ffe-8f43-4c7e3be7f627",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/Location-Player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/world/Locations"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Marco - Add New Faction Player",
+      "id": "21341dc4-3eb5-44aa-adcd-7d31d0d46f28",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "07e745cd-9c09-4049-8a57-335fbcbe63aa",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "245bd4e2-cf45-4ffc-a879-60b7f949443b",
+          "choice": {
+            "id": "a42365a8-9c75-48a2-b4b8-4f27cf8571e4",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/Faction-Player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/world/Factions"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add new Quest Player",
+      "id": "32a40d90-ce33-45c0-a56b-fcf2db6b413f",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "bdbaae44-8c7c-48bd-90bb-de9bf33a0fb7",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "26461cc9-5e25-46b4-8211-9402179ea152",
+          "choice": {
+            "id": "3b74dade-cd21-4381-abe1-e87a866c348e",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/Quest-Player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/Quests"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add a Establisment Player",
+      "id": "8cdb0e4d-8ee4-477e-8d94-209d1a77d019",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "59b991b0-b616-445f-8d26-f78869dd0e1d",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "5bad1a7a-892d-4453-9d30-9041d308be71",
+          "choice": {
+            "id": "de6a070a-a171-47c5-a513-f955eeae9d0d",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/Establishment-Player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/world/Locations/Establisments"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": true
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add Establishment GM",
+      "id": "94f3e1a4-323e-46c6-bf73-d8a5e453d785",
+      "commands": [
+        {
+          "name": "getCurrentFolderPath",
+          "type": "UserScript",
+          "id": "349ceb58-0628-4a34-9262-04f2ed344833",
+          "path": "Scripts/getCurrentFolderPath.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "5ccfb4d7-1d4b-4b4e-8a56-5dcfd09c524d",
+          "choice": {
+            "id": "56b00c71-036b-447b-8368-23f99476ee77",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Game Master Templates/Establishment-GM.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/Establisments"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add Quest GM",
+      "id": "4fbcbb99-e454-40e0-a75a-13d3291993c1",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "fc4b2122-ca25-4e04-8c71-6a9d51038ab7",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "889f0b9e-751f-4782-8fc0-f3f3a01b15b9",
+          "choice": {
+            "id": "76e67436-c357-449a-a214-9ff95f9e189e",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Game Master Templates/Quest-GM.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/quests"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Template - Add Dungeon GM",
+      "id": "53bceebb-2218-451a-898b-a3ad5d3929d6",
+      "commands": [
+        {
+          "name": "getCurrentFolderPath",
+          "type": "UserScript",
+          "id": "79c7d453-16bb-4135-af9a-007c03e6e963",
+          "path": "Scripts/getCurrentFolderPath.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "17a4af3f-f178-4fa4-83e7-6fffaff0b5b6",
+          "choice": {
+            "id": "f14184ae-b02f-4c4e-8e69-8398fcc21bd4",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Game Master Templates/Dungeon-GM.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{value}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/dungeons"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Macro - Add Session Player",
+      "id": "31b144f9-2401-4ba4-b1ee-862f2fed1cb6",
+      "commands": [
+        {
+          "name": "getThisGameFilename",
+          "type": "UserScript",
+          "id": "a2935ce3-e7c3-49ac-961f-c63a1f5bfbe7",
+          "path": "Scripts/getThisGameFilename.js",
+          "settings": {}
+        },
+        {
+          "name": "Untitled Template Choice",
+          "type": "NestedChoice",
+          "id": "eb4b2791-79ef-4348-94d4-a71a8bccdfdb",
+          "choice": {
+            "id": "63d88c3b-b8b7-4255-a6ae-83318198a83c",
+            "name": "Untitled Template Choice",
+            "type": "Template",
+            "command": false,
+            "templatePath": "Templates/Player Templates/session-player.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{VALUE:thisGameFilename}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "{{VALUE:folderName}}/sessions"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false,
+              "chooseFromSubfolders": false
+            },
+            "appendLink": false,
+            "openFileInNewTab": {
+              "enabled": true,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": true,
+            "openFileInMode": "default",
+            "fileExistsMode": "Increment the file name",
+            "setFileExistsBehavior": false
+          }
+        }
+      ],
+      "runOnStartup": false
+    }
+  ],
+  "inputPrompt": "single-line",
+  "devMode": false,
+  "templateFolderPath": "",
+  "announceUpdates": true,
+  "version": "1.18.1",
+  "disableOnlineFeatures": true,
+  "enableRibbonIcon": false,
+  "ai": {
+    "defaultModel": "Ask me",
+    "defaultSystemPrompt": "As an AI assistant within Obsidian, your primary goal is to help users manage their ideas and knowledge more effectively. Format your responses using Markdown syntax. Please use the [[Obsidian]] link format. You can write aliases for the links by writing [[Obsidian|the alias after the pipe symbol]]. To use mathematical notation, use LaTeX syntax. LaTeX syntax for larger equations should be on separate lines, surrounded with double dollar signs ($$). You can also inline math expressions by wrapping it in $ symbols. For example, use $$w_{ij}^{\text{new}}:=w_{ij}^{\text{current}}+etacdotdelta_jcdot x_{ij}$$ on a separate line, but you can write \"($eta$ = learning rate, $delta_j$ = error term, $x_{ij}$ = input)\" inline.",
+    "promptTemplatesFolderPath": "",
+    "showAssistant": true,
+    "providers": [
+      {
+        "name": "OpenAI",
+        "endpoint": "https://api.openai.com/v1",
+        "apiKey": "",
+        "models": [
+          {
+            "name": "text-davinci-003",
+            "maxTokens": 4096
+          },
+          {
+            "name": "gpt-3.5-turbo",
+            "maxTokens": 4096
+          },
+          {
+            "name": "gpt-3.5-turbo-16k",
+            "maxTokens": 16384
+          },
+          {
+            "name": "gpt-3.5-turbo-1106",
+            "maxTokens": 16385
+          },
+          {
+            "name": "gpt-4",
+            "maxTokens": 8192
+          },
+          {
+            "name": "gpt-4-32k",
+            "maxTokens": 32768
+          },
+          {
+            "name": "gpt-4-1106-preview",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4-turbo",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4o",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4o-mini",
+            "maxTokens": 128000
+          }
+        ]
+      }
+    ]
+  },
+  "migrations": {
+    "migrateToMacroIDFromEmbeddedMacro": true,
+    "useQuickAddTemplateFolder": true,
+    "incrementFileNameSettingMoveToDefaultBehavior": true,
+    "mutualExclusionInsertAfterAndWriteToBottomOfFile": true,
+    "setVersionAfterUpdateModalRelease": true,
+    "addDefaultAIProviders": true
+  }
+}

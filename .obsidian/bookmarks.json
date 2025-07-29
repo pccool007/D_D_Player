@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1694530164379,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1692740617125,
+          "path": "Campaigns/The Golden Company/world/Locations/Rexxentrum.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1694530189650,
+          "path": "Campaigns/The Golden Company/sessions/004_20230912_Rex_Continue.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1694530198210,
+          "path": "Campaigns/The Mistsmash/world.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1694530222521,
+          "path": "Campaigns/The Golden Company/world/NPC's/Ludinus Da'leth.md"
+        }
+      ],
+      "title": "The Golden Company"
+    }
+  ]
+}

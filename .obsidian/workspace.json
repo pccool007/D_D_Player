@@ -1,0 +1,289 @@
+{
+  "main": {
+    "id": "4b0daae5b88664af",
+    "type": "split",
+    "children": [
+      {
+        "id": "881e8b8fb8b27bc9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c59df651ec48bdc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Campaigns/Tides of Faith/sessions/001_20250729.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "001_20250729"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fa0c2531ab554348",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4160e32864d1e11",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0e4b1e2304b5059a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "efd63cf535ad6b5a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "Master",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9fd98f3a6617c6d3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0ec9cb75c4cf8443",
+    "type": "split",
+    "children": [
+      {
+        "id": "7b56493d7c44502e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b062b87e0d620d9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Campaigns/The Mistsmash/sessions/041_20241003.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 041_20241003"
+            }
+          },
+          {
+            "id": "b24e0f48593997b6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Campaigns/The Mistsmash/sessions/041_20241003.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 041_20241003"
+            }
+          },
+          {
+            "id": "e374a814d7607944",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "853d5cea0487634d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Campaigns/The Mistsmash/sessions/041_20241003.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 041_20241003"
+            }
+          },
+          {
+            "id": "b059f7e4729a9c14",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "efeca983de9bf57c",
+            "type": "leaf",
+            "state": {
+              "type": "FANTASY_CALENDAR",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "8938d090ea533c11",
+            "type": "leaf",
+            "state": {
+              "type": "metatable-sidebar-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "f55f0ecc97f80194",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "27240e1943930e77",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
+              "icon": "checkmark",
+              "title": "Todo List"
+            }
+          },
+          {
+            "id": "e1437972a9b70795",
+            "type": "leaf",
+            "state": {
+              "type": "DICE_ROLLER_VIEW",
+              "state": {},
+              "icon": "dices",
+              "title": "Dice Tray"
+            }
+          }
+        ],
+        "currentTab": 8
+      }
+    ],
+    "direction": "horizontal",
+    "width": 480.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "fantasy-calendar:Open Large Fantasy Calendar": false,
+      "obsidian-leaflet-plugin:Open Leaflet Map": false,
+      "dbfolder:Create a new database table": false,
+      "obsidian-metatable:Metatable": false,
+      "obsidian-5e-statblocks:Open Creature pane": false
+    }
+  },
+  "active": "0e4b1e2304b5059a",
+  "lastOpenFiles": [
+    "Campaigns/Tides of Faith/sessions/001_20250729.md",
+    "Campaigns/Tides of Faith/Campaign Manager.md",
+    "Campaigns/Tides of Faith/world/NPC's/Bob.md",
+    "Templates/Campaign Manager.md",
+    "Campaigns/Tides of Faith/sessions/002_20250729.md",
+    "assets/48ba044dd67dfd9e93de892d16e50e88.jpg",
+    "assets/scripts",
+    "assets/pdf",
+    "assets/assets",
+    "Campaigns/Tides of Faith/world/NPC's/Test NPC.md",
+    "Cheat Cheats.md",
+    "Templates/Notes",
+    "Game Index.md",
+    "Campaigns/Tides of Faith/sessions",
+    "Campaigns/Tides of Faith/world/Factions/Test Faction.md",
+    "Campaigns/Tides of Faith/world/Factions",
+    "Campaigns/Tides of Faith/world/NPC's",
+    "Campaigns/Tides of Faith/world",
+    "Campaigns/Tides of Faith",
+    "Campaigns/The Golden Company/world.md",
+    "Campaigns/The Mistsmash/sessions/041_20241003.md",
+    "Campaigns/The Mistsmash/world.md",
+    "Campaigns/The Golden Company/world/NPC's/Guild Master Kai Arness.md",
+    "Campaigns/The Mistsmash/sessions/040_20240926.md",
+    "Worlds/Lymnevia/NPC's/Vilenought/ Headmistress Lirael Shadowdancer.md",
+    "Campaigns/The Mistsmash/sessions/039_20240912.md",
+    "Worlds/Lymnevia/Setting/Pantheon.canvas",
+    "Worlds/Lymnevia/Locations/Shadowfell/cities/Eclipsark.md",
+    "Worlds/Lymnevia/NPC's/Johnathan Smith.md",
+    "Campaigns/The Mistsmash/Items/Voidbinder Cinch.md",
+    "Campaigns/The Mistsmash/sessions/038_20240904.md",
+    "Worlds/Lymnevia/Locations/Continent/Vilenought/Main Vilenought/Kronenreich/The Kronenreich.md",
+    "Worlds/Lymnevia/Locations/Continent/Vilenought/Nordic Vilenought/Glang auj (Iron Lands)/Cities/Vaykar.md",
+    "Campaigns/The Golden Company/sessions/031_20240820.md",
+    "assets/concept_battlemap_wizardResearch.jpg",
+    "Worlds/Lymnevia/Locations/Continent/Vilenought/Vilenought.md",
+    "Campaigns/The Mistsmash/sessions/033_20240718.md",
+    "Campaigns/The Mistsmash/sessions/034_20240807.md",
+    "Worlds/Lymnevia/Setting/Planes Relations.canvas",
+    "assets/Pasted image 20240820110035.png",
+    "assets/Pasted image 20240807230702.png",
+    "assets/Pasted image 20240805203138.png",
+    "assets/Pasted image 20240620190042.png",
+    "assets/Pasted image 20240606154814.png",
+    "assets/chained_cocoon.jpg",
+    "assets/hooves.jpeg",
+    "Campaigns/Soltpeak/world/Locations",
+    "assets/Johnathan Smith.jpg"
+  ]
+}

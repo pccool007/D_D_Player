@@ -1,0 +1,12 @@
+{
+  "accentColor": "#cc8b00",
+  "cssTheme": "ITS Theme",
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "D&D_WOTC"
+  ],
+  "monospaceFontFamily": "Bookerly",
+  "textFontFamily": "Bookerly",
+  "interfaceFontFamily": "Bookerly",
+  "baseFontSize": 14
+}
