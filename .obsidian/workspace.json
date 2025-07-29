@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Campaigns/Tides of Faith/sessions/001_20250729.md",
+                "file": "Templates/Player Templates/session-player.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "001_20250729"
+              "title": "session-player"
             }
           }
         ]
@@ -196,12 +196,32 @@
             "state": {
               "type": "todo",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "e1437972a9b70795",
+            "type": "leaf",
+            "state": {
+              "type": "DICE_ROLLER_VIEW",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "536101e52e46c35a",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
               "icon": "checkmark",
               "title": "Todo List"
             }
           },
           {
-            "id": "e1437972a9b70795",
+            "id": "1a1d8c8b9af53c56",
             "type": "leaf",
             "state": {
               "type": "DICE_ROLLER_VIEW",
@@ -211,7 +231,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 10
       }
     ],
     "direction": "horizontal",
@@ -228,14 +248,14 @@
       "command-palette:Open command palette": false,
       "templater-obsidian:Templater": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-5e-statblocks:Open Creature pane": false,
       "fantasy-calendar:Open Large Fantasy Calendar": false,
       "obsidian-leaflet-plugin:Open Leaflet Map": false,
       "dbfolder:Create a new database table": false,
-      "obsidian-metatable:Metatable": false,
-      "obsidian-5e-statblocks:Open Creature pane": false
+      "obsidian-metatable:Metatable": false
     }
   },
-  "active": "0e4b1e2304b5059a",
+  "active": "0c59df651ec48bdc",
   "lastOpenFiles": [
     "Campaigns/Tides of Faith/sessions/001_20250729.md",
     "Campaigns/Tides of Faith/Campaign Manager.md",
