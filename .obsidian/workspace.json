@@ -13,12 +13,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Templates/Player Templates/session-player.md",
+                "file": "Campaigns/Tides of Faith/Campaign Manager.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "session-player"
+              "title": "Campaign Manager"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ff4a89757bcf6969",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "217ce9295db0b994",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Campaigns/Tides of Faith/sessions/003_20250729.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "003_20250729"
             }
           }
         ]
@@ -248,17 +268,18 @@
       "command-palette:Open command palette": false,
       "templater-obsidian:Templater": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-5e-statblocks:Open Creature pane": false,
       "fantasy-calendar:Open Large Fantasy Calendar": false,
       "obsidian-leaflet-plugin:Open Leaflet Map": false,
       "dbfolder:Create a new database table": false,
       "obsidian-metatable:Metatable": false
     }
   },
-  "active": "0c59df651ec48bdc",
+  "active": "217ce9295db0b994",
   "lastOpenFiles": [
-    "Campaigns/Tides of Faith/sessions/001_20250729.md",
     "Campaigns/Tides of Faith/Campaign Manager.md",
+    "Campaigns/Tides of Faith/sessions/003_20250729.md",
+    "Templates/Player Templates/session-player.md",
+    "Campaigns/Tides of Faith/sessions/001_20250729.md",
     "Campaigns/Tides of Faith/world/NPC's/Bob.md",
     "Templates/Campaign Manager.md",
     "Campaigns/Tides of Faith/sessions/002_20250729.md",
@@ -293,8 +314,6 @@
     "Campaigns/The Golden Company/sessions/031_20240820.md",
     "assets/concept_battlemap_wizardResearch.jpg",
     "Worlds/Lymnevia/Locations/Continent/Vilenought/Vilenought.md",
-    "Campaigns/The Mistsmash/sessions/033_20240718.md",
-    "Campaigns/The Mistsmash/sessions/034_20240807.md",
     "Worlds/Lymnevia/Setting/Planes Relations.canvas",
     "assets/Pasted image 20240820110035.png",
     "assets/Pasted image 20240807230702.png",
