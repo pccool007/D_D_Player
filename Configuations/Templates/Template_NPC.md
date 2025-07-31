@@ -1,0 +1,79 @@
+---
+version: "1.0"
+tags: 
+type: NPC
+name: <% tp.file.title %>
+world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+date: <% tp.date.now("YYYY-MM-DD") %>
+campaigns: "<% tp.user._obsi_script_GetFileRacineHeader(tp) %>"
+urls: 
+pronounced: 
+aliases: 
+description: 
+race: 
+subRace: 
+gender: 
+age: 
+sexuality: 
+alignment: Neutral
+npc_img: "![[placeHolderNPC.jpg]]"
+condition: Alive
+party_standing: 
+locations: 
+class: 
+occupation: 
+factions: 
+languages: 
+likes: 
+dislikes:
+---
+# [[<% tp.file.title %>]]
+
+> [!infobox]
+> # `=this.file.name` (`=this.aliases`)
+> `=this.npc_img`
+> ###### Bio
+>  |
+> ---|---|
+> **Race** | `=this.race` (`=this.subRace`) |
+> **Sex** | `=this.gender` |
+> **Age** | `=this.age` |
+> **Sexuality** | `=this.sexuality` |
+> **Condition** | `=this.condition` |
+> **Languages** | `=this.languages` |
+> ###### Info
+>  |
+> ---|---|
+> **Occupation(s)** | `=this.occupation` |
+> **Faction(s)** | `=link(this.factions)` |
+> **Current Location** | `=link(this.locations)` |
+
+> [!info|bg-c-purple]- Description
+> `=this.description`
+
+> [!info|bg-c-blue]- Physical Description
+> TBA
+
+> [!column|dataview] Traits
+>> [!metadata|text-Center bg-c-gray] Likes/Dislikes
+>> **Likes:** `=this.likes`
+>>
+>> **Dislikes:** `=this.dislikes`
+
+
+### History
+
+
+### General Information
+#### Inventory 
+
+#### Links
+>[!example|bg-c-orange]- Links
+> ```dataview
+> TABLE without id file.inlinks AS "Links from", file.outlinks AS "Links to"
+> WHERE file.path = this.file.path
+> ```
+
+
+#### Logs
+

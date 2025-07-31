@@ -4,26 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "881e8b8fb8b27bc9",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "0c59df651ec48bdc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Campaigns/Tides of Faith/Campaign Manager.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Campaign Manager"
-            }
-          }
-        ]
-      },
-      {
         "id": "ff4a89757bcf6969",
         "type": "tabs",
         "children": [
@@ -33,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Campaigns/Tides of Faith/sessions/003_20250729.md",
-                "mode": "source",
-                "source": false
+                "file": "Configuations/Templates/Template_Session.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "003_20250729"
+              "title": "Template_Session"
             }
           }
         ]
@@ -276,53 +256,52 @@
   },
   "active": "217ce9295db0b994",
   "lastOpenFiles": [
-    "Campaigns/Tides of Faith/Campaign Manager.md",
-    "Campaigns/Tides of Faith/sessions/003_20250729.md",
+    "Configuations/Templates/Template_Quest.md",
+    "Configuations/Templates/Template_PC.md",
+    "Configuations/Templates/Template_NPC.md",
+    "Configuations/Templates/Template_Location.md",
+    "Configuations/Templates/Template_Campaign_Manager.md",
+    "Configuations/Templates/Template_Session.md",
+    "_obsi/assets/Defaults/placeHolderMap.jpeg",
+    "_obsi/assets/Defaults/placeHolderLore.png",
+    "_obsi/assets/Defaults/placeHolderLocations.png",
+    "_obsi/assets/Defaults/placeHolderItem.png",
+    "_obsi/assets/Defaults/placeHolderFactions.png",
+    "_obsi/assets/Defaults/placeHolderEstablishment.png",
+    "_obsi/assets/Defaults/placeHolderDungeon.png",
+    "_obsi/assets/Defaults/placeHolderNPC.jpg",
+    "_obsi/assets/Defaults",
+    "Configuations/Templates/Template_Faction.md",
+    "_obsi/scripts/README.md",
+    "_obsi/scripts/_obsi_script_SetParamsInCapGetWorldFolder.js",
+    "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
+    "_obsi/scripts/_obsi_script_SetCurrentWorldFolderName.js",
+    "_obsi/scripts/_obsi_script_GetWorldName.js",
+    "_obsi/scripts/_obsi_script_GetThisSessionName.js",
+    "_obsi/scripts/_obsi_script_GetThisGameNum.js",
+    "_obsi/scripts/_obsi_script_GetLastGameTitle.js",
+    "_obsi/scripts/_obsi_script_GetFileRacineHeader.js",
+    "_obsi/scripts/_obsi_script_GetFileRacine.js",
     "Templates/Player Templates/session-player.md",
+    "Campaigns/Tides of Faith/Campaign Manager.md",
+    "Templates/Campaign Manager.md",
+    "Campaigns/Tides of Faith/sessions/003_20250729.md",
     "Campaigns/Tides of Faith/sessions/001_20250729.md",
     "Campaigns/Tides of Faith/world/NPC's/Bob.md",
-    "Templates/Campaign Manager.md",
     "Campaigns/Tides of Faith/sessions/002_20250729.md",
     "assets/48ba044dd67dfd9e93de892d16e50e88.jpg",
-    "assets/scripts",
-    "assets/pdf",
-    "assets/assets",
     "Campaigns/Tides of Faith/world/NPC's/Test NPC.md",
     "Cheat Cheats.md",
-    "Templates/Notes",
     "Game Index.md",
-    "Campaigns/Tides of Faith/sessions",
     "Campaigns/Tides of Faith/world/Factions/Test Faction.md",
-    "Campaigns/Tides of Faith/world/Factions",
-    "Campaigns/Tides of Faith/world/NPC's",
-    "Campaigns/Tides of Faith/world",
-    "Campaigns/Tides of Faith",
     "Campaigns/The Golden Company/world.md",
     "Campaigns/The Mistsmash/sessions/041_20241003.md",
     "Campaigns/The Mistsmash/world.md",
     "Campaigns/The Golden Company/world/NPC's/Guild Master Kai Arness.md",
     "Campaigns/The Mistsmash/sessions/040_20240926.md",
     "Worlds/Lymnevia/NPC's/Vilenought/ Headmistress Lirael Shadowdancer.md",
-    "Campaigns/The Mistsmash/sessions/039_20240912.md",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
-    "Worlds/Lymnevia/Locations/Shadowfell/cities/Eclipsark.md",
-    "Worlds/Lymnevia/NPC's/Johnathan Smith.md",
-    "Campaigns/The Mistsmash/Items/Voidbinder Cinch.md",
-    "Campaigns/The Mistsmash/sessions/038_20240904.md",
-    "Worlds/Lymnevia/Locations/Continent/Vilenought/Main Vilenought/Kronenreich/The Kronenreich.md",
-    "Worlds/Lymnevia/Locations/Continent/Vilenought/Nordic Vilenought/Glang auj (Iron Lands)/Cities/Vaykar.md",
-    "Campaigns/The Golden Company/sessions/031_20240820.md",
     "assets/concept_battlemap_wizardResearch.jpg",
-    "Worlds/Lymnevia/Locations/Continent/Vilenought/Vilenought.md",
-    "Worlds/Lymnevia/Setting/Planes Relations.canvas",
-    "assets/Pasted image 20240820110035.png",
-    "assets/Pasted image 20240807230702.png",
-    "assets/Pasted image 20240805203138.png",
-    "assets/Pasted image 20240620190042.png",
-    "assets/Pasted image 20240606154814.png",
-    "assets/chained_cocoon.jpg",
-    "assets/hooves.jpeg",
-    "Campaigns/Soltpeak/world/Locations",
-    "assets/Johnathan Smith.jpg"
+    "Worlds/Lymnevia/Setting/Planes Relations.canvas"
   ]
 }

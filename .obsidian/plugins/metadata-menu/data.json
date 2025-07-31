@@ -1,12 +1,89 @@
 {
-  "presetFields": [],
+  "presetFields": [
+    {
+      "type": "Media",
+      "tagName": "file",
+      "icon": "paperclip",
+      "tooltip": "Accepts a link to a media file",
+      "colorClass": "file",
+      "options": {
+        "embed": false,
+        "folders": [
+          null,
+          "_obsi/assets"
+        ],
+        "display": "card",
+        "thumbnailSize": "100"
+      },
+      "name": "npc_img",
+      "id": "9AQvwb",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Alive",
+          "2": "Dead",
+          "3": "Missing"
+        }
+      },
+      "name": "condition",
+      "id": "YfWWHc",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "To Do",
+          "2": "In Progress",
+          "3": "Done"
+        }
+      },
+      "name": "quest_status",
+      "id": "l0HSPO",
+      "path": "",
+      "style": {
+        "strikethrough": false
+      }
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Enemy",
+          "2": "Neutral",
+          "3": "Friendly"
+        }
+      },
+      "name": "party_standing",
+      "id": "GlbbZH",
+      "path": ""
+    }
+  ],
   "fileClassQueries": [],
   "displayFieldsInContextMenu": true,
   "globallyIgnoredFields": [],
   "classFilesPath": null,
   "isAutosuggestEnabled": true,
   "fileClassAlias": "fileClass",
-  "settingsVersion": "5.0",
+  "settingsVersion": "5.6",
   "firstDayOfWeek": 1,
   "enableLinks": true,
   "enableTabHeader": true,

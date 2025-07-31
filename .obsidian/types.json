@@ -12,6 +12,8 @@
     "rarity": "multitext",
     "language": "multitext",
     "description_key_words": "multitext",
-    "urls": "multitext"
+    "urls": "multitext",
+    "quest_status": "text",
+    "important_event": "multitext"
   }
 }
