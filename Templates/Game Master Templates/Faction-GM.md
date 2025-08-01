@@ -1,7 +1,9 @@
 ---
+date: <% tp.date.now("YYYY-MM-DD") %>
 type: faction
-tags: []
-status: Active
+tags: 
+status:
+  - Active
 factionType:
   - Religion
   - Citizenship
@@ -16,7 +18,6 @@ goal: ""
 alignment: 
 name: <% tp.file.title %>
 world: Lymnevia
-date: <% tp.date.now("YYYY-MM-DD") %>
 ---
 
 # [[<% tp.file.title %>]]

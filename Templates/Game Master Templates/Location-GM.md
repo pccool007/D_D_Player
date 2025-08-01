@@ -1,15 +1,15 @@
 ---
 type: Location
-tags: []
+tags: 
 name: <% tp.file.title %>
 pronounced: 
 aliases:
- - None
+  - None
 world: Lymnevia
 date: <% tp.date.now("YYYY-MM-DD") %>
 locations:
   - None
-locationType:
+location_type:
   - City
   - Dungeon
   - Country
@@ -18,7 +18,7 @@ region:
 description: ""
 population: 
 theme: 
-terrain: []
+terrain: 
 govtType:
   - None
 defences:

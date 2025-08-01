@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ff4a89757bcf6969",
+        "id": "07614e63d790bfb2",
         "type": "tabs",
         "children": [
           {
-            "id": "217ce9295db0b994",
+            "id": "e455b2b39a7c1960",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Configuations/Templates/Template_Session.md",
-                "mode": "preview",
-                "source": true
+                "file": "Configuations/Templates/Template_Quest.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Template_Session"
+              "title": "Template_Quest"
             }
           }
         ]
@@ -161,26 +161,6 @@
             }
           },
           {
-            "id": "efeca983de9bf57c",
-            "type": "leaf",
-            "state": {
-              "type": "FANTASY_CALENDAR",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "8938d090ea533c11",
-            "type": "leaf",
-            "state": {
-              "type": "metatable-sidebar-view",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
             "id": "f55f0ecc97f80194",
             "type": "leaf",
             "state": {
@@ -231,7 +211,7 @@
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -248,20 +228,30 @@
       "command-palette:Open command palette": false,
       "templater-obsidian:Templater": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "fantasy-calendar:Open Large Fantasy Calendar": false,
       "obsidian-leaflet-plugin:Open Leaflet Map": false,
-      "dbfolder:Create a new database table": false,
-      "obsidian-metatable:Metatable": false
+      "dbfolder:Create a new database table": false
     }
   },
-  "active": "217ce9295db0b994",
+  "active": "e455b2b39a7c1960",
   "lastOpenFiles": [
-    "Configuations/Templates/Template_Quest.md",
-    "Configuations/Templates/Template_PC.md",
-    "Configuations/Templates/Template_NPC.md",
-    "Configuations/Templates/Template_Location.md",
-    "Configuations/Templates/Template_Campaign_Manager.md",
     "Configuations/Templates/Template_Session.md",
+    "Configuations/Notes Templates/Sending.md",
+    "Configuations/Notes Templates/New NPC.md",
+    "Configuations/Templates/Template_Campaign_Manager.md",
+    "Configuations/Templates/Template_Faction.md",
+    "Configuations/Templates/Template_Lore.md",
+    "Cheat Cheats.md",
+    "Configuations/Templates/Template_Inventory.md",
+    "Configuations/Templates/Template_Location.md",
+    "Configuations/Templates/Template_NPC.md",
+    "Campaigns/Tides of Faith/world/NPC's/Bob.md",
+    "Campaigns/Tides of Faith/world/NPC's/Test NPC.md",
+    "Templates/Game Master Templates/Faction-GM.md",
+    "Templates/Game Master Templates/Location-GM.md",
+    "Templates/Game Master Templates/NPC's-GM.md",
+    "Templates/Game Master Templates/Quest-GM.md",
+    "Configuations/Templates/Template_PC.md",
+    "Configuations/Templates/Template_Quest.md",
     "_obsi/assets/Defaults/placeHolderMap.jpeg",
     "_obsi/assets/Defaults/placeHolderLore.png",
     "_obsi/assets/Defaults/placeHolderLocations.png",
@@ -271,7 +261,6 @@
     "_obsi/assets/Defaults/placeHolderDungeon.png",
     "_obsi/assets/Defaults/placeHolderNPC.jpg",
     "_obsi/assets/Defaults",
-    "Configuations/Templates/Template_Faction.md",
     "_obsi/scripts/README.md",
     "_obsi/scripts/_obsi_script_SetParamsInCapGetWorldFolder.js",
     "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
@@ -287,19 +276,9 @@
     "Templates/Campaign Manager.md",
     "Campaigns/Tides of Faith/sessions/003_20250729.md",
     "Campaigns/Tides of Faith/sessions/001_20250729.md",
-    "Campaigns/Tides of Faith/world/NPC's/Bob.md",
     "Campaigns/Tides of Faith/sessions/002_20250729.md",
     "assets/48ba044dd67dfd9e93de892d16e50e88.jpg",
-    "Campaigns/Tides of Faith/world/NPC's/Test NPC.md",
-    "Cheat Cheats.md",
     "Game Index.md",
-    "Campaigns/Tides of Faith/world/Factions/Test Faction.md",
-    "Campaigns/The Golden Company/world.md",
-    "Campaigns/The Mistsmash/sessions/041_20241003.md",
-    "Campaigns/The Mistsmash/world.md",
-    "Campaigns/The Golden Company/world/NPC's/Guild Master Kai Arness.md",
-    "Campaigns/The Mistsmash/sessions/040_20240926.md",
-    "Worlds/Lymnevia/NPC's/Vilenought/ Headmistress Lirael Shadowdancer.md",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
     "assets/concept_battlemap_wizardResearch.jpg",
     "Worlds/Lymnevia/Setting/Planes Relations.canvas"

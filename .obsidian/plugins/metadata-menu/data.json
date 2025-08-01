@@ -28,6 +28,24 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
+          "1": "Enemy",
+          "2": "Neutral",
+          "3": "Friendly"
+        }
+      },
+      "name": "party_standing",
+      "id": "GlbbZH",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
           "1": "Alive",
           "2": "Dead",
           "3": "Missing"
@@ -57,28 +75,10 @@
       "style": {
         "strikethrough": false
       }
-    },
-    {
-      "type": "Select",
-      "tagName": "select",
-      "icon": "right-triangle",
-      "tooltip": "Accepts a single value from a list",
-      "colorClass": "select",
-      "options": {
-        "sourceType": "ValuesList",
-        "valuesList": {
-          "1": "Enemy",
-          "2": "Neutral",
-          "3": "Friendly"
-        }
-      },
-      "name": "party_standing",
-      "id": "GlbbZH",
-      "path": ""
     }
   ],
   "fileClassQueries": [],
-  "displayFieldsInContextMenu": true,
+  "displayFieldsInContextMenu": false,
   "globallyIgnoredFields": [],
   "classFilesPath": null,
   "isAutosuggestEnabled": true,

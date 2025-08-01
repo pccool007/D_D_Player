@@ -20,6 +20,7 @@ npc_img: "![[placeHolderNPC.jpg]]"
 condition: Alive
 party_standing: 
 locations: 
+first_locations:
 class: 
 occupation: 
 factions: 
@@ -46,7 +47,8 @@ dislikes:
 > ---|---|
 > **Occupation(s)** | `=this.occupation` |
 > **Faction(s)** | `=link(this.factions)` |
-> **Current Location** | `=link(this.locations)` |
+> **Location** | `=link(this.locations)` |
+>  **First Meeting Location** | `=link(this.first_locations)` |
 
 > [!info|bg-c-purple]- Description
 > `=this.description`

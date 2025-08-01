@@ -3,13 +3,13 @@ version: "1.0"
 tags: 
 type: Player
 campaign:
-  - "<% tp.user._obsi_script_GetFileRacineHeader(tp) %>"
+  - <% tp.user._obsi_script_GetFileRacineHeader(tp) %>
 world:
-  - "<% tp.user._obsi_script_GetWorldName(tp) %>"
+  - <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
 name: <% tp.file.title %>
 player: ""
-character_img: 
+character_img: "![[placeHolderNPC.jpg]]"
 aliases: 
 class: 
 description: 

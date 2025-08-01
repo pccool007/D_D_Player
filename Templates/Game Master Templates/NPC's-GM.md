@@ -16,7 +16,7 @@ gender:
 age: 
 sexuality: 
 alignment: Neutral
-condition: Alive
+condition: Dead
 locations:
   - None
 occupation:
