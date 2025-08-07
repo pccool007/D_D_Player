@@ -75,6 +75,42 @@
       "style": {
         "strikethrough": false
       }
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Active",
+          "2": "Done"
+        }
+      },
+      "name": "status",
+      "id": "yTgsgA",
+      "path": ""
+    },
+    {
+      "tagName": "file",
+      "icon": "paperclip",
+      "colorClass": "file",
+      "type": "Media",
+      "tooltip": "Accepts a link to a media file",
+      "options": {
+        "embed": false,
+        "folders": [
+          null,
+          "_obsi/assets"
+        ],
+        "display": "card",
+        "thumbnailSize": "100"
+      },
+      "name": "img",
+      "id": "vN9W83",
+      "path": ""
     }
   ],
   "fileClassQueries": [],
@@ -83,7 +119,7 @@
   "classFilesPath": null,
   "isAutosuggestEnabled": true,
   "fileClassAlias": "fileClass",
-  "settingsVersion": "5.6",
+  "settingsVersion": "5.8",
   "firstDayOfWeek": 1,
   "enableLinks": true,
   "enableTabHeader": true,

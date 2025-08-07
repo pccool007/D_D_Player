@@ -29,34 +29,6 @@
       "setFileExistsBehavior": false
     },
     {
-      "id": "a81b9ed6-34b5-4e1d-a9e3-945daabd7788",
-      "name": "---Player---",
-      "type": "Template",
-      "command": true,
-      "templatePath": "",
-      "fileNameFormat": {
-        "enabled": false,
-        "format": ""
-      },
-      "folder": {
-        "enabled": false,
-        "folders": [],
-        "chooseWhenCreatingNote": false,
-        "createInSameFolderAsActiveFile": false,
-        "chooseFromSubfolders": false
-      },
-      "appendLink": false,
-      "openFileInNewTab": {
-        "enabled": false,
-        "direction": "vertical",
-        "focus": true
-      },
-      "openFile": false,
-      "openFileInMode": "default",
-      "fileExistsMode": "Increment the file name",
-      "setFileExistsBehavior": false
-    },
-    {
       "id": "29824033-23bd-49d9-83e6-72a81ce7b066",
       "name": "Macro - Add Faction",
       "type": "Macro",

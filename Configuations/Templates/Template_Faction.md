@@ -1,18 +1,18 @@
 ---
-version: "1.1"
+version: "1.0"
 tags: 
 type: faction
 name: <% tp.file.title %>
 aliases: 
+campaign: <% tp.user._obsi_script_GetFileRacineHeader(tp) %>
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaign: 
+img: "[[placeHolderFactions.png]]"
 leader: 
 status:
   - Active
 faction_type: Organization
-locations:
-  - None
+locations: 
 description: ""
 emblem_description: 
 goal: ""
@@ -23,7 +23,14 @@ alignment:
 > [!infobox]
 > # `=this.file.name` 
 > **Aliases:**  "`=this.aliases`"
-> ![[placeHolderFactions.png|cover hm-sm]]
+> ```dataviewjs
+> const img = dv.current().img;
+> if (img) {
+>    dv.paragraph(`!${img}`); 
+> } else {
+>    dv.paragraph("No NPC image found.");
+> }
+>```
 > ###### Bio
 >  |
 > ---|---|

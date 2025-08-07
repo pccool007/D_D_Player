@@ -1,12 +1,12 @@
 ---
 type: campaign
-tags: []
-world: Soltpeak
+tags: 
+world: 
 campaign: <% tp.file.folder(false) %>
-status: active
+status: Active
 role: player
 system: 5e
-dndbeyond_url:
+dndbeyond_url: 
 urls:
 ---
 # The World of <% tp.file.folder(false) %>
@@ -95,12 +95,12 @@ from "Campaigns/<% tp.file.folder(false) %>"
 WHERE contains(lower(type),"quest")
 and contains(status,"Done")
 ```
+
 ### Factions
 ```dataview
 TABLE description as "Description" from "Campaigns/<% tp.file.folder(false) %>"
 WHERE contains(lower(type),"faction")
 ```
-
 ### NPC
 ```dataview
 table description as "Description", faction as "Faction", locations as "Locations", party_standing as "Relation"
@@ -108,7 +108,6 @@ from "Campaigns/<% tp.file.folder(false) %>"
 WHERE contains(type,"NPC")
 SORT location ASC, name ASC
 ```
-
 ### Locations
 ```dataview
 table description as "Description", faction as "Faction", location as "Location"

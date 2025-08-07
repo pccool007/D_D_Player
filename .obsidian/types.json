@@ -6,7 +6,7 @@
     "type": "text",
     "location": "multitext",
     "curse": "checkbox",
-    "status": "multitext",
+    "status": "text",
     "terrain": "multitext",
     "subType": "multitext",
     "rarity": "multitext",

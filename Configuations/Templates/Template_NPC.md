@@ -32,7 +32,14 @@ dislikes:
 
 > [!infobox]
 > # `=this.file.name` (`=this.aliases`)
-> `=this.npc_img`
+> ```dataviewjs
+> const img = dv.current().npc;
+> if (img) {
+>    dv.paragraph(`!${img}`); 
+> } else {
+>    dv.paragraph("No NPC image found.");
+> }
+>```
 > ###### Bio
 >  |
 > ---|---|
