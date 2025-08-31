@@ -1,31 +1,31 @@
 ---
 version: "1.0"
-tags: 
 type: NPC
 name: <% tp.file.title %>
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+aliases:
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user._obsi_script_GetFileRacineHeader(tp) %>"
-urls: 
-pronounced: 
-aliases: 
-description: 
-race: 
-subRace: 
-gender: 
-age: 
-sexuality: 
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+tags:
+urls:
+pronounced:
+description:
+race:
+subRace:
+gender:
+age:
+sexuality:
 alignment: Neutral
-npc_img: "![[placeHolderNPC.jpg]]"
+npc_img: "[[placeHolderNPC.jpg]]"
 condition: Alive
-party_standing: 
-locations: 
+party_standing: Neutral
+locations:
 first_locations:
-class: 
-occupation: 
-factions: 
-languages: 
-likes: 
+class:
+occupation:
+factions:
+languages:
+likes:
 dislikes:
 ---
 # [[<% tp.file.title %>]]
@@ -33,7 +33,7 @@ dislikes:
 > [!infobox]
 > # `=this.file.name` (`=this.aliases`)
 > ```dataviewjs
-> const img = dv.current().npc;
+> const img = dv.current().npc_img;
 > if (img) {
 >    dv.paragraph(`!${img}`); 
 > } else {

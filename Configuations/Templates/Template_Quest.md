@@ -1,16 +1,17 @@
 ---
 version: "1.0"
-tags: 
-type: quest
+type: Quest
+name: <% tp.file.title %>
+aliases:
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
+date: <% tp.date.now("YYYY-MM-DD") %>
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+tags:
 quest_status: To Do
 reward: 
 owner: 
 time_delay: 
 locations: 
-name: <% tp.file.title %>
-campaign: "<% tp.user._obsi_script_GetFileRacineHeader(tp) %>"
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-date: <% tp.date.now("YYYY-MM-DD") %>
 description:
 ---
 # [[<% tp.file.title %>]]

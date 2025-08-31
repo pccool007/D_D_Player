@@ -1,25 +1,6 @@
 {
   "presetFields": [
     {
-      "type": "Media",
-      "tagName": "file",
-      "icon": "paperclip",
-      "tooltip": "Accepts a link to a media file",
-      "colorClass": "file",
-      "options": {
-        "embed": false,
-        "folders": [
-          null,
-          "_obsi/assets"
-        ],
-        "display": "card",
-        "thumbnailSize": "100"
-      },
-      "name": "npc_img",
-      "id": "9AQvwb",
-      "path": ""
-    },
-    {
       "type": "Select",
       "tagName": "select",
       "icon": "right-triangle",
@@ -64,6 +45,46 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
+          "1": "Organization",
+          "2": "Religion",
+          "3": "Gang",
+          "4": "Citizenship"
+        }
+      },
+      "name": "faction_type",
+      "id": "djzqJa",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "City",
+          "2": "Dungeon",
+          "3": "Country",
+          "4": "Region",
+          "5": "Dimension",
+          "6": "State"
+        }
+      },
+      "name": "location_type",
+      "id": "gmmqhr",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
           "1": "To Do",
           "2": "In Progress",
           "3": "Done"
@@ -75,6 +96,25 @@
       "style": {
         "strikethrough": false
       }
+    },
+    {
+      "type": "Media",
+      "tagName": "file",
+      "icon": "paperclip",
+      "tooltip": "Accepts a link to a media file",
+      "colorClass": "file",
+      "options": {
+        "embed": false,
+        "folders": [
+          null,
+          "_obsi/assets"
+        ],
+        "display": "card",
+        "thumbnailSize": "100"
+      },
+      "name": "img",
+      "id": "vN9W83",
+      "path": ""
     },
     {
       "type": "Select",
@@ -103,13 +143,13 @@
         "embed": false,
         "folders": [
           null,
-          "_obsi/assets"
+          "_obsi/assets/NPC"
         ],
         "display": "card",
         "thumbnailSize": "100"
       },
-      "name": "img",
-      "id": "vN9W83",
+      "name": "npc_img",
+      "id": "9AQvwb",
       "path": ""
     }
   ],
@@ -119,7 +159,7 @@
   "classFilesPath": null,
   "isAutosuggestEnabled": true,
   "fileClassAlias": "fileClass",
-  "settingsVersion": "5.8",
+  "settingsVersion": "5.17",
   "firstDayOfWeek": 1,
   "enableLinks": true,
   "enableTabHeader": true,

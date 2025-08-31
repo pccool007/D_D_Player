@@ -30,16 +30,3 @@ dv.table(["Campaign","System","Sessions", "Role","Status"],dv.pages('"Campaigns"
   .sort(b => b.status)
   .map(b => [dv.fileLink(b.file.path,false,[b.campaign]),b.system,getNumOfGames(b.campaign),b.role,b.status]))
 ```
-
-## List of Worlds
-```button
-name Add New World
-type command
-action QuickAdd: Template - Create New Campaign
-```
-
-```dataviewjs
-dv.table(["Campaign","System"] ,dv.pages('"Worlds"')
-  .where(b => b.type === "world")
-  .map(b => [dv.fileLink(b.file.path,false,[b.name]),b.system]))
-```

@@ -981,14 +981,36 @@ var getButtonFromStore = async (app, args) => {
 };
 var getButtonById = async (app, id) => {
   const store = getStore(app.isMobile);
-  const storedButton = store.filter((item) => `button-${id}` === item.id)[0];
-  if (storedButton) {
-    const file = app.vault.getAbstractFileByPath(storedButton.path);
+  const readArgsByBlockId = async (blockId) => {
+    const btn = (store || []).find((item) => `button-${blockId}` === item.id);
+    if (!btn)
+      return void 0;
+    const file = app.vault.getAbstractFileByPath(btn.path);
     const content = await app.vault.cachedRead(file);
     const contentArray = content.split("\n");
-    const button = contentArray.slice(storedButton.position.start.line + 1, storedButton.position.end.line).join("\n");
+    const button = contentArray.slice(btn.position.start.line + 1, btn.position.end.line).join("\n");
     return createArgumentObject(button);
-  }
+  };
+  const resolveInheritedArgs = async (startId, visited = new Set(), depth = 0) => {
+    if (depth > 3)
+      return void 0;
+    if (visited.has(startId))
+      return void 0;
+    visited.add(startId);
+    const childArgs = await readArgsByBlockId(startId);
+    if (!childArgs)
+      return void 0;
+    const parentId = typeof childArgs.id === "string" ? childArgs.id.trim() : "";
+    if (!parentId)
+      return childArgs;
+    const parentArgs = await resolveInheritedArgs(parentId, visited, depth + 1);
+    if (!parentArgs)
+      return childArgs;
+    return { ...parentArgs, ...childArgs };
+  };
+  const merged = await resolveInheritedArgs(id);
+  if (merged)
+    return merged;
 };
 var getButtonSwapById = async (app, id) => {
   const store = getStore(app.isMobile);
@@ -1089,7 +1111,10 @@ var createArgumentObject = (source) => {
     "class",
     "folder",
     "prompt",
-    "actions"
+    "actions",
+    "width",
+    "height",
+    "align"
   ]);
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -1097,72 +1122,25 @@ var createArgumentObject = (source) => {
     const key = split[0]?.toLowerCase();
     if (!key)
       continue;
-    if (key === "actions") {
+    if (key === "name") {
+      const parseLines = [line.replace(/^name\s*/, "")];
+      let destructor = parseMultiLine(lines, i, parseLines);
+      if (destructor.parseValue[0] == "{") {
+        acc[key] = destructor.parseValue.slice(1, -1).trim();
+      } else {
+        acc[key] = destructor.parseValue.trim();
+      }
+      i = destructor.i;
+    } else if (key === "actions") {
       const jsonLines = [line.replace(/^actions\s*/, "")];
-      let bracketCount = 0;
-      let braceCount = 0;
-      let inString = false;
-      let escaped = false;
-      for (const char of jsonLines[0]) {
-        if (escaped) {
-          escaped = false;
-          continue;
-        }
-        if (char === "\\") {
-          escaped = true;
-          continue;
-        }
-        if (char === '"' && !escaped) {
-          inString = !inString;
-          continue;
-        }
-        if (!inString) {
-          if (char === "[")
-            bracketCount++;
-          else if (char === "]")
-            bracketCount--;
-          else if (char === "{")
-            braceCount++;
-          else if (char === "}")
-            braceCount--;
-        }
-      }
-      while ((bracketCount > 0 || braceCount > 0) && i + 1 < lines.length) {
-        i++;
-        const nextLine = lines[i];
-        jsonLines.push(nextLine);
-        for (const char of nextLine) {
-          if (escaped) {
-            escaped = false;
-            continue;
-          }
-          if (char === "\\") {
-            escaped = true;
-            continue;
-          }
-          if (char === '"' && !escaped) {
-            inString = !inString;
-            continue;
-          }
-          if (!inString) {
-            if (char === "[")
-              bracketCount++;
-            else if (char === "]")
-              bracketCount--;
-            else if (char === "{")
-              braceCount++;
-            else if (char === "}")
-              braceCount--;
-          }
-        }
-      }
-      const jsonString = jsonLines.join("\n").trim();
+      let destructor = parseMultiLine(lines, i, jsonLines);
       try {
-        acc[key] = JSON.parse(jsonString);
+        acc[key] = JSON.parse(destructor.parseValue);
       } catch (e) {
-        new import_obsidian.Notice("Error: Malformed JSON in actions field. Please check your chain button syntax.", 4e3);
         acc[key] = [];
+        new import_obsidian.Notice(`Error: Malformed JSON in actions field. Please check your chain button syntax.`, 4e3);
       }
+      i = destructor.i;
     } else if (key === "action") {
       const actionLines = [line.replace(/^action\s*/, "")];
       while (i + 1 < lines.length) {
@@ -1217,6 +1195,71 @@ async function getNewArgs(app, position) {
 }
 var wrapAround = (value, size) => {
   return (value % size + size) % size;
+};
+var parseMultiLine = (lines, iStart, parseLinesStart) => {
+  let i = iStart;
+  let parseLines = parseLinesStart;
+  let bracketCount = 0;
+  let braceCount = 0;
+  let inString = false;
+  let escaped = false;
+  let parseValue;
+  for (const char of parseLines[0]) {
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (char === "\\") {
+      escaped = true;
+      continue;
+    }
+    if (char === '"' && !escaped) {
+      inString = !inString;
+      continue;
+    }
+    if (!inString) {
+      if (char === "[")
+        bracketCount++;
+      else if (char === "]")
+        bracketCount--;
+      else if (char === "{")
+        braceCount++;
+      else if (char === "}")
+        braceCount--;
+    }
+  }
+  while ((bracketCount > 0 || braceCount > 0) && i + 1 < lines.length) {
+    i++;
+    const nextLine = lines[i];
+    parseLines.push(nextLine);
+    for (const char of nextLine) {
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (char === '"' && !escaped) {
+        inString = !inString;
+        continue;
+      }
+      if (!inString) {
+        if (char === "[")
+          bracketCount++;
+        else if (char === "]")
+          bracketCount--;
+        else if (char === "{")
+          braceCount++;
+        else if (char === "}")
+          braceCount--;
+      }
+    }
+  }
+  const parseString = parseLines.join("\n").trim();
+  parseValue = parseString;
+  return { parseValue, i };
 };
 
 // src/events.ts
@@ -1363,14 +1406,15 @@ var import_obsidian3 = __toModule(require("obsidian"));
 var import_obsidian2 = __toModule(require("obsidian"));
 async function templater(app, template2, _target) {
   const activeFile = template2 || app.workspace.getActiveFile();
+  const targetFile = _target || activeFile;
   if (!activeFile) {
     new import_obsidian2.Notice("No active file found for templater processing.");
     return;
   }
   const config = {
-    template_file: activeFile,
+    template_file: template2,
     active_file: activeFile,
-    target_file: activeFile,
+    target_file: targetFile,
     run_mode: "DynamicProcessor"
   };
   const plugins = app.plugins.plugins;
@@ -1744,6 +1788,21 @@ var getInlineButtonPosition = async (app, id) => {
   });
   return position;
 };
+var getBlockButtonPositionById = async (app, id) => {
+  const store = getStore(app.isMobile);
+  if (!store || !id)
+    return void 0;
+  const activeFile = app.workspace.getActiveFile();
+  if (!activeFile)
+    return void 0;
+  const button = store.find((item) => item.id === `button-${id}` && item.path === activeFile.path);
+  if (!button)
+    return void 0;
+  return {
+    lineStart: button.position.start.line,
+    lineEnd: button.position.end.line
+  };
+};
 var findNumber = async (app, lineNumber) => {
   const content = await createContentArray(app);
   const value = [];
@@ -2089,6 +2148,34 @@ var chain = async (app, args, position, inline, id, file) => {
   for (const actionObj of args.actions) {
     try {
       const actionArgs = { ...args, ...actionObj };
+      let processedAction = actionArgs.action;
+      let processedType = actionArgs.type;
+      let processedFolder = actionArgs.folder;
+      if (args.templater) {
+        try {
+          const activeFile = file || app.workspace.getActiveFile();
+          if (activeFile) {
+            const runTemplater = await templater_default(app, activeFile, activeFile);
+            if (runTemplater) {
+              if (actionArgs.action && actionArgs.action.includes("<%")) {
+                processedAction = await runTemplater(actionArgs.action);
+              }
+              if (actionArgs.type && actionArgs.type.includes("<%")) {
+                processedType = await runTemplater(actionArgs.type);
+              }
+              if (actionArgs.folder && actionArgs.folder.includes("<%")) {
+                processedFolder = await runTemplater(actionArgs.folder);
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Error processing templater in chain action:", error);
+          new import_obsidian15.Notice("Error processing templater in chain action. Check console for details.", 2e3);
+        }
+      }
+      actionArgs.action = processedAction;
+      actionArgs.type = processedType;
+      actionArgs.folder = processedFolder;
       let currentPosition = position;
       if (actionArgs.type && (actionArgs.type.includes("text") || actionArgs.type.includes("template"))) {
         if (file) {
@@ -2127,6 +2214,7 @@ var createButton = ({
   args,
   inline,
   id,
+  component,
   clickOverride
 }) => {
   const button = el.createEl("button", {
@@ -2141,7 +2229,30 @@ var createButton = ({
   if (args.customtextcolor) {
     button.style.color = args.customtextcolor;
   }
-  button.innerHTML = args.name;
+  import_obsidian16.MarkdownRenderer.render(app, args.name, button, app.workspace.getActiveFile()?.path || "", component);
+  const numberOfLines = args.name.split("\n").length;
+  let paddingTop = "auto";
+  let paddingBottom = "auto";
+  let alignment = args.align?.split(" ") || ["center", "middle"];
+  if (args.height) {
+    if (alignment.includes("top")) {
+      alignment = alignment.filter((a) => a !== "top");
+      paddingBottom = parseFloat(args.height) - 1.2 * numberOfLines + "em";
+    } else if (alignment.includes("bottom")) {
+      alignment = alignment.filter((a) => a !== "bottom");
+      paddingTop = parseFloat(args.height) - 1.2 * numberOfLines + "em";
+    } else {
+      alignment = alignment.filter((a) => a !== "middle");
+      paddingTop = (parseFloat(args.height) - 1.2 * numberOfLines) / 2 + "em";
+      paddingBottom = (parseFloat(args.height) - 1.2 * numberOfLines) / 2 + "em";
+    }
+  }
+  if (args.width) {
+    args.width += "em";
+  } else {
+    args.width = "auto";
+  }
+  button.innerHTML = `<div style='width: ${args.width};padding-top: ${paddingTop};padding-bottom: ${paddingBottom};text-align: ${alignment[0] || "center"};line-height: 1.2em;'>${button.innerHTML.slice(14, -4)}</div>`;
   args.id ? button.setAttribute("id", args.id) : "";
   button.on("click", "button", () => {
     clickOverride ? clickOverride.click(...clickOverride.params) : clickHandler(app, args, inline, id);
@@ -2156,43 +2267,56 @@ var clickHandler = async (app, args, inline, id) => {
     return;
   }
   let content = await app.vault.read(activeFile);
-  const buttonStart = getButtonPosition(content, args);
-  let position = inline ? await getInlineButtonPosition(app, id) : getButtonPosition(content, args);
-  if (inline && args.templater && args.action && args.action.includes("<%")) {
+  const idFirstPosition = !inline && id ? await getBlockButtonPositionById(app, id) : void 0;
+  const buttonStart = idFirstPosition ?? getButtonPosition(content, args);
+  let position = inline ? await getInlineButtonPosition(app, id) : idFirstPosition ?? getButtonPosition(content, args);
+  let processedAction = args.action;
+  let processedType = args.type;
+  let processedFolder = args.folder;
+  if (args.templater) {
     try {
       const runTemplater = await templater_default(app, activeFile, activeFile);
       if (runTemplater) {
-        args.action = await runTemplater(args.action);
+        if (args.action && args.action.includes("<%")) {
+          processedAction = await runTemplater(args.action);
+        }
+        if (args.type && args.type.includes("<%")) {
+          processedType = await runTemplater(args.type);
+        }
+        if (args.folder && args.folder.includes("<%")) {
+          processedFolder = await runTemplater(args.folder);
+        }
       }
     } catch (error) {
-      console.error("Error processing templater in inline button:", error);
-      new import_obsidian16.Notice("Error processing templater in inline button. Check console for details.", 2e3);
+      console.error("Error processing templater in button:", error);
+      new import_obsidian16.Notice("Error processing templater in button. Check console for details.", 2e3);
     }
   }
+  const processedArgs = { ...args, action: processedAction, type: processedType, folder: processedFolder };
   if (args.replace) {
-    replace(app, args, position);
+    replace(app, processedArgs, position);
   }
-  if (args.type && args.type.includes("command")) {
-    command(app, args, buttonStart);
+  if (processedArgs.type && processedArgs.type.includes("command")) {
+    command(app, processedArgs, buttonStart);
   }
-  if (args.type === "copy") {
-    copy(args);
+  if (processedArgs.type === "copy") {
+    copy(processedArgs);
   }
-  if (args.type === "link") {
-    link(args);
+  if (processedArgs.type === "link") {
+    link(processedArgs);
   }
-  if (args.type && args.type.includes("template")) {
+  if (processedArgs.type && processedArgs.type.includes("template")) {
     content = await app.vault.read(activeFile);
-    position = inline ? await getInlineButtonPosition(app, id) : getButtonPosition(content, args);
-    await template(app, args, position);
+    position = inline ? await getInlineButtonPosition(app, id) : await getBlockButtonPositionById(app, id) ?? getButtonPosition(content, args);
+    await template(app, processedArgs, position);
   }
-  if (args.type === "calculate") {
-    await calculate(app, args, position);
+  if (processedArgs.type === "calculate") {
+    await calculate(app, processedArgs, position);
   }
-  if (args.type && args.type.includes("text")) {
+  if (processedArgs.type && processedArgs.type.includes("text")) {
     content = await app.vault.read(activeFile);
-    position = inline ? await getInlineButtonPosition(app, id) : getButtonPosition(content, args);
-    await text(app, args, position);
+    position = inline ? await getInlineButtonPosition(app, id) : await getBlockButtonPositionById(app, id) ?? getButtonPosition(content, args);
+    await text(app, processedArgs, position);
   }
   if (args.swap) {
     if (!inline) {
@@ -2203,11 +2327,10 @@ var clickHandler = async (app, args, inline, id) => {
   }
   if (args.remove) {
     content = await app.vault.read(activeFile);
-    position = inline ? await getInlineButtonPosition(app, id) : getButtonPosition(content, args);
-    await remove(app, args, position);
+    await remove(app, processedArgs, position);
   }
-  if (args.type === "chain") {
-    await chain(app, args, position, inline, id, activeFile);
+  if (processedArgs.type === "chain") {
+    await chain(app, processedArgs, position, inline, id, activeFile);
     return;
   }
 };
@@ -3956,6 +4079,7 @@ var ButtonModal = class extends import_obsidian18.Modal {
     __publicField(this, "activeEditor");
     __publicField(this, "activeCursor");
     __publicField(this, "buttonPreviewEl", createEl("p"));
+    __publicField(this, "previewComponent", null);
     __publicField(this, "commandSuggestEl", createEl("input", { type: "text" }));
     __publicField(this, "fileSuggestEl", createEl("input", { type: "text" }));
     __publicField(this, "removeSuggestEl", createEl("input", { type: "text" }));
@@ -4244,10 +4368,12 @@ var ButtonModal = class extends import_obsidian18.Modal {
     const previewSection = mainContainer.createEl("div", { cls: "preview-section" });
     previewSection.createEl("h3", { cls: "section-title", text: "Button Preview" });
     const previewContainer = previewSection.createEl("div", { cls: "preview-container" });
+    this.previewComponent = new import_obsidian18.Component();
     this.buttonPreviewEl = createButton({
       app: this.app,
       el: previewContainer,
-      args: { name: "My Awesome Button" }
+      args: { name: "My Awesome Button" },
+      component: this.previewComponent
     });
   }
   renderChainActions(container) {
@@ -4695,6 +4821,10 @@ var ButtonModal = class extends import_obsidian18.Modal {
   }
   onClose() {
     const { contentEl } = this;
+    if (this.previewComponent) {
+      this.previewComponent.unload();
+      this.previewComponent = null;
+    }
     contentEl.empty();
   }
 };
@@ -4790,9 +4920,14 @@ var ButtonWidget = class extends import_view.WidgetType {
     this.id = id;
     this.app = app;
     this.line = line;
+    __publicField(this, "component");
+    this.component = new import_obsidian19.Component();
   }
   eq(other) {
     return other.id === this.id;
+  }
+  destroy() {
+    this.component.unload();
   }
   toDOM() {
     this.el.innerText = "Loading...";
@@ -4805,11 +4940,38 @@ var ButtonWidget = class extends import_view.WidgetType {
       const args = await getButtonById(this.app, this.id);
       if (args) {
         const name = args.name;
-        const className = args.class;
         const color = args.color;
-        this.el.innerText = name || "";
-        if (className) {
-          this.el.addClass(className);
+        this.el.innerHTML = "";
+        import_obsidian19.MarkdownRenderer.render(this.app, name, this.el, this.app.workspace.getActiveFile()?.path || "", this.component);
+        let numberOfLines = args.name.split("\n").length;
+        let paddingTop = "auto";
+        let paddingBottom = "auto";
+        let alignment = args.align?.split(" ") || ["center", "middle"];
+        if (args.height) {
+          if (alignment.includes("top")) {
+            alignment = alignment.filter((a) => a !== "top");
+            paddingBottom = parseFloat(args.height) - 1.2 * numberOfLines + "em";
+          } else if (alignment.includes("bottom")) {
+            alignment = alignment.filter((a) => a !== "bottom");
+            paddingTop = parseFloat(args.height) - 1.2 * numberOfLines + "em";
+          } else {
+            alignment = alignment.filter((a) => a !== "middle");
+            paddingTop = (parseFloat(args.height) - 1.2 * numberOfLines) / 2 + "em";
+            paddingBottom = (parseFloat(args.height) - 1.2 * numberOfLines) / 2 + "em";
+          }
+        }
+        if (args.width) {
+          args.width += "em";
+        } else {
+          args.width = "auto";
+        }
+        this.el.innerHTML = `<div style='width: ${args.width};padding-top: ${paddingTop};padding-bottom: ${paddingBottom};text-align: ${alignment[0] || "center"};line-height: 1.2em;'>${this.el.innerHTML.slice(14, -4)}</div>`;
+        const classNames = args.class ? args.class.split(" ") : [];
+        if (classNames.length > 0) {
+          this.el.removeClass("button-default");
+          classNames.forEach((className) => {
+            this.el.addClass(className);
+          });
         }
         if (color) {
           this.el.addClass(color);
@@ -4823,6 +4985,7 @@ var ButtonWidget = class extends import_view.WidgetType {
         this.el.addClass("button-error");
       }
     } catch (error) {
+      console.log(error);
       this.el.innerText = "Error loading button";
       this.el.removeClass("button-default");
       this.el.addClass("button-error");
@@ -4835,51 +4998,63 @@ var ButtonWidget = class extends import_view.WidgetType {
       new import_obsidian19.Notice("No active file found. Buttons can only be used with files.");
       return;
     }
-    if (args.templater && args.action && args.action.includes("<%")) {
+    let processedAction = args.action;
+    let processedType = args.type;
+    let processedFolder = args.folder;
+    if (args.templater) {
       try {
         const runTemplater = await templater_default(this.app, activeFile, activeFile);
         if (runTemplater) {
-          args.action = await runTemplater(args.action);
+          if (args.action && args.action.includes("<%")) {
+            processedAction = await runTemplater(args.action);
+          }
+          if (args.type && args.type.includes("<%")) {
+            processedType = await runTemplater(args.type);
+          }
+          if (args.folder && args.folder.includes("<%")) {
+            processedFolder = await runTemplater(args.folder);
+          }
         }
       } catch (error) {
-        console.error("Error processing templater in inline button:", error);
-        new import_obsidian19.Notice("Error processing templater in inline button. Check console for details.", 2e3);
+        console.error("Error processing templater in button:", error);
+        new import_obsidian19.Notice("Error processing templater in button. Check console for details.", 2e3);
       }
     }
+    const processedArgs = { ...args, action: processedAction, type: processedType, folder: processedFolder };
     const buttonStart = await getInlineButtonPosition(this.app, this.id);
     let position = await getInlineButtonPosition(this.app, this.id);
     if (args.replace) {
-      await replace(this.app, args, position);
+      await replace(this.app, processedArgs, position);
     }
-    if (args.type && args.type.includes("command")) {
-      command(this.app, args, buttonStart);
+    if (processedArgs.type && processedArgs.type.includes("command")) {
+      command(this.app, processedArgs, buttonStart);
     }
-    if (args.type === "copy") {
-      copy(args);
+    if (processedArgs.type === "copy") {
+      copy(processedArgs);
     }
-    if (args.type === "link") {
-      link(args);
+    if (processedArgs.type === "link") {
+      link(processedArgs);
     }
-    if (args.type && args.type.includes("template")) {
+    if (processedArgs.type && processedArgs.type.includes("template")) {
       position = await getInlineButtonPosition(this.app, this.id);
-      await template(this.app, args, position);
+      await template(this.app, processedArgs, position);
     }
-    if (args.type === "calculate") {
-      await calculate(this.app, args, position);
+    if (processedArgs.type === "calculate") {
+      await calculate(this.app, processedArgs, position);
     }
-    if (args.type && args.type.includes("text")) {
+    if (processedArgs.type && processedArgs.type.includes("text")) {
       position = await getInlineButtonPosition(this.app, this.id);
-      await text(this.app, args, position);
+      await text(this.app, processedArgs, position);
     }
     if (args.swap) {
       await swap(this.app, args.swap, this.id, true, activeFile, buttonStart);
     }
     if (args.remove) {
       position = await getInlineButtonPosition(this.app, this.id);
-      await remove(this.app, args, position);
+      await remove(this.app, processedArgs, position);
     }
-    if (args.type === "chain") {
-      await chain(this.app, args, position, true, this.id, activeFile);
+    if (processedArgs.type === "chain") {
+      await chain(this.app, processedArgs, position, true, this.id, activeFile);
       return;
     }
   }
@@ -4922,25 +5097,38 @@ var ButtonsPlugin = class extends import_obsidian20.Plugin {
       name: "Insert Inline Button",
       callback: () => new InlineButtonModal(this.app).open()
     });
+    const assignedBlocks = new Set();
     this.registerMarkdownCodeBlockProcessor("button", async (source, el, ctx) => {
       const file = this.app.vault.getFiles().find((f) => f.path === ctx.sourcePath);
-      if (source.includes("<%") && file) {
-        try {
-          const runTemplater = await templater_default(this.app, file, file);
-          if (runTemplater) {
-            source = await runTemplater(source);
-          }
-        } catch (error) {
-          console.error("Error processing templater in button:", error);
-        }
-      }
       addButtonToStore(this.app, file);
       let args = createArgumentObject(source);
       const storeArgs = await getButtonFromStore(this.app, args);
       args = storeArgs ? storeArgs.args : args;
-      const id = storeArgs && storeArgs.id;
-      if (Boolean(args["hidden"]) !== true)
-        createButton({ app: this.app, el, args, inline: false, id });
+      let id = storeArgs && storeArgs.id;
+      if (!id && file) {
+        try {
+          const store = getStore(this.app.isMobile);
+          const content = await this.app.vault.cachedRead(file);
+          const contentArray = content.split("\n");
+          const candidates = (store || []).filter((item) => item.path === file.path && item.id?.startsWith("button-"));
+          for (const item of candidates) {
+            const blockInner = contentArray.slice(item.position.start.line + 1, item.position.end.line).join("\n");
+            if (blockInner.trim() === source.trim()) {
+              const key = `${item.path}:${item.position.start.line}:${item.position.end.line}`;
+              if (!assignedBlocks.has(key)) {
+                id = item.id.split("button-")[1];
+                assignedBlocks.add(key);
+                break;
+              }
+            }
+          }
+        } catch (_) {
+        }
+      }
+      if (Boolean(args["hidden"]) !== true) {
+        const component = new import_obsidian20.Component();
+        createButton({ app: this.app, el, args, inline: false, id, component });
+      }
     });
     this.registerMarkdownPostProcessor(async (el, ctx) => {
       const codeblocks = el.querySelectorAll("code");
@@ -4988,7 +5176,8 @@ var InlineButton = class extends import_obsidian20.MarkdownRenderChild {
       el: this.el,
       args: this.args,
       inline: true,
-      id: this.id
+      id: this.id,
+      component: this
     });
     this.el.replaceWith(button);
   }

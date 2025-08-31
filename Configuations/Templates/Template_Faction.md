@@ -1,21 +1,20 @@
 ---
 version: "1.0"
-tags: 
-type: faction
+type: Faction
 name: <% tp.file.title %>
-aliases: 
-campaign: <% tp.user._obsi_script_GetFileRacineHeader(tp) %>
+aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+tags:
 img: "[[placeHolderFactions.png]]"
-leader: 
-status:
-  - Active
+leader:
+status: Active
 faction_type: Organization
-locations: 
+locations:
 description: ""
-emblem_description: 
-goal: ""
+emblem_description:
+goal: Define Goal
 alignment:
 ---
 
@@ -44,19 +43,19 @@ alignment:
 > [!info|bg-c-purple] Description
 > `=this.description`
 
-> [!goal|text-Center bg-c-gray] Goal
+> [!goal] Goal
 > `=this.goal`
 
 ## Members List
 ```button
 name New NPC
 type command
-action QuickAdd: Macro - Add NPC World
+action QuickAdd: Macro - Add NPC
 ```
 ###### Table
 ```dataview
 table description as "Description", condition as "Alive", partyStanding as "Relation", locations as "Locations"
-from "Worlds/<% tp.user._obsi_script_GetFileRacine(tp) %>"
+from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPCS"
 WHERE contains(type,"NPC") 
 and contains(factions,[[<% tp.file.title %>]])
 SORT file.name ASC
@@ -73,7 +72,7 @@ SORT file.name ASC
 >```dataview
 > table description as "Description"
 > from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE contains(type,"lore") 
+> WHERE contains(type,"Lore") 
 > and contains(relations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
@@ -81,13 +80,5 @@ SORT file.name ASC
 ### History
 TBD
 
-### DM Notes
-#### Plot Hooks
-
-#### Hidden Details
-
-#### General Notes
-
-#### Logs
-### Player Notes
+### Notes
 

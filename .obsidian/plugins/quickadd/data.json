@@ -5,10 +5,10 @@
       "name": "Template - Create New Campaign",
       "type": "Template",
       "command": true,
-      "templatePath": "Templates/Campaign Manager.md",
+      "templatePath": "Configuations/Templates/Template_Campaign_Manager.md",
       "fileNameFormat": {
         "enabled": true,
-        "format": "Campaigns/{{VALUE}}/{{value}}"
+        "format": "Campaigns/{{value}}/{{value}}"
       },
       "folder": {
         "enabled": false,
@@ -26,51 +26,473 @@
       "openFile": true,
       "openFileInMode": "default",
       "fileExistsMode": "Increment the file name",
-      "setFileExistsBehavior": false
+      "setFileExistsBehavior": false,
+      "fileOpening": {
+        "location": "split",
+        "direction": "vertical",
+        "focus": true,
+        "mode": "default"
+      }
     },
     {
       "id": "29824033-23bd-49d9-83e6-72a81ce7b066",
       "name": "Macro - Add Faction",
       "type": "Macro",
       "command": true,
-      "macroId": "21341dc4-3eb5-44aa-adcd-7d31d0d46f28"
+      "macro": {
+        "id": "21341dc4-3eb5-44aa-adcd-7d31d0d46f28",
+        "name": "Macro - Add Faction",
+        "commands": [
+          {
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
+            "type": "UserScript",
+            "id": "983f9e95-259d-4fa2-8279-f2adcf08f1ed",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
+            "settings": {}
+          },
+          {
+            "name": "Faction Template",
+            "type": "NestedChoice",
+            "id": "245bd4e2-cf45-4ffc-a879-60b7f949443b",
+            "choice": {
+              "id": "a42365a8-9c75-48a2-b4b8-4f27cf8571e4",
+              "name": "Faction Template",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Configuations/Templates/Template_Faction.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/World/Factions"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      },
+      "runOnStartup": false
     },
     {
       "id": "13e5416d-4287-4816-8d8d-c547ece4b91b",
       "name": "Macro - Add Session",
       "type": "Macro",
       "command": true,
-      "macroId": "31b144f9-2401-4ba4-b1ee-862f2fed1cb6"
+      "macro": {
+        "id": "31b144f9-2401-4ba4-b1ee-862f2fed1cb6",
+        "name": "Macro - Add Session",
+        "commands": [
+          {
+            "name": "_obsi_script_GetThisSessionName",
+            "type": "UserScript",
+            "id": "f1f5bf0f-9e53-40d1-9042-4493b1ba4bb8",
+            "path": "_obsi/scripts/_obsi_script_GetThisSessionName.js",
+            "settings": {}
+          },
+          {
+            "name": "Session Template",
+            "type": "NestedChoice",
+            "id": "4154ae13-fbe3-432d-9dee-58d26886a2b5",
+            "choice": {
+              "id": "96e0c521-8c2c-4b74-a7fa-f93547387bd2",
+              "name": "Session Template",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Configuations/Templates/Template_Session.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{VALUE:thisGameFilename}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/Sessions"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      },
+      "runOnStartup": false
     },
     {
       "id": "e6bf6926-c175-48da-8f5b-33b2271b6b30",
       "name": "Macro - Add a NPC Player",
       "type": "Macro",
       "command": true,
-      "macroId": "0331cf1f-d8c0-49f7-a152-ecc3a2525319"
+      "macro": {
+        "id": "0331cf1f-d8c0-49f7-a152-ecc3a2525319",
+        "name": "Macro - Add a NPC Player",
+        "commands": [
+          {
+            "name": "getThisGameFilename",
+            "type": "UserScript",
+            "id": "997af209-abb3-49a7-9b6e-cd5a397bb55a",
+            "path": "Scripts/getThisGameFilename.js",
+            "settings": {}
+          },
+          {
+            "name": "Untitled Template Choice",
+            "type": "NestedChoice",
+            "id": "4e323706-7982-4585-9789-709730fc4326",
+            "choice": {
+              "id": "6c1fe36f-f365-4355-a29a-be154af54925",
+              "name": "Untitled Template Choice",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Templates/Player Templates/NPC's-Player.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/world/NPC's"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      },
+      "runOnStartup": false
     },
     {
       "id": "0bc7c2b3-2fc9-47b4-9f6a-f87431f93c7c",
       "name": "Macro - Add a Location player",
       "type": "Macro",
       "command": true,
-      "macroId": "1cd67699-00fa-4c70-8333-6c83b0840842"
+      "macro": {
+        "id": "1cd67699-00fa-4c70-8333-6c83b0840842",
+        "name": "Macro - Add a Location player",
+        "commands": [
+          {
+            "name": "getThisGameFilename",
+            "type": "UserScript",
+            "id": "37118e53-6756-48ec-af9d-23015d316d48",
+            "path": "Scripts/getThisGameFilename.js",
+            "settings": {}
+          },
+          {
+            "name": "Untitled Template Choice",
+            "type": "NestedChoice",
+            "id": "5799e673-4012-4b3c-b10d-a9beff096aa8",
+            "choice": {
+              "id": "782a79f0-d45c-4ffe-8f43-4c7e3be7f627",
+              "name": "Untitled Template Choice",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Templates/Player Templates/Location-Player.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/world/Locations"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      },
+      "runOnStartup": false
     },
     {
       "id": "4a85560a-ab1b-4d39-ba11-566c2d0b5411",
       "name": "Macro - Add new Quest Player",
       "type": "Macro",
       "command": true,
-      "macroId": "32a40d90-ce33-45c0-a56b-fcf2db6b413f"
+      "macro": {
+        "id": "32a40d90-ce33-45c0-a56b-fcf2db6b413f",
+        "name": "Macro - Add new Quest Player",
+        "commands": [
+          {
+            "name": "getThisGameFilename",
+            "type": "UserScript",
+            "id": "bdbaae44-8c7c-48bd-90bb-de9bf33a0fb7",
+            "path": "Scripts/getThisGameFilename.js",
+            "settings": {}
+          },
+          {
+            "name": "Untitled Template Choice",
+            "type": "NestedChoice",
+            "id": "26461cc9-5e25-46b4-8211-9402179ea152",
+            "choice": {
+              "id": "3b74dade-cd21-4381-abe1-e87a866c348e",
+              "name": "Untitled Template Choice",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Templates/Player Templates/Quest-Player.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/Quests"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      },
+      "runOnStartup": false
     },
     {
       "id": "f53e42a0-d9ff-4de2-8fed-749fd7e1821b",
       "name": "Macro - Add a Establisment Player",
       "type": "Macro",
       "command": true,
-      "macroId": "8cdb0e4d-8ee4-477e-8d94-209d1a77d019"
+      "macro": {
+        "id": "8cdb0e4d-8ee4-477e-8d94-209d1a77d019",
+        "name": "Macro - Add a Establisment Player",
+        "commands": [
+          {
+            "name": "getThisGameFilename",
+            "type": "UserScript",
+            "id": "59b991b0-b616-445f-8d26-f78869dd0e1d",
+            "path": "Scripts/getThisGameFilename.js",
+            "settings": {}
+          },
+          {
+            "name": "Untitled Template Choice",
+            "type": "NestedChoice",
+            "id": "5bad1a7a-892d-4453-9d30-9041d308be71",
+            "choice": {
+              "id": "de6a070a-a171-47c5-a513-f955eeae9d0d",
+              "name": "Untitled Template Choice",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Templates/Player Templates/Establishment-Player.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/world/Locations/Establisments"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": true
+            }
+          }
+        ]
+      },
+      "runOnStartup": false
+    },
+    {
+      "id": "6d46843d-4eb3-4083-96d2-2e52767aacc0",
+      "name": "Macro - Add session Player",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "id": "c95e4a8e-b7af-4c3a-b657-875bebc85dc0",
+        "name": "Macro - Add session Player",
+        "commands": [
+          {
+            "name": "getThisGameFilename",
+            "type": "UserScript",
+            "id": "69924bc2-9fc8-44e4-b458-9733acf8465c",
+            "path": "Scripts/getThisGameFilename.js",
+            "settings": {}
+          },
+          {
+            "name": "Create new session Player",
+            "type": "NestedChoice",
+            "id": "db8a2084-0e00-4257-b91d-ef459d4b85e0",
+            "choice": {
+              "id": "e48eb60f-fdf5-4072-8cc6-8791c5fb5780",
+              "name": "Create new session Player",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Templates/Player Templates/session-player.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{VALUE:thisGameFilename}}_{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/sessions"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFileInNewTab": {
+                "enabled": true,
+                "direction": "vertical",
+                "focus": true
+              },
+              "openFile": true,
+              "openFileInMode": "default",
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      }
     }
   ],
+  "inputPrompt": "single-line",
+  "devMode": false,
+  "templateFolderPath": "",
+  "announceUpdates": true,
+  "version": "1.18.1",
+  "disableOnlineFeatures": true,
+  "enableRibbonIcon": false,
+  "showCaptureNotification": true,
+  "ai": {
+    "defaultModel": "Ask me",
+    "defaultSystemPrompt": "As an AI assistant within Obsidian, your primary goal is to help users manage their ideas and knowledge more effectively. Format your responses using Markdown syntax. Please use the [[Obsidian]] link format. You can write aliases for the links by writing [[Obsidian|the alias after the pipe symbol]]. To use mathematical notation, use LaTeX syntax. LaTeX syntax for larger equations should be on separate lines, surrounded with double dollar signs ($$). You can also inline math expressions by wrapping it in $ symbols. For example, use $$w_{ij}^{\text{new}}:=w_{ij}^{\text{current}}+etacdotdelta_jcdot x_{ij}$$ on a separate line, but you can write \"($eta$ = learning rate, $delta_j$ = error term, $x_{ij}$ = input)\" inline.",
+    "promptTemplatesFolderPath": "",
+    "showAssistant": true,
+    "providers": [
+      {
+        "name": "OpenAI",
+        "endpoint": "https://api.openai.com/v1",
+        "apiKey": "",
+        "models": [
+          {
+            "name": "text-davinci-003",
+            "maxTokens": 4096
+          },
+          {
+            "name": "gpt-3.5-turbo",
+            "maxTokens": 4096
+          },
+          {
+            "name": "gpt-3.5-turbo-16k",
+            "maxTokens": 16384
+          },
+          {
+            "name": "gpt-3.5-turbo-1106",
+            "maxTokens": 16385
+          },
+          {
+            "name": "gpt-4",
+            "maxTokens": 8192
+          },
+          {
+            "name": "gpt-4-32k",
+            "maxTokens": 32768
+          },
+          {
+            "name": "gpt-4-1106-preview",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4-turbo",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4o",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4o-mini",
+            "maxTokens": 128000
+          }
+        ]
+      }
+    ]
+  },
+  "migrations": {
+    "migrateToMacroIDFromEmbeddedMacro": true,
+    "useQuickAddTemplateFolder": true,
+    "incrementFileNameSettingMoveToDefaultBehavior": true,
+    "mutualExclusionInsertAfterAndWriteToBottomOfFile": true,
+    "setVersionAfterUpdateModalRelease": true,
+    "addDefaultAIProviders": true,
+    "removeMacroIndirection": true,
+    "migrateFileOpeningSettings": true
+  },
   "macros": [
     {
       "name": "Macro - Add session Player",
@@ -415,75 +837,5 @@
       ],
       "runOnStartup": false
     }
-  ],
-  "inputPrompt": "single-line",
-  "devMode": false,
-  "templateFolderPath": "",
-  "announceUpdates": true,
-  "version": "1.18.1",
-  "disableOnlineFeatures": true,
-  "enableRibbonIcon": false,
-  "ai": {
-    "defaultModel": "Ask me",
-    "defaultSystemPrompt": "As an AI assistant within Obsidian, your primary goal is to help users manage their ideas and knowledge more effectively. Format your responses using Markdown syntax. Please use the [[Obsidian]] link format. You can write aliases for the links by writing [[Obsidian|the alias after the pipe symbol]]. To use mathematical notation, use LaTeX syntax. LaTeX syntax for larger equations should be on separate lines, surrounded with double dollar signs ($$). You can also inline math expressions by wrapping it in $ symbols. For example, use $$w_{ij}^{\text{new}}:=w_{ij}^{\text{current}}+etacdotdelta_jcdot x_{ij}$$ on a separate line, but you can write \"($eta$ = learning rate, $delta_j$ = error term, $x_{ij}$ = input)\" inline.",
-    "promptTemplatesFolderPath": "",
-    "showAssistant": true,
-    "providers": [
-      {
-        "name": "OpenAI",
-        "endpoint": "https://api.openai.com/v1",
-        "apiKey": "",
-        "models": [
-          {
-            "name": "text-davinci-003",
-            "maxTokens": 4096
-          },
-          {
-            "name": "gpt-3.5-turbo",
-            "maxTokens": 4096
-          },
-          {
-            "name": "gpt-3.5-turbo-16k",
-            "maxTokens": 16384
-          },
-          {
-            "name": "gpt-3.5-turbo-1106",
-            "maxTokens": 16385
-          },
-          {
-            "name": "gpt-4",
-            "maxTokens": 8192
-          },
-          {
-            "name": "gpt-4-32k",
-            "maxTokens": 32768
-          },
-          {
-            "name": "gpt-4-1106-preview",
-            "maxTokens": 128000
-          },
-          {
-            "name": "gpt-4-turbo",
-            "maxTokens": 128000
-          },
-          {
-            "name": "gpt-4o",
-            "maxTokens": 128000
-          },
-          {
-            "name": "gpt-4o-mini",
-            "maxTokens": 128000
-          }
-        ]
-      }
-    ]
-  },
-  "migrations": {
-    "migrateToMacroIDFromEmbeddedMacro": true,
-    "useQuickAddTemplateFolder": true,
-    "incrementFileNameSettingMoveToDefaultBehavior": true,
-    "mutualExclusionInsertAfterAndWriteToBottomOfFile": true,
-    "setVersionAfterUpdateModalRelease": true,
-    "addDefaultAIProviders": true
-  }
+  ]
 }

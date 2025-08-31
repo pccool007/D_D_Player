@@ -3,7 +3,7 @@ version: "1.0"
 type: session
 date: <% tp.date.now("YYYY-MM-DD") %>
 tags: 
-campaign: "<% tp.user._obsi_script_GetFileRacineHeader(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
 session_num: <% tp.user._obsi_script_GetThisGameNum(tp) %>
 locations: 

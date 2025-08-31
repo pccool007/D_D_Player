@@ -1,3 +1,5 @@
+// To Validate if use
+
 function _obsi_script_GetFileRacine (tp) {
     const folders = tp.file.folder(true).split('/')
     const parentFolder = folders.slice(1, 2)

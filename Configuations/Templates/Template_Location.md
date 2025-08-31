@@ -1,26 +1,29 @@
 ---
-vesion: "1.0"
+version: "1.0"
 type: Location
-tags: 
 name: <% tp.file.title %>
-pronounced: 
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campains: "<% tp.user._obsi_script_GetFileRacineHeader(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+tags:
 locations:
-locationType: City
+location_type: City
 description: ""
-govtType:
-defences:
-religions:
 urls:
+img: "[[placeHolderLocations.png]]"
 ---
 # [[<% tp.file.title %>]]
 > [!infobox]
 > # `=this.file.name`
-> **Pronounced:**  "`=this.pronounced`"
-> ![[placeHolderLocations.png|cover hm-sm]]
+> ```dataviewjs
+> const img = dv.current().img;
+> if (img) {
+>    dv.paragraph(`!${img}`); 
+> } else {
+>    dv.paragraph("No NPC image found.");
+> }
+>```
 > ###### Info
 >  |
 > ---|---|

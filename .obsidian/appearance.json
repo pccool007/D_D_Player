@@ -1,8 +1,10 @@
 {
   "accentColor": "#cc8b00",
-  "cssTheme": "Fancy-a-Story",
+  "cssTheme": "ITS Theme",
   "theme": "obsidian",
-  "enabledCssSnippets": [],
+  "enabledCssSnippets": [
+    "D&D_WOTC"
+  ],
   "monospaceFontFamily": "Bookerly",
   "textFontFamily": "Bookerly",
   "interfaceFontFamily": "Bookerly",

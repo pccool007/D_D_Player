@@ -1,0 +1,22 @@
+{
+  "callouts": {
+    "custom": [
+      "goal"
+    ],
+    "settings": {
+      "goal": [
+        {
+          "changes": {
+            "icon": "lucide-trophy",
+            "color": "208, 181, 48"
+          }
+        }
+      ]
+    }
+  },
+  "calloutDetection": {
+    "obsidian": true,
+    "theme": true,
+    "snippet": true
+  }
+}
