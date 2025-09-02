@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Configuations/Templates/Template_Location.md",
+                "file": "Game Index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Template_Location"
+              "title": "Game Index"
             }
           }
         ]
@@ -256,9 +256,12 @@
   },
   "active": "f5d276c407d6dbd5",
   "lastOpenFiles": [
+    "Campaigns/Example Campaign/Example Campaign.md",
+    "Game Index.md",
+    "Campaigns/Example Campaign",
+    "Configuations/Templates/Template_Location.md",
     "Configuations/Templates/Template_Faction.md",
     "Configuations/Templates/Template_Inventory.md",
-    "Configuations/Templates/Template_Location.md",
     "Configuations/Templates/Template_Campaign_Manager.md",
     "Configuations/Templates/Template_NPC.md",
     "Configuations/Templates/Template_Session.md",
@@ -267,7 +270,6 @@
     "Configuations/Templates/Template_Lore.md",
     "Campaigns/sadf/sadf.md",
     "_obsi/scripts/getFileRacineForProperties.js",
-    "Game Index.md",
     "Campaigns/sadf",
     "Campaigns/Test Campaign/Test Campaign.md",
     "Campaigns/Test Campaign",
@@ -296,7 +298,6 @@
     "_obsi/scripts/README.md",
     "_obsi/scripts/_obsi_script_SetParamsInCapGetWorldFolder.js",
     "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
-    "_obsi/scripts/_obsi_script_SetCurrentWorldFolderName.js",
     "Templates/Player Templates/session-player.md",
     "Templates/Campaign Manager.md",
     "assets/48ba044dd67dfd9e93de892d16e50e88.jpg",

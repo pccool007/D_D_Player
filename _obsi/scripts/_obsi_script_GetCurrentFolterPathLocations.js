@@ -4,7 +4,7 @@ module.exports = (params) => {
     app.plugins.plugins.dataview.api.pages(`"${path}"`).where(
         page => {
             if(page.name === name){
-                const locationType = page.locationType;
+                const locationType = page.location_type;
                 if (locationType.includes("Dimension")) {
                     path += "/Continents";
                 } else if (locationType.includes("Continent")) {
