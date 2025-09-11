@@ -60,9 +60,9 @@ action QuickAdd: Macro - Add Player
 > ```dataview
 > TABLE WITHOUT ID
 >	(link(file.path, name)+ " \[" + age + "year\]") AS "Name",
->	emblem,
+>	 embed(img) AS "Portrait",
 >	(race + " \[" + subRace+"\]") AS "Race",
->	(class + " \[" + currentLevel +"\]") AS "Class",
+>	(class) AS "Class",
 >	condition as "Condition"
 > FROM "Campaigns/<% tp.file.folder(false) %>/PC"
 > WHERE contains(type, "Player") 

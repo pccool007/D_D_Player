@@ -20,24 +20,23 @@
               "icon": "lucide-file",
               "title": "Game Index"
             }
-          }
-        ]
-      },
-      {
-        "id": "b8cbb1e1c83a6a3e",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "2cab4e266cd3072d",
+            "id": "3b2d6d88de4de0a5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Game Index.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Game Index"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -156,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Campaigns/NewC/NewC.md",
+                "file": "Game Index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of NewC"
+              "title": "Outline of Game Index"
             }
           },
           {
@@ -198,9 +197,19 @@
               "icon": "spreadsheet",
               "title": "Advanced Tables"
             }
+          },
+          {
+            "id": "71a3165719d16c1a",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
+              "icon": "checkmark",
+              "title": "Todo List"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -217,19 +226,25 @@
       "command-palette:Open command palette": false,
       "templater-obsidian:Templater": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-leaflet-plugin:Open Leaflet Map": false,
       "dbfolder:Create a new database table": false,
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "0e4b1e2304b5059a",
+  "active": "71a3165719d16c1a",
   "lastOpenFiles": [
-    "Campaigns/NewC/Sessions/002_20250911.md",
     "Campaigns/NewC/NewC.md",
-    "Campaigns/NewC/Sessions/001_20250911.md",
-    "Campaigns/NewC/Sessions",
+    "Campaigns/NewC/PC/Kynara.md",
+    "Configuations/Templates/Template_Campaign_Manager.md",
+    "Campaigns/NewC/PC",
     "Game Index.md",
     "Campaigns/NewC",
+    "Campaigns/Test/Test.md",
+    "Campaigns/Test/PC/Test.md",
+    "Campaigns/Test/PC",
+    "Campaigns/Test",
+    "Campaigns/NewC/Sessions/002_20250911.md",
+    "Campaigns/NewC/Sessions/001_20250911.md",
+    "Campaigns/NewC/Sessions",
     "Configuations/Templates/Template_Session.md",
     "Untitled.base",
     "Campaigns/Soltpeak_Tides_of_Faith/Sessions/003_20250911.md",
@@ -244,22 +259,15 @@
     "Campaigns/Soltpeak_Tides_of_Faith/Quests",
     "Campaigns/Soltpeak_Tides_of_Faith/Sessions/002_20250911.md",
     "Campaigns/Soltpeak_Tides_of_Faith/Sessions/001_20250911.md",
-    "Campaigns/Soltpeak_Tides_of_Faith/Sessions",
-    "Campaigns/Soltpeak_Tides_of_Faith/PC",
-    "Campaigns/Soltpeak_Tides_of_Faith",
     "Campaigns/Soltpeak_World/Soltpeak_World.md",
     "Campaigns/Solt/Solt.md",
     "Campaigns/Solt/Inventory/Book of Doom.md",
-    "Configuations/Templates/Template_Campaign_Manager.md",
     "Configuations/Templates/Template_Inventory.md",
-    "Campaigns/Test/Test.md",
     "Configuations/Templates/Template_Lore.md",
     "Campaigns/Solt_tides/Solt_tides.md",
     "Campaigns/Solt_tides/Quests/Get Food.md",
     "Campaigns/Solt_tides/World/NPC/Bob the Merchant.md",
     "Campaigns/Solt_tides/World/Factions/Test Factions.md",
-    "Campaigns/Solt_tides/World/Locations/Fortherra.md",
-    "Campaigns/Solt_tides/World/Factions/Marco - Add Faction.md",
     "_obsi/assets/Defaults/placeHolderMap.jpeg",
     "_obsi/assets/Defaults/placeHolderLore.png",
     "_obsi/assets/Defaults/placeHolderLocations.png",
