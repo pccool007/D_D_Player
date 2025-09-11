@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "27cb3b86d433a069",
+        "id": "dfd44f2142fdfe04",
         "type": "tabs",
         "children": [
           {
-            "id": "0005179b3cfd34cd",
+            "id": "376da85875096989",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -24,39 +24,20 @@
         ]
       },
       {
-        "id": "0d1cb67b9d92a14b",
+        "id": "7b26ad47138defb0",
         "type": "tabs",
         "children": [
           {
-            "id": "c9cb9c1102432e61",
+            "id": "9103c941a859e962",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Campaigns/Test/Test.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Test"
-            }
-          },
-          {
-            "id": "c09858878b8c2b02",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Campaigns/Test/Sessions/001_20250910.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "001_20250910"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -289,44 +270,44 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "0005179b3cfd34cd",
+  "active": "0e4b1e2304b5059a",
   "lastOpenFiles": [
-    "Campaigns/Test/Sessions/001_20250910.md",
-    "Campaigns/Test/Test.md",
-    "Campaigns/Test/Sessions",
     "Game Index.md",
+    "Campaigns/Soltpeak_World/Soltpeak_World.md",
+    "Campaigns/Soltpeak_World",
+    "Campaigns/Solt/Solt.md",
+    "_obsi/assets/pasted",
+    "Campaigns/Solt/Inventory/Book of Doom.md",
+    "Campaigns/Solt/Inventory",
+    "Campaigns/Solt",
+    "Configuations/Templates/Template_Campaign_Manager.md",
+    "Configuations/Templates/Template_Inventory.md",
+    "Campaigns/Test/Test.md",
     "Campaigns/Test",
+    "Configuations/Templates/Template_Lore.md",
+    "Campaigns/Solt_tides/Solt_tides.md",
+    "Campaigns/Solt_tides/Quests/Get Food.md",
+    "Campaigns/Solt_tides/Quests",
+    "Campaigns/Solt_tides/World/NPC/Bob the Merchant.md",
+    "Campaigns/Solt_tides/World/Factions/Test Factions.md",
+    "Campaigns/Solt_tides/World/Locations/Fortherra.md",
+    "Campaigns/Solt_tides/World/Locations",
+    "Campaigns/Solt_tides/World/Factions/Marco - Add Faction.md",
+    "Campaigns/Solt_tides/World/Factions",
+    "Campaigns/Solt_tides/World/NPC",
+    "Campaigns/Solt_tides/World",
+    "Campaigns/Solt_tides/PC/Test Player 1.md",
+    "Campaigns/Solt_tides/Sessions/001_20250911.md",
+    "Campaigns/Solt_tides/Sessions/002_20250911.md",
+    "Configuations/Templates/Template_Location.md",
     "Configuations/Templates/Template_Session.md",
-    "Campaigns/test_campaign/test_campaign.md",
-    "Campaigns/test_campaign/Sessions/002_20250910.md",
     "Configuations/Templates/Template_Quest.md",
     "Configuations/Templates/Template_PC.md",
     "Configuations/Templates/Template_NPC.md",
-    "Configuations/Templates/Template_Lore.md",
-    "Configuations/Templates/Template_Location.md",
-    "Configuations/Templates/Template_Inventory.md",
     "Configuations/Templates/Template_Faction.md",
-    "Configuations/Templates/Template_Establishment.md",
-    "Configuations/Templates/Template_Campaign_Manager.md",
-    "Campaigns/test_campaign/World/NPC/asd1.md",
-    "Campaigns/test_campaign/World/NPC/asd.md",
-    "Campaigns/test_campaign/World/NPC",
-    "Campaigns/test_campaign/World",
-    "Campaigns/test_campaign/Quests/asd.md",
-    "Campaigns/test_campaign/Quests",
-    "Campaigns/test_campaign/Sessions/001_20250910.md",
-    "Campaigns/test_campaign/Sessions",
-    "Campaigns/test_campaign",
-    "Campaigns/Test New Campaign/Quests/asd.md",
-    "Campaigns/Test New Campaign/Test New Campaign.md",
-    "Campaigns/Test New Campaign/Quests/New Job.md",
-    "Campaigns/Test New Campaign/Quests",
-    "Campaigns/Test New Campaign/Sessions/001_20250910.md",
-    "Campaigns/Test New Campaign/Sessions",
-    "Campaigns/Test New Campaign",
-    "Configuations/Templates/Templates_Player.md",
-    "Campaigns/Test Campaign/Test Campaign.md",
-    "Configuations/Notes Templates/Note_New_NPC.md",
+    "Campaigns/Soltpeak_Tides/Soltpeak_Tides.md",
+    "Campaigns/Soltpeak_Tides/PC/Bob.md",
+    "Campaigns/Test/Sessions/001_20250911.md",
     "_obsi/assets/Defaults/placeHolderMap.jpeg",
     "_obsi/assets/Defaults/placeHolderLore.png",
     "_obsi/assets/Defaults/placeHolderLocations.png",

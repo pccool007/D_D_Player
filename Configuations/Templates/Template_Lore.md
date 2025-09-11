@@ -15,6 +15,7 @@ lore_type:
 description: 
 relations: 
 secret:
+locations:
 ---
 # [[<% tp.file.title %>]]
 > [!infobox]

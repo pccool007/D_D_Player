@@ -10,6 +10,7 @@ tags:
 locations:
 location_type: City
 description: ""
+word_description:
 urls:
 img: "[[placeHolderLocations.png]]"
 ---

@@ -36,12 +36,12 @@
     },
     {
       "id": "29824033-23bd-49d9-83e6-72a81ce7b066",
-      "name": "Macro - Add Faction",
+      "name": "Marco - Add Faction",
       "type": "Macro",
       "command": true,
       "macro": {
         "id": "21341dc4-3eb5-44aa-adcd-7d31d0d46f28",
-        "name": "Macro - Add Faction",
+        "name": "Marco - Add Faction",
         "commands": [
           {
             "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
@@ -496,7 +496,7 @@
                 "chooseFromSubfolders": false
               },
               "appendLink": false,
-              "openFile": false,
+              "openFile": true,
               "fileOpening": {
                 "location": "tab",
                 "direction": "vertical",
@@ -570,7 +570,7 @@
   "devMode": false,
   "templateFolderPath": "",
   "announceUpdates": true,
-  "version": "2.1.0",
+  "version": "2.3.0",
   "globalVariables": {},
   "onePageInputEnabled": false,
   "disableOnlineFeatures": true,

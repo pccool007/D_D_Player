@@ -13,6 +13,7 @@ faction_status: Active
 faction_type: Organization
 locations:
 description: ""
+word_description:
 emblem_description:
 goal: Define Goal
 alignment:
