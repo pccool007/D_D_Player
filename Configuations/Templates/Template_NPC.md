@@ -5,11 +5,12 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
 tags:
 urls:
 pronounced:
 description:
+word_description:
 race:
 subRace:
 gender:
@@ -20,7 +21,7 @@ npc_img: "[[placeHolderNPC.jpg]]"
 condition: Alive
 party_standing: Neutral
 locations:
-first_locations:
+first_location:
 class:
 occupation:
 factions:

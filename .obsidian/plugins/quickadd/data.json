@@ -82,7 +82,13 @@
               "openFile": true,
               "openFileInMode": "default",
               "fileExistsMode": "Increment the file name",
-              "setFileExistsBehavior": false
+              "setFileExistsBehavior": false,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              }
             }
           }
         ]
@@ -137,7 +143,13 @@
               "openFile": true,
               "openFileInMode": "default",
               "fileExistsMode": "Increment the file name",
-              "setFileExistsBehavior": false
+              "setFileExistsBehavior": false,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              }
             }
           }
         ]
@@ -146,18 +158,18 @@
     },
     {
       "id": "e6bf6926-c175-48da-8f5b-33b2271b6b30",
-      "name": "Macro - Add a NPC Player",
+      "name": "Macro - Add NPC",
       "type": "Macro",
       "command": true,
       "macro": {
         "id": "0331cf1f-d8c0-49f7-a152-ecc3a2525319",
-        "name": "Macro - Add a NPC Player",
+        "name": "Macro - Add NPC",
         "commands": [
           {
-            "name": "getThisGameFilename",
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
             "type": "UserScript",
-            "id": "997af209-abb3-49a7-9b6e-cd5a397bb55a",
-            "path": "Scripts/getThisGameFilename.js",
+            "id": "fac2cb2b-59f0-4e67-ba2d-fa0625524c23",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
             "settings": {}
           },
           {
@@ -169,7 +181,7 @@
               "name": "Untitled Template Choice",
               "type": "Template",
               "command": false,
-              "templatePath": "Templates/Player Templates/NPC's-Player.md",
+              "templatePath": "Configuations/Templates/Template_NPC.md",
               "fileNameFormat": {
                 "enabled": true,
                 "format": "{{value}}"
@@ -177,7 +189,7 @@
               "folder": {
                 "enabled": true,
                 "folders": [
-                  "{{VALUE:folderName}}/world/NPC's"
+                  "{{VALUE:folderName}}/World/NPC"
                 ],
                 "chooseWhenCreatingNote": false,
                 "createInSameFolderAsActiveFile": false,
@@ -192,7 +204,13 @@
               "openFile": true,
               "openFileInMode": "default",
               "fileExistsMode": "Increment the file name",
-              "setFileExistsBehavior": false
+              "setFileExistsBehavior": false,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              }
             }
           }
         ]
@@ -201,18 +219,18 @@
     },
     {
       "id": "0bc7c2b3-2fc9-47b4-9f6a-f87431f93c7c",
-      "name": "Macro - Add a Location player",
+      "name": "Macro - Add Location",
       "type": "Macro",
       "command": true,
       "macro": {
         "id": "1cd67699-00fa-4c70-8333-6c83b0840842",
-        "name": "Macro - Add a Location player",
+        "name": "Macro - Add Location",
         "commands": [
           {
-            "name": "getThisGameFilename",
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
             "type": "UserScript",
-            "id": "37118e53-6756-48ec-af9d-23015d316d48",
-            "path": "Scripts/getThisGameFilename.js",
+            "id": "2e97e489-fdaa-45ad-a645-a388f96c8f11",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
             "settings": {}
           },
           {
@@ -224,7 +242,7 @@
               "name": "Untitled Template Choice",
               "type": "Template",
               "command": false,
-              "templatePath": "Templates/Player Templates/Location-Player.md",
+              "templatePath": "Configuations/Templates/Template_Location.md",
               "fileNameFormat": {
                 "enabled": true,
                 "format": "{{value}}"
@@ -232,7 +250,7 @@
               "folder": {
                 "enabled": true,
                 "folders": [
-                  "{{VALUE:folderName}}/world/Locations"
+                  "{{VALUE:folderName}}/World/Locations"
                 ],
                 "chooseWhenCreatingNote": false,
                 "createInSameFolderAsActiveFile": false,
@@ -247,7 +265,13 @@
               "openFile": true,
               "openFileInMode": "default",
               "fileExistsMode": "Increment the file name",
-              "setFileExistsBehavior": false
+              "setFileExistsBehavior": false,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              }
             }
           }
         ]
@@ -256,18 +280,18 @@
     },
     {
       "id": "4a85560a-ab1b-4d39-ba11-566c2d0b5411",
-      "name": "Macro - Add new Quest Player",
+      "name": "Macro - Add Quest",
       "type": "Macro",
       "command": true,
       "macro": {
         "id": "32a40d90-ce33-45c0-a56b-fcf2db6b413f",
-        "name": "Macro - Add new Quest Player",
+        "name": "Macro - Add Quest",
         "commands": [
           {
-            "name": "getThisGameFilename",
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
             "type": "UserScript",
-            "id": "bdbaae44-8c7c-48bd-90bb-de9bf33a0fb7",
-            "path": "Scripts/getThisGameFilename.js",
+            "id": "ddf7429d-d0b3-4262-9597-ca1790043920",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
             "settings": {}
           },
           {
@@ -279,7 +303,7 @@
               "name": "Untitled Template Choice",
               "type": "Template",
               "command": false,
-              "templatePath": "Templates/Player Templates/Quest-Player.md",
+              "templatePath": "Configuations/Templates/Template_Quest.md",
               "fileNameFormat": {
                 "enabled": true,
                 "format": "{{value}}"
@@ -302,7 +326,13 @@
               "openFile": true,
               "openFileInMode": "default",
               "fileExistsMode": "Increment the file name",
-              "setFileExistsBehavior": false
+              "setFileExistsBehavior": false,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              }
             }
           }
         ]
@@ -311,18 +341,18 @@
     },
     {
       "id": "f53e42a0-d9ff-4de2-8fed-749fd7e1821b",
-      "name": "Macro - Add a Establisment Player",
+      "name": "Macro - Add Establishment",
       "type": "Macro",
       "command": true,
       "macro": {
         "id": "8cdb0e4d-8ee4-477e-8d94-209d1a77d019",
-        "name": "Macro - Add a Establisment Player",
+        "name": "Macro - Add Establishment",
         "commands": [
           {
-            "name": "getThisGameFilename",
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
             "type": "UserScript",
-            "id": "59b991b0-b616-445f-8d26-f78869dd0e1d",
-            "path": "Scripts/getThisGameFilename.js",
+            "id": "f34f3435-e38c-4b79-8957-e2c40e5da177",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
             "settings": {}
           },
           {
@@ -334,7 +364,7 @@
               "name": "Untitled Template Choice",
               "type": "Template",
               "command": false,
-              "templatePath": "Templates/Player Templates/Establishment-Player.md",
+              "templatePath": "Configuations/Templates/Template_Establishment.md",
               "fileNameFormat": {
                 "enabled": true,
                 "format": "{{value}}"
@@ -342,7 +372,7 @@
               "folder": {
                 "enabled": true,
                 "folders": [
-                  "{{VALUE:folderName}}/world/Locations/Establisments"
+                  "{{VALUE:folderName}}/World/Establisments"
                 ],
                 "chooseWhenCreatingNote": false,
                 "createInSameFolderAsActiveFile": false,
@@ -357,7 +387,13 @@
               "openFile": true,
               "openFileInMode": "default",
               "fileExistsMode": "Increment the file name",
-              "setFileExistsBehavior": true
+              "setFileExistsBehavior": true,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              }
             }
           }
         ]
@@ -365,53 +401,163 @@
       "runOnStartup": false
     },
     {
-      "id": "6d46843d-4eb3-4083-96d2-2e52767aacc0",
-      "name": "Macro - Add session Player",
+      "id": "fff126b7-e7ce-4033-b6e4-d6b4b5b0c5c2",
+      "name": "Macro - Add Lore",
       "type": "Macro",
       "command": true,
       "runOnStartup": false,
       "macro": {
-        "id": "c95e4a8e-b7af-4c3a-b657-875bebc85dc0",
-        "name": "Macro - Add session Player",
+        "name": "Macro - Add Lore",
+        "id": "a49263b5-c67d-4272-bb8a-2498397c971a",
         "commands": [
           {
-            "name": "getThisGameFilename",
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
             "type": "UserScript",
-            "id": "69924bc2-9fc8-44e4-b458-9733acf8465c",
-            "path": "Scripts/getThisGameFilename.js",
+            "id": "a965aa22-8195-4fdb-8e92-6ae54ea3e10a",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
             "settings": {}
           },
           {
-            "name": "Create new session Player",
+            "name": "Untitled Template Choice",
             "type": "NestedChoice",
-            "id": "db8a2084-0e00-4257-b91d-ef459d4b85e0",
+            "id": "28960c07-dee9-4649-b219-d2b1257a3cf7",
             "choice": {
-              "id": "e48eb60f-fdf5-4072-8cc6-8791c5fb5780",
-              "name": "Create new session Player",
+              "id": "744588d7-7ad5-4592-bd36-6564006c53ef",
+              "name": "Untitled Template Choice",
               "type": "Template",
               "command": false,
-              "templatePath": "Templates/Player Templates/session-player.md",
+              "templatePath": "Configuations/Templates/Template_Lore.md",
               "fileNameFormat": {
                 "enabled": true,
-                "format": "{{VALUE:thisGameFilename}}_{{value}}"
+                "format": "{{value}}"
               },
               "folder": {
                 "enabled": true,
                 "folders": [
-                  "{{VALUE:folderName}}/sessions"
+                  "{{VALUE:folderName}}/World/Lores"
                 ],
                 "chooseWhenCreatingNote": false,
                 "createInSameFolderAsActiveFile": false,
                 "chooseFromSubfolders": false
               },
               "appendLink": false,
-              "openFileInNewTab": {
-                "enabled": true,
+              "openFile": true,
+              "fileOpening": {
+                "location": "tab",
                 "direction": "vertical",
+                "mode": "default",
                 "focus": true
               },
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "7df74b61-d097-41e5-b631-54a43a44ced9",
+      "name": "Macro - Add Inventory",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "name": "Macro - Add Inventory",
+        "id": "185f66a4-7780-47ff-a41f-cd4049907788",
+        "commands": [
+          {
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
+            "type": "UserScript",
+            "id": "7838512b-dead-4543-919b-229df933757a",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
+            "settings": {}
+          },
+          {
+            "name": "Untitled Template Choice",
+            "type": "NestedChoice",
+            "id": "772eefde-c3db-44ca-a337-091996161e90",
+            "choice": {
+              "id": "1dfaa4fd-de20-4f8f-8805-857827df1522",
+              "name": "Untitled Template Choice",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Configuations/Templates/Template_Inventory.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/Inventory"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
+              "openFile": false,
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              },
+              "fileExistsMode": "Increment the file name",
+              "setFileExistsBehavior": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "e337eaf7-d563-40ca-ade2-3339ae54495a",
+      "name": "Macro - Add Player",
+      "type": "Macro",
+      "command": true,
+      "runOnStartup": false,
+      "macro": {
+        "name": "Macro - Add Player",
+        "id": "1f511769-c8b5-4c69-a8dc-4a1f07e98bf6",
+        "commands": [
+          {
+            "name": "_obsi_script_SetParamsInCapGetCampaignFolder",
+            "type": "UserScript",
+            "id": "8559ecf0-6976-4c79-b682-c4c5e159d713",
+            "path": "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
+            "settings": {}
+          },
+          {
+            "name": "Untitled Template Choice",
+            "type": "NestedChoice",
+            "id": "a9cce1c1-e45a-4238-a601-2938e37b06dc",
+            "choice": {
+              "id": "cbf234f2-a6dc-4929-b886-47cf7db4bbc9",
+              "name": "Untitled Template Choice",
+              "type": "Template",
+              "command": false,
+              "templatePath": "Configuations/Templates/Template_PC.md",
+              "fileNameFormat": {
+                "enabled": true,
+                "format": "{{value}}"
+              },
+              "folder": {
+                "enabled": true,
+                "folders": [
+                  "{{VALUE:folderName}}/PC"
+                ],
+                "chooseWhenCreatingNote": false,
+                "createInSameFolderAsActiveFile": false,
+                "chooseFromSubfolders": false
+              },
+              "appendLink": false,
               "openFile": true,
-              "openFileInMode": "default",
+              "fileOpening": {
+                "location": "tab",
+                "direction": "vertical",
+                "mode": "default",
+                "focus": true
+              },
               "fileExistsMode": "Increment the file name",
               "setFileExistsBehavior": false
             }
@@ -424,7 +570,9 @@
   "devMode": false,
   "templateFolderPath": "",
   "announceUpdates": true,
-  "version": "1.18.1",
+  "version": "2.1.0",
+  "globalVariables": {},
+  "onePageInputEnabled": false,
   "disableOnlineFeatures": true,
   "enableRibbonIcon": false,
   "showCaptureNotification": true,

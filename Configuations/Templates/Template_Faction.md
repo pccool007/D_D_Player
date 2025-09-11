@@ -5,11 +5,11 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
 tags:
 img: "[[placeHolderFactions.png]]"
 leader:
-status: Active
+faction_status: Active
 faction_type: Organization
 locations:
 description: ""
@@ -52,14 +52,15 @@ name New NPC
 type command
 action QuickAdd: Macro - Add NPC
 ```
-###### Table
-```dataview
-table description as "Description", condition as "Alive", partyStanding as "Relation", locations as "Locations"
-from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPCS"
-WHERE contains(type,"NPC") 
-and contains(factions,[[<% tp.file.title %>]])
-SORT file.name ASC
-```
+> [!table-data] List of NPC's
+>```dataview
+> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
+> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
+> WHERE contains(type,"NPC") 
+> and contains(locations,[[<% tp.file.title %>]])
+> SORT file.name ASC
+> ```
+
 
 
 >[!example|bg-c-orange]- Links

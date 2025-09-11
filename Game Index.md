@@ -31,4 +31,3 @@ dv.table(["Campaign","System","Sessions", "Role","Status"],dv.pages('"Campaigns"
   .map(b => [dv.fileLink(b.file.path,false,[b.campaign]),b.system,getNumOfGames(b.campaign),b.role,b.status]))
 ```
 
-Current Over 261.74

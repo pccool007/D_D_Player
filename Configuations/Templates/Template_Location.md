@@ -5,7 +5,7 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
 tags:
 locations:
 location_type: City
@@ -108,17 +108,17 @@ action QuickAdd: Macro - Add Establishment World
 ```button
 name New NPC
 type command
-action QuickAdd: Macro - Add NPC World
+action QuickAdd: Macro - Add NPC
 ```
-
-> [!example|bg-c-brown]-  Table NPC
-> ```dataview
-> table description as "Description", condition as "Alive", partyStanding as "Relation", factions as "Factions"
-> from "Worlds/<% tp.user._obsi_script_GetFileRacine(tp) %>"
+> [!table-data] List of NPC's
+>```dataview
+> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
+> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
 > WHERE contains(type,"NPC") 
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
+
 
 #### Factions 
 ```button

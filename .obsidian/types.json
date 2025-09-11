@@ -14,6 +14,9 @@
     "description_key_words": "multitext",
     "urls": "multitext",
     "quest_status": "text",
-    "important_event": "multitext"
+    "important_event": "multitext",
+    "establisment_type": "text",
+    "word_description": "multitext",
+    "locations": "multitext"
   }
 }

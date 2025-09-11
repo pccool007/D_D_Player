@@ -5,17 +5,17 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: <% tp.user.getFileRacineForProperties(tp) %>
+campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
 tags:
 player: ""
-character_img: "![[placeHolderNPC.jpg]]"
-class: 
-description: 
-race: 
-subRace: 
-gender: 
-age: 
-sexuality: 
+img: "[[placeHolderNPC.jpg]]"
+class:
+description:
+race:
+subRace:
+gender:
+age:
+sexuality:
 condition: Alive
 languages:
   - None
@@ -31,7 +31,14 @@ dislikes:
 # [[<% tp.file.title %>]]
 > [!infobox]
 > # `=this.file.name` (`=this.aliases`)
-> `=this.character_img`
+> ```dataviewjs
+> const img = dv.current().img;
+> if (img) {
+>    dv.paragraph(`!${img}`); 
+> } else {
+>    dv.paragraph("No NPC image found.");
+> }
+>```
 > ###### Bio
 >  |
 > ---|---|

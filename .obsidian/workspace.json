@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5c85852a61ebed49",
+        "id": "27cb3b86d433a069",
         "type": "tabs",
         "children": [
           {
-            "id": "f5d276c407d6dbd5",
+            "id": "0005179b3cfd34cd",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,6 +22,41 @@
             }
           }
         ]
+      },
+      {
+        "id": "0d1cb67b9d92a14b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c9cb9c1102432e61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Campaigns/Test/Test.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Test"
+            }
+          },
+          {
+            "id": "c09858878b8c2b02",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Campaigns/Test/Sessions/001_20250910.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "001_20250910"
+            }
+          }
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -254,38 +289,44 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "f5d276c407d6dbd5",
+  "active": "0005179b3cfd34cd",
   "lastOpenFiles": [
-    "Campaigns/Example Campaign/Example Campaign.md",
+    "Campaigns/Test/Sessions/001_20250910.md",
+    "Campaigns/Test/Test.md",
+    "Campaigns/Test/Sessions",
     "Game Index.md",
-    "Campaigns/Example Campaign",
-    "Configuations/Templates/Template_Location.md",
-    "Configuations/Templates/Template_Faction.md",
-    "Configuations/Templates/Template_Inventory.md",
-    "Configuations/Templates/Template_Campaign_Manager.md",
-    "Configuations/Templates/Template_NPC.md",
+    "Campaigns/Test",
     "Configuations/Templates/Template_Session.md",
+    "Campaigns/test_campaign/test_campaign.md",
+    "Campaigns/test_campaign/Sessions/002_20250910.md",
     "Configuations/Templates/Template_Quest.md",
     "Configuations/Templates/Template_PC.md",
+    "Configuations/Templates/Template_NPC.md",
     "Configuations/Templates/Template_Lore.md",
-    "Campaigns/sadf/sadf.md",
-    "_obsi/scripts/getFileRacineForProperties.js",
-    "Campaigns/sadf",
+    "Configuations/Templates/Template_Location.md",
+    "Configuations/Templates/Template_Inventory.md",
+    "Configuations/Templates/Template_Faction.md",
+    "Configuations/Templates/Template_Establishment.md",
+    "Configuations/Templates/Template_Campaign_Manager.md",
+    "Campaigns/test_campaign/World/NPC/asd1.md",
+    "Campaigns/test_campaign/World/NPC/asd.md",
+    "Campaigns/test_campaign/World/NPC",
+    "Campaigns/test_campaign/World",
+    "Campaigns/test_campaign/Quests/asd.md",
+    "Campaigns/test_campaign/Quests",
+    "Campaigns/test_campaign/Sessions/001_20250910.md",
+    "Campaigns/test_campaign/Sessions",
+    "Campaigns/test_campaign",
+    "Campaigns/Test New Campaign/Quests/asd.md",
+    "Campaigns/Test New Campaign/Test New Campaign.md",
+    "Campaigns/Test New Campaign/Quests/New Job.md",
+    "Campaigns/Test New Campaign/Quests",
+    "Campaigns/Test New Campaign/Sessions/001_20250910.md",
+    "Campaigns/Test New Campaign/Sessions",
+    "Campaigns/Test New Campaign",
+    "Configuations/Templates/Templates_Player.md",
     "Campaigns/Test Campaign/Test Campaign.md",
-    "Campaigns/Test Campaign",
-    "Campaigns/Tides of Faith/Tides of Faith.md",
-    "Cheat Cheats.md",
-    "Configuations/Notes Templates/New NPC.md",
-    "_obsi/assets/Paste",
-    "_obsi/assets/NPC",
-    "_obsi/PDF",
-    "Configuations/Notes Templates/Sending.md",
-    "Campaigns/Tides of Faith/world/NPC's/Bob.md",
-    "Campaigns/Tides of Faith/world/NPC's/Test NPC.md",
-    "Templates/Game Master Templates/Faction-GM.md",
-    "Templates/Game Master Templates/Location-GM.md",
-    "Templates/Game Master Templates/NPC's-GM.md",
-    "Templates/Game Master Templates/Quest-GM.md",
+    "Configuations/Notes Templates/Note_New_NPC.md",
     "_obsi/assets/Defaults/placeHolderMap.jpeg",
     "_obsi/assets/Defaults/placeHolderLore.png",
     "_obsi/assets/Defaults/placeHolderLocations.png",
@@ -294,12 +335,6 @@
     "_obsi/assets/Defaults/placeHolderEstablishment.png",
     "_obsi/assets/Defaults/placeHolderDungeon.png",
     "_obsi/assets/Defaults/placeHolderNPC.jpg",
-    "_obsi/assets/Defaults",
-    "_obsi/scripts/README.md",
-    "_obsi/scripts/_obsi_script_SetParamsInCapGetWorldFolder.js",
-    "_obsi/scripts/_obsi_script_SetParamsInCapGetCampaignFolder.js",
-    "Templates/Player Templates/session-player.md",
-    "Templates/Campaign Manager.md",
     "assets/48ba044dd67dfd9e93de892d16e50e88.jpg",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
     "assets/concept_battlemap_wizardResearch.jpg",

@@ -1,7 +1,11 @@
 {
   "callouts": {
     "custom": [
-      "goal"
+      "goal",
+      "table-data",
+      "sending",
+      "house",
+      "faction"
     ],
     "settings": {
       "goal": [
@@ -9,6 +13,53 @@
           "changes": {
             "icon": "lucide-trophy",
             "color": "208, 181, 48"
+          }
+        }
+      ],
+      "table-data": [
+        {
+          "changes": {
+            "icon": "lucide-table"
+          }
+        },
+        {
+          "condition": {
+            "colorScheme": "light"
+          },
+          "changes": {
+            "color": "161, 106, 73"
+          }
+        },
+        {
+          "condition": {
+            "colorScheme": "dark"
+          },
+          "changes": {
+            "color": "161, 106, 73"
+          }
+        }
+      ],
+      "sending": [
+        {
+          "changes": {
+            "icon": "lucide-mail",
+            "color": "82, 139, 212"
+          }
+        }
+      ],
+      "house": [
+        {
+          "changes": {
+            "icon": "lucide-house",
+            "color": "233, 151, 63"
+          }
+        }
+      ],
+      "faction": [
+        {
+          "changes": {
+            "icon": "lucide-users",
+            "color": "168, 130, 255"
           }
         }
       ]

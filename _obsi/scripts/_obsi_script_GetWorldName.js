@@ -1,26 +1,21 @@
 function _obsi_script_GetWorldName (tp) {
+    console.log("_obsi_script_GetWorldName.js launched");
+    console.log("test");
     const folders = tp.file.folder(true).split('/')
     const originFolder = folders.slice(1, 2);
+    console.log("originFolder: " + originFolder);
     let worldSettingName = '';
+    console.log(originFolder[0])
     let world1 = app.plugins.plugins.dataview.api
         .pages(`"Campaigns/${originFolder[0]}"`)
         .where(page => {
+            console.log("page: " + page.type);
             if(page.type === "campaign") {
-                let arr = page.world.path.split('/');
-                worldSettingName = arr[arr.length - 1].replace(/\.[^/.]+$/, "");
+                worldSettingName = page.world
+                console.log("worldSettingName: " + worldSettingName);
                 return true;
             }
         });
-    if(worldSettingName === '') {
-        let world2 = app.plugins.plugins.dataview.api
-            .pages(`"Worlds/${originFolder[0]}"`)
-            .where(page => {
-                if(page.type === "world") {
-                    worldSettingName = page.world;
-                    return true;
-                }
-            });
-    }
     return "[[" +worldSettingName + "]]";
 }
 module.exports = _obsi_script_GetWorldName;

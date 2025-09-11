@@ -1,3 +1,3 @@
-> [!info] Sending - {From} - {to}
+> [!sending] Sending - {From} - {to}
 > Message: 
 > Response:  

@@ -12,7 +12,7 @@ urls:
 # The World of <% tp.file.folder(false) %>
 ## Actions
 
->[!cards|button 5]
+>[!cards|button 7]
 >```button
 > name New Session Notes
 > type command
@@ -37,6 +37,16 @@ urls:
 > name New Location
 > type command
 > action QuickAdd: Macro - Add Location
+> ```
+> ````button
+> name New Lore
+> type command
+> action QuickAdd: Macro - Add Lore
+> ```
+> ```button
+> name New Item
+> type command
+> action QuickAdd: Macro - Add Inventory
 > ```
 
 ## Player Characters
