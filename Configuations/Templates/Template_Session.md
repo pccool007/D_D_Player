@@ -5,6 +5,7 @@ date: <% tp.date.now("YYYY-MM-DD") %>
 tags: 
 world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
 campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+sessionNum: <% tp.user._obsi_script_GetThisGameNum(tp) %>
 locations: 
 long_rest: false
 short_rest: false

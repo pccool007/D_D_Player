@@ -12,7 +12,6 @@ function _obsi_script_GetThisGameNum (tp) {
     while (numOfGames.length < 3) {
         numOfGames = "0" + numOfGames;
     }
-    console.log(numOfGames);
     return numOfGames;
 }
 module.exports = _obsi_script_GetThisGameNum;
