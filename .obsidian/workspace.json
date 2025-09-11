@@ -24,11 +24,11 @@
         ]
       },
       {
-        "id": "7b26ad47138defb0",
+        "id": "fe014aa006d2b244",
         "type": "tabs",
         "children": [
           {
-            "id": "9103c941a859e962",
+            "id": "0ef9a41e3d78fd3b",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -177,66 +177,6 @@
             }
           },
           {
-            "id": "f55f0ecc97f80194",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "27240e1943930e77",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "e1437972a9b70795",
-            "type": "leaf",
-            "state": {
-              "type": "DICE_ROLLER_VIEW",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "536101e52e46c35a",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "1a1d8c8b9af53c56",
-            "type": "leaf",
-            "state": {
-              "type": "DICE_ROLLER_VIEW",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "a38bb7ee3bb8cfc9",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {},
-              "icon": "checkmark",
-              "title": "Todo List"
-            }
-          },
-          {
             "id": "e07d4b9d4c1e95ea",
             "type": "leaf",
             "state": {
@@ -247,12 +187,11 @@
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 480.5,
-    "collapsed": true
+    "width": 480.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -270,44 +209,44 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "0e4b1e2304b5059a",
+  "active": "e07d4b9d4c1e95ea",
   "lastOpenFiles": [
+    "Campaigns/Soltpeak_Tides_of_Faith/Sessions/003_20250911.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/Soltpeak_Tides_of_Faith.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/PC/Kynara.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/World/Locations/Forterra.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/World/Locations",
+    "Campaigns/Soltpeak_Tides_of_Faith/Quests/New Quest.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/World/NPC/Bob the Merchant.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/World/NPC",
+    "Campaigns/Soltpeak_Tides_of_Faith/World",
+    "Campaigns/Soltpeak_Tides_of_Faith/Quests",
+    "Campaigns/Soltpeak_Tides_of_Faith/Sessions/002_20250911.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/Sessions/001_20250911.md",
+    "Campaigns/Soltpeak_Tides_of_Faith/Sessions",
+    "Campaigns/Soltpeak_Tides_of_Faith/PC",
     "Game Index.md",
+    "Campaigns/Soltpeak_Tides_of_Faith",
     "Campaigns/Soltpeak_World/Soltpeak_World.md",
     "Campaigns/Soltpeak_World",
     "Campaigns/Solt/Solt.md",
     "_obsi/assets/pasted",
     "Campaigns/Solt/Inventory/Book of Doom.md",
     "Campaigns/Solt/Inventory",
-    "Campaigns/Solt",
     "Configuations/Templates/Template_Campaign_Manager.md",
     "Configuations/Templates/Template_Inventory.md",
     "Campaigns/Test/Test.md",
-    "Campaigns/Test",
     "Configuations/Templates/Template_Lore.md",
     "Campaigns/Solt_tides/Solt_tides.md",
     "Campaigns/Solt_tides/Quests/Get Food.md",
-    "Campaigns/Solt_tides/Quests",
     "Campaigns/Solt_tides/World/NPC/Bob the Merchant.md",
     "Campaigns/Solt_tides/World/Factions/Test Factions.md",
     "Campaigns/Solt_tides/World/Locations/Fortherra.md",
-    "Campaigns/Solt_tides/World/Locations",
     "Campaigns/Solt_tides/World/Factions/Marco - Add Faction.md",
-    "Campaigns/Solt_tides/World/Factions",
-    "Campaigns/Solt_tides/World/NPC",
-    "Campaigns/Solt_tides/World",
     "Campaigns/Solt_tides/PC/Test Player 1.md",
     "Campaigns/Solt_tides/Sessions/001_20250911.md",
     "Campaigns/Solt_tides/Sessions/002_20250911.md",
     "Configuations/Templates/Template_Location.md",
-    "Configuations/Templates/Template_Session.md",
-    "Configuations/Templates/Template_Quest.md",
-    "Configuations/Templates/Template_PC.md",
-    "Configuations/Templates/Template_NPC.md",
-    "Configuations/Templates/Template_Faction.md",
-    "Campaigns/Soltpeak_Tides/Soltpeak_Tides.md",
-    "Campaigns/Soltpeak_Tides/PC/Bob.md",
-    "Campaigns/Test/Sessions/001_20250911.md",
     "_obsi/assets/Defaults/placeHolderMap.jpeg",
     "_obsi/assets/Defaults/placeHolderLore.png",
     "_obsi/assets/Defaults/placeHolderLocations.png",
