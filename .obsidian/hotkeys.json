@@ -23,5 +23,14 @@
       ],
       "key": "P"
     }
-  ]
+  ],
+  "insert-template": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "G"
+    }
+  ],
+  "graph:open": []
 }

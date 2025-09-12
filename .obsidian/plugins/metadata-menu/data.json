@@ -46,6 +46,29 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
+          "1": "Commerce & Trade",
+          "2": "Taverns & Inns",
+          "3": "Knowledge & Services",
+          "4": "Religious & Spiritual",
+          "5": "Government & Law",
+          "6": "Travel & Industry",
+          "7": "Shady & Underworld",
+          "8": "Other"
+        }
+      },
+      "name": "establishment_type",
+      "id": "TuD37o",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
           "1": "Alive",
           "2": "Dead",
           "3": "Missing"
@@ -83,17 +106,18 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
-          "1": "To Do",
-          "2": "In Progress",
-          "3": "Done"
+          "1": "City",
+          "2": "Dungeon",
+          "3": "Country",
+          "4": "Region",
+          "5": "Dimension",
+          "6": "State",
+          "7": "Other"
         }
       },
-      "name": "quest_status",
-      "id": "l0HSPO",
-      "path": "",
-      "style": {
-        "strikethrough": false
-      }
+      "name": "location_type",
+      "id": "gmmqhr",
+      "path": ""
     },
     {
       "type": "Media",
@@ -140,17 +164,15 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
-          "1": "City",
-          "2": "Dungeon",
-          "3": "Country",
-          "4": "Region",
-          "5": "Dimension",
-          "6": "State",
-          "7": "Other"
+          "1": "Lore",
+          "2": "Truth",
+          "3": "Lies",
+          "4": "Concepts",
+          "5": "Information"
         }
       },
-      "name": "location_type",
-      "id": "gmmqhr",
+      "name": "lore_type",
+      "id": "ts16NX",
       "path": ""
     },
     {
@@ -162,19 +184,18 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
-          "1": "Commerce & Trade",
-          "2": "Taverns & Inns",
-          "3": "Knowledge & Services",
-          "4": "Religious & Spiritual",
-          "5": "Government & Law",
-          "6": "Travel & Industry",
-          "7": "Shady & Underworld",
-          "8": "Other"
+          "1": "To Do",
+          "2": "In Progress",
+          "3": "Done",
+          "4": "Failed"
         }
       },
-      "name": "establishment_type",
-      "id": "TuD37o",
-      "path": ""
+      "name": "quest_status",
+      "id": "l0HSPO",
+      "path": "",
+      "style": {
+        "strikethrough": false
+      }
     }
   ],
   "fileClassQueries": [],
@@ -183,7 +204,7 @@
   "classFilesPath": null,
   "isAutosuggestEnabled": true,
   "fileClassAlias": "fileClass",
-  "settingsVersion": "5.19",
+  "settingsVersion": "5.21",
   "firstDayOfWeek": 1,
   "enableLinks": true,
   "enableTabHeader": true,

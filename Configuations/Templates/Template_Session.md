@@ -2,14 +2,12 @@
 version: "1.0"
 type: session
 date: <% tp.date.now("YYYY-MM-DD") %>
-tags: 
+tags:
 world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
-sessionNum: <% tp.user._obsi_script_GetThisGameNum(tp) %>
-locations: 
-long_rest: false
-short_rest: false
-important_event: 
+campaign: "<% tp.user.getFileRacineForProperties(tp) %>"
+session_num: <% tp.user._obsi_script_GetThisGameNum(tp) %>
+locations:
+important_event:
 ---
 # [[<% tp.file.title %>]]
 
@@ -31,8 +29,8 @@ important_event:
 ### Previous Logs
 ![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#log]]
 
-### Previous Goals
-![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#Goals]]
+### Previous Session Goals
+![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#Session_Goals]]
 
 ### Previous Housekeeping
 ![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#Housekeeping]]
@@ -47,10 +45,6 @@ important_event:
 >
 > 
 >
-> |     |     |
-> | --- | --- |
-> |  Long rest   |   `=this.long_rest`  |
-> | Short rest   | `=this.short_rest`   |
 >  ^summary
 
 ### Housekeeping
@@ -62,7 +56,10 @@ important_event:
 ## Live Notes
 ### Players
 ![[<% tp.user._obsi_script_GetFileRacine(tp) %>#^Player Characters"]]
-### Session Goals
+### Actions
+![[<% tp.user._obsi_script_GetFileRacine(tp) %>#Actions"]]
+
+### Session_Goals
 - [ ] 
 
 ## Log

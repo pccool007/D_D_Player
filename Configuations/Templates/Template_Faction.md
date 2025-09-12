@@ -5,7 +5,7 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 img: "[[placeHolderFactions.png]]"
 leader:
@@ -55,24 +55,25 @@ action QuickAdd: Macro - Add NPC
 ```
 > [!table-data] List of NPC's
 >```dataview
-> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
+> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
 > WHERE contains(type,"NPC") 
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
 
-
-
->[!example|bg-c-orange]- Links
+## Index
+---
+>[!table-data]- Links
 > ```dataview
 > TABLE without id file.inlinks AS "Links from", file.outlinks AS "Links to"
 > WHERE file.path = this.file.path
 > ```
 
->[!example|bg-c-orange]- Lores
+--- 
+>[!table-data]- Lores
 >```dataview
-> table description as "Description"
+> table description as "Description", lore_type as "Type"
 > from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
 > WHERE contains(type,"Lore") 
 > and contains(relations,[[<% tp.file.title %>]])
@@ -80,7 +81,7 @@ action QuickAdd: Macro - Add NPC
 > ```
 
 ### History
-TBD
 
-### Notes
+
+### Logs
 

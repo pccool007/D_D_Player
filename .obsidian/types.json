@@ -17,6 +17,9 @@
     "important_event": "multitext",
     "establisment_type": "text",
     "word_description": "multitext",
-    "locations": "multitext"
+    "locations": "multitext",
+    "lore_type": "text",
+    "session_num": "text",
+    "campaign": "text"
   }
 }

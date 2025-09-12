@@ -5,7 +5,7 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 urls:
 pronounced:
@@ -22,6 +22,7 @@ condition: Alive
 party_standing: Neutral
 locations:
 first_location:
+last_seen:
 class:
 occupation:
 factions:
@@ -69,21 +70,27 @@ dislikes:
 >> **Likes:** `=this.likes`
 >>
 >> **Dislikes:** `=this.dislikes`
-
-
-### History
-
-
-### General Information
-#### Inventory 
-
-#### Links
->[!example|bg-c-orange]- Links
+## Index
+---
+>[!table-data]- Links
 > ```dataview
 > TABLE without id file.inlinks AS "Links from", file.outlinks AS "Links to"
 > WHERE file.path = this.file.path
 > ```
 
+--- 
+>[!table-data]- Lores
+>```dataview
+> table description as "Description", lore_type as "Type"
+> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
+> WHERE contains(type,"Lore") 
+> and contains(relations,[[<% tp.file.title %>]])
+> SORT file.name ASC
+> ```
+## General Information
+#### Inventory 
 
-#### Logs
+### History
 
+
+### Logs

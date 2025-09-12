@@ -11,8 +11,7 @@ urls:
 ---
 # The World of <% tp.file.folder(false) %>
 ## Actions
-
->[!cards|button 7]
+>[!cards|button 8]
 >```button
 > name New Session Notes
 > type command
@@ -38,7 +37,7 @@ urls:
 > type command
 > action QuickAdd: Macro - Add Location
 > ```
-> ````button
+> ```button
 > name New Lore
 > type command
 > action QuickAdd: Macro - Add Lore
@@ -77,10 +76,11 @@ action QuickAdd: Macro - Add Session
 ```
 
 ```dataview
-table important_event as "Summary", long_rest as "Long Rest", locations as "Locations"
+table WITHOUT ID
+(link(file.path, session_num)) as "Session Number", important_event as "Summary", locations as "Locations"
 from "Campaigns/<% tp.file.folder(false) %>/Sessions"
 where contains(type,"session")
-SORT sessionNum DESC
+SORT session_num DESC
 ```
 
 ## Index

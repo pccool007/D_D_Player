@@ -5,15 +5,11 @@ name: <% tp.file.title %>
 aliases:
 world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 lore_type:
-  - Lore
-  - Truth
-  - Lies
-  - Concepts
-description: 
-relations: 
+description:
+relations:
 secret:
 locations:
 ---

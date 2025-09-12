@@ -42,7 +42,7 @@ action QuickAdd: Macro - Add NPC
 ```
 > [!table-data] List of NPC's
 >```dataview
-> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
+> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
 > WHERE contains(type,"NPC") 
 > and contains(locations,[[<% tp.file.title %>]])
