@@ -115,7 +115,7 @@ action QuickAdd: Macro - Add NPC
  
 > [!table-data] List of NPC's
 >```dataview
-> table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
+> table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
 > from "Campaigns/<% tp.file.folder(false) %>/World/NPC"
 > WHERE contains(type,"NPC") 
 > SORT file.name ASC

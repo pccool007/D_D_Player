@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1490e4b421fa1155",
+        "id": "07cca3003b6b52d5",
         "type": "tabs",
         "children": [
           {
-            "id": "31e2801b3ca0512f",
+            "id": "ab1503e93bcbe712",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Game Index.md",
+                "file": "Configuations/Templates/Template_Campaign_Manager.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Game Index"
+              "title": "Template_Campaign_Manager"
             }
           }
         ]
@@ -205,8 +205,16 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "31e2801b3ca0512f",
+  "active": "ab1503e93bcbe712",
   "lastOpenFiles": [
+    "Configuations/Templates/Template_Faction.md",
+    "Configuations/Templates/Template_Location.md",
+    "Configuations/Templates/Template_Lore.md",
+    "Configuations/Templates/Template_NPC.md",
+    "Configuations/Templates/Template_PC.md",
+    "Configuations/Templates/Template_Quest.md",
+    "Configuations/Templates/Template_Inventory.md",
+    "Configuations/Templates/Template_Establishment.md",
     "Campaigns/Example_Campaign/Example_Campaign.md",
     "Game Index.md",
     "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
@@ -220,15 +228,7 @@
     "Campaigns/Example_Campaign/World/DataBase",
     "_obsi/tutorials_assets/Pasted image 20250912103735.png",
     "_obsi/tutorials_assets/Pasted image 20250912103505.png",
-    "Configuations/Templates/Template_Faction.md",
     "Configuations/Templates/Template_Session.md",
-    "Configuations/Templates/Template_Quest.md",
-    "Configuations/Templates/Template_PC.md",
-    "Configuations/Templates/Template_NPC.md",
-    "Configuations/Templates/Template_Establishment.md",
-    "Configuations/Templates/Template_Inventory.md",
-    "Configuations/Templates/Template_Location.md",
-    "Configuations/Templates/Template_Lore.md",
     "Campaigns/Example_Campaign/World/Lores",
     "Campaigns/Example_Campaign/World/Factions",
     "_obsi/tutorials_assets/Pasted image 20250912102756.png",
