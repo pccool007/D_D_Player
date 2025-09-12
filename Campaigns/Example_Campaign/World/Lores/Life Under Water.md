@@ -1,7 +1,7 @@
 ---
 version: "1.0"
 type: Lore
-name: The myth of the pervert bear
+name: Life Under Water
 aliases:
 world: "[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]"
 date: 2025-09-12
@@ -13,7 +13,7 @@ relations:
 secret:
 locations:
 ---
-# [[The myth of the pervert bear]]
+# [[Life Under Water]]
 > [!infobox]
 > # `=this.file.name`
 > **Pronounced:**  "`=this.pronounced`"

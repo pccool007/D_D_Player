@@ -2,6 +2,7 @@
 Welcome to this obsidian vault made for Role playing table top game. The goal of this vault is to make it simple to take notes in a role playing game. There is logic made to make it easier to takes notes and link between them. 
 
 Here are some useful resource to read 
+- https://obsidian.md/
 - https://help.obsidian.md/syntax
 - 
 

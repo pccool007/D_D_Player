@@ -3,7 +3,7 @@ version: "1.0"
 type: Faction
 name: Tremblay
 aliases:
-world: "[[[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]]]"
+world: "[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]"
 date: 2025-09-12
 campaigns: "[[Example_Campaign]]"
 tags:

@@ -10,7 +10,7 @@ function _obsi_script_GetWorldName (tp) {
                 return true;
             }
         });
-    return "[["+worldSettingName+"]]";
+    return worldSettingName;
 }
 module.exports = _obsi_script_GetWorldName;
 

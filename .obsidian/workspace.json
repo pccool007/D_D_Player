@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Campaigns/Example_Campaign/Example_Campaign.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Example_Campaign"
+            }
+          },
+          {
+            "id": "31e2801b3ca0512f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Game Index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Game Index"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -205,13 +220,21 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "61604d0df51366f4",
+  "active": "31e2801b3ca0512f",
   "lastOpenFiles": [
+    "Campaigns/Example_Campaign/Example_Campaign.md",
+    "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
+    "Campaigns/Example_Campaign/World/Lores/Life Under Water.md",
+    "Campaigns/Example_Campaign/World/Lores/The myth of the pervert bear.md",
+    "Campaigns/Example_Campaign/World/NPC/Bob Tremblay.md",
+    "Campaigns/Example_Campaign/Sessions/001_20250912.md",
+    "Campaigns/Example_Campaign/Sessions",
+    "Game Index.md",
+    "README.md",
+    "Campaigns/Example_Campaign/World/DataBase/Untitled.base",
+    "Campaigns/Example_Campaign/World/DataBase",
     "_obsi/tutorials_assets/Pasted image 20250912103735.png",
     "_obsi/tutorials_assets/Pasted image 20250912103505.png",
-    "Game Index.md",
-    "Campaigns/Example_Campaign/World/NPC/Bob Tremblay.md",
-    "Campaigns/Example_Campaign/Example_Campaign.md",
     "Configuations/Templates/Template_Faction.md",
     "Configuations/Templates/Template_Session.md",
     "Configuations/Templates/Template_Quest.md",
@@ -221,11 +244,8 @@
     "Configuations/Templates/Template_Inventory.md",
     "Configuations/Templates/Template_Location.md",
     "Configuations/Templates/Template_Lore.md",
-    "Campaigns/Example_Campaign/World/Lores/The myth of the pervert bear.md",
     "Campaigns/Example_Campaign/World/Lores",
-    "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
     "Campaigns/Example_Campaign/World/Factions",
-    "README.md",
     "_obsi/tutorials_assets/Pasted image 20250912102756.png",
     "Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md",
     "_obsi/tutorials_assets/Pasted image 20250912102527.png",
@@ -239,20 +259,15 @@
     "Campaigns/Example_Campaign/World/Locations",
     "Campaigns/Example_Campaign/World",
     "_obsi/tutorials_assets/Pasted image 20250912093026.png",
-    "_obsi/tutorials_assets/Pasted image 20250912092829.png",
     "Campaigns/Example_Campaign",
     "_obsi/tutorials_assets",
     "How To Use.md",
     "Campaigns/Tides_Of_Faith/Sessions/002_20250912.md",
     "Campaigns/Tides_Of_Faith/Tides_Of_Faith.md",
     "Campaigns/Tides_Of_Faith/Sessions/001_20250912.md",
-    "Campaigns/Tides_Of_Faith/Sessions",
     "Campaigns/Tides_Of_Faith/Sessions/003_20250912.md",
     "Campaigns/asd/asd.md",
-    "Campaigns/asd",
     "Campaigns/Tides_Of_Faith/PC/Kynara.md",
-    "Campaigns/Tides_Of_Faith/PC",
-    "Campaigns/Tides_Of_Faith/World/Locations/Soltpeak.md",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
     "Worlds/Lymnevia/Setting/Planes Relations.canvas"
   ]
