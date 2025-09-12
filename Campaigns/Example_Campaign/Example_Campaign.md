@@ -7,7 +7,7 @@ campaign: Example_Campaign
 status: Active
 role: player
 system: 5e
-dndbeyond_url: https://www.dndbeyond.com/campaigns/5491138
+dndbeyond_url: https://www.dndbeyond.com
 urls:
 ---
 # The World of Example_Campaign
