@@ -5,7 +5,8 @@
       "table-data",
       "sending",
       "house",
-      "faction"
+      "faction",
+      "map"
     ],
     "settings": {
       "goal": [
@@ -60,6 +61,14 @@
           "changes": {
             "icon": "lucide-users",
             "color": "168, 130, 255"
+          }
+        }
+      ],
+      "map": [
+        {
+          "changes": {
+            "icon": "lucide-map",
+            "color": "68, 207, 110"
           }
         }
       ]

@@ -76,6 +76,21 @@ iconColor: blue
 > **Imports** | `=this.imports` |
 > **Exports** | `=this.exports` |
 
+> [!map] Map
+> ```leaflet
+> id: <% tp.file.title %>_map_Leaflet_
+> image: [[placeHolderMap.jpeg]]
+> height: 600px
+> width: 640px
+> lat: 50
+> long: 50
+> minZoom: 1
+> maxZoom: 5
+> defaultZoom: 1
+> unit: meters
+> scale: 1
+> darkMode: false
+> ```
 
 > [!info|bg-c-purple] Description
 >`=this.description`
