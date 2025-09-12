@@ -29,4 +29,3 @@ dv.table(["Campaign","System","Sessions", "Role","Status", "DNDBeyond", "Other U
   .map(b => [dv.fileLink(b.file.path,false,[b.campaign]),b.system,getNumOfGames(b.campaign),b.role,b.status, b.dndbeyond_url, b.urls]))
 ```
 
-:desert_island

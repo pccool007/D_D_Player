@@ -49,7 +49,7 @@ const map = {
 
 // Show dropdown
 const picked = await tp.system.suggester(labels, keys);
-const sel = map[picked] ?? { icon: "LiMapPin", establishment_type: "Unknown" };
+const sel = map[picked] ?? { icon: "LiFileQuestion", establishment_type: "Unknown" };
 
 // Emit YAML
 tR += `icon: ${sel.icon}\nestablishment_type: ${sel.location_type}`;

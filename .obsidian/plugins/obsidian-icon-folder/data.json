@@ -20,7 +20,7 @@
       "bottom": 0,
       "left": 0
     },
-    "iconInTabsEnabled": false,
+    "iconInTabsEnabled": true,
     "iconInTitleEnabled": true,
     "iconInFrontmatterEnabled": true,
     "iconsBackgroundCheckEnabled": false,
@@ -70,10 +70,6 @@
   },
   "Campaigns/Example_Campaign/World/Locations/Forterra 2.md": {
     "iconName": "LiRectangleHorizontal",
-    "iconColor": "blue"
-  },
-  "Campaigns/Example_Campaign/PC/Test.md": {
-    "iconName": "LiSwords",
     "iconColor": "blue"
   }
 }
