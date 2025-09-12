@@ -1,6 +1,12 @@
 # How to use - WIP
 Welcome to this obsidian vault made for Role playing table top game. The goal of this vault is to make it simple to take notes in a role playing game. There is logic made to make it easier to takes notes and link between them. 
 
+Here are some useful resource to read 
+- https://help.obsidian.md/syntax
+- 
+
+## Use the Vault
+
 1. First thing first is to create your first campaign ! 
 > [!warning]
 > When clicking on a button in the vault make sure you don't have anything selected at the same time or other wise it will take what you have selected and use it as an input for the button input field
@@ -62,12 +68,12 @@ So for this new location we have these
 
 Now you understand how to create location you can do the same for all the other buttons the logic is pretty much the same except `New Session`
 
-3. New Session
+3. New Session - __WORK IN PROGRESS__
 
 
 
 --- 
-### Quick tips
+## Quick tips
 if you notes look weird like this 
 ![[Pasted image 20250912103505.png|850]]
 Press on your keyboard `ctrl + shift + e` which will switch you to live edit mode over full edit more which you were
