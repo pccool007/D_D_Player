@@ -63,3 +63,20 @@ So for this new location we have these
 Now you understand how to create location you can do the same for all the other buttons the logic is pretty much the same except `New Session`
 
 3. New Session
+
+
+
+--- 
+### Quick tips
+if you notes look weird like this 
+![[Pasted image 20250912103505.png|850]]
+Press on your keyboard `ctrl + shift + e` which will switch you to live edit mode over full edit more which you were
+
+--- 
+To search rapidly for a not `ctrl + p` you also have this at the top left ![[Pasted image 20250912103735.png]]
+
+---
+you can press `ctrl + g` to insert quick template which can be found and created in the folder `Configurations/Notes Templates` I have created some for you over there like `Note_sending` which will help create the note when you send or receive sending. 
+
+--- 
+
