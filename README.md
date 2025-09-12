@@ -86,4 +86,6 @@ To search rapidly for a not `ctrl + p` you also have this at the top left ![[Pas
 you can press `ctrl + g` to insert quick template which can be found and created in the folder `Configurations/Notes Templates` I have created some for you over there like `Note_sending` which will help create the note when you send or receive sending. 
 
 --- 
+If you delete a note you can restate it by going in your computer trash and restate it that way 
 
+--- 
