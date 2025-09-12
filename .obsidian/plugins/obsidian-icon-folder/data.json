@@ -1,11 +1,17 @@
 {
   "settings": {
     "migrated": 6,
-    "iconPacksPath": ".obsidian/plugins/obsidian-icon-folder/icons",
+    "iconPacksPath": ".obsidian/icons",
     "fontSize": 16,
     "emojiStyle": "native",
     "iconColor": null,
-    "recentlyUsedIcons": [],
+    "recentlyUsedIcons": [
+      "LiOctagon",
+      "LiRectangleHorizontal",
+      "LiUser2",
+      "LiSword",
+      "LiBook"
+    ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
     "extraMargin": {
@@ -15,17 +21,55 @@
       "left": 0
     },
     "iconInTabsEnabled": false,
-    "iconInTitleEnabled": false,
-    "iconInFrontmatterEnabled": false,
+    "iconInTitleEnabled": true,
+    "iconInFrontmatterEnabled": true,
     "iconsBackgroundCheckEnabled": false,
     "iconsInNotesEnabled": true,
     "iconIdentifier": ":",
-    "iconInTitlePosition": "above",
+    "iconInTitlePosition": "inline",
     "iconInFrontmatterFieldName": "icon",
     "iconColorInFrontmatterFieldName": "iconColor",
     "iconsInLinksEnabled": true,
     "lucideIconPackType": "native",
     "debugMode": false,
     "useInternalPlugins": false
+  },
+  "Campaigns/Example_Campaign/World/Establisments/Shop ang gibbles.md": {
+    "iconName": "LiStore"
+  },
+  "Configuations/Templates/Template_PC.md": {
+    "iconName": "LiSwords",
+    "iconColor": "blue"
+  },
+  "Configuations/Templates/Template_Quest.md": {
+    "iconName": "LiHandCoins",
+    "iconColor": "yellow"
+  },
+  "Configuations/Templates/Template_NPC.md": {
+    "iconName": "LiUser",
+    "iconColor": "green"
+  },
+  "Configuations/Templates/Template_Lore.md": {
+    "iconName": "LiBook",
+    "iconColor": "yellow"
+  },
+  "Configuations/Templates/Template_Inventory.md": {
+    "iconName": "LiSword",
+    "iconColor": "orange"
+  },
+  "Configuations/Templates/Template_Faction.md": {
+    "iconName": "LiUser2",
+    "iconColor": "purple"
+  },
+  "Configuations/Templates/Template_Campaign_Manager.md": {
+    "iconName": "LiBookOpen"
+  },
+  "Configuations/Templates/Template_Session.md": {
+    "iconName": "LiBookA",
+    "iconColor": "red"
+  },
+  "Campaigns/Example_Campaign/World/Locations/Forterra 2.md": {
+    "iconName": "LiRectangleHorizontal",
+    "iconColor": "blue"
   }
 }

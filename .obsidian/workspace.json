@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "07cca3003b6b52d5",
+        "id": "aecc1ac98a8a63db",
         "type": "tabs",
         "children": [
           {
-            "id": "ab1503e93bcbe712",
+            "id": "0b28f347afd61290",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Configuations/Templates/Template_Campaign_Manager.md",
-                "mode": "source",
-                "source": true
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Template_Campaign_Manager"
+              "title": "New tab"
             }
           }
         ]
@@ -205,22 +201,30 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "ab1503e93bcbe712",
+  "active": "0b28f347afd61290",
   "lastOpenFiles": [
-    "Configuations/Templates/Template_Faction.md",
     "Configuations/Templates/Template_Location.md",
+    "Game Index.md",
+    "Campaigns/Example_Campaign/World/Locations/asdads .md",
+    "Campaigns/Example_Campaign/Example_Campaign.md",
+    "Campaigns/Example_Campaign/World/NPC/Bob Tremblay.md",
+    "Campaigns/Example_Campaign/World/Locations/Forterra 2.md",
+    "Configuations/Templates/Template_Campaign_Manager.md",
+    "Configuations/Templates/Template_Establishment.md",
+    "Configuations/Templates/Template_Faction.md",
+    "Configuations/Templates/Template_Inventory.md",
     "Configuations/Templates/Template_Lore.md",
+    "Configuations/Templates/Template_Quest.md",
     "Configuations/Templates/Template_NPC.md",
     "Configuations/Templates/Template_PC.md",
-    "Configuations/Templates/Template_Quest.md",
-    "Configuations/Templates/Template_Inventory.md",
-    "Configuations/Templates/Template_Establishment.md",
-    "Campaigns/Example_Campaign/Example_Campaign.md",
-    "Game Index.md",
-    "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
+    "Configuations/Templates/Template_Session.md",
     "Campaigns/Example_Campaign/World/Lores/Life Under Water.md",
     "Campaigns/Example_Campaign/World/Lores/The myth of the pervert bear.md",
-    "Campaigns/Example_Campaign/World/NPC/Bob Tremblay.md",
+    "Campaigns/Example_Campaign/World/Establisments/Shop ang gibbles.md",
+    "Campaigns/Example_Campaign/World/Establisments/Shop and gibles.md",
+    "Campaigns/Example_Campaign/World/Establisments",
+    "Campaigns/Example_Campaign/World/Locations/Fortterra.md",
+    "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
     "Campaigns/Example_Campaign/Sessions/001_20250912.md",
     "Campaigns/Example_Campaign/Sessions",
     "README.md",
@@ -228,7 +232,6 @@
     "Campaigns/Example_Campaign/World/DataBase",
     "_obsi/tutorials_assets/Pasted image 20250912103735.png",
     "_obsi/tutorials_assets/Pasted image 20250912103505.png",
-    "Configuations/Templates/Template_Session.md",
     "Campaigns/Example_Campaign/World/Lores",
     "Campaigns/Example_Campaign/World/Factions",
     "_obsi/tutorials_assets/Pasted image 20250912102756.png",
@@ -245,14 +248,7 @@
     "Campaigns/Example_Campaign/World",
     "_obsi/tutorials_assets/Pasted image 20250912093026.png",
     "Campaigns/Example_Campaign",
-    "_obsi/tutorials_assets",
     "How To Use.md",
-    "Campaigns/Tides_Of_Faith/Sessions/002_20250912.md",
-    "Campaigns/Tides_Of_Faith/Tides_Of_Faith.md",
-    "Campaigns/Tides_Of_Faith/Sessions/001_20250912.md",
-    "Campaigns/Tides_Of_Faith/Sessions/003_20250912.md",
-    "Campaigns/asd/asd.md",
-    "Campaigns/Tides_Of_Faith/PC/Kynara.md",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
     "Worlds/Lymnevia/Setting/Planes Relations.canvas"
   ]

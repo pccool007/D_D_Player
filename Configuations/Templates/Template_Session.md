@@ -3,11 +3,13 @@ version: "1.0"
 type: session
 date: <% tp.date.now("YYYY-MM-DD") %>
 tags:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-campaign: "<% tp.user.getFileRacineForProperties(tp) %>"
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
+campaign: <% tp.user.getFileRacineForProperties(tp) %>
 session_num: <% tp.user._obsi_script_GetThisGameNum(tp) %>
 locations:
 important_event:
+icon: LiBookA
+iconColor: red
 ---
 # [[<% tp.file.title %>]]
 

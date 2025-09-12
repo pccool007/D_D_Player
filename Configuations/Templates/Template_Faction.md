@@ -3,9 +3,9 @@ version: "1.0"
 type: Faction
 name: <% tp.file.title %>
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 img: "[[placeHolderFactions.png]]"
 leader:
@@ -17,6 +17,8 @@ word_description:
 emblem_description:
 goal: Define Goal
 alignment:
+icon: LiUser2
+iconColor: purple
 ---
 
 # [[<% tp.file.title %>]]

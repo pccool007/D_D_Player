@@ -3,16 +3,63 @@ version: "1.0"
 type: Establishment
 name: <% tp.file.title %>
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
-establishment_type: Commerce & Trade
+<%*
+/**
+ * Dropdown for "category"-style location types
+ * One choice → fills icon + location_type
+ */
+
+const labels = [
+  "Commerce & Trade",
+  "Taverns & Inns",
+  "Knowledge & Services",
+  "Religious & Spiritual",
+  "Government & Law",
+  "Travel & Industry",
+  "Shady & Underworld",
+  "Other"
+];
+
+const keys = [
+  "commerce",
+  "taverns",
+  "knowledge",
+  "religious",
+  "government",
+  "travel",
+  "shady",
+  "other"
+];
+
+// Map your chosen icons here (Li* from Iconize, or emoji)
+const map = {
+  commerce:   { icon: "LiStore",        location_type: "Commerce & Trade" },
+  taverns:    { icon: "LiWine",         location_type: "Taverns & Inns" },
+  knowledge:  { icon: "LiBookOpen",     location_type: "Knowledge & Services" },
+  religious:  { icon: "LiChurch",       location_type: "Religious & Spiritual" },
+  government: { icon: "LiGavel",        location_type: "Government & Law" },
+  travel:     { icon: "LiPlane",        location_type: "Travel & Industry" },
+  shady:      { icon: "LiSkull",        location_type: "Shady & Underworld" },
+  other:      { icon: "LiCircle",       location_type: "Other" }
+};
+
+// Show dropdown
+const picked = await tp.system.suggester(labels, keys);
+const sel = map[picked] ?? { icon: "LiMapPin", establishment_type: "Unknown" };
+
+// Emit YAML
+tR += `icon: ${sel.icon}\nestablishment_type: ${sel.location_type}`;
+%>
 locations:
 description: ""
 word_description:
 owner:
 pronounced:
+iconColor: orange
 ---
 # [[<% tp.file.title %>]]
 

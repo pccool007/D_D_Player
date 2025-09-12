@@ -39,6 +39,11 @@ urls:
 > action QuickAdd: Macro - Add Location
 > ```
 > ```button
+> name New Establishment
+> type command
+> action QuickAdd: Macro - Add Establishment
+> ```
+> ```button
 > name New Lore
 > type command
 > action QuickAdd: Macro - Add Lore

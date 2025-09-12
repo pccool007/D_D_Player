@@ -1,48 +1,21 @@
 ---
 version: "1.0"
 type: Location
-name: <% tp.file.title %>
+name: Fortterra
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+world: "[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]"
+date: 2025-09-12
+campaigns: "[[Example_Campaign]]"
 tags:
 locations:
-<%*
-/**
- * One picker → auto-sets icon + location_type
- * Matches your defined categories + Iconize icon IDs
- */
-
-const labels = ["City", "Country", "Regions", "Dimension", "State", "Forest", "Water", "Mountain", "Island"];
-const keys   = ["city", "country", "regions", "dimension", "state", "forest", "water", "mountain", "island"];
-
-const map = {
-  city:      { icon: "LiBuilding",   location_type: "City" },
-  country:   { icon: "LiTriangle",   location_type: "Country" },
-  regions:   { icon: "LiRectangleHorizontal", location_type: "Regions" },
-  dimension: { icon: "LiCircle",     location_type: "Dimension" },
-  state:     { icon: "LiOctagon",    location_type: "State" },
-  forest:    { icon: "LiTrees",      location_type: "Forest" },
-  water:     { icon: "LiWaves",      location_type: "Water" },
-  mountain:  { icon: "LiMountain",   location_type: "Mountain" },
-  island: { icon: "desert_island" location_type: "Island" }
-};
-
-// Show a dropdown
-const picked = await tp.system.suggester(labels, keys);
-const sel = map[picked] ?? { icon: "LiMapPin", location_type: "Unknown" };
-
-// Emit YAML
-tR += `icon: ${sel.icon}\nlocation_type: ${sel.location_type}`;
-%>
+icon: LiTriangle
+location_type: Country
 description: ""
 word_description:
 urls:
 img: "[[placeHolderLocations.png]]"
-iconColor: blue
 ---
-# [[<% tp.file.title %>]]
+# [[Fortterra]]
 > [!infobox]
 > # `=this.file.name`
 > ```dataviewjs
@@ -89,70 +62,70 @@ action QuickAdd: Macro - Add Location
 > [!table-data]- Dimensions
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Dimension")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Regions
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Region")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Countries
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Country")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- States
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"State")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Cities
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"City")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Other
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Other")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Dungeons
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Dungeon")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
@@ -165,9 +138,9 @@ action QuickAdd: Macro - Add Establishment
 > [!table-data]- Table Shops/Services
 > ```dataview
 > table description as "Description", owner as "Owner", establishment_type as "type"
-> from "Worlds/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Establishments"
+> from "Worlds/Example_Campaign/World/Establishments"
 > WHERE contains(type,"establishment") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.establishment_type ASC
 > ```
 
@@ -180,9 +153,9 @@ action QuickAdd: Macro - Add NPC
 > [!table-data] List of NPC's
 >```dataview
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
+> from "Campaigns/Example_Campaign/World/NPC"
 > WHERE contains(type,"NPC") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
@@ -197,9 +170,9 @@ action QuickAdd: Macro - Add Faction
 > [!table-data]- Factions
 > ```dataview
 > table description as "Description"
-> from "Worlds/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Factions"
+> from "Worlds/Example_Campaign/World/Factions"
 > WHERE contains(type,"faction") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
@@ -210,12 +183,12 @@ type command
 action QuickAdd: Macro - Add Quest
 ```
 
-> [!table-data]- Quest's For <% tp.file.title %>
+> [!table-data]- Quest's For Fortterra
 > ```dataview
 > table description as "Description", owner as "Owner of the Quest", reward as "Reward", status as "Status"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/Quests"
+> from "Campaigns/Example_Campaign/Quests"
 > WHERE contains(type,"quest") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 
@@ -230,9 +203,9 @@ action QuickAdd: Macro - Add Quest
 >[!table-data]- Lores
 >```dataview
 > table description as "Description", lore_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
+> from "Campaigns/Example_Campaign/World/Lores"
 > WHERE contains(type,"Lore") 
-> and contains(relations,[[<% tp.file.title %>]])
+> and contains(relations,[[Fortterra]])
 > SORT file.name ASC
 > ```
 

@@ -3,9 +3,9 @@ version: "1.0"
 type: NPC
 name: <% tp.file.title %>
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 urls:
 pronounced:
@@ -29,6 +29,8 @@ factions:
 languages:
 likes:
 dislikes:
+icon: LiUser
+iconColor: green
 ---
 # [[<% tp.file.title %>]]
 

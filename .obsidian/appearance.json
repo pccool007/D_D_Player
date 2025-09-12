@@ -4,7 +4,8 @@
   "theme": "obsidian",
   "enabledCssSnippets": [
     "test",
-    "D&D_WOTC"
+    "D&D_WOTC",
+    "extra"
   ],
   "monospaceFontFamily": "Bookerly",
   "textFontFamily": "Bookerly",

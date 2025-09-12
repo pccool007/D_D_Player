@@ -3,9 +3,9 @@ version: "1.0"
 type: Player
 name: <% tp.file.title %>
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
+world: <% tp.user._obsi_script_GetWorldName(tp) %>
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 player: ""
 img: "[[placeHolderNPC.jpg]]"
@@ -27,6 +27,8 @@ likes:
   - None
 dislikes:
   - None
+icon: LiSwords
+iconColor: blue
 ---
 # [[<% tp.file.title %>]]
 > [!infobox]

@@ -1,13 +1,14 @@
 ---
 type: campaign
-tags: 
-world: 
+tags:
+world:
 campaign: <% tp.file.folder(false) %>
 status: Active
 role: player
 system: 5e
-dndbeyond_url: 
+dndbeyond_url:
 urls:
+icon: LiBookOpen
 ---
 # The World of <% tp.file.folder(false) %>
 ## Actions
