@@ -23,9 +23,9 @@ function getNumOfGames(campaign) {
 	return numOfGames
 }
 
-dv.table(["Campaign","System","Sessions", "Role","Status"],dv.pages('"Campaigns"')
+dv.table(["Campaign","System","Sessions", "Role","Status", "DNDBeyond", "Other Url"],dv.pages('"Campaigns"')
   .where(b => b.type === "campaign")
   .sort(b => b.status)
-  .map(b => [dv.fileLink(b.file.path,false,[b.campaign]),b.system,getNumOfGames(b.campaign),b.role,b.status]))
+  .map(b => [dv.fileLink(b.file.path,false,[b.campaign]),b.system,getNumOfGames(b.campaign),b.role,b.status, b.dndbeyond_url, b.urls]))
 ```
 

@@ -1,17 +1,18 @@
 ---
 version: "1.0"
 type: Faction
-name: <% tp.file.title %>
+name: Tremblay
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+world: "[[[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]]]"
+date: 2025-09-12
+campaigns: "[[Example_Campaign]]"
 tags:
 img: "[[placeHolderFactions.png]]"
-leader:
+leader: "[[Bob Tremblay]]"
 faction_status: Active
 faction_type: Organization
 locations:
+  - "[[Country of Canada]]"
 description: ""
 word_description:
 emblem_description:
@@ -19,7 +20,7 @@ goal: Define Goal
 alignment:
 ---
 
-# [[<% tp.file.title %>]]
+# [[Tremblay]]
 > [!infobox]
 > # `=this.file.name` 
 > **Aliases:**  "`=this.aliases`"
@@ -56,9 +57,9 @@ action QuickAdd: Macro - Add NPC
 > [!table-data] List of NPC's
 >```dataview
 > table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
+> from "Campaigns/Example_Campaign/World/NPC"
 > WHERE contains(type,"NPC") 
-> and contains(factions,[[<% tp.file.title %>]])
+> and contains(factions,[[Tremblay]])
 > SORT file.name ASC
 > ```
 
@@ -74,9 +75,9 @@ action QuickAdd: Macro - Add NPC
 >[!table-data]- Lores
 >```dataview
 > table description as "Description", lore_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
+> from "Campaigns/Example_Campaign/World/Lores"
 > WHERE contains(type,"Lore") 
-> and contains(relations,[[<% tp.file.title %>]])
+> and contains(relations,[[Tremblay]])
 > SORT file.name ASC
 > ```
 

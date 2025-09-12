@@ -1,11 +1,12 @@
 ---
 version: "1.0"
 type: NPC
-name: <% tp.file.title %>
+name: Bob Tremblay
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+  - Bob the strong
+world: "[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]"
+date: 2025-09-12
+campaigns: "[[Example_Campaign]]"
 tags:
 urls:
 pronounced:
@@ -18,19 +19,20 @@ age:
 sexuality:
 alignment: Neutral
 npc_img: "[[placeHolderNPC.jpg]]"
-condition: Alive
+condition: Dead
 party_standing: Neutral
 locations:
-first_location:
+first_location: "[[Country of Canada]]"
 last_seen:
 class:
 occupation:
 factions:
+  - "[[Tremblay]]"
 languages:
 likes:
 dislikes:
 ---
-# [[<% tp.file.title %>]]
+# [[Bob Tremblay]]
 
 > [!infobox]
 > # `=this.file.name` (`=this.aliases`)
@@ -82,9 +84,9 @@ dislikes:
 >[!table-data]- Lores
 >```dataview
 > table description as "Description", lore_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
+> from "Campaigns/Example_Campaign/World/Lores"
 > WHERE contains(type,"Lore") 
-> and contains(relations,[[<% tp.file.title %>]])
+> and contains(relations,[[Bob Tremblay]])
 > SORT file.name ASC
 > ```
 ## General Information

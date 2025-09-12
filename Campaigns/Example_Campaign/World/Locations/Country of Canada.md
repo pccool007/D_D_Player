@@ -1,20 +1,22 @@
 ---
 version: "1.0"
 type: Location
-name: <% tp.file.title %>
+name: Country of Canada
 aliases:
-world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
-date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+world:
+  - "[[Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md|Example_Material_Plane]]"
+date: 2025-09-12
+campaigns: "[[Example_Campaign]]"
 tags:
 locations:
-location_type: Dungeon
+  - "[[Example_Material_Plane]]"
+location_type: Country
 description: ""
 word_description:
 urls:
 img: "[[placeHolderLocations.png]]"
 ---
-# [[<% tp.file.title %>]]
+# [[Country of Canada]]
 > [!infobox]
 > # `=this.file.name`
 > ```dataviewjs
@@ -61,70 +63,70 @@ action QuickAdd: Macro - Add Location
 > [!table-data]- Dimensions
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Dimension")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Regions
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Region")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Countries
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Country")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- States
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"State")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Cities
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"City")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Other
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Other")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
 > [!table-data]- Dungeons
 >```dataview
 > table word_description as "Description", location_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Locations"
+> from "Campaigns/Example_Campaign/World/Locations"
 > WHERE contains(type,"Location") 
 > and contains(location_type,"Dungeon")
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
@@ -137,9 +139,9 @@ action QuickAdd: Macro - Add Establishment
 > [!table-data]- Table Shops/Services
 > ```dataview
 > table description as "Description", owner as "Owner", establishment_type as "type"
-> from "Worlds/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Establishments"
+> from "Worlds/Example_Campaign"
 > WHERE contains(type,"establishment") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.establishment_type ASC
 > ```
 
@@ -152,9 +154,9 @@ action QuickAdd: Macro - Add NPC
 > [!table-data] List of NPC's
 >```dataview
 > table word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
+> from "Campaigns/Example_Campaign/World/NPC"
 > WHERE contains(type,"NPC") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
@@ -169,9 +171,9 @@ action QuickAdd: Macro - Add Faction
 > [!table-data]- Factions
 > ```dataview
 > table description as "Description"
-> from "Worlds/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Factions"
+> from "Worlds/Example_Campaign"
 > WHERE contains(type,"faction") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
@@ -182,12 +184,12 @@ type command
 action QuickAdd: Macro - Add Quest
 ```
 
-> [!table-data]- Quest's For <% tp.file.title %>
+> [!table-data]- Quest's For Country of Canada
 > ```dataview
 > table description as "Description", owner as "Owner of the Quest", reward as "Reward", status as "Status"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/Quests"
+> from "Campaigns"
 > WHERE contains(type,"quest") 
-> and contains(locations,[[<% tp.file.title %>]])
+> and contains(locations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
@@ -202,9 +204,9 @@ action QuickAdd: Macro - Add Quest
 >[!table-data]- Lores
 >```dataview
 > table description as "Description", lore_type as "Type"
-> from "Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
+> from "Campaigns/Example_Campaign/World/Lores"
 > WHERE contains(type,"Lore") 
-> and contains(relations,[[<% tp.file.title %>]])
+> and contains(relations,[[Country of Canada]])
 > SORT file.name ASC
 > ```
 
