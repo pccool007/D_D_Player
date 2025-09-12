@@ -1,10 +1,9 @@
 {
-  "accentColor": "#e1a014",
+  "accentColor": "#3de166",
   "cssTheme": "ITS Theme",
   "theme": "obsidian",
   "enabledCssSnippets": [
     "test",
-    "D&D_WOTC",
     "extra"
   ],
   "monospaceFontFamily": "Bookerly",
