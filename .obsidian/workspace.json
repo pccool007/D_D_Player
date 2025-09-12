@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Campaigns/Example_Campaign/Example_Campaign.md",
+                "file": "Campaigns/Example_Campaign/Sessions/001_20250912.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Example_Campaign"
+              "title": "001_20250912"
             }
           }
         ]
@@ -206,14 +206,16 @@
       "obsidian-leaflet-plugin:Open Leaflet Map": false
     }
   },
-  "active": "445ebe6036ebde5e",
+  "active": "0e4b1e2304b5059a",
   "lastOpenFiles": [
+    "Campaigns/Example_Campaign/World/Locations/World.md",
+    "Campaigns/Example_Campaign/Sessions/001_20250912.md",
+    "Campaigns/Example_Campaign/Example_Campaign.md",
     "Game Index.md",
     "Configuations/Templates/Template_Establishment.md",
     "README.md",
     "Cheat Cheat.md",
     "Configuations/Templates/Template_Location.md",
-    "Campaigns/Example_Campaign/Example_Campaign.md",
     "Campaigns/Example_Campaign/World/NPC/Bob Tremblay.md",
     "Campaigns/Example_Campaign/PC/Test.md",
     "Campaigns/Example_Campaign/PC",
@@ -234,7 +236,6 @@
     "Campaigns/Example_Campaign/World/Establisments",
     "Campaigns/Example_Campaign/World/Locations/Fortterra.md",
     "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
-    "Campaigns/Example_Campaign/Sessions/001_20250912.md",
     "Campaigns/Example_Campaign/Sessions",
     "Campaigns/Example_Campaign/World/DataBase/Untitled.base",
     "Campaigns/Example_Campaign/World/DataBase",
@@ -243,7 +244,6 @@
     "Campaigns/Example_Campaign/World/Lores",
     "Campaigns/Example_Campaign/World/Factions",
     "_obsi/tutorials_assets/Pasted image 20250912102756.png",
-    "Campaigns/Example_Campaign/World/Locations/Example_Material_Plane.md",
     "_obsi/tutorials_assets/Pasted image 20250912102527.png",
     "_obsi/tutorials_assets/Pasted image 20250912102031.png",
     "_obsi/tutorials_assets/Pasted image 20250912101444.png",

@@ -26,7 +26,7 @@ const map = {
   forest:    { icon: "LiTrees",      location_type: "Forest" },
   water:     { icon: "LiWaves",      location_type: "Water" },
   mountain:  { icon: "LiMountain",   location_type: "Mountain" },
-  island: { icon: "desert_island" location_type: "Island" }
+  island: { icon: "desert_island", location_type: "Island" }
 };
 
 // Show a dropdown
