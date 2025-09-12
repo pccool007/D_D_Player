@@ -182,19 +182,9 @@
               "icon": "checkmark",
               "title": "Todo List"
             }
-          },
-          {
-            "id": "017fae5e05a1748f",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -217,7 +207,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0e4b1e2304b5059a",
+  "active": "71a3165719d16c1a",
   "lastOpenFiles": [
     "Cheat Cheat.md",
     "Configuations/Templates/Template_Location.md",
