@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Campaigns/Example_Campaign/Sessions/001_20250912.md",
+                "file": "Campaigns/Example_Campaign/Example_Campaign.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "001_20250912"
+              "title": "Example_Campaign"
+            }
+          },
+          {
+            "id": "d00e9b5da63eff24",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Configuations/Templates/Template_Location.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Template_Location"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -188,7 +203,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 480.5
+    "width": 286.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,36 +222,36 @@
       "obsidian-leaflet-plugin:Open Leaflet Map": false
     }
   },
-  "active": "0e4b1e2304b5059a",
+  "active": "d00e9b5da63eff24",
   "lastOpenFiles": [
-    "Campaigns/Example_Campaign/World/Locations/World.md",
-    "Campaigns/Example_Campaign/Sessions/001_20250912.md",
+    "Configuations/Templates/Template_PC.md",
+    "Campaigns/Example_Campaign/World/Factions/sfd.md",
     "Campaigns/Example_Campaign/Example_Campaign.md",
+    "Configuations/Templates/Template_Faction.md",
+    "Configuations/Templates/Template_Location.md",
+    "Campaigns/Example_Campaign/World/NPC/Clement.md",
+    "Campaigns/Example_Campaign/World/NPC/Clement B.md",
+    "Campaigns/Example_Campaign/Sessions/001_20250912.md",
+    "Campaigns/Example_Campaign/World/Locations/World.md",
     "Game Index.md",
     "Configuations/Templates/Template_Establishment.md",
     "README.md",
     "Cheat Cheat.md",
-    "Configuations/Templates/Template_Location.md",
     "Campaigns/Example_Campaign/World/NPC/Bob Tremblay.md",
     "Campaigns/Example_Campaign/PC/Test.md",
     "Campaigns/Example_Campaign/PC",
     "Campaigns/Example_Campaign/World/Locations/asdads .md",
     "Campaigns/Example_Campaign/World/Locations/Forterra 2.md",
     "Configuations/Templates/Template_Campaign_Manager.md",
-    "Configuations/Templates/Template_Faction.md",
     "Configuations/Templates/Template_Inventory.md",
     "Configuations/Templates/Template_Lore.md",
     "Configuations/Templates/Template_Quest.md",
     "Configuations/Templates/Template_NPC.md",
-    "Configuations/Templates/Template_PC.md",
     "Configuations/Templates/Template_Session.md",
     "Campaigns/Example_Campaign/World/Lores/Life Under Water.md",
     "Campaigns/Example_Campaign/World/Lores/The myth of the pervert bear.md",
     "Campaigns/Example_Campaign/World/Establisments/Shop ang gibbles.md",
-    "Campaigns/Example_Campaign/World/Establisments/Shop and gibles.md",
     "Campaigns/Example_Campaign/World/Establisments",
-    "Campaigns/Example_Campaign/World/Locations/Fortterra.md",
-    "Campaigns/Example_Campaign/World/Factions/Tremblay.md",
     "Campaigns/Example_Campaign/Sessions",
     "Campaigns/Example_Campaign/World/DataBase/Untitled.base",
     "Campaigns/Example_Campaign/World/DataBase",

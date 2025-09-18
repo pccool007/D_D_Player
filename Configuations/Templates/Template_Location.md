@@ -5,7 +5,7 @@ name: <% tp.file.title %>
 aliases:
 world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaigns: "<% tp.user.getFileRacineForProperties(tp) %>"
+campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 locations:
 <%*
@@ -38,6 +38,7 @@ tR += `icon: ${sel.icon}\nlocation_type: ${sel.location_type}`;
 %>
 description: ""
 word_description:
+leader:
 urls:
 img: "[[placeHolderLocations.png]]"
 iconColor: blue
@@ -65,8 +66,7 @@ iconColor: blue
 > ###### Politics
 >  |
 > ---|---|
-> **Ruler(s)** | TBD |
-> **Leaders** | TBD |
+> **Leaders** | `=this.leader` |
 > **Govt Type** | `=this.govtType` |
 > **Defenses** | `=this.defences` |
 > **Religion(s)** | `=link(this.religions)` |

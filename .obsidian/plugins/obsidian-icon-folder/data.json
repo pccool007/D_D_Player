@@ -71,5 +71,13 @@
   "Campaigns/Example_Campaign/World/Locations/Forterra 2.md": {
     "iconName": "LiRectangleHorizontal",
     "iconColor": "blue"
+  },
+  "Campaigns/Example_Campaign/World/NPC/Clement.md": {
+    "iconName": "LiUser",
+    "iconColor": "green"
+  },
+  "Campaigns/Example_Campaign/World/Factions/sfd.md": {
+    "iconName": "LiUser2",
+    "iconColor": "purple"
   }
 }
