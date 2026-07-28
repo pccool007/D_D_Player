@@ -9,6 +9,7 @@ world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
 date: <% tp.date.now("YYYY-MM-DD") %>
 campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
+img: "[[placeHolderItem.png]]"
 owner: {{VALUE:owner}}
 description:
 gold_value: {{VALUE:gold_value}}

@@ -1,7 +1,10 @@
 ---
+version: "1.0"
 type: campaign
 icon: LiBookOpen
 iconColor: yellow
+name: <% tp.file.title %>
+aliases:
 tags:
 world: "[[{{VALUE:world}}]]"
 date: <% tp.date.now("YYYY-MM-DD") %>

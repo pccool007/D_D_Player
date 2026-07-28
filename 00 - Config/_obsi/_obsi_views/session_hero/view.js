@@ -63,7 +63,9 @@ const chip = (label, value) => {
 	}
 };
 chip("in", p.locations);
-chip("·", p.campaign);
+// Child notes carry `campaigns`; `campaign` is the manager's own name, kept as a
+// fallback for sessions created before the key was made consistent.
+chip("·", p.campaigns ?? p.campaign);
 
 // ---- prev / next ----
 const siblings = dv.pages(`"${folder}"`)
