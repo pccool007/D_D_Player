@@ -53,25 +53,31 @@ const allowedChildTypes = (categories, parentTier) => {
     return categories.filter(c => c.tier === null || c.tier > parentTier);
 };
 
+// The containing folder for a picked category — the ONE place this is decided.
+// Both folder functions below go through it: they used to disagree, so the same
+// City landed in "Cities/" with a parent and "City/" without one.
+// Environments (tier null) get a folder named after their label; a category may
+// override the tier folder with its own `folder` key (Island).
+const bucketFor = (picked) => picked.tier === null
+    ? picked.label
+    : (picked.folder ?? TIER_FOLDER[picked.tier]);
+
 // Folder a location lands in when it has a parent: nested inside the parent's
 // own folder, under the tier (or category) folder. Locations are folder notes,
 // so callers append "/{name}".
-const folderUnderParent = (parentFolder, picked) => {
-    const bucket = picked.tier === null
-        ? picked.label
-        : (picked.folder ?? TIER_FOLDER[picked.tier]);
-    return `${parentFolder}/${bucket}`;
-};
+const folderUnderParent = (parentFolder, picked) =>
+    `${parentFolder}/${bucketFor(picked)}`;
 
 // Folder a parentless location lands in: flat under the campaign's Locations
-// root, in a folder named after its type.
+// root, in the same tier folder it would get under a parent.
 const folderAtCampaignRoot = (campaignRoot, picked) =>
-    `${campaignRoot}/World/Locations/${picked.label}`;
+    `${campaignRoot}/World/Locations/${bucketFor(picked)}`;
 
 module.exports = () => ({
     TIER_FOLDER,
     tierOf,
     allowedChildTypes,
+    bucketFor,
     folderUnderParent,
     folderAtCampaignRoot
 });

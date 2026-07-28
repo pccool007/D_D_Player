@@ -1,18 +1,18 @@
 ---
 version: "2.0"
 type: Location
-icon: LiBuilding
+icon: LiTriangle
 iconColor: blue
-name: Amberhall
+name: Veilmoria
 aliases:
 world: "Soltpeak"
 date: 2026-07-28
 campaigns: "[[Tides_of_Fates]]"
 tags:
 locations:
-  - "[[Veilmoria]]"
-location_type: City
-location_tier_level: 5
+  - "[[Forterian Isle]]"
+location_type: Country
+location_tier_level: 3
 description: ""
 word_description: 
 population:
@@ -26,7 +26,7 @@ exports:
 urls:
 img: "[[placeHolderLocations.png]]"
 ---
-# [[Amberhall]]
+# [[Veilmoria]]
 > [!infobox]
 > # `=this.file.name`
 > ```dataviewjs
@@ -67,7 +67,7 @@ img: "[[placeHolderLocations.png]]"
 
 > [!map] Map
 > ```leaflet
-> id: Amberhall_map_Leaflet_
+> id: Veilmoria_map_Leaflet_
 > image: [[placeHolderMap.jpeg]]
 > height: 600px
 > width: 640px
@@ -85,6 +85,26 @@ img: "[[placeHolderLocations.png]]"
 >`=this.description`
 ## Index
 ### Associated Locations
+> [!table-data]- States
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE lower(type) = "location" 
+> and contains(location_type, "State")
+> and contains(locations,[[Veilmoria]])
+> SORT file.name ASC
+> ```
+
+> [!table-data]- Cities
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE lower(type) = "location" 
+> and contains(location_type, "City")
+> and contains(locations,[[Veilmoria]])
+> SORT file.name ASC
+> ```
+
 > [!table-data]- Other
 >```dataview
 > table word_description as "Description", location_type as "Type"
@@ -92,12 +112,12 @@ img: "[[placeHolderLocations.png]]"
 > WHERE lower(type) = "location" 
 > and !contains(location_type,"Dimension")
 > and !contains(location_type,"Continent")
-> and !contains(location_type,"Regions")
+> and !contains(location_type,"Region")
 > and !contains(location_type,"Country")
 > and !contains(location_type,"State")
 > and !contains(location_type,"City")
 > and !contains(location_type,"Dungeon")
-> and contains(locations,[[Amberhall]])
+> and contains(locations,[[Veilmoria]])
 > SORT file.name ASC, location_type ASC
 > ```
 
@@ -107,7 +127,7 @@ img: "[[placeHolderLocations.png]]"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "location" 
 > and contains(location_type,"Dungeon")
-> and contains(locations,[[Amberhall]])
+> and contains(locations,[[Veilmoria]])
 > SORT file.name ASC
 > ```
 
@@ -117,7 +137,7 @@ img: "[[placeHolderLocations.png]]"
 > table description as "Description", owner as "Owner", establishment_type as "type"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "establishment" 
-> and contains(locations,[[Amberhall]])
+> and contains(locations,[[Veilmoria]])
 > SORT file.establishment_type ASC
 > ```
 
@@ -127,7 +147,7 @@ img: "[[placeHolderLocations.png]]"
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "01 - Campaigns/Tides_of_Fates/World/NPC"
 > WHERE lower(type) = "npc" 
-> and contains(locations,[[Amberhall]])
+> and contains(locations,[[Veilmoria]])
 > SORT file.name ASC
 > ```
 
@@ -138,17 +158,17 @@ img: "[[placeHolderLocations.png]]"
 > table description as "Description"
 > from "01 - Campaigns/Tides_of_Fates/World/Factions"
 > WHERE lower(type) = "faction" 
-> and contains(locations,[[Amberhall]])
+> and contains(locations,[[Veilmoria]])
 > SORT file.name ASC
 > ```
 
 ### Associated Quest
-> [!table-data]- Quest's For Amberhall
+> [!table-data]- Quest's For Veilmoria
 > ```dataview
 > table description as "Description", owner as "Owner of the Quest", reward as "Reward", quest_status as "Status"
 > from "01 - Campaigns/Tides_of_Fates/Quests"
 > WHERE lower(type) = "quest" 
-> and contains(locations,[[Amberhall]])
+> and contains(locations,[[Veilmoria]])
 > SORT file.name ASC
 > ```
 
@@ -165,7 +185,7 @@ img: "[[placeHolderLocations.png]]"
 > table description as "Description", lore_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World/Lores"
 > WHERE lower(type) = "lore" 
-> and contains(relations,[[Amberhall]])
+> and contains(relations,[[Veilmoria]])
 > SORT file.name ASC
 > ```
 

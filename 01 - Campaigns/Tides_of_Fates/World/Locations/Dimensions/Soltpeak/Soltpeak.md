@@ -1,19 +1,18 @@
 ---
 version: "2.0"
 type: Location
-icon: LiTriangle
+icon: LiCircle
 iconColor: blue
-name: Veilmoria
+name: Soltpeak
 aliases:
 world: "Soltpeak"
 date: 2026-07-28
 campaigns: "[[Tides_of_Fates]]"
 tags:
 locations:
-  - "[[Forterian Isle]]"
-location_type: Country
-location_tier_level: 3
-description: ""
+location_type: Dimension
+location_tier_level: 0
+description: 
 word_description: 
 population:
 leader: 
@@ -26,7 +25,7 @@ exports:
 urls:
 img: "[[placeHolderLocations.png]]"
 ---
-# [[Veilmoria]]
+# [[Soltpeak]]
 > [!infobox]
 > # `=this.file.name`
 > ```dataviewjs
@@ -67,7 +66,7 @@ img: "[[placeHolderLocations.png]]"
 
 > [!map] Map
 > ```leaflet
-> id: Veilmoria_map_Leaflet_
+> id: Soltpeak_map_Leaflet_
 > image: [[placeHolderMap.jpeg]]
 > height: 600px
 > width: 640px
@@ -85,13 +84,43 @@ img: "[[placeHolderLocations.png]]"
 >`=this.description`
 ## Index
 ### Associated Locations
+> [!table-data]- Continents
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE lower(type) = "location" 
+> and contains(location_type, "Continent")
+> and contains(locations,[[Soltpeak]])
+> SORT file.name ASC
+> ```
+
+> [!table-data]- Regions
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE lower(type) = "location" 
+> and contains(location_type, "Region")
+> and contains(locations,[[Soltpeak]])
+> SORT file.name ASC
+> ```
+
+> [!table-data]- Countries
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE lower(type) = "location" 
+> and contains(location_type, "Country")
+> and contains(locations,[[Soltpeak]])
+> SORT file.name ASC
+> ```
+
 > [!table-data]- States
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "location" 
 > and contains(location_type, "State")
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 
@@ -101,7 +130,7 @@ img: "[[placeHolderLocations.png]]"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "location" 
 > and contains(location_type, "City")
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 
@@ -112,12 +141,12 @@ img: "[[placeHolderLocations.png]]"
 > WHERE lower(type) = "location" 
 > and !contains(location_type,"Dimension")
 > and !contains(location_type,"Continent")
-> and !contains(location_type,"Regions")
+> and !contains(location_type,"Region")
 > and !contains(location_type,"Country")
 > and !contains(location_type,"State")
 > and !contains(location_type,"City")
 > and !contains(location_type,"Dungeon")
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC, location_type ASC
 > ```
 
@@ -127,7 +156,7 @@ img: "[[placeHolderLocations.png]]"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "location" 
 > and contains(location_type,"Dungeon")
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 
@@ -137,7 +166,7 @@ img: "[[placeHolderLocations.png]]"
 > table description as "Description", owner as "Owner", establishment_type as "type"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "establishment" 
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.establishment_type ASC
 > ```
 
@@ -147,7 +176,7 @@ img: "[[placeHolderLocations.png]]"
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "01 - Campaigns/Tides_of_Fates/World/NPC"
 > WHERE lower(type) = "npc" 
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 
@@ -158,17 +187,17 @@ img: "[[placeHolderLocations.png]]"
 > table description as "Description"
 > from "01 - Campaigns/Tides_of_Fates/World/Factions"
 > WHERE lower(type) = "faction" 
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 
 ### Associated Quest
-> [!table-data]- Quest's For Veilmoria
+> [!table-data]- Quest's For Soltpeak
 > ```dataview
 > table description as "Description", owner as "Owner of the Quest", reward as "Reward", quest_status as "Status"
 > from "01 - Campaigns/Tides_of_Fates/Quests"
 > WHERE lower(type) = "quest" 
-> and contains(locations,[[Veilmoria]])
+> and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 
@@ -185,7 +214,7 @@ img: "[[placeHolderLocations.png]]"
 > table description as "Description", lore_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World/Lores"
 > WHERE lower(type) = "lore" 
-> and contains(relations,[[Veilmoria]])
+> and contains(relations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
 

@@ -90,7 +90,7 @@ img: "[[placeHolderLocations.png]]"
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
 > WHERE lower(type) = "location" 
-> and contains(location_type, "Regions")
+> and contains(location_type, "Region")
 > and contains(locations,[[Forterian Isle]])
 > SORT file.name ASC
 > ```
@@ -132,7 +132,7 @@ img: "[[placeHolderLocations.png]]"
 > WHERE lower(type) = "location" 
 > and !contains(location_type,"Dimension")
 > and !contains(location_type,"Continent")
-> and !contains(location_type,"Regions")
+> and !contains(location_type,"Region")
 > and !contains(location_type,"Country")
 > and !contains(location_type,"State")
 > and !contains(location_type,"City")

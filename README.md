@@ -85,7 +85,7 @@ You get a **single form** asking for everything at once:
 Press `Esc` to abort — nothing gets created.
 
 The wizard then makes **two** notes: the campaign manager, and your world as a tier-0 **Dimension**
-location at `World/Locations/Dimension/{World}/{World}.md`. The manager's `world` property is
+location at `World/Locations/Dimensions/{World}/{World}.md`. The manager's `world` property is
 filled in for you — you no longer have to link it by hand.
 
 The manager opens in a side tab — that's your campaign dashboard. At the top are its properties:
@@ -117,14 +117,14 @@ parent. The tier also decides which subfolder it lands in:
 |---|---|---|
 | 0 | Dimension | `Dimensions/` |
 | 1 | Continent | `Continents/` |
-| 2 | Regions | `Regions/` |
+| 2 | Region | `Regions/` |
 | 3 | Country | `Countries/` |
 | 4 | State · Island (`Island/`) | `States/` |
 | 5 | City | `Cities/` |
 | — | Forest · Water · Mountain · Dungeon | a folder named after the type — these nest anywhere |
 
 So a city inside a country ends up at
-`World/Locations/Dimension/{World}/Countries/{Country}/Cities/{City}/{City}.md`.
+`World/Locations/Dimensions/{World}/Countries/{Country}/Cities/{City}/{City}.md`.
 
 **The wizard asks for the parent *before* the type**, precisely so it can offer only the types that
 are legal under that parent. Pick a City as parent and you'll only be offered environments — nothing

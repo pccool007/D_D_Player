@@ -65,7 +65,7 @@ icon from `IconRegistry`. Cancelling any prompt sets `variables.cancelled`.
 in one form. It is also the only wizard whose macro creates **two** notes —
 `Macro - Create Campaign` runs the wizard, then the campaign manager
 (`01 - Campaigns/{Campaign}/{Campaign}.md`), then its main world as a tier-0
-Dimension location (`…/World/Locations/Dimension/{World}/{World}.md`), so every
+Dimension location (`…/World/Locations/Dimensions/{World}/{World}.md`), so every
 continent and region can nest inside it. Cancelling the form `throw`s the string
 `"cancelled"` — the only thing QuickAdd honours as "abort this macro"; setting
 `variables.cancelled` alone would let the template steps run on empty values.
@@ -84,7 +84,7 @@ both the containing folder and which children are legal:
 |---|---|---|
 | 0 | Dimension | `Dimensions/` |
 | 1 | Continent | `Continents/` |
-| 2 | Regions | `Regions/` |
+| 2 | Region | `Regions/` |
 | 3 | Country | `Countries/` |
 | 4 | State, **Island** (own `Island/` folder) | `States/` |
 | 5 | City | `Cities/` |

@@ -6,7 +6,7 @@
 // overwrites folderName with the full destination folder, so the macro's
 // template step writes to {{VALUE:folderName}} alone:
 //   with a parent   -> {parent folder}/{tier folder}/{name}/{name}.md
-//   without a parent-> {campaign}/World/Locations/{type}/{name}/{name}.md
+//   without a parent-> {campaign}/World/Locations/{tier folder}/{name}/{name}.md
 //
 // Asking for the parent BEFORE the type is what lets us gate the type list —
 // see Helpers/_obsi_script_LocationHierarchy.js for the nesting rules.

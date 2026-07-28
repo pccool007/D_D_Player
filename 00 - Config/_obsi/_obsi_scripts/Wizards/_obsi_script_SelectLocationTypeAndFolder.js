@@ -8,7 +8,7 @@
 // Each location is a folder note: the destination is
 //   {parent folder}/{tier folder}/{name}/{name}.md
 // e.g. a City created from a Country lands in …/{Country}/Cities/{Name}/{Name}.md
-// With no parent it falls back to {campaign}/World/Locations/{type}/{name}/{name}.md
+// With no parent it falls back to {campaign}/World/Locations/{tier folder}/{name}/{name}.md
 //
 // Nesting rules live in Helpers/_obsi_script_LocationHierarchy.js.
 module.exports = async (params) => {
@@ -104,10 +104,10 @@ module.exports = async (params) => {
   variables.name = name;
     // Frontmatter the promote parser fills in from a session capture — set blank
     // here so QuickAdd never prompts for them on the plain "Add" path.
-    variables.leader = "";
-    variables.terrain = "";
-    variables.description = "";
-    variables.word_description = "";
+  variables.leader = "";
+  variables.terrain = "";
+  variables.description = "";
+  variables.word_description = "";
   variables.fileName = name;
   variables.location_type = picked.label;
   variables.icon = picked.icon;

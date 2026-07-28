@@ -93,7 +93,7 @@ const me = tp.file.title;
 const tiers = [
   { n: 0, label: "Dimensions", type: "Dimension" },
   { n: 1, label: "Continents", type: "Continent" },
-  { n: 2, label: "Regions",    type: "Regions"   },
+  { n: 2, label: "Regions",    type: "Region"    },
   { n: 3, label: "Countries",  type: "Country"   },
   { n: 4, label: "States",     type: "State"     },
   { n: 5, label: "Cities",     type: "City"      }
@@ -111,7 +111,7 @@ for (const t of tiers) {
 > WHERE lower(type) = "location" 
 > and !contains(location_type,"Dimension")
 > and !contains(location_type,"Continent")
-> and !contains(location_type,"Regions")
+> and !contains(location_type,"Region")
 > and !contains(location_type,"Country")
 > and !contains(location_type,"State")
 > and !contains(location_type,"City")

@@ -90,7 +90,7 @@ const SPECS = {
             { label: "Parent", key: "parent", input: "noteSelect", noteTypes: ["location"],
               hint: "{containing location – the city's country, the region's continent…}" },
             { label: "Type", key: "location_type", input: "iconType", iconDomain: "location",
-              hint: "{Dimension / Continent / Regions / Country / State / City / Island / Forest / Water / Mountain / Dungeon}" },
+              hint: "{Dimension / Continent / Region / Country / State / City / Island / Forest / Water / Mountain / Dungeon}" },
             { label: "Leader", key: "leader", input: "noteSelect", noteTypes: ["npc", "faction"],
               hint: "{ruler, authority, or dominant faction}" },
             { label: "Terrain", key: "terrain", input: "text", hint: "{coastal, volcanic, marsh…}" },

@@ -77,7 +77,7 @@ const TABLES = deepFreeze({
     location: [
         { label: "Dimension", icon: "LiCircle",              tier: 0 },
         { label: "Continent", icon: "LiSquare",              tier: 1 },
-        { label: "Regions",   icon: "LiRectangleHorizontal", tier: 2 },
+        { label: "Region",    icon: "LiRectangleHorizontal", tier: 2 },
         { label: "Country",   icon: "LiTriangle",            tier: 3 },
         { label: "State",     icon: "LiOctagon",             tier: 4 },
         { label: "City",      icon: "LiBuilding",            tier: 5 },

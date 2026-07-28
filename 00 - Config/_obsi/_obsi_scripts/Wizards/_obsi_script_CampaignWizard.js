@@ -1,7 +1,7 @@
 // Campaign wizard — one form for everything a new campaign needs, then the macro
 // creates two notes from it:
 //   1. the campaign manager  -> 01 - Campaigns/{Campaign}/{Campaign}.md
-//   2. its main world        -> 01 - Campaigns/{Campaign}/World/Locations/Dimension/{World}/{World}.md
+//   2. its main world        -> 01 - Campaigns/{Campaign}/World/Locations/Dimensions/{World}/{World}.md
 //
 // The world is a tier-0 Dimension location (see Helpers/_obsi_script_LocationHierarchy.js),
 // which is the top of the location hierarchy — so continents, regions and
