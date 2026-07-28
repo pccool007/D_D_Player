@@ -37,8 +37,7 @@ World/
   Lores/
 ```
 
-Also at the root: **`Dashboard.md`** (opens automatically on startup — the vault-wide home) and
-**`Cheat Cheat.md`** (the location icon table).
+Also at the root: **`Dashboard.md`** — opens automatically on startup, the vault-wide home.
 
 ## Where you act from
 
@@ -47,10 +46,13 @@ There are three notes you'll live in, and each one has its own set of buttons:
 - **`Dashboard`** — vault-wide. Counts per note type, a search-everything table, cards for your
   active campaigns, your characters across all campaigns, and the `New Campaign` button.
 - **The campaign manager** (`{Campaign}.md`) — everything for one campaign: the party, sessions,
-  quests, and index tables for NPCs / factions / locations / lore / inventory. The infobox on the
-  right holds the full set of `New …` buttons grouped as **Play**, **World** and **Items**.
-- **The session note** — where you write while playing. It carries a compact button row so you can
-  create an NPC or a location mid-session without leaving the note.
+  quests, index tables for NPCs / factions / locations / lore, and a coin purse. The infobox on the
+  right holds the full set of `New …` buttons grouped as **Play** (session, player, quest),
+  **World** (NPC, faction, location, establishment, lore) and **Items** (item).
+- **The session note** — where you write while playing. It carries a compact row of the seven
+  buttons you need mid-session (NPC, location, establishment, faction, quest, lore, item), so you
+  never leave the note. Location notes carry a shorter row: location, establishment, NPC, faction,
+  quest.
 
 There is also a command **`Macro - Open Current Campaign`** (via `ctrl + o`) that opens and pins the
 campaign you're playing right now — it picks the campaign with a session dated today, otherwise your
@@ -146,7 +148,7 @@ A new location note carries these properties:
 - `type` — `Location`. Don't touch.
 - `name` — well.
 - `aliases` — other names this note answers to. If `Bob Tremblay` has the alias `Bob the Strong`, you
-  can write `[[Bob Tremblay|Bob the strong]]`, which renders as [[Bob Tremblay|Bob the strong]].
+  can write `[[Bob Tremblay|Bob the strong]]`, which renders as the link text `Bob the strong`.
 - `world` — auto-filled from the campaign's `world`.
 - `date` — created date.
 - `campaigns` — auto-filled link back to the campaign.
@@ -162,8 +164,9 @@ A new location note carries these properties:
 
 ## 3. Everything else
 
-Same shape everywhere: click the button, answer the prompts, press `Esc` on anything you'd rather
-leave empty. The first prompt is almost always the name.
+Same shape everywhere: click the button and answer the prompts. The first prompt is almost always
+the name. To leave an optional field empty, choose its `— Skip —` option — `Esc` cancels the whole
+wizard and creates nothing.
 
 The wizard picks the icon and colour for you from the type you choose — icons are never a free
 choice.
@@ -269,7 +272,9 @@ Deleted a note by accident? It's in your computer's trash — restore it from th
 Link anything with `[[NameOfFile]]`, in the body *or* in a property. Autocomplete kicks in as you
 type, and `[[Note|label]]` lets you show different text.
 
-Location icons and what they mean: [[Cheat Cheat]].
+Location icons and what they mean: see the icon tables in
+`00 - Config/_obsi/_obsi_scripts/README.md`, which are generated from the same registry the wizards
+pick from.
 
 ---
 

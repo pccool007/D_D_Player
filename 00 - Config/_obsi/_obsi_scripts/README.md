@@ -22,10 +22,12 @@ references `Resolvers/` and `Wizards/` scripts by **full path** in
 | `GetCampaignFolderName` | Returns `01 - Campaigns/{name}/{subFolder}` |
 | `GetWorldName` | Resolves the world name from the campaign's `world` frontmatter |
 | `GetThisGameNum` | Returns the zero-padded session number (e.g. `003`) |
-| `GetLastGameTitle` | Returns the previous session's title, for the recap embeds |
+| `GetLastGameTitle` | Path (minus `.md`) of the previous session, for `Template_Session`'s recap embeds. Sorts on `session_num` and excludes the current note **by path** — not by taking the second-to-last entry, which assumed Dataview's index had already caught up with the note being created. Returns `""` when there is no previous session, and the template omits the embeds rather than emitting four broken ones |
+| `CaptureSpecs` | The render+parse contract shared by every quick capture: one spec per domain giving the capture's field lines, their hints, and the `- [ ] Promote to World {Type}` box that `ParseCapture` finds them by. `specs.render()` writes a block, `specs.parse()` reads one back — keep them symmetric or promote stops finding fields |
+| `MultiSelectPrompt` | Checkbox modal for the multi-value prompts (an NPC's factions). Hand-rolled for the same reason as `FormPrompt`: `require("obsidian")` does not resolve inside a QuickAdd script, so the modal is built from raw DOM |
 | `IconRegistry` | Single source of truth for every wizard's type → `icon`/`iconColor` table. `iconRegistry(domain)` with domain ∈ `npc`/`faction`/`establishment`/`location`/`lore`/`quest`/`inventory`/`pc`. Wizards `require()` it by absolute path — **edit icons here, never in a wizard.** Key order drives suggester option order; edits need an Obsidian reload (Node's `require()` cache) |
 | `FormPrompt` | One modal that asks several questions at once — text / `date` / `number` / `url` / `select` fields, required-field validation, Enter to save. QuickAdd's own API is one prompt at a time and text-only, so this is what gives `CampaignWizard` a real date picker. `require()`d by absolute path like `MultiSelectPrompt` |
-| `LocationHierarchy` | The nesting rules shared by both location wizards: `tierOf(frontmatter, categories)`, `allowedChildTypes(categories, parentTier)`, `folderUnderParent(parentFolder, picked)`, `folderAtCampaignRoot(campaignRoot, picked)`. Called as `_obsi_script_LocationHierarchy()` — it returns the API object |
+| `LocationHierarchy` | The nesting rules shared by both location wizards: `tierOf(frontmatter, categories)`, `allowedChildTypes(categories, parentTier)`, `bucketFor(picked)`, `folderUnderParent(parentFolder, picked)`, `folderAtCampaignRoot(campaignRoot, picked)`. Called as `_obsi_script_LocationHierarchy()` — it returns the API object. **`bucketFor` is the only place a category's folder is decided** — both folder functions go through it, because they once disagreed and put the same City in `Cities/` with a parent and `City/` without one |
 
 ## Resolvers
 
@@ -33,13 +35,20 @@ references `Resolvers/` and `Wizards/` scripts by **full path** in
 |---|---|
 | `SetParamsInCapGetCampaignFolder` | Sets `folderName` to `01 - Campaigns/{campaign}` |
 | `GetThisSessionName` | Sets `thisGameFilename` (`003_20240315`) + `folderName` |
-| `GetCurrentFolderPath` | Sets `folderName` to the active file's parent |
+| `ParseCapture` | The promote engine. Reads a quick capture out of the active session note and sets every variable the matching `Template_*.md` needs, resolving plain names to real notes. Takes a domain argument, so it is **not** a QuickAdd step itself — the four one-line wrappers `ParseNPCCapture` / `ParseFactionCapture` / `ParseLocationCapture` / `ParseEstablishmentCapture` are what QuickAdd calls, since a UserScript step takes no arguments. Also records `capture_source_path` / `capture_block_index` so `MarkCapturePromoted` can find the block afterwards |
 
 ## Wizards
 
 Every wizard prompts for a name first, sets `variables.fileName` (which drives
 the note's filename via the macro's `{{VALUE:fileName}}` format), and reads its
-icon from `IconRegistry`. Cancelling any prompt sets `variables.cancelled`.
+icon from `IconRegistry`.
+
+> [!warning] Cancelling must **throw**, not return
+> Every wizard declares `const cancel = () => { variables.cancelled = true; throw "cancelled"; }`
+> and calls it on every abort path. The `throw` is the load-bearing part: it is the
+> only thing QuickAdd honours as "abort this macro". Setting `variables.cancelled`
+> and returning lets the macro's template step run on and write a note out of empty
+> values — which is exactly what `Esc` used to do in nine of the ten wizards.
 
 > [!warning] `suggester` takes the question as its **3rd** argument
 > `quickAddApi.suggester(displayItems, actualItems, placeholder, fromInsertMultipleChoice, opts)`.
@@ -60,15 +69,15 @@ icon from `IconRegistry`. Cancelling any prompt sets `variables.cancelled`.
 | `QuestWizard` | name, reward, owner, location | `icon`, `iconColor`, `quest_status`, `reward`, `owner`, `locations` |
 | `InventoryWizard` | name, item type (9), gold value, owner | `icon`, `iconColor`, `item_type`, `gold_value`, `owner` |
 | `PCWizard` | name, class (14), player, race | `icon`, `iconColor`, `class`, `player`, `race` |
+| `CaptureWizard` | Templater-side, not QuickAdd. Backs all four `ctrl+G` quick-capture notes: one `FormPrompt` (plus `MultiSelectPrompt` for factions) per domain, then renders the capture block via `CaptureSpecs` | returns the block text — sets no `variables` |
+| `SendingWizard` | Templater-side. A hand-rolled modal with a live 25-word counter for *sending* spells | returns the message block |
 
 `CampaignWizard` is the exception to "prompts for a name first": it asks everything
 in one form. It is also the only wizard whose macro creates **two** notes —
 `Macro - Create Campaign` runs the wizard, then the campaign manager
 (`01 - Campaigns/{Campaign}/{Campaign}.md`), then its main world as a tier-0
 Dimension location (`…/World/Locations/Dimensions/{World}/{World}.md`), so every
-continent and region can nest inside it. Cancelling the form `throw`s the string
-`"cancelled"` — the only thing QuickAdd honours as "abort this macro"; setting
-`variables.cancelled` alone would let the template steps run on empty values.
+continent and region can nest inside it.
 
 The parent/owner/location pickers are all scoped to the current campaign
 (`variables.folderName`) and filtered by the target note's `type` frontmatter.
@@ -91,7 +100,8 @@ both the containing folder and which children are legal:
 | — | Forest, Water, Mountain, Dungeon | folder named after the type |
 
 - **With a parent** (either macro): `{parent folder}/{child folder}/{Name}/{Name}.md`
-- **Without a parent**: `World/Locations/{location_type}/{Name}/{Name}.md`
+- **Without a parent**: `World/Locations/{child folder}/{Name}/{Name}.md` — the *same*
+  folder it would get under a parent (via `bucketFor`), so a City is always in `Cities/`
 - **Establishment** (`Macro - Add Establishment`): `{parent location folder}/Establishments/{Name}.md`,
   or `World/Establishments/` when no parent location is chosen
 
@@ -110,6 +120,25 @@ Standalone scripts that read or modify *existing* notes — no template step.
 | Script | What it does |
 |---|---|
 | `OpenCurrentCampaign` | Opens + pins the campaign you're playing, in reading view. "Current" = the campaign with a session dated today, else the only Active one, else a suggester. Pins today's session alongside it when there is one |
+| `MarkCapturePromoted` | Runs at the end of a promote: ticks the capture's `- [ ] Promote to World {Type}` box, appends `→ [[Name]]` so the session note records where it went, and removes the now-dead `button` fence. Finds the block via the `capture_source_path` / `capture_block_index` that `ParseCapture` recorded |
+| `FixFrontmatterUrls` | Vault-wide repair pass for `url`-typed frontmatter broken by a wrapped paste (a newline landing mid-URL). Idempotent — safe to re-run |
+
+## Filtering on `type` in a Dataview query
+
+**Always `WHERE lower(type) = "npc"`. Never `contains(type, "NPC")`.**
+
+`contains()` is case-sensitive, and `type` is not consistently cased across the
+templates — capitalised for `Location` / `NPC` / `Faction` / `Player` / `Quest` /
+`Lore` / `Inventory` / `Establishment`, lowercase for `campaign` / `session` /
+`dashboard`. Three competing idioms were in use, and two of them were simply
+wrong: every location note queried `contains(type,"faction")` and
+`contains(type,"quest")` against notes declaring `Faction` and `Quest`, so
+*Associated Factions* and *Associated Quest* rendered **empty forever** with no
+error to notice.
+
+`lower(type) = "…"` cannot fail that way, so it is the only form used now. Keep it
+that way when adding a query, and remember `type` is a single string — `contains`
+was never the right operator for it anyway.
 
 ## IconRegistry is also the source for the metadata-menu dropdowns
 

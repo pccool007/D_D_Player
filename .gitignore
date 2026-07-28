@@ -1,0 +1,13 @@
+# Per-machine UI state, not vault machinery. Tracking workspace.json meant every
+# pane move showed up as a change — the reason this history has "fix" / "clean" /
+# "vault backup" commits.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/home-tab/data.json
+
+# Uploaded images. The placeholders in assetsDefault/ ARE tracked.
+00 - Config/_obsi/assets/
+
+# The rest of .obsidian/ stays tracked on purpose: the QuickAdd, metadata-menu,
+# Templater and dataview configs are the vault's machinery, and a wizard that
+# loses its macro definition is a broken vault.
