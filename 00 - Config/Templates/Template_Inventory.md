@@ -28,7 +28,7 @@ item_type: {{VALUE:item_type}}
 > **Alias** | `=this.aliases` |
 > **Type** | `=this.item_type` |
 > **Owner** | `=link(this.owner)` |
-> **Value** | `=this.gold_value` gp |
+> **Value (gp)** | `=this.gold_value` |
 
 > [!info|bg-c-purple] Description
 > `=this.description`

@@ -5,9 +5,10 @@
 .obsidian/workspace-mobile.json
 .obsidian/plugins/home-tab/data.json
 
-# Uploaded images. The placeholders in assetsDefault/ ARE tracked.
-00 - Config/_obsi/assets/
-
+# NOTE: 00 - Config/_obsi/assets/ is deliberately NOT ignored. image_upload copies
+# your own maps and portraits there and writes full-path wikilinks into notes, so
+# ignoring it would make every uploaded image a broken embed on a fresh clone.
+#
 # The rest of .obsidian/ stays tracked on purpose: the QuickAdd, metadata-menu,
 # Templater and dataview configs are the vault's machinery, and a wizard that
 # loses its macro definition is a broken vault.
