@@ -292,7 +292,7 @@ effect.
 
 ---
 
-## Optional — back up your vault with Git
+## Optional — back up your vault with Git - WARNING STILL BETA
 
 The vault ships with the **Obsidian Git** plugin installed but **disabled**. You don't need it to
 play: it's a backup and sync tool. Turn it on if you want a full history of your notes, or if you

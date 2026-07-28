@@ -22,8 +22,25 @@
               "icon": "lucide-file",
               "title": "Dashboard"
             }
+          },
+          {
+            "id": "5e965c5405d05f0b",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md",
+                "mode": "preview",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Tides_of_Fates"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -190,7 +207,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 539.5
+    "width": 539.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,30 +224,34 @@
       "dbfolder:Create a new database table": false,
       "callout-manager:Insert Callout": false,
       "obsidian-leaflet-plugin:Open Leaflet Map": false,
-      "homepage:Open homepage": false,
-      "obsidian-git:Open Git source control": false
+      "homepage:Open homepage": false
     }
   },
   "active": "0e4b1e2304b5059a",
   "lastOpenFiles": [
-    "Dashboard.md",
-    "README.md",
-    "README.md.tmp.578045.ca86d7cc1dea",
-    "README.md.tmp.578045.46ade7f13c62",
-    "README.md.tmp.578045.1a8c7deb85cf",
-    "README.md.tmp.578045.52186e114a3a",
-    "README.md.tmp.578045.6f5bf4383b57",
-    "README.md.tmp.578045.c4653e46f90b",
-    "README.md.tmp.578045.b409ab434361",
-    "README.md.tmp.578045.855ad44dad7f",
-    "00 - Config/_obsi/tutorials_assets/Pasted image 20250912092521.png",
+    "01 - Campaigns/Tides_of_Fates/World/NPC/Aberration/asd.md",
     "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md",
+    "01 - Campaigns/Tides_of_Fates/World/NPC/Aberration",
+    "01 - Campaigns/Tides_of_Fates/World/NPC",
+    "Dashboard.md",
+    "00 - Config/_obsi/_obsi_scripts/Macros/_obsi_script_FixFrontmatterUrls.js",
+    "00 - Config/_obsi/_obsi_scripts/Macros/_obsi_script_FixFrontmatterUrls.js.tmp.415093.10f7becfad6a",
+    "Dashboard.md.tmp.415093.6eb3f6ca7ca8",
+    "README.md",
+    "Dashboard.md.tmp.415093.9bc3d63c036c",
+    "00 - Config/_obsi/_obsi_views/manager_aside/view.js.tmp.415093.4163a3c29b2a",
+    "01 - Campaigns/Tides_of_Fates/PC/test.md",
+    "01 - Campaigns/Tides_of_Fates/PC",
+    "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md.tmp.415093.f4ff92976216",
+    "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Cities/Amberhall/Amberhall.md",
+    "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Cities/Amberhall",
+    "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Veilmoria.md",
+    "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Continents/Forterian Isle/Forterian Isle.md",
+    "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Soltpeak.md",
+    "00 - Config/_obsi/tutorials_assets/Pasted image 20250912092521.png",
     "Cheat Cheat.md",
     "01 - Campaigns/Test/Test.md",
     "01 - Campaigns/Test/World/Locations/Dimension/TestWorld/TestWorld.md",
-    "01 - Campaigns/Test/World/Locations/Dimension/TestWorld",
-    "01 - Campaigns/Test/World/Locations/Dimension",
-    "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Soltpeak.md",
     "01 - Campaigns/Example_Campaign/Example_Campaign.md",
     "01 - Campaigns/Example_Campaign/World/Locations/Dimension/Example_Material_Plane/Countries/Fortterra/Cities/Testing/Testing.md",
     "00 - Config/_obsi/assets/Example_Campaign/Testing.png",
@@ -253,10 +275,6 @@
     "00 - Config/_obsi/assetsDefault/placeHolderLocations.png",
     "00 - Config/_obsi/assetsDefault/placeHolderItem.png",
     "00 - Config/_obsi/assetsDefault/placeHolderFactions.png",
-    "01 - Campaigns/Testing/Testing.md",
-    "01 - Campaigns/Testing/World/Locations/Dimension/Test World/Test World.md",
-    "00 - Config/Notes Templates/Note_Sending.md",
-    "01 - Campaigns/Example_Campaign/Inventory/Sword 1.md",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
     "Worlds/Lymnevia/Setting/Planes Relations.canvas"
   ]

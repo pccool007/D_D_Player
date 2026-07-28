@@ -1,0 +1,174 @@
+---
+version: "2.0"
+type: Location
+icon: LiBuilding
+iconColor: blue
+name: Amberhall
+aliases:
+world: "Soltpeak"
+date: 2026-07-28
+campaigns: "[[Tides_of_Fates]]"
+tags:
+locations:
+  - "[[Veilmoria]]"
+location_type: City
+location_tier_level: 5
+description: ""
+word_description: 
+population:
+leader: 
+theme:
+terrain: 
+govtType:
+defences:
+imports:
+exports:
+urls:
+img: "[[placeHolderLocations.png]]"
+---
+# [[Amberhall]]
+> [!infobox]
+> # `=this.file.name`
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "img", label: "Location" });
+> ```
+> ###### Info
+>  |
+> ---|---|
+> **Alias** | `=this.aliases` |
+> **Type** | `=this.location_type` |
+> **Parent** | `=link(this.locations)` |
+> **Population** | `=this.population` |
+> **Theme** | `=this.theme` |
+> **Terrain** | `=this.terrain` |
+> ###### Politics
+>  |
+> ---|---|
+> **Leaders** | `=this.leader` |
+> **Govt Type** | `=this.govtType` |
+> **Defenses** | `=this.defences` |
+> ###### Commerce
+>  |
+> ---|---|
+> **Imports** | `=this.imports` |
+> **Exports** | `=this.exports` |
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/action_bar", {
+>   actions: [
+>     ["New Location",      "Macro - Add Location (Child)", "#2f6d4f"],
+>     ["New Establishment", "Macro - Add Establishment",    "#9c4a2e"],
+>     ["New NPC",           "Macro - Add NPC",              "#8a5a2b"],
+>     ["New Faction",       "Macro - Add Faction",          "#6a3d9a"],
+>     ["New Quest",         "Macro - Add Quest",            "#2c6e49"],
+>   ],
+>   compact: true,
+> });
+> ```
+
+> [!map] Map
+> ```leaflet
+> id: Amberhall_map_Leaflet_
+> image: [[placeHolderMap.jpeg]]
+> height: 600px
+> width: 640px
+> lat: 50
+> long: 50
+> minZoom: 1
+> maxZoom: 5
+> defaultZoom: 1
+> unit: meters
+> scale: 1
+> darkMode: false
+> ```
+
+> [!info|bg-c-purple] Description
+>`=this.description`
+## Index
+### Associated Locations
+> [!table-data]- Other
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE contains(type,"Location") 
+> and !contains(location_type,"Dimension")
+> and !contains(location_type,"Continent")
+> and !contains(location_type,"Regions")
+> and !contains(location_type,"Country")
+> and !contains(location_type,"State")
+> and !contains(location_type,"City")
+> and !contains(location_type,"Dungeon")
+> and contains(locations,[[Amberhall]])
+> SORT file.name ASC, location_type ASC
+> ```
+
+> [!table-data]- Dungeons
+>```dataview
+> table word_description as "Description", location_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE contains(type,"Location") 
+> and contains(location_type,"Dungeon")
+> and contains(locations,[[Amberhall]])
+> SORT file.name ASC
+> ```
+
+### Associated Establishment 
+> [!table-data]- Table Shops/Services
+> ```dataview
+> table description as "Description", owner as "Owner", establishment_type as "type"
+> from "01 - Campaigns/Tides_of_Fates/World"
+> WHERE lower(type) = "establishment" 
+> and contains(locations,[[Amberhall]])
+> SORT file.establishment_type ASC
+> ```
+
+### Associated Characters
+> [!table-data] List of NPC's
+>```dataview
+> table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
+> from "01 - Campaigns/Tides_of_Fates/World/NPC"
+> WHERE contains(type,"NPC") 
+> and contains(locations,[[Amberhall]])
+> SORT file.name ASC
+> ```
+
+
+### Associated Factions 
+> [!table-data]- Factions
+> ```dataview
+> table description as "Description"
+> from "01 - Campaigns/Tides_of_Fates/World/Factions"
+> WHERE contains(type,"faction") 
+> and contains(locations,[[Amberhall]])
+> SORT file.name ASC
+> ```
+
+### Associated Quest
+> [!table-data]- Quest's For Amberhall
+> ```dataview
+> table description as "Description", owner as "Owner of the Quest", reward as "Reward", status as "Status"
+> from "01 - Campaigns/Tides_of_Fates/Quests"
+> WHERE contains(type,"quest") 
+> and contains(locations,[[Amberhall]])
+> SORT file.name ASC
+> ```
+
+### Others
+>[!table-data]- Links
+> ```dataview
+> TABLE without id file.inlinks AS "Links from", file.outlinks AS "Links to"
+> WHERE file.path = this.file.path
+> ```
+
+--- 
+>[!table-data]- Lores
+>```dataview
+> table description as "Description", lore_type as "Type"
+> from "01 - Campaigns/Tides_of_Fates/World/Lores"
+> WHERE contains(type,"Lore") 
+> and contains(relations,[[Amberhall]])
+> SORT file.name ASC
+> ```
+
+## History
+
+## Logs

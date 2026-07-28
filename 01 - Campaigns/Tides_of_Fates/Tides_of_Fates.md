@@ -14,6 +14,10 @@ campaign_start: 2026-07-09
 campaign_end:
 dndbeyond_url: https://www.dndbeyond.com/campaigns/5491138
 urls:
+- "[Vault Nextcloud](https://drive.bookmaster.ca/s/WLfqS9KogqePx8H)"
+- "[Google Drive](https://drive.google.com/drive/folders/11REmOmyBotKNfapNG54PAaCvbetXdAqO?usp=sharing)"
+- "[Fantasy Calendar](https://app.fantasy-calendar.com/calendars/ec2cc3cb95ba823ffc28649dcfe480b5)"
+- 
 ---
 # The World of [[Soltpeak]]
 

@@ -87,6 +87,20 @@ await dv.view("00 - Config/_obsi/_obsi_views/campaign_cards");
 const countSessions = (folder) => dv.pages(`"${folder}/Sessions"`)
   .where(p => dv.array(p.type).some(t => String(t).toLowerCase() === "session")).length;
 
+// A URL never contains whitespace, so scrubbing it keeps the cell clickable even
+// when a wrapped paste left a stray space behind ("https: //host/…").
+const cleanHref = (s) => String(s).replace(/\s+/g, "");
+const urlCell = (value) => {
+  const items = dv.array(value).map(u => {
+    const s = String(u);
+    const m = s.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    if (m) return `[${m[1].trim()}](${cleanHref(m[2])})`;
+    const href = cleanHref(s);
+    return /^https?:\/\//.test(href) ? `[${href.replace(/^https?:\/\/(www\.)?/, "").split("/")[0]}](${href})` : s;
+  });
+  return items.length ? items.join("<br>") : "—";
+};
+
 const rows = dv.pages('"01 - Campaigns"')
   .where(p => dv.array(p.type).some(t => String(t).toLowerCase() === "campaign"))
   .sort(p => String(p.status ?? ""))
@@ -97,8 +111,8 @@ const rows = dv.pages('"01 - Campaigns"')
     countSessions(p.file.folder),
     p.role ?? "—",
     p.status ?? "—",
-    p.dndbeyond_url ?? "—",
-    p.urls ?? "—",
+    p.dndbeyond_url ? urlCell(p.dndbeyond_url) : "—",
+    urlCell(p.urls),
   ]);
 
 dv.table(["Campaign", "World", "System", "Sessions", "Role", "Status", "D&D Beyond", "Other URLs"], rows);

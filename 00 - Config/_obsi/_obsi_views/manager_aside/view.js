@@ -90,13 +90,19 @@ if (isVault) {
 
 // ---- LINKS ----
 // `urls` holds markdown links ("[Label](href)"); dndbeyond_url is a bare URL.
+// A URL can never contain whitespace, so scrubbing it makes the panel immune to
+// the stray space a wrapped paste leaves behind ("https: //host/…").
+const cleanHref = (s) => String(s).replace(/\s+/g, "");
 const extern = [];
-if (has(p.dndbeyond_url)) extern.push(["D&D Beyond", String(list(p.dndbeyond_url)[0])]);
+if (has(p.dndbeyond_url)) extern.push(["D&D Beyond", cleanHref(list(p.dndbeyond_url)[0])]);
 for (const u of list(p.urls)) {
 	const s = String(u);
 	const m = s.match(/\[([^\]]+)\]\(([^)]+)\)/);
-	if (m) extern.push([m[1].trim(), m[2].trim()]);
-	else if (/^https?:\/\//.test(s)) extern.push([s.replace(/^https?:\/\/(www\.)?/, "").split("/")[0], s]);
+	if (m) extern.push([m[1].trim(), cleanHref(m[2])]);
+	else if (/^https?:\s*\/\//.test(s)) {
+		const href = cleanHref(s);
+		extern.push([href.replace(/^https?:\/\/(www\.)?/, "").split("/")[0], href]);
+	}
 }
 if (extern.length) {
 	const links = panel("Links");
