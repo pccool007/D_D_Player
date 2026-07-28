@@ -9,6 +9,9 @@
 //   with a parent    -> {campaign}/World/Factions/sub-factions/{parent}/{name}.md
 module.exports = async (params) => {
     const { app, quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
     const iconRegistry = require(path.join(
         app.vault.adapter.basePath,
@@ -16,12 +19,12 @@ module.exports = async (params) => {
     ));
 
     const name = await quickAddApi.inputPrompt("Faction name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const types = iconRegistry("faction");
     const labels = Object.keys(types);
     const faction_type = await quickAddApi.suggester(labels, labels, "Faction type?");
-    if (!faction_type) { variables.cancelled = true; return; }
+    if (!faction_type) cancel();
 
     const style = types[faction_type];
 

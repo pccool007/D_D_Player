@@ -28,7 +28,8 @@ module.exports = async (tp, domain) => {
     try {
         spec = specs.get(domain);
     } catch (e) {
-        new Notice(String(e.message || e));
+        const message = String(e.message || e);
+        try { new Notice(message); } catch (_) { console.log("[CaptureWizard]", message); }
         return "";
     }
 

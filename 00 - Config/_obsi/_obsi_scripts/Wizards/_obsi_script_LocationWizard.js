@@ -12,6 +12,9 @@
 // see Helpers/_obsi_script_LocationHierarchy.js for the nesting rules.
 module.exports = async (params) => {
     const { app, quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const Notice = params?.obsidian?.Notice;
     const path = require("path");
     const helper = (file) => require(path.join(
@@ -29,7 +32,7 @@ module.exports = async (params) => {
     const categories = iconRegistry("location");
 
     const name = await quickAddApi.inputPrompt("Location name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const typeOf = (f) =>
         String(app.metadataCache.getFileCache(f)?.frontmatter?.type || "").toLowerCase();
@@ -50,7 +53,7 @@ module.exports = async (params) => {
             [HAS_PARENT, NO],
             "Does this location have a parent location?"
         );
-        if (!wantsParent) { variables.cancelled = true; return; }
+        if (!wantsParent) cancel();
 
         if (wantsParent === HAS_PARENT) {
             // Offer the note the button was clicked from first, when it is a location.
@@ -71,7 +74,7 @@ module.exports = async (params) => {
                 [NO_PARENT, ...ordered],
                 "Parent location?"
             );
-            if (!picked) { variables.cancelled = true; return; }
+            if (!picked) cancel();
             if (picked !== NO_PARENT) parent = picked;
         }
     }
@@ -85,8 +88,7 @@ module.exports = async (params) => {
 
     if (!available.length) {
         if (Notice) new Notice(`No location type can nest under ${parent.basename}.`);
-        variables.cancelled = true;
-        return;
+        cancel();
     }
 
     const picked = await quickAddApi.suggester(
@@ -94,7 +96,7 @@ module.exports = async (params) => {
         available,
         parent ? `Location type? (inside ${parent.basename})` : "Location type?"
     );
-    if (!picked) { variables.cancelled = true; return; }
+    if (!picked) cancel();
 
     variables.name = name;
     // Frontmatter the promote parser fills in from a session capture — set blank

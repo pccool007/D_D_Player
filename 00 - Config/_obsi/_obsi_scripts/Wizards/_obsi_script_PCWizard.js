@@ -8,6 +8,9 @@
 // (and expand with every supplement), unlike the fixed 5e creature types NPCs use.
 module.exports = async (params) => {
     const { quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
     const iconRegistry = require(path.join(
         params.app.vault.adapter.basePath,
@@ -15,12 +18,12 @@ module.exports = async (params) => {
     ));
 
     const name = await quickAddApi.inputPrompt("Character name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const classes = iconRegistry("pc");
     const labels = Object.keys(classes);
     const pcClass = await quickAddApi.suggester(labels, labels, "Class?");
-    if (!pcClass) { variables.cancelled = true; return; }
+    if (!pcClass) cancel();
 
     const style = classes[pcClass];
 

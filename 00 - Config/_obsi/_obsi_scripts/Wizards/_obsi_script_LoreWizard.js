@@ -6,6 +6,9 @@
 // variables.folderName to "01 - Campaigns/{campaign}".
 module.exports = async (params) => {
     const { app, quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
     const iconRegistry = require(path.join(
         app.vault.adapter.basePath,
@@ -15,12 +18,12 @@ module.exports = async (params) => {
     const SKIP = "— Skip —";
 
     const name = await quickAddApi.inputPrompt("Lore name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const types = iconRegistry("lore");
     const labels = Object.keys(types);
     const lore_type = await quickAddApi.suggester(labels, labels, "Lore type?");
-    if (!lore_type) { variables.cancelled = true; return; }
+    if (!lore_type) cancel();
 
     const style = types[lore_type];
 

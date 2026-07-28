@@ -13,6 +13,9 @@
 // Nesting rules live in Helpers/_obsi_script_LocationHierarchy.js.
 module.exports = async (params) => {
   const { app, quickAddApi, variables } = params;
+  // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+  // macro's template step run on to create a note from empty values.
+  const cancel = () => { variables.cancelled = true; throw "cancelled"; };
   const Notice = params?.obsidian?.Notice;
   const path = require("path");
   const helper = (file) => require(path.join(
@@ -35,7 +38,7 @@ module.exports = async (params) => {
     String(app.metadataCache.getFileCache(f)?.frontmatter?.type || "").toLowerCase();
 
   const name = await quickAddApi.inputPrompt("Location name?");
-  if (!name) { variables.cancelled = true; return; }
+  if (!name) cancel();
 
   // 1. Parent first — the active note is the default, but it can be swapped or
   //    dropped. Its tier decides which types are offered below.
@@ -47,7 +50,7 @@ module.exports = async (params) => {
   const values = parent ? [parent, OTHER_PARENT, NO_PARENT] : [OTHER_PARENT, NO_PARENT];
 
   const answer = await quickAddApi.suggester(choices, values, "Parent location?");
-  if (!answer) { variables.cancelled = true; return; }
+  if (!answer) cancel();
 
   if (answer === NO_PARENT) {
     parent = null;
@@ -61,15 +64,14 @@ module.exports = async (params) => {
       : [];
     if (!candidates.length) {
       if (Notice) new Notice("No other location found in this campaign.");
-      variables.cancelled = true;
-      return;
+      cancel();
     }
     const pickedParent = await quickAddApi.suggester(
       [NO_PARENT, ...candidates.map(f => f.basename)],
       [NO_PARENT, ...candidates],
       "Parent location?"
     );
-    if (!pickedParent) { variables.cancelled = true; return; }
+    if (!pickedParent) cancel();
     parent = pickedParent === NO_PARENT ? null : pickedParent;
   } else {
     parent = answer;
@@ -84,8 +86,7 @@ module.exports = async (params) => {
 
   if (!available.length) {
     if (Notice) new Notice(`No location type can nest under ${parent.basename}.`);
-    variables.cancelled = true;
-    return;
+    cancel();
   }
 
   const picked = await quickAddApi.suggester(
@@ -93,12 +94,11 @@ module.exports = async (params) => {
     available,
     parent ? `Location type? (inside ${parent.basename})` : "Location type?"
   );
-  if (!picked) { variables.cancelled = true; return; }
+  if (!picked) cancel();
 
   if (!parent && !campaignRoot) {
     if (Notice) new Notice("Cannot resolve the campaign folder — open a campaign note first.");
-    variables.cancelled = true;
-    return;
+    cancel();
   }
 
   variables.name = name;

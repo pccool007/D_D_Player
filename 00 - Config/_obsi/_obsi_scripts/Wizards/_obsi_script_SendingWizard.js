@@ -55,7 +55,8 @@ module.exports = async (tp) => {
         ...pcs.map(f => ({ label: `Player · ${f.basename}`, name: f.basename })),
     ];
     if (!candidates.length) {
-        new Notice("Sending wizard: no NPC or Player note found in this campaign.");
+        const message = "Sending wizard: no NPC or Player note found in this campaign.";
+        try { new Notice(message); } catch (e) { console.log("[SendingWizard]", message); }
         return "";
     }
 

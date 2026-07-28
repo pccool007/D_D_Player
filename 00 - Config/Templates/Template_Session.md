@@ -42,18 +42,20 @@ await dv.view("00 - Config/_obsi/_obsi_views/session_hero");
 
 
 ## Recap
-
-### Previous Summary
-![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#^summary]]
-
-### Previous Logs
-![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#log]]
-
-### Previous Session Goals
-![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#Session_Goals]]
-
-### Previous Housekeeping
-![[<% tp.user._obsi_script_GetLastGameTitle(tp) %>#Housekeeping]]
+<%*
+// Resolved once — four calls meant four Dataview queries for the same answer.
+// No previous session means no embeds at all: ![[#^summary]] against a missing
+// note renders as a broken embed in the finished note.
+const prev = tp.user._obsi_script_GetLastGameTitle(tp);
+if (prev) {
+  tR += `\n### Previous Summary\n![[${prev}#^summary]]\n`;
+  tR += `\n### Previous Logs\n![[${prev}#log]]\n`;
+  tR += `\n### Previous Session Goals\n![[${prev}#Session_Goals]]\n`;
+  tR += `\n### Previous Housekeeping\n![[${prev}#Housekeeping]]\n`;
+} else {
+  tR += `\n*First session in this campaign — nothing to recap yet.*\n`;
+}
+-%>
 
 
 ---

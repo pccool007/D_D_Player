@@ -12,6 +12,9 @@
 // emitted `establishment_type: undefined`).
 module.exports = async (params) => {
     const { app, quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
     const iconRegistry = require(path.join(
         app.vault.adapter.basePath,
@@ -21,14 +24,14 @@ module.exports = async (params) => {
     const SKIP = "— Skip —";
 
     const name = await quickAddApi.inputPrompt("Establishment name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const categories = iconRegistry("establishment");
     const labels = Object.keys(categories);
     const establishment_type = await quickAddApi.suggester(
         labels, labels, "Establishment category?"
     );
-    if (!establishment_type) { variables.cancelled = true; return; }
+    if (!establishment_type) cancel();
 
     variables.name = name;
     // Frontmatter the promote parser fills in from a session capture — set blank

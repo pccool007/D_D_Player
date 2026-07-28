@@ -11,6 +11,9 @@
 // belongs in the template's `subRace` field, which is left blank for the GM to fill.
 module.exports = async (params) => {
     const { app, quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
     const iconRegistry = require(path.join(
         app.vault.adapter.basePath,
@@ -23,12 +26,12 @@ module.exports = async (params) => {
     const GENDERS = ["Male", "Female", "Non-binary", "Unknown", "Other"];
 
     const name = await quickAddApi.inputPrompt("NPC name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const races = iconRegistry("npc");
     const labels = Object.keys(races);
     const race = await quickAddApi.suggester(labels, labels, "Creature type?");
-    if (!race) { variables.cancelled = true; return; }
+    if (!race) cancel();
 
     const style = races[race];
 

@@ -8,6 +8,9 @@
 // still comes from IconRegistry so quest styling lives in one place.
 module.exports = async (params) => {
     const { app, quickAddApi, variables } = params;
+    // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
+    // macro's template step run on to create a note from empty values.
+    const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
     const iconRegistry = require(path.join(
         app.vault.adapter.basePath,
@@ -18,7 +21,7 @@ module.exports = async (params) => {
     const INITIAL_STATUS = "To Do";
 
     const name = await quickAddApi.inputPrompt("Quest name?");
-    if (!name) { variables.cancelled = true; return; }
+    if (!name) cancel();
 
     const reward = await quickAddApi.inputPrompt("Reward? (gold, item, favor…)");
 

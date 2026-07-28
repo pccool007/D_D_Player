@@ -31,10 +31,16 @@ module.exports = async (domain, params) => {
     const iconRegistry = helper(ICON_REGISTRY);
     const spec = specs.get(domain);
 
+    // Throwing is the only thing QuickAdd honours — setting variables.cancelled
+    // alone lets the macro's template step run on and create an empty note.
+    // Notice is not reliably in scope here, and this is the error path, so a bare
+    // call would throw over its own message.
     const cancel = (message) => {
-        if (message) new Notice(message);
+        if (message) {
+            try { new Notice(message); } catch (e) { console.log("[ParseCapture]", message); }
+        }
         variables.cancelled = true;
-        return false;
+        throw "cancelled";
     };
 
     const source = app.workspace.getActiveFile();
