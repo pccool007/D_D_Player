@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiBuilding",
-      "LiTriangle",
-      "LiSquare",
-      "LiCircle",
-      "LiBookA"
+      "LiRectangleHorizontal",
+      "LiBookA",
+      "LiLayoutDashboard",
+      "LiBookOpen",
+      "LiBuilding"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -70,8 +70,8 @@
     "iconName": "LiLayoutDashboard",
     "iconColor": "blue"
   },
-  "00 - Config": "\u2699",
-  "01 - Campaigns": "\ud83c\udfd5",
+  "00 - Config": "⚙",
+  "01 - Campaigns": "🏕",
   "README.md": "LiBook",
   "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md": {
     "iconName": "LiBookOpen",
