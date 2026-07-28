@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "Configuations/Templates",
+  "templates_folder": "00 - Config/Notes Templates",
   "templates_pairs": [
     [
       "",
@@ -11,7 +11,7 @@
   "auto_jump_to_cursor": false,
   "enable_system_commands": false,
   "shell_path": "",
-  "user_scripts_folder": "_obsi/scripts",
+  "user_scripts_folder": "00 - Config/_obsi/_obsi_scripts",
   "enable_folder_templates": true,
   "folder_templates": [],
   "enable_file_templates": false,

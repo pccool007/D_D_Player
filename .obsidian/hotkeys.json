@@ -24,13 +24,13 @@
       "key": "P"
     }
   ],
-  "insert-template": [
+  "graph:open": [],
+  "templater-obsidian:insert-templater": [
     {
       "modifiers": [
         "Mod"
       ],
       "key": "G"
     }
-  ],
-  "graph:open": []
+  ]
 }

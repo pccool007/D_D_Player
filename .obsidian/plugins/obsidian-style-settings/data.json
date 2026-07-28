@@ -3,5 +3,7 @@
   "ITS@@paper": false,
   "ITS@@writing": false,
   "ITS@@disable-source-styling": false,
-  "ITS@@justified": false
+  "ITS@@justified": false,
+  "ITS@@accent-color": true,
+  "ITS@@select": "none"
 }

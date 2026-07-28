@@ -20,6 +20,8 @@
     "locations": "multitext",
     "lore_type": "text",
     "session_num": "text",
-    "campaign": "text"
+    "campaign": "text",
+    "campaign_end": "date",
+    "dndbeyond_url": "text"
   }
 }

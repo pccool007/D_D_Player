@@ -1,0 +1,1 @@
+<%* tR += await tp.user._obsi_script_SendingWizard(tp) %>

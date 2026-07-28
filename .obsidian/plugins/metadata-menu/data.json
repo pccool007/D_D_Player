@@ -9,8 +9,7 @@
       "options": {
         "embed": false,
         "folders": [
-          null,
-          "_obsi/assets/NPC"
+          "00 - Config/_obsi/assets/"
         ],
         "display": "card",
         "thumbnailSize": "100"
@@ -87,10 +86,11 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
-          "1": "Organization",
-          "2": "Religion",
+          "1": "Religion",
+          "2": "Citizenship",
           "3": "Gang",
-          "4": "Citizenship"
+          "4": "Organisation",
+          "5": "Deity_Group"
         }
       },
       "name": "faction_type",
@@ -108,8 +108,9 @@
         "valuesList": {
           "1": "To Do",
           "2": "In Progress",
-          "3": "Done",
-          "4": "Failed"
+          "3": "Completed",
+          "4": "Failed",
+          "5": "Abandoned"
         }
       },
       "name": "quest_status",
@@ -129,10 +130,12 @@
         "sourceType": "ValuesList",
         "valuesList": {
           "1": "Lore",
-          "2": "Truth",
-          "3": "Lies",
-          "4": "Concepts",
-          "5": "Information"
+          "2": "Concept",
+          "3": "History",
+          "4": "Myth",
+          "5": "Player_Lore",
+          "6": "Language",
+          "7": "Music"
         }
       },
       "name": "lore_type",
@@ -148,8 +151,7 @@
       "options": {
         "embed": false,
         "folders": [
-          null,
-          "_obsi/assets"
+          "00 - Config/_obsi/assets/"
         ],
         "display": "card",
         "thumbnailSize": "100"
@@ -184,20 +186,229 @@
       "options": {
         "sourceType": "ValuesList",
         "valuesList": {
-          "1": "City",
-          "2": "Dungeon",
-          "3": "Country",
-          "4": "Region",
-          "5": "Dimension",
-          "6": "State",
-          "7": "Water",
-          "8": "Forest",
+          "1": "Dimension",
+          "2": "Continent",
+          "3": "Regions",
+          "4": "Country",
+          "5": "State",
+          "6": "City",
+          "7": "Forest",
+          "8": "Water",
           "9": "Mountain",
-          "10": "Island"
+          "10": "Island",
+          "11": "Dungeon"
         }
       },
       "name": "location_type",
       "id": "gmmqhr",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Creature type \u2014 the values the NPC wizard offers (IconRegistry npc domain)",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Aberration",
+          "2": "Beast",
+          "3": "Celestial",
+          "4": "Construct",
+          "5": "Dragon",
+          "6": "Elemental",
+          "7": "Fey",
+          "8": "Fiend",
+          "9": "Giant",
+          "10": "Humanoid",
+          "11": "Monstrosity",
+          "12": "Ooze",
+          "13": "Plant",
+          "14": "Undead",
+          "15": "Unknown"
+        }
+      },
+      "name": "race",
+      "id": "race00",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Male",
+          "2": "Female",
+          "3": "Non-binary",
+          "4": "Unknown",
+          "5": "Other"
+        }
+      },
+      "name": "gender",
+      "id": "gender",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Icon name set by the creation wizards \u2014 mirrors _obsi_script_IconRegistry",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "LiAlertTriangle",
+          "2": "LiAlien",
+          "3": "LiApple",
+          "4": "LiArchive",
+          "5": "LiAxe",
+          "6": "LiBook",
+          "7": "LiBookOpen",
+          "8": "LiBriefcase",
+          "9": "LiBuilding",
+          "10": "LiBulb",
+          "11": "LiCalendar",
+          "12": "LiCastle",
+          "13": "LiChurch",
+          "14": "LiCircle",
+          "15": "LiCircleCheck",
+          "16": "LiCircleX",
+          "17": "LiCog",
+          "18": "LiCpu",
+          "19": "LiCrosshair",
+          "20": "LiDiamond",
+          "21": "LiDroplet",
+          "22": "LiEyeOff",
+          "23": "LiFlame",
+          "24": "LiFlaskConical",
+          "25": "LiGavel",
+          "26": "LiGem",
+          "27": "LiHammer",
+          "28": "LiHand",
+          "29": "LiHandCoins",
+          "30": "LiHelpCircle",
+          "31": "LiIdCard",
+          "32": "LiLanguages",
+          "33": "LiLeaf",
+          "34": "LiLoader",
+          "35": "LiMoon",
+          "36": "LiMountain",
+          "37": "LiMusic",
+          "38": "LiOctagon",
+          "39": "LiPackage",
+          "40": "LiPawPrint",
+          "41": "LiPlane",
+          "42": "LiRectangleHorizontal",
+          "43": "LiScroll",
+          "44": "LiShield",
+          "45": "LiSkull",
+          "46": "LiSparkles",
+          "47": "LiSquare",
+          "48": "LiStar",
+          "49": "LiStore",
+          "50": "LiSun",
+          "51": "LiSword",
+          "52": "LiSwords",
+          "53": "LiTrees",
+          "54": "LiTriangle",
+          "55": "LiUser",
+          "56": "LiUser2",
+          "57": "LiWaves",
+          "58": "LiWind",
+          "59": "LiWine"
+        }
+      },
+      "name": "icon",
+      "id": "icon00",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Icon colour set by the creation wizards \u2014 mirrors _obsi_script_IconRegistry",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "blue",
+          "2": "cyan",
+          "3": "gray",
+          "4": "green",
+          "5": "orange",
+          "6": "pink",
+          "7": "purple",
+          "8": "red",
+          "9": "yellow"
+        }
+      },
+      "name": "iconColor",
+      "id": "iconCo",
+      "path": ""
+    },
+    {
+      "type": "MultiFile",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Multiple internal links \u2014 locations and establishments in this campaign",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"location\", \"establishment\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+      },
+      "name": "locations",
+      "id": "locati",
+      "path": ""
+    },
+    {
+      "type": "File",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Single internal link \u2014 where this NPC was first met, in this campaign",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"location\", \"establishment\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+      },
+      "name": "first_location",
+      "id": "first_",
+      "path": ""
+    },
+    {
+      "type": "File",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Single internal link \u2014 where this NPC was last seen, in this campaign",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"location\", \"establishment\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+      },
+      "name": "last_seen",
+      "id": "last_s",
+      "path": ""
+    },
+    {
+      "type": "MultiFile",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Multiple internal links \u2014 factions in this campaign",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"faction\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+      },
+      "name": "factions",
+      "id": "factio",
       "path": ""
     }
   ],

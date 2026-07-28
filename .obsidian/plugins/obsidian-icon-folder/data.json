@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiTriangle",
-      "LiUser",
-      "LiUser2",
-      "LiSword",
-      "LiBook"
+      "LiBook",
+      "LiCircle",
+      "LiBookOpen",
+      "LiFlame",
+      "LiCpu"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -34,50 +34,51 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "Campaigns/Example_Campaign/World/Establisments/Shop ang gibbles.md": {
-    "iconName": "LiStore"
-  },
-  "Configuations/Templates/Template_PC.md": {
+  "00 - Config/Templates/Template_PC.md": {
     "iconName": "LiSwords",
     "iconColor": "blue"
   },
-  "Configuations/Templates/Template_Quest.md": {
+  "00 - Config/Templates/Template_Quest.md": {
     "iconName": "LiHandCoins",
     "iconColor": "yellow"
   },
-  "Configuations/Templates/Template_NPC.md": {
+  "00 - Config/Templates/Template_NPC.md": {
     "iconName": "LiUser",
     "iconColor": "green"
   },
-  "Configuations/Templates/Template_Lore.md": {
+  "00 - Config/Templates/Template_Lore.md": {
     "iconName": "LiBook",
     "iconColor": "yellow"
   },
-  "Configuations/Templates/Template_Inventory.md": {
+  "00 - Config/Templates/Template_Inventory.md": {
     "iconName": "LiSword",
     "iconColor": "orange"
   },
-  "Configuations/Templates/Template_Faction.md": {
+  "00 - Config/Templates/Template_Faction.md": {
     "iconName": "LiUser2",
     "iconColor": "purple"
   },
-  "Configuations/Templates/Template_Campaign_Manager.md": {
-    "iconName": "LiBookOpen"
+  "00 - Config/Templates/Template_Campaign_Manager.md": {
+    "iconName": "LiBookOpen",
+    "iconColor": "yellow"
   },
-  "Configuations/Templates/Template_Session.md": {
+  "00 - Config/Templates/Template_Session.md": {
     "iconName": "LiBookA",
     "iconColor": "red"
   },
-  "Campaigns/Example_Campaign/World/Locations/Forterra 2.md": {
-    "iconName": "LiRectangleHorizontal",
+  "Dashboard.md": {
+    "iconName": "LiLayoutDashboard",
     "iconColor": "blue"
   },
-  "Campaigns/Example_Campaign/World/NPC/Clement.md": {
-    "iconName": "LiUser",
-    "iconColor": "green"
-  },
-  "Campaigns/Example_Campaign/World/Factions/sfd.md": {
-    "iconName": "LiUser2",
+  "00 - Config": "⚙",
+  "01 - Campaigns": "🏕",
+  "01 - Campaigns/Example_Campaign/World/NPC/Undead/World/NPC/Undead Bob.md": {
+    "iconName": "LiMoon",
     "iconColor": "purple"
-  }
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Soltpeak.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "README.md": "LiBook"
 }

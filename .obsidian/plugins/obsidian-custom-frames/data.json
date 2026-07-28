@@ -1,4 +1,17 @@
 {
-  "frames": [],
+  "frames": [
+    {
+      "url": "https://app.fantasy-calendar.com/calendars/ec2cc3cb95ba823ffc28649dcfe480b5",
+      "displayName": "Sol_cal",
+      "icon": "",
+      "hideOnMobile": true,
+      "addRibbonIcon": false,
+      "openInCenter": false,
+      "zoomLevel": 1,
+      "forceIframe": false,
+      "customCss": "",
+      "customJs": ""
+    }
+  ],
   "padding": 5
 }

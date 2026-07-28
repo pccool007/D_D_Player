@@ -53,7 +53,8 @@
     "useActualLinks": false,
     "fmtpIntegration": false,
     "titleSize": 1,
-    "isInCallout": false
+    "isInCallout": false,
+    "useWikilinks": true
   },
   "useSubmenus": true,
   "syncMove": true,
@@ -73,9 +74,9 @@
   "cursiveName": false,
   "cursiveNameInPath": false,
   "disableOpenFolderNoteOnClick": false,
-  "openByClick": true,
+  "openByClick": false,
   "openWithCtrl": false,
-  "openWithAlt": false,
+  "openWithAlt": true,
   "excludeFolderDefaultSettings": {
     "type": "folder",
     "path": "",
@@ -125,5 +126,6 @@
   "firstTimeInsertOverview": true,
   "fvGlobalSettings": {
     "autoUpdateLinks": false
-  }
+  },
+  "hideFolderNoteNameInPath": false
 }
