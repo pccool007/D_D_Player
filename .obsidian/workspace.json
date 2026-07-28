@@ -176,16 +176,6 @@
             }
           },
           {
-            "id": "dcb19df62644100e",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
-          },
-          {
             "id": "696df2c272c4db23",
             "type": "leaf",
             "state": {
@@ -196,7 +186,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -220,8 +210,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "0e4b1e2304b5059a",
   "lastOpenFiles": [
+    "Dashboard.md",
     "README.md",
     "README.md.tmp.578045.ca86d7cc1dea",
     "README.md.tmp.578045.46ade7f13c62",
@@ -233,7 +224,6 @@
     "README.md.tmp.578045.855ad44dad7f",
     "00 - Config/_obsi/tutorials_assets/Pasted image 20250912092521.png",
     "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md",
-    "Dashboard.md",
     "Cheat Cheat.md",
     "01 - Campaigns/Test/Test.md",
     "01 - Campaigns/Test/World/Locations/Dimension/TestWorld/TestWorld.md",
