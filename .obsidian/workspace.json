@@ -22,25 +22,8 @@
               "icon": "lucide-file",
               "title": "Dashboard"
             }
-          },
-          {
-            "id": "8fbdaba1e5d064d6",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md",
-                "mode": "preview",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Tides_of_Fates"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -191,14 +174,33 @@
               "icon": "dices",
               "title": "Dice Tray"
             }
+          },
+          {
+            "id": "dcb19df62644100e",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "696df2c272c4db23",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
+              "icon": "checkmark",
+              "title": "Todo List"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 539.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -214,27 +216,29 @@
       "dbfolder:Create a new database table": false,
       "callout-manager:Insert Callout": false,
       "obsidian-leaflet-plugin:Open Leaflet Map": false,
-      "homepage:Open homepage": false
+      "homepage:Open homepage": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8fbdaba1e5d064d6",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
     "README.md",
-    "Dashboard.md",
+    "README.md.tmp.578045.ca86d7cc1dea",
+    "README.md.tmp.578045.46ade7f13c62",
+    "README.md.tmp.578045.1a8c7deb85cf",
+    "README.md.tmp.578045.52186e114a3a",
+    "README.md.tmp.578045.6f5bf4383b57",
+    "README.md.tmp.578045.c4653e46f90b",
+    "README.md.tmp.578045.b409ab434361",
+    "README.md.tmp.578045.855ad44dad7f",
+    "00 - Config/_obsi/tutorials_assets/Pasted image 20250912092521.png",
     "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md",
+    "Dashboard.md",
     "Cheat Cheat.md",
     "01 - Campaigns/Test/Test.md",
     "01 - Campaigns/Test/World/Locations/Dimension/TestWorld/TestWorld.md",
     "01 - Campaigns/Test/World/Locations/Dimension/TestWorld",
     "01 - Campaigns/Test/World/Locations/Dimension",
-    "01 - Campaigns/Test/World/Locations",
-    "01 - Campaigns/Test/World",
-    "01 - Campaigns/Test",
-    "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_GetWorldName.js.tmp.415093.af73a5af78a2",
-    "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_GetWorldName.js.tmp.415093.547afdb795f6",
-    "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_GetWorldName.js.tmp.415093.9e480ed56e82",
-    "00 - Config/Templates/Template_Campaign_Manager.md.tmp.415093.b1339c9b3607",
-    "01 - Campaigns/Tides_of_Fates/Tides_of_Fates.md.tmp.603578.4bd4f2a2f879",
     "01 - Campaigns/Tides_of_Fates/World/Locations/Dimension/Soltpeak/Soltpeak.md",
     "01 - Campaigns/Example_Campaign/Example_Campaign.md",
     "01 - Campaigns/Example_Campaign/World/Locations/Dimension/Example_Material_Plane/Countries/Fortterra/Cities/Testing/Testing.md",
@@ -259,12 +263,10 @@
     "00 - Config/_obsi/assetsDefault/placeHolderLocations.png",
     "00 - Config/_obsi/assetsDefault/placeHolderItem.png",
     "00 - Config/_obsi/assetsDefault/placeHolderFactions.png",
-    "00 - Config/_obsi/assetsDefault/placeHolderEstablishment.png",
     "01 - Campaigns/Testing/Testing.md",
     "01 - Campaigns/Testing/World/Locations/Dimension/Test World/Test World.md",
     "00 - Config/Notes Templates/Note_Sending.md",
     "01 - Campaigns/Example_Campaign/Inventory/Sword 1.md",
-    "01 - Campaigns/Example_Campaign/World/NPC/Construct/Construct 2.md",
     "Worlds/Lymnevia/Setting/Pantheon.canvas",
     "Worlds/Lymnevia/Setting/Planes Relations.canvas"
   ]
