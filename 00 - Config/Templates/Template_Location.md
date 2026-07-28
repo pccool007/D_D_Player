@@ -9,15 +9,15 @@ world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
 date: <% tp.date.now("YYYY-MM-DD") %>
 campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
-locations:{{VALUE:locations}}
+locations: {{VALUE:locations}}
 location_type: {{VALUE:location_type}}
 location_tier_level: {{VALUE:location_tier_level}}
 description: "{{VALUE:description}}"
-word_description: {{VALUE:word_description}}
+word_description: "{{VALUE:word_description}}"
 population:
 leader: {{VALUE:leader}}
 theme:
-terrain: {{VALUE:terrain}}
+terrain: "{{VALUE:terrain}}"
 govtType:
 defences:
 imports:
@@ -100,7 +100,7 @@ const tiers = [
 ];
 for (const t of tiers) {
   if (showBelow(t.n)) {
-    tR += `> [!table-data]- ${t.label}\n>\`\`\`dataview\n> table word_description as "Description", location_type as "Type"\n> from "01 - Campaigns/${campaign}/World"\n> WHERE contains(type,"Location") \n> and contains(location_type, "${t.type}")\n> and contains(locations,[[${me}]])\n> SORT file.name ASC\n> \`\`\`\n\n`;
+    tR += `> [!table-data]- ${t.label}\n>\`\`\`dataview\n> table word_description as "Description", location_type as "Type"\n> from "01 - Campaigns/${campaign}/World"\n> WHERE lower(type) = "location" \n> and contains(location_type, "${t.type}")\n> and contains(locations,[[${me}]])\n> SORT file.name ASC\n> \`\`\`\n\n`;
   }
 }
 -%>
@@ -108,7 +108,7 @@ for (const t of tiers) {
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and !contains(location_type,"Dimension")
 > and !contains(location_type,"Continent")
 > and !contains(location_type,"Regions")
@@ -124,7 +124,7 @@ for (const t of tiers) {
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type,"Dungeon")
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
@@ -145,7 +145,7 @@ for (const t of tiers) {
 >```dataview
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
-> WHERE contains(type,"NPC") 
+> WHERE lower(type) = "npc" 
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
@@ -156,7 +156,7 @@ for (const t of tiers) {
 > ```dataview
 > table description as "Description"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Factions"
-> WHERE contains(type,"faction") 
+> WHERE lower(type) = "faction" 
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
@@ -164,9 +164,9 @@ for (const t of tiers) {
 ### Associated Quest
 > [!table-data]- Quest's For <% tp.file.title %>
 > ```dataview
-> table description as "Description", owner as "Owner of the Quest", reward as "Reward", status as "Status"
+> table description as "Description", owner as "Owner of the Quest", reward as "Reward", quest_status as "Status"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/Quests"
-> WHERE contains(type,"quest") 
+> WHERE lower(type) = "quest" 
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
@@ -183,7 +183,7 @@ for (const t of tiers) {
 >```dataview
 > table description as "Description", lore_type as "Type"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE contains(type,"Lore") 
+> WHERE lower(type) = "lore" 
 > and contains(relations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```

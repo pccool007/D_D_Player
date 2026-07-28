@@ -11,9 +11,9 @@ campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 establishment_type: {{VALUE:establishment_type}}
 img: "[[placeHolderEstablishment.png]]"
-locations:{{VALUE:locations}}
+locations: {{VALUE:locations}}
 description: "{{VALUE:description}}"
-word_description: {{VALUE:word_description}}
+word_description: "{{VALUE:word_description}}"
 owner: {{VALUE:owner}}
 ---
 # [[<% tp.file.title %>]]
@@ -50,7 +50,7 @@ owner: {{VALUE:owner}}
 >```dataview
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
-> WHERE contains(type,"NPC") 
+> WHERE lower(type) = "npc" 
 > and contains(locations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```

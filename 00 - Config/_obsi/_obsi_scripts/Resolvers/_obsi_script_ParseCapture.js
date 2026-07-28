@@ -98,6 +98,15 @@ module.exports = async (domain, params) => {
     // double quote has to go.
     const plain = (value) => String(value || "").replace(/"/g, "'").trim();
 
+    // `leader` and `owner` hold EITHER a resolved "[[Note]]" link or free text, so
+    // the templates cannot quote those slots without breaking the link branch —
+    // the value has to arrive already quoted either way. Empty stays empty so the
+    // key parses as null rather than as the string "".
+    const quoted = (value) => {
+        const text = plain(value);
+        return text ? `"${text}"` : "";
+    };
+
     variables.name = name;
     variables.fileName = name;
     variables.capture_source_path = source.path;
@@ -143,7 +152,7 @@ module.exports = async (domain, params) => {
         variables.iconColor = style.iconColor;
 
         const leader = noteNamed(values.leader, ["npc"]);
-        variables.leader = leader ? `"[[${leader.basename}]]"` : plain(values.leader);
+        variables.leader = leader ? `"[[${leader.basename}]]"` : quoted(values.leader);
         const hq = noteNamed(values.hq, ["location", "establishment"]);
         variables.locations = hq ? `\n  - "[[${hq.basename}]]"` : "";
         variables.goal = plain(values.goal);
@@ -182,7 +191,7 @@ module.exports = async (domain, params) => {
         }
 
         const ruler = noteNamed(values.leader, ["npc", "faction"]);
-        variables.leader = ruler ? `"[[${ruler.basename}]]"` : plain(values.leader);
+        variables.leader = ruler ? `"[[${ruler.basename}]]"` : quoted(values.leader);
         variables.terrain = plain(values.terrain);
         variables.description = plain(values.known_for);
 
@@ -205,7 +214,7 @@ module.exports = async (domain, params) => {
         variables.icon = style.icon;
 
         const owner = noteNamed(values.owner, ["npc"]);
-        variables.owner = owner ? `"[[${owner.basename}]]"` : plain(values.owner);
+        variables.owner = owner ? `"[[${owner.basename}]]"` : quoted(values.owner);
         variables.description = plain(values.known_for);
 
         const where = noteNamed(values.where, ["location"]);

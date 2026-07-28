@@ -11,21 +11,21 @@ campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 urls:
 description: "{{VALUE:description}}"
-word_description: {{VALUE:word_description}}
+word_description: "{{VALUE:word_description}}"
 race: {{VALUE:race}}
-subRace: {{VALUE:subRace}}
+subRace: "{{VALUE:subRace}}"
 gender: {{VALUE:gender}}
-age: {{VALUE:age}}
+age: "{{VALUE:age}}"
 sexuality:
 npc_img: "[[placeHolderNPC.jpg]]"
 condition: Alive
 party_standing: Neutral
-locations:{{VALUE:locations}}
+locations: {{VALUE:locations}}
 first_location: {{VALUE:first_location}}
 last_seen: {{VALUE:last_seen}}
 class:
-occupation: {{VALUE:occupation}}
-factions:{{VALUE:factions}}
+occupation: "{{VALUE:occupation}}"
+factions: {{VALUE:factions}}
 languages:
 likes:
 dislikes:
@@ -52,7 +52,7 @@ dislikes:
 > **Occupation(s)** | `=this.occupation` |
 > **Faction(s)** | `=link(this.factions)` |
 > **Location** | `=link(this.locations)` |
->  **First Meeting Location** | `=link(this.first_locations)` |
+>  **First Meeting Location** | `=link(this.first_location)` |
 
 > [!info|bg-c-purple]- Description
 > `=this.description`
@@ -78,7 +78,7 @@ dislikes:
 >```dataview
 > table description as "Description", lore_type as "Type"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE contains(type,"Lore") 
+> WHERE lower(type) = "lore" 
 > and contains(relations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```

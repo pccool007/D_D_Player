@@ -10,10 +10,10 @@ date: <% tp.date.now("YYYY-MM-DD") %>
 campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 quest_status: {{VALUE:quest_status}}
-reward: {{VALUE:reward}}
+reward: "{{VALUE:reward}}"
 owner: {{VALUE:owner}}
 time_delay:
-locations:{{VALUE:locations}}
+locations: {{VALUE:locations}}
 description:
 ---
 # [[<% tp.file.title %>]]

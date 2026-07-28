@@ -12,7 +12,7 @@ system: 5e
 recurrence: {{VALUE:recurrence}}
 campaign_start: {{VALUE:campaign_start}}
 campaign_end:
-dndbeyond_url: {{VALUE:dndbeyond_url}}
+dndbeyond_url: "{{VALUE:dndbeyond_url}}"
 urls:
 ---
 # The World of [[{{VALUE:world}}]]
@@ -58,7 +58,7 @@ await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" })
 >```dataview
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location"
 > from "01 - Campaigns/<% tp.file.folder(false) %>/World/NPC"
-> WHERE contains(type,"NPC") 
+> WHERE lower(type) = "npc" 
 > SORT file.name ASC
 > ```
 
@@ -68,7 +68,7 @@ await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" })
 >```dataview
 > table word_description as "Description", faction_status as "Status", faction_type as "Type", locations as "Locations", goal as "Goal"
 > from "01 - Campaigns/<% tp.file.folder(false) %>/World/Factions"
-> WHERE contains(type,"Faction") 
+> WHERE lower(type) = "faction" 
 > SORT file.name ASC
 > ```
 
@@ -78,7 +78,7 @@ await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" })
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/<% tp.file.folder(false) %>/World/Locations"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > SORT file.name ASC
 > ```
 
@@ -88,7 +88,7 @@ await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" })
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/<% tp.file.folder(false) %>/World/Lores"
-> WHERE contains(type,"Lore") 
+> WHERE lower(type) = "lore" 
 > SORT file.name ASC
 > ```
 

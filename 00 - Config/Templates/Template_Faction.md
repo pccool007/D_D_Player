@@ -13,12 +13,12 @@ img: "[[placeHolderFactions.png]]"
 leader: {{VALUE:leader}}
 faction_status: Active
 faction_type: {{VALUE:faction_type}}
-parent_faction:{{VALUE:parent_faction}}
-locations:{{VALUE:locations}}
+parent_faction: {{VALUE:parent_faction}}
+locations: {{VALUE:locations}}
 description: "{{VALUE:description}}"
-word_description: {{VALUE:word_description}}
-emblem_description: {{VALUE:emblem_description}}
-goal: {{VALUE:goal}}
+word_description: "{{VALUE:word_description}}"
+emblem_description: "{{VALUE:emblem_description}}"
+goal: "{{VALUE:goal}}"
 alignment:
 ---
 
@@ -33,9 +33,9 @@ alignment:
 >  |
 > ---|---|
 > **Leader** | `=this.leader`
-> **Emblem Description** | `=this.emblemDescription`
-> **Faction Type** | `=this.factionType`  |
-> **Status** | `=this.status` |
+> **Emblem Description** | `=this.emblem_description`
+> **Faction Type** | `=this.faction_type`  |
+> **Status** | `=this.faction_status` |
 > **Current Location** | `=link(this.locations)` |
 > **Alignment** | `=this.alignment` |
 > ```dataviewjs
@@ -58,7 +58,7 @@ alignment:
 >```dataview
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
-> WHERE contains(type,"NPC") 
+> WHERE lower(type) = "npc" 
 > and contains(factions,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```
@@ -76,7 +76,7 @@ alignment:
 >```dataview
 > table description as "Description", lore_type as "Type"
 > from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE contains(type,"Lore") 
+> WHERE lower(type) = "lore" 
 > and contains(relations,[[<% tp.file.title %>]])
 > SORT file.name ASC
 > ```

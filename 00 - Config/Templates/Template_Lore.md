@@ -11,7 +11,7 @@ campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
 lore_type: {{VALUE:lore_type}}
 description:
-relations:{{VALUE:relations}}
+relations: {{VALUE:relations}}
 secret:
 locations:
 ---
@@ -24,6 +24,6 @@ locations:
 > ---|---|
 > **Alias** | `=this.aliases` |
 > **Type** | `=this.lore_type` |
-> **Location** | `=this.location` |
+> **Location** | `=link(this.locations)` |
 
 ## Information

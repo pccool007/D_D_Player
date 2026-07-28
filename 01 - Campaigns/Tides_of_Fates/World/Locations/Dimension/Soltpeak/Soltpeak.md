@@ -88,7 +88,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type, "Continent")
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
@@ -98,7 +98,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type, "Regions")
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
@@ -108,7 +108,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type, "Country")
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
@@ -118,7 +118,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type, "State")
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
@@ -128,7 +128,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type, "City")
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
@@ -138,7 +138,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and !contains(location_type,"Dimension")
 > and !contains(location_type,"Continent")
 > and !contains(location_type,"Regions")
@@ -154,7 +154,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table word_description as "Description", location_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World"
-> WHERE contains(type,"Location") 
+> WHERE lower(type) = "location" 
 > and contains(location_type,"Dungeon")
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
@@ -175,7 +175,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
 > from "01 - Campaigns/Tides_of_Fates/World/NPC"
-> WHERE contains(type,"NPC") 
+> WHERE lower(type) = "npc" 
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
@@ -186,7 +186,7 @@ img: "[[placeHolderLocations.png]]"
 > ```dataview
 > table description as "Description"
 > from "01 - Campaigns/Tides_of_Fates/World/Factions"
-> WHERE contains(type,"faction") 
+> WHERE lower(type) = "faction" 
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
@@ -194,9 +194,9 @@ img: "[[placeHolderLocations.png]]"
 ### Associated Quest
 > [!table-data]- Quest's For Soltpeak
 > ```dataview
-> table description as "Description", owner as "Owner of the Quest", reward as "Reward", status as "Status"
+> table description as "Description", owner as "Owner of the Quest", reward as "Reward", quest_status as "Status"
 > from "01 - Campaigns/Tides_of_Fates/Quests"
-> WHERE contains(type,"quest") 
+> WHERE lower(type) = "quest" 
 > and contains(locations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
@@ -213,7 +213,7 @@ img: "[[placeHolderLocations.png]]"
 >```dataview
 > table description as "Description", lore_type as "Type"
 > from "01 - Campaigns/Tides_of_Fates/World/Lores"
-> WHERE contains(type,"Lore") 
+> WHERE lower(type) = "lore" 
 > and contains(relations,[[Soltpeak]])
 > SORT file.name ASC
 > ```
