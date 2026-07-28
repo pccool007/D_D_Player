@@ -63,6 +63,14 @@ never matched `type: Faction`. The tables rendered **empty with no error**.
 - [ ] All four show up in the infobox (they read snake_case keys — a camelCase ref
       silently renders empty)
 - [ ] Same check on an NPC's **First Meeting Location**, and a Lore note's **Location**
+- [ ] `New Item` → the note has an infobox with Type / Owner / Value rows and an
+      item image placeholder (it had no body at all before)
+
+## 3b. A stray selection no longer hijacks the name
+
+- [ ] Select a few words in a note, then click `New NPC` **without deselecting**
+- [ ] The name prompt is **empty** — it does not arrive pre-filled with the selection,
+      and the note is not named after it
 
 ## 4. Folders are the plural tier names, with or without a parent
 
@@ -85,10 +93,13 @@ never matched `type: Faction`. The tables rendered **empty with no error**.
 ## 6. Capture → promote round trip
 
 - [ ] In a session note, `ctrl+G` an NPC capture and fill the name
+- [ ] The capture's **Promote** button renders (it is an `action_bar` dataviewjs
+      block now, not a Buttons-plugin fence — the `buttons` plugin is disabled, so
+      a bare `button` fence would show as raw text)
 - [ ] Run `Macro - Promote NPC Capture`:
   - [ ] Note created at `World/NPC/{CreatureType}/{Name}.md`
   - [ ] The capture's checkbox is ticked and `→ [[Name]]` is appended
-  - [ ] The `button` fence is gone
+  - [ ] The promote button block is gone, and no stray ``` fence is left behind
 - [ ] Run the promote macro again on the same note → a notice says there is nothing
       pending, and **no** empty note is created
 - [ ] Repeat for a Faction, Location and Establishment capture

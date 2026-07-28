@@ -16,3 +16,33 @@ gold_value: {{VALUE:gold_value}}
 item_type: {{VALUE:item_type}}
 ---
 # [[<% tp.file.title %>]]
+
+> [!infobox]
+> # `=this.file.name`
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "img", label: "Item" });
+> ```
+> ###### Info
+>  |
+> ---|---|
+> **Alias** | `=this.aliases` |
+> **Type** | `=this.item_type` |
+> **Owner** | `=link(this.owner)` |
+> **Value** | `=this.gold_value` gp |
+
+> [!info|bg-c-purple] Description
+> `=this.description`
+
+## Information
+
+## Index
+### Others
+> [!table-data]- Links
+> ```dataview
+> TABLE without id file.inlinks AS "Links from", file.outlinks AS "Links to"
+> WHERE file.path = this.file.path
+> ```
+
+## History
+
+## Logs

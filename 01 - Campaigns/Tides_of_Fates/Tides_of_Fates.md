@@ -5,7 +5,6 @@ iconColor: yellow
 tags:
 world: "[[Soltpeak]]"
 date: 2026-07-28
-campaign: Tides_of_Fates
 status: Active
 role: player
 system: 5e

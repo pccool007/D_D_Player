@@ -28,7 +28,8 @@ const nameOf = (x) => (x && typeof x === "object" && x.path)
 	: String(x ?? "").replace(/^\[\[|\]\]$/g, "").split("|").pop().trim();
 const arr = (v) => v == null || v === "" ? [] : (Array.isArray(v) ? v : (v?.values ?? [v])).filter(x => x != null && x !== "");
 
-const fromLink = arr(cur.campaign ?? cur.campaigns).map(nameOf).filter(Boolean)[0];
+// Child notes link their campaign in `campaigns`; a manager resolves via fromPath.
+const fromLink = arr(cur.campaigns).map(nameOf).filter(Boolean)[0];
 const fromPath = (cur.file.path.match(/^01 - Campaigns\/([^/]+)\//) ?? [])[1];
 const campaign = input?.campaign ?? fromLink ?? fromPath;
 if (!campaign) {

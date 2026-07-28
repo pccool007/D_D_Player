@@ -27,8 +27,9 @@ const nm = x => x && x.path
 	? x.path.split("/").pop().replace(/\.md$/, "")
 	: String(x ?? "").replace(/^\[\[|\]\]$/g, "").split("|")[0].split("/").pop();
 
-// A campaign manager names itself in `campaign`; child notes use `campaigns`.
-const fromLink = dv.array(cur.campaign ?? cur.campaigns ?? []).map(nm).filter(Boolean)[0];
+// Child notes link their campaign in `campaigns`. A campaign manager has no such
+// key — it IS the campaign — so it resolves through fromPath below.
+const fromLink = dv.array(cur.campaigns ?? []).map(nm).filter(Boolean)[0];
 const fromPath = (cur.file.path.match(/^01 - Campaigns\/([^/]+)\//) ?? [])[1];
 const campaign = input?.campaign ?? fromLink ?? fromPath;
 if (!campaign) {

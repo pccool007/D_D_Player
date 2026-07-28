@@ -58,10 +58,6 @@ There is also a command **`Macro - Open Current Campaign`** (via `ctrl + o`) tha
 campaign you're playing right now — it picks the campaign with a session dated today, otherwise your
 only Active one, otherwise it asks.
 
-> [!warning]
-> Before clicking any button in the vault, make sure **nothing is selected** in the note. Obsidian
-> hands the selection to the button as its input, so a stray selection ends up as your note's name.
-
 ---
 
 ## 1. Create your campaign
@@ -96,7 +92,6 @@ The manager opens in a side tab — that's your campaign dashboard. At the top a
   `NPC`, `location`, …).
 - `tags` — free-form, optional. Use them if you like tag systems.
 - `world` — link to your setting's root location. Filled by the wizard.
-- `campaign` — the campaign name, again. Redundant but handy for queries.
 - `status` — `Active` / anything else. The Dashboard's *Active Campaigns* cards read this.
 - `role` — `player`. The only role this vault supports today.
 - `system` — `5e` by default. Organisational only.

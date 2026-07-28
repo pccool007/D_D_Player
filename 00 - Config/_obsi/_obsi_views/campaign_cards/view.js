@@ -62,7 +62,7 @@ const isType = (p, t) => dv.array(p.type).some(x => String(x).toLowerCase() === 
 const campaigns = dv.pages('"01 - Campaigns"')
 	.where(p => isType(p, "campaign") && isActive(p.status))
 	.array()
-	.sort((a, b) => String(a.campaign ?? a.file.name).localeCompare(String(b.campaign ?? b.file.name)));
+	.sort((a, b) => String(a.file.name).localeCompare(String(b.file.name)));
 
 if (!campaigns.length) {
 	dv.paragraph(input?.empty ?? "*No active campaigns. Set a campaign's `status` to Active to see it here.*");
@@ -72,7 +72,7 @@ const grid = el(dv.container, "div",
 	"display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:20px;align-items:start;");
 
 for (const campaign of campaigns) {
-	const name = String(campaign.campaign ?? campaign.file.name).replace(/_/g, " ");
+	const name = String(campaign.file.name).replace(/_/g, " ");
 	const folder = campaign.file.folder;
 
 	const sessions = dv.pages(`"${folder}/Sessions"`).where(p => isType(p, "session"));

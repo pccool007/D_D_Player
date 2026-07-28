@@ -11,10 +11,8 @@
 //   **Where:** Amberhall
 //   ...
 //   - [ ] Promote to World NPC
-//   ```button
-//   name Promote to World NPC
-//   type command
-//   action QuickAdd: Macro - Promote NPC Capture
+//   ```dataviewjs
+//   await dv.view(".../action_bar", { actions: [["Promote to World NPC", …]] });
 //   ```
 //
 //   ---
@@ -121,6 +119,13 @@ const SPECS = {
 
 const box = (type) => `- [ ] Promote to World ${type}`;
 
+// The promote button renders through the shared action_bar view rather than a
+// Buttons-plugin ```button fence — that plugin was the last thing keeping the
+// dependency alive, and action_bar already replaced the fences everywhere else.
+// MarkCapturePromoted strips this block once the capture is promoted.
+const ACTION_BAR = "00 - Config/_obsi/_obsi_views/action_bar";
+const PROMOTE_COLOR = "#3a5f8a";
+
 // A value still wearing its {hint} means "not filled in".
 const isHint = (value) => {
     const v = String(value ?? "").trim();
@@ -143,10 +148,9 @@ const render = (spec, name, values = {}) => {
             ...lines,
             "",
             box(spec.type),
-            "```button",
-            `name Promote to World ${spec.type}`,
-            "type command",
-            `action QuickAdd: ${spec.promoteMacro}`,
+            "```dataviewjs",
+            `await dv.view("${ACTION_BAR}", { actions: [["Promote to World ${spec.type}", `
+                + `"${spec.promoteMacro}", "${PROMOTE_COLOR}"]], compact: true });`,
             "```",
         ].join("\n"),
         "---",

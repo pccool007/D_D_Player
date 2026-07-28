@@ -120,7 +120,7 @@ Standalone scripts that read or modify *existing* notes — no template step.
 | Script | What it does |
 |---|---|
 | `OpenCurrentCampaign` | Opens + pins the campaign you're playing, in reading view. "Current" = the campaign with a session dated today, else the only Active one, else a suggester. Pins today's session alongside it when there is one |
-| `MarkCapturePromoted` | Runs at the end of a promote: ticks the capture's `- [ ] Promote to World {Type}` box, appends `→ [[Name]]` so the session note records where it went, and removes the now-dead `button` fence. Finds the block via the `capture_source_path` / `capture_block_index` that `ParseCapture` recorded |
+| `MarkCapturePromoted` | Runs at the end of a promote: ticks the capture's `- [ ] Promote to World {Type}` box, appends `→ [[Name]]` so the session note records where it went, and removes the now-dead promote button. Finds the block via the `capture_source_path` / `capture_block_index` that `ParseCapture` recorded |
 | `FixFrontmatterUrls` | Vault-wide repair pass for `url`-typed frontmatter broken by a wrapped paste (a newline landing mid-URL). Idempotent — safe to re-run |
 
 ## Filtering on `type` in a Dataview query

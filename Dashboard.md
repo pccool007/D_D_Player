@@ -105,7 +105,7 @@ const rows = dv.pages('"01 - Campaigns"')
   .where(p => dv.array(p.type).some(t => String(t).toLowerCase() === "campaign"))
   .sort(p => String(p.status ?? ""))
   .map(p => [
-    dv.fileLink(p.file.path, false, String(p.campaign ?? p.file.name).replace(/_/g, " ")),
+    dv.fileLink(p.file.path, false, String(p.file.name).replace(/_/g, " ")),
     p.world ?? "—",
     p.system ?? "—",
     countSessions(p.file.folder),

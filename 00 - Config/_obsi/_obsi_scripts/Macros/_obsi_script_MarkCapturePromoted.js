@@ -2,7 +2,8 @@
 // from and, in that one capture block:
 //   1. ticks the box            ->  - [x] Promote to World NPC → [[Name]]
 //   2. appends the wikilink of the note that was just created
-//   3. deletes the now-dead ```button``` fence
+//   3. deletes the now-dead promote-button block (an action_bar dataviewjs fence;
+//      also still strips the Buttons-plugin fence older captures may carry)
 //
 // The tick also gives the session an outlink to the new note, and drops the
 // capture out of any "pending captures" view.
@@ -48,6 +49,11 @@ module.exports = async (params) => {
 
         sections[index] = sections[index]
             .replace(BOX, `- [x] Promote to World ${type} → [[${linkName}]]`)
+            // The promote button, now an action_bar view. Matched on `action_bar`
+            // specifically, and with a lookahead that cannot run past the closing
+            // fence, so any OTHER dataviewjs block in the capture survives.
+            .replace(/\n?```dataviewjs\n(?:(?!```)[\s\S])*?action_bar(?:(?!```)[\s\S])*?```[ \t]*\n?/g, "\n")
+            // Captures written before the switch off the Buttons plugin.
             .replace(/\n?```button\n[\s\S]*?\n```[ \t]*\n?/g, "\n");
 
         return sections.join("\n---\n");

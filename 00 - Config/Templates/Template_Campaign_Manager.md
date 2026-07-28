@@ -8,7 +8,6 @@ aliases:
 tags:
 world: "[[{{VALUE:world}}]]"
 date: <% tp.date.now("YYYY-MM-DD") %>
-campaign: <% tp.file.folder(false) %>
 status: Active
 role: player
 system: 5e
