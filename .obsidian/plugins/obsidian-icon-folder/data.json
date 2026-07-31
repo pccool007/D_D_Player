@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiRectangleHorizontal",
-      "LiBookA",
       "LiLayoutDashboard",
-      "LiBookOpen",
-      "LiBuilding"
+      "LiCircle",
+      "LiSquare",
+      "LiTriangle",
+      "LiRectangleHorizontal"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
