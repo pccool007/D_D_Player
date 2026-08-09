@@ -1,6 +1,6 @@
 ---
 version: "1.0"
-type: Lore
+type: lore
 icon: {{VALUE:icon}}
 iconColor: {{VALUE:iconColor}}
 name: <% tp.file.title %>

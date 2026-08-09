@@ -1,5 +1,6 @@
 // Single source of truth for every wizard's type -> icon/iconColor lookup table.
-// icon / iconColor are NEVER free choices — wizards read them from here.
+// icon / iconColor are NEVER free choices — wizards read them from here. The `npc`
+// domain also carries a per-creature-type `placeholder` portrait, on the same rule.
 //
 // Usage (QuickAdd wizard scripts — require by absolute path):
 //   const path = require("path");
@@ -24,25 +25,31 @@ const deepFreeze = (obj) => {
 };
 
 const TABLES = deepFreeze({
-    // NPCWizard — keyed off the creature-type `race` (player race goes in subRace)
+    // NPCWizard — keyed off the creature-type `race` (player race goes in subRace).
+    // `placeholder` is the default portrait a new NPC gets until real art exists.
+    // The files live in 00 - Config/_obsi/assetsDefault/ and are named by bare
+    // basename, so that folder can be reorganised without touching this table. The
+    // EXTENSION is part of the value — Unknown is a .png, the other fourteen .jpg —
+    // so never build one of these names by appending ".jpg".
     npc: {
-        "Aberration":   { icon: "LiAlien",         iconColor: "purple" },
-        "Beast":        { icon: "LiPawPrint",      iconColor: "orange" },
-        "Celestial":    { icon: "LiSun",           iconColor: "yellow" },
-        "Construct":    { icon: "LiCpu",           iconColor: "gray"   },
-        "Dragon":       { icon: "LiFlame",         iconColor: "red"    },
-        "Elemental":    { icon: "LiWind",          iconColor: "cyan"   },
-        "Fey":          { icon: "LiSparkles",      iconColor: "pink"   },
-        "Fiend":        { icon: "LiSkull",         iconColor: "red"    },
-        "Giant":        { icon: "LiMountain",      iconColor: "orange" },
-        "Humanoid":     { icon: "LiUser",          iconColor: "green"  },
-        "Monstrosity":  { icon: "LiAlertTriangle", iconColor: "yellow" },
-        "Ooze":         { icon: "LiDroplet",       iconColor: "cyan"   },
-        "Plant":        { icon: "LiLeaf",          iconColor: "green"  },
-        "Undead":       { icon: "LiMoon",          iconColor: "purple" },
+        "Aberration":   { icon: "LiAlien",         iconColor: "purple", placeholder: "placeHolderNPCAberration.jpg"  },
+        "Beast":        { icon: "LiPawPrint",      iconColor: "orange", placeholder: "placeHolderNPCBeast.jpg"       },
+        "Celestial":    { icon: "LiSun",           iconColor: "yellow", placeholder: "placeHolderNPCCelestial.jpg"   },
+        "Construct":    { icon: "LiCpu",           iconColor: "gray",   placeholder: "placeHolderNPCConstruct.jpg"   },
+        "Dragon":       { icon: "LiFlame",         iconColor: "red",    placeholder: "placeHolderNPCDragon.jpg"      },
+        "Elemental":    { icon: "LiWind",          iconColor: "cyan",   placeholder: "placeHolderNPCElemental.jpg"   },
+        "Fey":          { icon: "LiSparkles",      iconColor: "pink",   placeholder: "placeHolderNPCFey.jpg"         },
+        "Fiend":        { icon: "LiSkull",         iconColor: "red",    placeholder: "placeHolderNPCFiend.jpg"       },
+        "Giant":        { icon: "LiMountain",      iconColor: "orange", placeholder: "placeHolderNPCGiant.jpg"       },
+        "Humanoid":     { icon: "LiUser",          iconColor: "green",  placeholder: "placeHolderNPCHumanoid.jpg"    },
+        "Monstrosity":  { icon: "LiAlertTriangle", iconColor: "yellow", placeholder: "placeHolderNPCMonstrosity.jpg" },
+        "Ooze":         { icon: "LiDroplet",       iconColor: "cyan",   placeholder: "placeHolderNPCOoze.jpg"        },
+        "Plant":        { icon: "LiLeaf",          iconColor: "green",  placeholder: "placeHolderNPCPlant.jpg"       },
+        "Undead":       { icon: "LiMoon",          iconColor: "purple", placeholder: "placeHolderNPCUndead.jpg"      },
         // For someone you've met but can't place yet — keeps the field fillable
-        // without guessing a creature type.
-        "Unknown":      { icon: "LiHelpCircle",    iconColor: "gray"   }
+        // without guessing a creature type. Its portrait doubles as the vault-wide
+        // catch-all: a note with no race, or a race not in this table, lands here.
+        "Unknown":      { icon: "LiHelpCircle",    iconColor: "gray",   placeholder: "placeHolderNPCUnknown.png"     }
     },
 
     // FactionWizard — keyed off faction_type

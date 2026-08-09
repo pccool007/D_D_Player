@@ -1,6 +1,6 @@
 ---
 version: "2.0"
-type: Location
+type: location
 icon: {{VALUE:icon}}
 iconColor: blue
 name: <% tp.file.title %>

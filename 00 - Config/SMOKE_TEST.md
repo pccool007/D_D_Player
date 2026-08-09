@@ -12,7 +12,9 @@ test is clicking the buttons.
 > Node caches `require()`, so edits to anything in `Helpers/` — `IconRegistry`,
 > `LocationHierarchy`, `CaptureSpecs`, `FormPrompt`, `MultiSelectPrompt`,
 > `WizardForm`, `LocationForm` — do **not** reach QuickAdd until a reload. A "my fix
-> did nothing" bug is nearly always this.
+> did nothing" bug is nearly always this. `_obsi_views/table_kit/view.js` `require()`s
+> `IconRegistry` too, so a placeholder-portrait change needs a reload to show up in
+> the **tables** as well as in the wizards.
 
 > [!tip] Use a throwaway campaign
 > Run `New Campaign` as `Smoke_Test` and do everything below inside it, then delete
@@ -45,6 +47,9 @@ get a one-question-at-a-time suggester, the wizard is on the old path.
 - [ ] `New NPC` → one modal: name, creature type, gender, where met, factions
 - [ ] The creature type starts on `Unknown` and the class on `Other`, so pressing
       `Enter` straight away still produces a valid note
+- [ ] The note's `npc_img` matches the creature type picked (`Fey` →
+      `[[placeHolderNPCFey.jpg]]`, `Unknown` → `[[placeHolderNPCUnknown.png]]`) and
+      **no image prompt appeared** — a prompt means `npcImg` went unset on that path
 - [ ] `New Establishment` **from a location note** → the parent location row is
       already filled in with that note
 - [ ] `New Location` from a location note → same, the parent is pre-selected

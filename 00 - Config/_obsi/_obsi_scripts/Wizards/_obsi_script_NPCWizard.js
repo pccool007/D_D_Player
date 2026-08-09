@@ -9,6 +9,7 @@
 //
 // `race` here is the 5e creature type. A player-facing race (Half-Elf, Tiefling…)
 // belongs in the template's `subRace` field, which is left blank for the GM to fill.
+// The creature type also picks the default portrait, the same way it picks the icon.
 module.exports = async (params) => {
     const { variables } = params;
     // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
@@ -35,12 +36,18 @@ module.exports = async (params) => {
 
     const places = form.notesOf(campaignRoot, ["location", "establishment"]);
     const factions = form.notesOf(campaignRoot, ["faction"]);
+    const dimensions = form.dimensionsIn(campaignRoot);
+    const scope = form.dimensionScope(dimensions);
 
     const answers = await form.formPrompt({
         title: "New NPC",
         saveLabel: "Create NPC",
         fields: [
             { key: "name", label: "NPC name", required: true, placeholder: "Elowen Marsh" },
+            form.dimensionField({
+                root: campaignRoot,
+                description: "Leads their `locations`, and narrows the list below.",
+            }),
             form.typeField({
                 key: "race",
                 label: "Creature type",
@@ -55,13 +62,19 @@ module.exports = async (params) => {
                 value: "",
                 options: [[form.SKIP, ""], ...GENDERS.map(g => [g, g])],
             },
-            form.noteField({
-                key: "where",
-                label: "Where were they met?",
-                files: places,
-                description: "Also fills first seen and last seen.",
-                emptyHint: "No location or establishment in this campaign yet.",
-            }),
+            {
+                ...form.noteField({
+                    key: "where",
+                    label: "Where were they met?",
+                    files: places,
+                    description: "Also fills first seen and last seen.",
+                    emptyHint: "No location or establishment in this campaign yet.",
+                }),
+                dependsOn: "dimension",
+                optionsFor: (dimension) => (places.length
+                    ? [[form.SKIP, ""], ...scope(dimension, places).map(f => [f.basename, f.basename])]
+                    : []),
+            },
             form.noteMultiField({
                 key: "factions",
                 label: "Factions",
@@ -87,13 +100,17 @@ module.exports = async (params) => {
     variables.race = answers.race;
     variables.icon = style.icon;
     variables.iconColor = style.iconColor;
+    // The creature type's default portrait, from IconRegistry like icon/iconColor —
+    // never a free choice. A bare basename; Template_NPC wraps it in [[…]]. Every
+    // path that expands that template must set this, or QuickAdd prompts for it.
+    variables.npcImg = style.placeholder;
     variables.gender = answers.gender;
     // Where they were met is also where they were first met and last seen — the GM
     // moves last_seen on later. `locations` is a YAML list; the other two are scalars.
-    // The campaign world leads that list whatever was picked, so an NPC met nowhere in
+    // The chosen dimension leads that list whatever was picked, so an NPC met nowhere in
     // particular still has a home — it is not where they were *met*, so the two scalars
     // stay the answer alone.
-    variables.locations = form.yamlList(form.withWorld(campaignRoot, answers.where));
+    variables.locations = form.yamlList(form.withDimension(campaignRoot, answers.dimension, answers.where));
     variables.first_location = form.link(answers.where);
     variables.last_seen = form.link(answers.where);
     variables.factions = form.yamlList(answers.factions);

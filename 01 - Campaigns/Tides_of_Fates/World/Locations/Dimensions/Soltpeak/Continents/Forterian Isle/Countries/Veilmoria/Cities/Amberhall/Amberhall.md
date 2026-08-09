@@ -1,6 +1,6 @@
 ---
 version: "2.0"
-type: Location
+type: location
 icon: LiBuilding
 iconColor: blue
 name: Amberhall
@@ -13,13 +13,16 @@ locations:
   - "[[Veilmoria]]"
 location_type: City
 location_tier_level: 5
-description: ""
-word_description: 
+description: The coastal capital of Veilmoria and the seat of Queen Thalena Vaer. The civil war ended here and the city still wears it — half-rebuilt districts, old grievances kept close, and a peace that everyone treats as breakable. Locals will tell you the catacombs beneath the lower city are haunted, and will not be argued out of it.
+word_description:
+  - Coastal
+  - Post-War
+  - Tense
 population:
-leader: 
-theme:
-terrain: 
-govtType:
+leader: "[[Thalena Vaer]]"
+theme: Post-war capital, fragile peace, buried history
+terrain: Coastal city, highland kingdom, catacombs beneath the lower districts
+govtType: Seat of the Veilmorian crown
 defences:
 imports:
 exports:

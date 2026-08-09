@@ -18,8 +18,6 @@ urls:
 - "[Fantasy Calendar](https://app.fantasy-calendar.com/calendars/ec2cc3cb95ba823ffc28649dcfe480b5)"
 - 
 ---
-# The World of [[Soltpeak]]
-
 > [!infobox]
 > ```dataviewjs
 > await dv.view("00 - Config/_obsi/_obsi_views/manager_aside");
@@ -81,7 +79,7 @@ await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" })
 
 > [!table-data] List of Locations
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { showType: true });
+> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { showType: true, typeFilter: true });
 > ```
 
 ---

@@ -1,10 +1,12 @@
 ---
 version: "2.0"
-type: Location
+type: location
 icon: LiCircle
 iconColor: blue
 name: Soltpeak
 aliases:
+  - Material Plane
+  - Soltpeak Archipelago
 world: "Soltpeak"
 date: 2026-07-28
 campaigns: "[[Tides_of_Fates]]"
@@ -12,8 +14,10 @@ tags:
 locations:
 location_type: Dimension
 location_tier_level: 0
-description: 
-word_description: 
+description: The material world — the drowned surface and its scattered islands, bound under the Code of Still Waters. Where everything happens.
+word_description:
+  - Material Plane
+  - Drowned World
 population:
 leader: 
 theme:

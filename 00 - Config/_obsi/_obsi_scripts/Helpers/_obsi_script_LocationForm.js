@@ -6,11 +6,20 @@
 // is offered as the default parent. Both are now thin wrappers over this — the
 // same shape ParseNPCCapture and friends use over ParseCapture.
 //
-// One form, three rows: Name · Parent location · Location type. The type list is
-// REACTIVE: a child must sit at a strictly deeper tier than its parent, so the
-// options rebuild whenever the parent changes, and a parent that admits no
-// children (a City) leaves the row disabled with the reason on it. The nesting
-// rules themselves stay in _obsi_script_LocationHierarchy.js.
+// One form, four rows: Name · Dimension · Parent location · Location type, each
+// narrowing the next. Dimension defaults to the campaign world and scopes the parent
+// list to that dimension's subtree — the whole point, since picking the world out of
+// every location in the campaign was the step you took every single time. The type
+// list is REACTIVE off the parent: a child must sit at a strictly deeper tier, so the
+// options rebuild whenever the parent changes, and a parent that admits no children (a
+// City) leaves the row disabled with the reason on it. The nesting rules themselves
+// stay in _obsi_script_LocationHierarchy.js.
+//
+// Inside a dimension the parent list LEADS WITH THE DIMENSION ITSELF rather than a
+// "— Skip —" row, so `parent` is never empty and the type row always has a real tier
+// to gate on. Filing outside every dimension — the only way to create a new one, since
+// nothing nests at tier 0 under a tier-0 parent — is the Dimension row's own
+// "— None —" option.
 //
 // Sets: name, leader, terrain, description, word_description, fileName,
 //       location_type, icon, location_tier_level, locations, folderName
@@ -68,6 +77,32 @@ module.exports = async (params, { preferActiveAsParent = false } = {}) => {
         && form.typeOf(active) === "location"
         && byName.has(active.basename);
 
+    const NO_DIMENSION = "— None (top level) —";
+    const dimensions = form.dimensionsIn(campaignRoot);
+    const scope = form.dimensionScope(dimensions);
+    // Launched from inside a dimension, that is the dimension meant — otherwise the
+    // campaign world, which dimensionField falls back to on its own.
+    const activeDimension = form.dimensionOf(dimensions, active);
+
+    // Inside a dimension: the dimension leads its own subtree. Outside one: every
+    // location, with the usual skip-to-top-level row.
+    const parentOptions = (dimension) => {
+        const files = scope(dimension, candidates);
+        if (!dimension) return [[form.SKIP, ""], ...files.map(f => [f.basename, f.basename])];
+        return [
+            [`${dimension} (top of this dimension)`, dimension],
+            ...files.filter(f => f.basename !== dimension).map(f => [f.basename, f.basename]),
+        ];
+    };
+
+    const dimensionRow = form.dimensionField({
+        root: campaignRoot,
+        value: activeDimension,
+        noneLabel: NO_DIMENSION,
+        description: "Narrows the parent list to this dimension. Pick None to file outside them all — the only way to add a new dimension.",
+        emptyHint: "No dimension in this campaign yet — every location is offered as a parent.",
+    });
+
     const answers = await form.formPrompt({
         title: "New location",
         saveLabel: "Create location",
@@ -78,16 +113,24 @@ module.exports = async (params, { preferActiveAsParent = false } = {}) => {
                 required: true,
                 placeholder: "Silverbrook",
             },
-            form.noteField({
+            dimensionRow,
+            {
                 key: "parent",
                 label: "Parent location",
-                files: candidates,
+                type: "select",
                 value: activeIsLocation ? active.basename : "",
-                description: activeIsLocation
-                    ? "Defaults to the note you are in. Skip to file it at the top level."
-                    : "Skip to file it at the top level of this campaign's world.",
-                emptyHint: "No location in this campaign yet — this one starts the tree.",
-            }),
+                disabled: !candidates.length,
+                options: candidates.length ? parentOptions(dimensionRow.value ?? "") : [],
+                dependsOn: "dimension",
+                optionsFor: (dimension) => (candidates.length ? parentOptions(dimension) : []),
+                describe: (dimension) => {
+                    if (!candidates.length) return "No location in this campaign yet — this one starts the tree.";
+                    if (activeIsLocation) return "Defaults to the note you are in.";
+                    return dimension
+                        ? `Locations inside ${dimension}.`
+                        : "Skip to file it at the top level of this campaign's world.";
+                },
+            },
             {
                 key: "location_type",
                 label: "Location type",

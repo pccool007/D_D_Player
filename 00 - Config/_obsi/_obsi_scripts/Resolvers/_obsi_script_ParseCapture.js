@@ -133,6 +133,10 @@ module.exports = async (domain, params) => {
         variables.race = style.label;
         variables.icon = style.icon;
         variables.iconColor = style.iconColor;
+        // Same rule as the wizard: the creature type picks the default portrait, and
+        // Template_NPC has no value of its own to fall back on. A capture with no
+        // usable Type: line falls to Unknown above, so this is always a real file.
+        variables.npcImg = style.placeholder;
         // The race subfolder rides in fileName — the macro's template step writes
         // to {{VALUE:folderName}}/World/NPC, exactly like Macro - Add NPC.
         variables.fileName = `${style.label}/${name}`;

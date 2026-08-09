@@ -1,37 +1,39 @@
 ---
 version: "1.0"
-type: NPC
-icon: LiCpu
-iconColor: gray
-name: Bob
+type: npc
+icon: LiUser
+iconColor: green
+name: Thalena Vaer
 aliases:
-  - asd
+  - Lady Vaer
+  - Queen Thalena Vaer
 world: Soltpeak
 date: 2026-08-09
 campaigns: "[[Tides_of_Fates]]"
 tags:
 urls:
-description: adssdqd
-word_description:
-  - assd
-  - asd
-  - asd
-race: Construct
-subRace: ss
-gender: Male
-age: ""
+description: Queen of Veilmoria, ruling from Amberhall. She came to the throne after the civil war and has spent her reign holding a fragile peace together and steering the kingdom back toward reunification with the Soltpeak Federation.
+word_description: Ruler of Veilmoria
+race: Humanoid
+subRace: Dwarf
+gender: Female
+age: Middle aged
 sexuality:
-npc_img: "[[placeHolderNPC.jpg]]"
+npc_img: "[[placeHolderNPCHumanoid.jpg]]"
 condition: Alive
 party_standing: Neutral
-locations: ["[[Amberhall]]", "[[Soltpeak]]"]
-first_location: "[[Amberhall]]"
-last_seen: "[[Amberhall]]"
-class: fighter
-occupation: King of land
+locations:
+  - "[[Veilmoria]]"
+  - "[[Amberhall]]"
+  - "[[Soltpeak]]"
+first_location:
+last_seen:
+class:
+occupation: Queen of Veilmoria
 factions:
-  - "[[tesafsd]]"
-languages: common
+languages:
+  - Common
+  - Dwarvish
 likes:
 dislikes:
 ---

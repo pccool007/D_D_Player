@@ -1,6 +1,6 @@
 ---
 version: "1.0"
-type: NPC
+type: npc
 icon: {{VALUE:icon}}
 iconColor: {{VALUE:iconColor}}
 name: <% tp.file.title %>
@@ -17,7 +17,7 @@ subRace: "{{VALUE:subRace}}"
 gender: {{VALUE:gender}}
 age: "{{VALUE:age}}"
 sexuality:
-npc_img: "[[placeHolderNPC.jpg]]"
+npc_img: "[[{{VALUE:npcImg}}]]"
 condition: Alive
 party_standing: Neutral
 locations: {{VALUE:locations}}

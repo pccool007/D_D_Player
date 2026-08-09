@@ -189,7 +189,16 @@ const SCHEMAS = {
 	},
 };
 
-const p = dv.current();
+// Dataview's index lags a note created seconds ago — a session note straight out
+// of the macro renders before it is indexed, `dv.current()` comes back empty, and
+// the infobox claimed the note had no `type` when its frontmatter was fine.
+// Obsidian's metadata cache is written the moment the file is; `linkEl` and
+// `fmtDate` already accept the raw "[[…]]" and date strings it hands back.
+const fromCache = () => {
+	const fm = app.metadataCache.getCache(dv.currentFilePath)?.frontmatter;
+	return fm && { ...fm, file: { name: dv.currentFilePath.split("/").pop().replace(/\.md$/, "") } };
+};
+const p = dv.current() ?? fromCache();
 const type = String(input?.type ?? p?.type ?? "").toLowerCase();
 const schema = SCHEMAS[type];
 

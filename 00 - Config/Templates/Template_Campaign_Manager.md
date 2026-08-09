@@ -72,7 +72,7 @@ await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" })
 
 > [!table-data] List of Locations
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { showType: true });
+> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { showType: true, typeFilter: true });
 > ```
 
 ---

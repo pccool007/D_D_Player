@@ -60,7 +60,49 @@ const pill = (value, attr) => {
 	return el;
 };
 
-const PLACEHOLDER = "00 - Config/_obsi/assetsDefault/placeHolderNPC.jpg";
+/* IconRegistry, required by absolute path — the same idiom the wizards use, so a
+ * creature type's PORTRAIT comes from the one table that already owns its icon and
+ * its colour. This is the only require() in this file and it is guarded on purpose:
+ * a registry that fails to load must cost a portrait, not take all five tables down.
+ * Node caches require(), so an edit to IconRegistry.js needs an Obsidian reload to
+ * reach this view — the same caveat the wizards have. */
+let iconRegistry = null;
+try {
+	const path = require("path");
+	iconRegistry = require(path.join(
+		app.vault.adapter.basePath,
+		"00 - Config", "_obsi", "_obsi_scripts", "Helpers", "_obsi_script_IconRegistry.js"
+	));
+} catch (e) { iconRegistry = null; }
+
+/* Every default portrait lives in assetsDefault/ and is named by BARE BASENAME —
+ * Obsidian resolves image wikilinks by name, which is what lets that folder be
+ * reorganised without touching a note, and it is the shape every Template_*.md
+ * already writes. Never write a path here; image_upload's full paths are for
+ * uploaded art, where two campaigns can each hold a "Grug.png". */
+const TYPE_PLACEHOLDER = {
+	npc: "placeHolderNPCUnknown.png",
+	player: "placeHolderPlayer.png",
+	faction: "placeHolderFactions.png",
+	location: "placeHolderLocations.png",
+	establishment: "placeHolderEstablishment.png",
+	lore: "placeHolderLore.png",
+	inventory: "placeHolderItem.png",
+};
+
+/* The per-creature-type portrait, out of the same IconRegistry `npc` table that owns
+ * the type's icon and colour — a type's art is never a free choice. The extension is
+ * part of the table's value (Unknown is a .png, the other fourteen .jpg), so this
+ * never appends one. */
+const racePlaceholder = (race) => {
+	const key = String(nameOf(race) ?? "").trim();
+	if (!iconRegistry || !key) return null;
+	try { return iconRegistry("npc")?.[key]?.placeholder ?? null; }
+	catch (e) { return null; }
+};
+
+// The note's own `type`, as a TYPE_PLACEHOLDER key.
+const typeKeyOf = (page) => slug(arr(page?.type).map(nameOf)[0] ?? "");
 
 // Frontmatter holds a vault path or a bare filename; both have to resolve.
 const fileFor = (raw, fromPath) => raw
@@ -98,8 +140,17 @@ const avatar = (dv, value, linkEl) => {
 
 	const page = isLink ? dv.page(target.path) : null;
 	const here = dv.current().file.path;
+	/* Most specific portrait first: the note's own image, then its creature type's,
+	 * then its note type's, then the Unknown NPC as the vault-wide catch-all — which
+	 * is also what free text and an empty field get, since neither resolves a page.
+	 * `type: player` is the one exception to race-first: PCWizard fills a PC's `race`
+	 * from the same creature-type list, but a PC's portrait is their player art. */
+	const typeKey = typeKeyOf(page);
+	const fallback = (typeKey === "player" ? null : racePlaceholder(page?.race))
+		?? TYPE_PLACEHOLDER[typeKey]
+		?? TYPE_PLACEHOLDER.npc;
 	const file = fileFor(imgPathOf(page), page?.file?.path ?? here)
-		?? fileFor(PLACEHOLDER, here);
+		?? fileFor(fallback, here);
 
 	if (file) {
 		wrap.createEl("img", { cls: "dnd-avatar-img" })

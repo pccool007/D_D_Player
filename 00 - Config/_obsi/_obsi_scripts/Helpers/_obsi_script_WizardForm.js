@@ -89,6 +89,106 @@ module.exports = (params) => {
         return exists ? [world, ...list] : list;
     };
 
+    // --- Dimensions -------------------------------------------------------------
+    //
+    // A world is not one place any more: Soltpeak's campaign spans ten tier-0
+    // Dimension notes. So every wizard that asks about locations asks which dimension
+    // FIRST, defaulting to the campaign world, and narrows its own pickers to that
+    // dimension's subtree. Below is the shared half of that: which notes are
+    // dimensions, which notes live inside one, and the `locations` lead-in.
+
+    // Tier 0, or typed Dimension outright. Guarded against an EMPTY
+    // `location_tier_level:` — Number(null) is 0, which would make every location with
+    // a blank tier a dimension.
+    const isDimension = (file) => {
+        const fm = app.metadataCache.getFileCache(file)?.frontmatter || {};
+        if (String(fm.location_type ?? "").toLowerCase() === "dimension") return true;
+        const raw = fm.location_tier_level;
+        if (raw === "" || raw === undefined || raw === null) return false;
+        return Number(raw) === 0;
+    };
+
+    const dimensionsIn = (root) => notesOf(root, ["location"]).filter(isDimension);
+
+    // Locations are folder notes ({Name}/{Name}.md), so a dimension's subtree is
+    // simply everything under its own folder — its child locations, and the
+    // Establishments/ folders nested inside those. The dimension's own note is in
+    // there too, which is what lets it be picked as a parent.
+    const folderPrefixOf = (file) =>
+        file?.parent?.name === file?.basename ? file.parent.path + "/" : null;
+
+    // (name, files) -> the files inside that dimension. An unknown or empty name, or a
+    // dimension that is not a folder note, filters nothing: showing everything beats
+    // showing an empty picker.
+    const dimensionScope = (dims) => {
+        const prefixOf = new Map((dims ?? []).map(f => [f.basename, folderPrefixOf(f)]));
+        return (name, files) => {
+            const prefix = name ? prefixOf.get(name) : null;
+            return prefix ? (files ?? []).filter(f => f.path.startsWith(prefix)) : (files ?? []);
+        };
+    };
+
+    // The dimension a note already sits in, for defaulting the row when the wizard was
+    // launched from inside one. Longest prefix wins, so a nested dimension would beat
+    // its container rather than tying.
+    const dimensionOf = (dims, file) => {
+        if (!file) return "";
+        let best = "";
+        let length = 0;
+        for (const d of dims ?? []) {
+            const prefix = folderPrefixOf(d);
+            if (prefix && file.path.startsWith(prefix) && prefix.length > length) {
+                best = d.basename;
+                length = prefix.length;
+            }
+        }
+        return best;
+    };
+
+    // The "Which dimension?" row. A plain select over the campaign's dimensions,
+    // defaulting to the campaign world — which in a one-world campaign is the answer
+    // every single time, so the row costs nothing to leave alone.
+    //
+    // `noneLabel` adds a leading "no dimension" option worth "". The location wizard
+    // needs it: inside a dimension nothing may nest at tier 0, so creating a NEW
+    // dimension means stepping outside all of them first.
+    const dimensionField = ({
+        key = "dimension",
+        label = "Dimension",
+        root,
+        files,
+        value,
+        description,
+        emptyHint,
+        noneLabel,
+    } = {}) => {
+        const dims = files ?? dimensionsIn(root);
+        if (!dims.length) {
+            return {
+                key, label, type: "select", options: [], disabled: true,
+                description: emptyHint ?? "No dimension in this campaign yet.",
+            };
+        }
+        const names = dims.map(f => f.basename);
+        const world = worldName(root);
+        const fallback = names.includes(world) ? world : names[0];
+        const options = names.map(n => [n, n]);
+        return {
+            key, label, description, type: "select",
+            value: names.includes(value) ? value : fallback,
+            options: noneLabel ? [[noneLabel, ""], ...options] : options,
+        };
+    };
+
+    // withWorld's job, done by the dimension the wizard actually asked for. Falls back
+    // to withWorld when no dimension was picked or none exist, so a campaign that has
+    // not been split into dimensions behaves exactly as it did before.
+    const withDimension = (root, dimension, names) => {
+        const list = [].concat(names ?? []).filter(Boolean).map(String);
+        if (!dimension) return withWorld(root, list);
+        return list.includes(dimension) ? list : [dimension, ...list];
+    };
+
     // A dropdown of existing notes, "— Skip —" first. With nothing to offer it
     // becomes a disabled row carrying `emptyHint`, so the field stays visible and
     // explains itself rather than silently vanishing from the form.
@@ -160,6 +260,12 @@ module.exports = (params) => {
         notesOf,
         worldName,
         withWorld,
+        isDimension,
+        dimensionsIn,
+        dimensionScope,
+        dimensionOf,
+        dimensionField,
+        withDimension,
         noteField,
         noteMultiField,
         typesIn,

@@ -1,6 +1,6 @@
 ---
 version: "1.0"
-type: Player
+type: player
 icon: {{VALUE:icon}}
 iconColor: {{VALUE:iconColor}}
 name: <% tp.file.title %>
@@ -13,7 +13,7 @@ player: "{{VALUE:player}}"
 level:
 hp:
 ac:
-img: "[[placeHolderNPC.jpg]]"
+img: "[[placeHolderPlayer.png]]"
 class: {{VALUE:class}}
 description:
 race: {{VALUE:race}}

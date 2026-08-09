@@ -40,22 +40,37 @@ module.exports = async (params) => {
         && form.typeOf(active) === "location"
         && byName.has(active.basename);
 
+    const dimensions = form.dimensionsIn(campaignRoot);
+    const scope = form.dimensionScope(dimensions);
+
     const answers = await form.formPrompt({
         title: "New establishment",
         saveLabel: "Create establishment",
         fields: [
             { key: "name", label: "Establishment name", required: true, placeholder: "The Gilded Flagon" },
             form.typeField({ key: "establishment_type", label: "Category", domain: "establishment" }),
-            form.noteField({
-                key: "locations",
-                label: "Parent location",
-                files: locations,
-                value: activeIsLocation ? active.basename : "",
-                description: activeIsLocation
-                    ? "Defaults to the note you are in. Files the establishment inside its folder."
-                    : "Files the establishment inside that location's folder.",
-                emptyHint: "No location in this campaign yet.",
+            form.dimensionField({
+                root: campaignRoot,
+                // Clicked from a location, that location's dimension is the one meant.
+                value: form.dimensionOf(dimensions, activeIsLocation ? active : null),
+                description: "Leads its `locations`, and narrows the list below.",
             }),
+            {
+                ...form.noteField({
+                    key: "locations",
+                    label: "Parent location",
+                    files: locations,
+                    value: activeIsLocation ? active.basename : "",
+                    description: activeIsLocation
+                        ? "Defaults to the note you are in. Files the establishment inside its folder."
+                        : "Files the establishment inside that location's folder.",
+                    emptyHint: "No location in this campaign yet.",
+                }),
+                dependsOn: "dimension",
+                optionsFor: (dimension) => (locations.length
+                    ? [[form.SKIP, ""], ...scope(dimension, locations).map(f => [f.basename, f.basename])]
+                    : []),
+            },
             form.noteField({
                 key: "owner",
                 label: "Owner",
@@ -79,9 +94,10 @@ module.exports = async (params) => {
     // Scalar slot, unquoted in the template — it arrives already quoted.
     variables.owner = form.link(answers.owner);
     variables.icon = form.styleFor("establishment", answers.establishment_type).icon;
-    // One answered parent, plus the campaign world. Only the parent decides the folder
+    // One answered parent, plus the chosen dimension. Only the parent decides the folder
     // below, so the extra entry cannot move the note.
-    variables.locations = form.yamlList(form.withWorld(campaignRoot, parent ? parent.basename : null));
+    variables.locations = form.yamlList(
+        form.withDimension(campaignRoot, answers.dimension, parent ? parent.basename : null));
 
     // Locations are folder notes ({Name}/{Name}.md), so the parent's folder is where
     // its Establishments/ subfolder belongs. A location that is NOT a folder note is a

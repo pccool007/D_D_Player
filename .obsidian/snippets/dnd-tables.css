@@ -183,6 +183,14 @@
   max-height: none;
 }
 
+/* The NPC table's leading cell holds the row's OWN portrait, not a reference to
+   someone else's the way a faction's leader or an establishment's owner does.
+   It carries the row, so it gets more presence than those 24px avatars. */
+.npc-table table.dataview td:nth-child(1) .dnd-avatar-img {
+  width: 40px;
+  height: 40px;
+}
+
 /* a pill must never be split across lines, wherever it appears */
 .dnd-pill { flex: none; }
 .npc-table table.dataview td:nth-child(1) { width: 1%; }

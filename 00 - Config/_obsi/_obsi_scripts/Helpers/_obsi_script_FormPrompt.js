@@ -44,12 +44,13 @@
 //   disabled: renders the row greyed and always yields "" — this is how a picker
 //     with nothing to offer ("no factions in this campaign yet") stays visible
 //     instead of silently vanishing from the form
-//   dependsOn / optionsFor / describe: a "select" may rebuild itself from another
-//     field's value. `optionsFor(value)` returns the new [label, value] pairs and
-//     `describe(value)` the row's description text; both run once on open and again
+//   dependsOn / optionsFor / describe: a "select" or "multi" may rebuild itself from
+//     another field's value. `optionsFor(value)` returns the new [label, value] pairs
+//     and `describe(value)` the row's description text; both run once on open and again
 //     on every change of the field named by `dependsOn`. An empty options list
-//     disables the row. Used by the location form, where the parent's tier decides
-//     which child types are legal.
+//     disables the row. Chains are fine — a rebuilt select that ends up on a different
+//     value notifies its own dependants in turn, which is what keeps the location
+//     form's dimension -> parent -> type run in step.
 //
 // Values come back trimmed; a "multi" field yields an array of its picked values
 // and every other type a string. Required fields must be non-empty before Save
@@ -217,8 +218,15 @@ const buildRow = (field, content, host) => {
                 // Keep what is selected when it survives the new list — switching a
                 // location's parent between two same-tier parents must not silently
                 // reset the type you already picked.
+                const before = input.value;
                 const count = fill(next, input.value);
                 input.disabled = setRowDisabled(Boolean(field.disabled) || !count);
+                // A rebuild can change what is selected, when the old pick is not in
+                // the new list. Rows depending on THIS one have to follow, or a chain
+                // (dimension -> parent -> type) leaves its tail offering types for a
+                // parent that is no longer selected. Guarded on an actual change, so
+                // this cannot cycle.
+                if (input.value !== before) for (const fn of listeners) fn();
             },
             setDescription: (text) => { if (description) description.textContent = text ?? ""; },
         };

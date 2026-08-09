@@ -33,7 +33,9 @@
  * recursively and errors on any .js without module.exports.
  */
 await dv.view("00 - Config/_obsi/_obsi_views/table_kit");
-const { pill, campaignOf, linksHere } = globalThis.DnDTables;
+await dv.view("00 - Config/_obsi/_obsi_views/panels");
+const { pill, avatar, campaignOf, linksHere } = globalThis.DnDTables;
+const { linkEl } = globalThis.DnDPanels;
 
 const link = input?.link ?? null;
 const campaign = campaignOf(dv, input);
@@ -50,18 +52,29 @@ dv.container.classList.add("npc-table");
 
 const here = link ? linksHere(dv, link) : null;
 
+// A frontmatter field is "empty" in four shapes — missing, null (a bare `key:`), an
+// empty string, and an empty list — and only the first two are caught by `??`.
+const hasValue = (v) => dv.array(v ?? []).filter(x => x !== "" && x != null).length > 0;
+
 await dv.view("00 - Config/_obsi/_obsi_views/table_search", {
 	from: `"${folder}"`,
 	where: (p) => String(p.type ?? "").toLowerCase() === "npc" && (!here || here(p)),
-	headers: ["Portrait", "Description", "Condition", "Relation", "Factions", "First Meeting Location", "Last Seen Location"],
+	// Portrait and name share the leading cell — `avatar` is the same helper the
+	// other tables use for a leader/owner, pointed at the row's own note.
+	name: (p) => avatar(dv, p.file.link, linkEl),
+	headers: ["Description", "Occupation", "Condition", "Relation", "Factions", "First Meeting Location", "Last Seen Location"],
 	row: (p) => [
-		p.npc_img?.toEmbed?.() ?? p.npc_img ?? "—",
 		p.word_description ?? p.description ?? "—",
+		// Written as a list on some notes and a plain string on others, so an empty
+		// list has to be caught too — `?? "—"` alone would print a blank cell.
+		hasValue(p.occupation) ? p.occupation : "—",
 		pill(p.condition, "npcCondition"),
 		pill(p.party_standing, "npcStanding"),
 		p.factions ?? "—",
-		p.first_location ?? "—",
-		p.last_seen ?? "—",
+		// Where they were met is a fact that can be genuinely unrecorded rather than
+		// simply absent, so these two say so in words instead of dashing.
+		hasValue(p.first_location) ? p.first_location : "Unknown",
+		hasValue(p.last_seen) ? p.last_seen : "Unknown",
 	],
 	sort: (p) => String(p.name ?? p.file.name).toLowerCase(),
 	limit: input?.limit ?? 10,

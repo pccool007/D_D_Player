@@ -1,6 +1,6 @@
 ---
 version: "1.1"
-type: Establishment
+type: establishment
 icon: {{VALUE:icon}}
 iconColor: orange
 name: <% tp.file.title %>

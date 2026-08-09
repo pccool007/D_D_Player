@@ -10,6 +10,8 @@
  *     where: p => dv.array(p.type).includes("NPC"),
  *     headers: ["Race", "Description"],
  *     row: p => [p.race, p.description],
+ *     name: p => p.file.link,         // optional: the leading identity cell
+ *     nameHeader: "Name",             // optional: its header
  *     sort: p => p.file.name,        // fn or [fn, fn, …] (first = primary key)
  *     limit: 10,                      // or Infinity for no cap
  *     placeholder: "Search…",
@@ -33,6 +35,11 @@ const {
 	where = () => true,
 	headers = [],
 	row = () => [],
+	// The leading identity column. Every table has one, so it is not part of
+	// `headers`/`row` — override it when the name should carry something with it,
+	// as npc_table does to put the portrait in the same cell.
+	name = (p) => p.file.link,
+	nameHeader = "Name",
 	sort = (p) => p.file.name,
 	limit = 10,
 	placeholder = "Search…",
@@ -126,8 +133,8 @@ async function render() {
 	holder.empty();
 	const shown = Number.isFinite(limit) ? filtered.limit(limit) : filtered;
 	await api.table(
-		["Name", ...headers],
-		shown.map((p) => [p.file.link, ...row(p)]).array(),
+		[nameHeader, ...headers],
+		shown.map((p) => [name(p), ...row(p)]).array(),
 		holder,
 		dv.component,
 		dv.currentFilePath

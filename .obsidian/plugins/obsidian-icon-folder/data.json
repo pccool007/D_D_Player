@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiCpu",
-      "LiCircle",
-      "LiSquare",
-      "LiTriangle",
-      "LiBuilding"
+      "LiSun",
+      "LiUser",
+      "LiHelpCircle",
+      "LiBookOpen",
+      "LiLayoutDashboard"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -85,7 +85,103 @@
     "iconName": "LiSquare",
     "iconColor": "blue"
   },
-  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Veilmoria.md": {
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Humanoid/Elion Vark.md": {
+    "iconName": "LiUser",
+    "iconColor": "green"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Aquamersi/Aquamersi.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Veilmarrow/Veilmarrow.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Umbrel/Umbrel.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Aethermar/Aethermar.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Brinehell/Brinehell.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Maelstrom/Maelstrom.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Feytide/Feytide.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Starwake/Starwake.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Prismara/Prismara.md": {
+    "iconName": "LiCircle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Prismara/Continents/Aerythos/Aerythos.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Prismara/Continents/Ignivar/Ignivar.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Prismara/Continents/Terrathis/Terrathis.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Prismara/Continents/Torrenthal/Torrenthal.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Factions/Soltpeak Federation.md": {
+    "iconName": "LiBriefcase",
+    "iconColor": "purple"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Factions/sub-factions/Soltpeak Federation/Keelward.md": {
+    "iconName": "LiBriefcase",
+    "iconColor": "purple"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Fangbreaker Sea/Fangbreaker Sea.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Fangbreaker Sea/Regions/Talonreach/Talonreach.md": {
+    "iconName": "LiRectangleHorizontal",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Frostwake Waters/Frostwake Waters.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Shardmere/Shardmere.md": {
+    "iconName": "LiSquare",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Shardmere/Countries/Mara Silva/Mara Silva.md": {
+    "iconName": "LiTriangle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Shardmere/Countries/Morrtek/Morrtek.md": {
+    "iconName": "LiTriangle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Shardmere/Countries/Runekar/Runekar.md": {
+    "iconName": "LiTriangle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Forterian Isle/Countries/Forterra/Forterra.md": {
+    "iconName": "LiTriangle",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Shardmere/Countries/Cognitopia/Cognitopia.md": {
     "iconName": "LiTriangle",
     "iconColor": "blue"
   },
@@ -93,44 +189,36 @@
     "iconName": "LiBuilding",
     "iconColor": "blue"
   },
-  "01 - Campaigns/Tides_of_Fates/World/NPC/Construct/Bob.md": {
-    "iconName": "LiCpu",
-    "iconColor": "gray"
-  },
-  "01 - Campaigns/Tides_of_Fates/Sessions/002_20260809.md": {
-    "iconName": "LiBookA",
-    "iconColor": "red"
-  },
-  "01 - Campaigns/Tides_of_Fates/World/Factions/test1.md": {
-    "iconName": "LiChurch",
-    "iconColor": "purple"
-  },
-  "01 - Campaigns/Tides_of_Fates/World/Factions/tesafsd.md": {
-    "iconName": "LiSkull",
-    "iconColor": "red"
-  },
-  "01 - Campaigns/Tides_of_Fates/Sessions/001_20260808.md": {
-    "iconName": "LiBookA",
-    "iconColor": "red"
-  },
-  "01 - Campaigns/Tides_of_Fates/Inventory/test.md": {
-    "iconName": "LiSword",
-    "iconColor": "orange"
-  },
   "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Cities/Amberhall/Establishments/Bar.md": {
     "iconName": "LiStore",
     "iconColor": "orange"
   },
-  "01 - Campaigns/Tides_of_Fates/Quests/Test.md": {
-    "iconName": "LiHandCoins",
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Humanoid/Thalena Vaer.md": {
+    "iconName": "LiUser",
+    "iconColor": "green"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Cities/Amberhall/Establishments/Draph's Architectural Records.md": {
+    "iconName": "LiBookOpen",
+    "iconColor": "orange"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Celestial/Roland Thatchborne.md": {
+    "iconName": "LiSun",
     "iconColor": "yellow"
   },
-  "01 - Campaigns/Tides_of_Fates/PC/test.md": {
-    "iconName": "LiAxe",
-    "iconColor": "red"
+  "01 - Campaigns/Tides_of_Fates/World/Factions/The Brotherhood of light.md": {
+    "iconName": "LiBriefcase",
+    "iconColor": "purple"
   },
-  "01 - Campaigns/Tides_of_Fates/World/Lores/Test.md": {
-    "iconName": "LiBookOpen",
-    "iconColor": "blue"
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Humanoid/Borevanna.md": {
+    "iconName": "LiUser",
+    "iconColor": "green"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Unknown/Raithean Twinsoul.md": {
+    "iconName": "LiHelpCircle",
+    "iconColor": "gray"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Humanoid/Katherine de Chatillion.md": {
+    "iconName": "LiUser",
+    "iconColor": "green"
   }
 }

@@ -1,6 +1,6 @@
 ---
 version: "1.1"
-type: Establishment
+type: establishment
 icon: LiStore
 iconColor: orange
 name: Bar

@@ -29,11 +29,9 @@ module.exports = async (params) => {
     }
 
     const owners = form.notesOf(campaignRoot, ["npc", "faction"]);
-    // The campaign world is added to `locations` on save regardless, so offering it as
-    // a tickable row would be a choice that changes nothing.
-    const places = form.notesOf(campaignRoot, ["location", "establishment"], {
-        exclude: form.worldName(campaignRoot),
-    });
+    const places = form.notesOf(campaignRoot, ["location", "establishment"]);
+    const dimensions = form.dimensionsIn(campaignRoot);
+    const scope = form.dimensionScope(dimensions);
 
     const answers = await form.formPrompt({
         title: "New quest",
@@ -41,6 +39,10 @@ module.exports = async (params) => {
         fields: [
             { key: "name", label: "Quest name", required: true, placeholder: "The Amberhall Contract" },
             { key: "reward", label: "Reward", placeholder: "Gold, item, favor…" },
+            form.dimensionField({
+                root: campaignRoot,
+                description: "Leads its `locations`, and narrows the picker below.",
+            }),
             form.noteField({
                 key: "owner",
                 label: "Quest owner",
@@ -48,13 +50,23 @@ module.exports = async (params) => {
                 description: "The NPC or faction who handed it out.",
                 emptyHint: "No NPC or faction in this campaign yet.",
             }),
-            form.noteMultiField({
-                key: "locations",
-                label: "Quest locations",
-                files: places,
-                description: "Everywhere it takes you — opens a picker. The campaign world is always included.",
-                emptyHint: "No location or establishment in this campaign yet.",
-            }),
+            {
+                ...form.noteMultiField({
+                    key: "locations",
+                    label: "Quest locations",
+                    files: places,
+                    description: "Everywhere it takes you — opens a picker. The chosen dimension is always included.",
+                    emptyHint: "No location or establishment in this campaign yet.",
+                }),
+                dependsOn: "dimension",
+                // The dimension itself is added on save regardless, so offering it as a
+                // tickable row would be a choice that changes nothing.
+                optionsFor: (dimension) => (places.length
+                    ? scope(dimension, places)
+                        .filter(f => f.basename !== dimension)
+                        .map(f => [f.basename, f.basename, f.path])
+                    : []),
+            },
         ],
     });
     if (!answers) cancel();
@@ -68,5 +80,6 @@ module.exports = async (params) => {
     variables.icon = style.icon;
     variables.iconColor = style.iconColor;
     variables.owner = form.link(answers.owner);
-    variables.locations = form.yamlList(form.withWorld(campaignRoot, answers.locations));
+    variables.locations = form.yamlList(
+        form.withDimension(campaignRoot, answers.dimension, answers.locations));
 };

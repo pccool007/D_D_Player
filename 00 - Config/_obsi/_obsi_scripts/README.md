@@ -25,10 +25,10 @@ references `Resolvers/` and `Wizards/` scripts by **full path** in
 | `GetLastGameTitle` | Path (minus `.md`) of the previous session, for `Template_Session`'s recap embeds. Sorts on `session_num` and excludes the current note **by path** — not by taking the second-to-last entry, which assumed Dataview's index had already caught up with the note being created. Returns `""` when there is no previous session, and the template omits the embeds rather than emitting four broken ones |
 | `CaptureSpecs` | The render+parse contract shared by every quick capture: one spec per domain giving the capture's field lines, their hints, and the `- [ ] Promote to World {Type}` box that `ParseCapture` finds them by. `specs.render()` writes a block, `specs.parse()` reads one back — keep them symmetric or promote stops finding fields. A field is found **by its label**, so renaming one orphans every capture already written: give it `aliases: ["OldLabel"]` instead, as the faction's `Locations` carries `HQ` |
 | `MultiSelectPrompt` | The checkbox picker every multi-value field opens: filter box, click to toggle, `Alt+Enter` to save, `null` on cancel. `FormPrompt` loads it lazily and stacks it over the form, so it is reached through a `multi` row rather than called directly. Hand-rolled for the same reason as `FormPrompt`: `require("obsidian")` does not resolve inside a QuickAdd script, so the modal is built from raw DOM |
-| `IconRegistry` | Single source of truth for every wizard's type → `icon`/`iconColor` table. `iconRegistry(domain)` with domain ∈ `npc`/`faction`/`establishment`/`location`/`lore`/`quest`/`inventory`/`pc`. Wizards reach it through `WizardForm` — **edit icons here, never in a wizard.** Key order drives dropdown option order; edits need an Obsidian reload (Node's `require()` cache) |
-| `FormPrompt` | One modal that asks every question at once — the shape **every** wizard in the vault uses. Field types `text` / `date` / `number` / `url` / `select` / `multi`, required-field validation, Enter to save. Three things beyond a plain form: `multi` is a **button** summarising the choice (the one name, else `N selected`) that opens `MultiSelectPrompt` over the form and returns an array; `disabled` greys a row and yields `""`, which is how a picker with nothing to offer stays visible instead of vanishing; and `dependsOn` + `optionsFor`/`describe` let a `select` rebuild itself from another field's value — the location form's only mechanism for gating types by the parent's tier. `require()`d by absolute path |
-| `WizardForm` | The plumbing every "Add …" wizard shares, as `_obsi_script_WizardForm(params)`: `campaignRoot()` (validated — see below), `notesOf(root, types)`, `worldName(root)` / `withWorld(root, names)` (see below), the two picker field builders `noteField` / `noteMultiField`, `typeField`/`styleFor`/`typesIn` over `IconRegistry`, and the YAML shapes `link()` / `yamlList()` / `plain()`. It is why the wizards are now ~60 lines of field list and variable mapping each |
-| `LocationForm` | The location form itself, shared by both location wizards — name, parent, and a type list that rebuilds as the parent changes. Takes `{ preferActiveAsParent }`, which is the *only* difference between "Add Location" and "Add Location (Child)" |
+| `IconRegistry` | Single source of truth for every wizard's type → `icon`/`iconColor` table. `iconRegistry(domain)` with domain ∈ `npc`/`faction`/`establishment`/`location`/`lore`/`quest`/`inventory`/`pc`. Wizards reach it through `WizardForm` — **edit icons here, never in a wizard.** The `npc` domain carries a third key, `placeholder`: the creature type's default portrait, on the same never-a-free-choice rule as its icon. It is a **bare basename** in `assetsDefault/` with the extension included (`Unknown` is a `.png`, the other fourteen `.jpg`) — never build one by appending `.jpg`. `table_kit` reads the same key at render time. Key order drives dropdown option order; edits need an Obsidian reload (Node's `require()` cache) |
+| `FormPrompt` | One modal that asks every question at once — the shape **every** wizard in the vault uses. Field types `text` / `date` / `number` / `url` / `select` / `multi`, required-field validation, Enter to save. Three things beyond a plain form: `multi` is a **button** summarising the choice (the one name, else `N selected`) that opens `MultiSelectPrompt` over the form and returns an array; `disabled` greys a row and yields `""`, which is how a picker with nothing to offer stays visible instead of vanishing; and `dependsOn` + `optionsFor`/`describe` let a `select` or `multi` rebuild itself from another field's value — how the location form gates types by the parent's tier, and how every wizard narrows its pickers to the chosen dimension. Chains work: a rebuilt select that lands on a *different* value notifies its own dependants, which is what keeps `dimension → parent → type` in step. `require()`d by absolute path |
+| `WizardForm` | The plumbing every "Add …" wizard shares, as `_obsi_script_WizardForm(params)`: `campaignRoot()` (validated — see below), `notesOf(root, types)`, `worldName(root)` / `withWorld(root, names)`, the dimension half `dimensionsIn` / `dimensionField` / `dimensionScope` / `dimensionOf` / `withDimension` (see below), the two picker field builders `noteField` / `noteMultiField`, `typeField`/`styleFor`/`typesIn` over `IconRegistry`, and the YAML shapes `link()` / `yamlList()` / `plain()`. It is why the wizards are now ~60 lines of field list and variable mapping each |
+| `LocationForm` | The location form itself, shared by both location wizards — name, **dimension**, parent scoped to that dimension, and a type list that rebuilds as the parent changes. Takes `{ preferActiveAsParent }`, which is the *only* difference between "Add Location" and "Add Location (Child)" |
 | `LocationHierarchy` | The nesting rules shared by both location wizards: `tierOf(frontmatter, categories)`, `allowedChildTypes(categories, parentTier)`, `bucketFor(picked)`, `folderUnderParent(parentFolder, picked)`, `folderAtCampaignRoot(campaignRoot, picked)`. Called as `_obsi_script_LocationHierarchy()` — it returns the API object. **`bucketFor` is the only place a category's folder is decided** — both folder functions go through it, because they once disagreed and put the same City in `Cities/` with a parent and `City/` without one |
 
 > [!warning] There is exactly **one** way to ask for several things
@@ -44,7 +44,7 @@ references `Resolvers/` and `Wizards/` scripts by **full path** in
 > **folder** (a location's, establishment's or faction's parent) and an NPC's
 > `locations`, written from the same answer as the scalar `first_location` /
 > `last_seen`. Those are structurally single — the **answer** is, at least. The
-> written list may still be longer, because `withWorld` prepends the campaign world
+> written list may still be longer, because `withDimension` prepends the chosen dimension
 > to it; that is not an answer and never gets a picker row.
 
 > [!warning] A modal stacked on a modal must **suspend** the one underneath
@@ -72,6 +72,12 @@ Every wizard asks **one `FormPrompt` form** — never a chain of prompts — the
 `{{VALUE:fileName}}` format) and reads its icon from `IconRegistry`. The shared
 parts live in `Helpers/_obsi_script_WizardForm.js`; a wizard is a field list plus
 the mapping from answers onto `variables`.
+
+QuickAdd only prompts for a `{{VALUE:x}}` it cannot find in that map, so **every
+variable a template names has to be set on every path that expands it** — which is
+why the wizards assign blanks for fields only the promote path fills. `Template_NPC`'s
+`npcImg` is the one with two writers: `NPCWizard` and `ParseCapture` both set it from
+the creature type's `placeholder`, and dropping either turns a portrait into a prompt.
 
 Three habits the form makes possible, and that new wizards should keep:
 
@@ -137,29 +143,52 @@ current campaign (`variables.folderName`) and filtered by the target note's `typ
 frontmatter. Each offers a `— Skip —` option and leaves the field empty when
 skipped; with nothing to offer at all, the row is disabled rather than absent.
 
-### Every `locations` list leads with the campaign world
+### Every wizard asks which dimension first
 
-A campaign has exactly one world — the tier-0 `Dimension` location `CampaignWizard`
-creates. Everything in the campaign is inside it, so `WizardForm.withWorld(root, names)`
-puts it at the front of the `locations` list of every **NPC, Faction, Quest,
-Establishment and Lore** note, whatever the GM picked. An NPC met nowhere in particular
-still has a home, and the world's own page lists the whole campaign. It is deduplicated,
-so picking the world explicitly is harmless.
+A world is not one place. Soltpeak spans ten tier-0 `Dimension` notes, so **every wizard
+that touches locations opens with a `Dimension` row**, built by
+`WizardForm.dimensionField({ root })`:
 
-Two rules follow from "always", and both are load-bearing:
+- Its options are the campaign's dimensions and nothing else — `dimensionsIn(root)`,
+  which means `location_type: Dimension` **or** `location_tier_level: 0`. That check
+  guards an empty tier explicitly, because `Number(null)` is `0` and would otherwise
+  promote every location with a blank tier to a dimension.
+- It **defaults to the campaign world**, so a one-world campaign never has to touch it.
+  Launched from inside a dimension (`Add Location (Child)`, an establishment's button),
+  it defaults to *that* dimension instead — `dimensionOf(dims, file)`.
+- It **narrows every location picker in the same form** to that dimension's subtree, via
+  `dependsOn: "dimension"` + `optionsFor`. Scoping is by folder path
+  (`dimensionScope(dims)`): locations are folder notes, so a dimension's subtree is
+  simply everything under its folder — child locations, and the `Establishments/` folders
+  nested inside them.
+
+`WizardForm.withDimension(root, dimension, names)` then puts the chosen dimension at the
+front of the `locations` list of every **NPC, Faction, Quest, Establishment and Lore**
+note, whatever else was picked. An NPC met nowhere in particular still has a home. It is
+deduplicated, and it falls back to `withWorld` when no dimension was picked or the
+campaign has none — so a campaign that was never split into dimensions behaves exactly
+as it did before.
+
+Three rules follow, and all are load-bearing:
 
 - **A location's own `locations` is exempt.** That field is its hierarchy *parent* and
   decides its folder — `LocationForm` and `ParseCapture`'s `location` branch must never
-  call `withWorld`.
-- **The world is not offered in the pickers that force it.** `FactionWizard` and
-  `QuestWizard` build their `places` list with `notesOf(root, …, { exclude: worldName(root) })`,
-  because a tickable row that changes nothing either way is a lie. The single-value
-  selects — an NPC's "where met", an establishment's parent — *do* still offer it; there
-  it is a real answer, and `withWorld` dedupes.
+  call `withDimension` or `withWorld`.
+- **The dimension is not offered in the pickers that force it.** `FactionWizard` and
+  `QuestWizard` drop it from their own `places` options, because a tickable row that
+  changes nothing either way is a lie. The single-value selects — an NPC's "where met",
+  an establishment's parent — *do* still offer it; there it is a real answer, and
+  `withDimension` dedupes.
+- **`LocationForm` leads the parent list with the dimension itself** rather than a
+  `— Skip —` row, so `parent` is never empty and the reactive type row always has a real
+  tier to gate on. Its dimension row therefore carries an extra `— None (top level) —`
+  option: nothing nests at tier 0 under a tier-0 parent, so stepping outside every
+  dimension is the only way to create a new one.
 
-`withWorld` adds nothing when the campaign root is bogus, when the manager note has no
-`world`, or when no `type: Location` note of that name exists — a renamed or missing
-world must not seed a broken link into every note made afterwards.
+`withWorld` survives underneath for that fallback and for `ParseCapture`. It adds nothing
+when the campaign root is bogus, when the manager note has no `world`, or when no
+`type: location` note of that name exists — a renamed or missing world must not seed a
+broken link into every note made afterwards.
 
 ### Locations are a folder-note hierarchy
 
@@ -209,10 +238,15 @@ Standalone scripts that read or modify *existing* notes — no template step.
 
 **Always `WHERE lower(type) = "npc"`. Never `contains(type, "NPC")`.**
 
-`contains()` is case-sensitive, and `type` is not consistently cased across the
-templates — capitalised for `Location` / `NPC` / `Faction` / `Player` / `Quest` /
-`Lore` / `Inventory` / `Establishment`, lowercase for `campaign` / `session` /
-`dashboard`. Three competing idioms were in use, and two of them were simply
+`type` is now **lowercase everywhere** — `location` / `npc` / `faction` / `player` /
+`quest` / `lore` / `inventory` / `establishment` / `campaign` / `session` /
+`dashboard` — in every template and every existing note. Keep new templates
+lowercase too.
+
+`lower()` stays anyway, because `contains()` is case-sensitive and the casing used
+to be mixed: capitalised for `Location` / `NPC` / `Faction` / `Player` / `Quest` /
+`Lore` / `Inventory` / `Establishment`, lowercase for the rest. Three competing
+idioms were in use, and two of them were simply
 wrong: every location note queried `contains(type,"faction")` and
 `contains(type,"quest")` against notes declaring `Faction` and `Quest`, so
 *Associated Factions* and *Associated Quest* rendered **empty forever** with no

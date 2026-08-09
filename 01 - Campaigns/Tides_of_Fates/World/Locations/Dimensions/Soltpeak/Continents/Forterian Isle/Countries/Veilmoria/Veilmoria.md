@@ -1,10 +1,11 @@
 ---
 version: "2.0"
-type: Location
+type: location
 icon: LiTriangle
 iconColor: blue
 name: Veilmoria
 aliases:
+  - Kingdom of Veilmoria
 world: "Soltpeak"
 date: 2026-07-28
 campaigns: "[[Tides_of_Fates]]"
@@ -13,16 +14,22 @@ locations:
   - "[[Forterian Isle]]"
 location_type: Country
 location_tier_level: 3
-description: ""
-word_description: 
-population:
-leader: 
+description: A resilient highland kingdom marked by misty forests, shattered keeps, and silver-threaded rivers that once bore the weight of the Federation. Born from rebellion, drowned in civil war, and now cautiously rising under a new monarchy, the nation walks a tightrope between fragile peace and buried unrest. With veins of rare ore beneath its mountains and whispers of ghosts in its capital's catacombs, Veilmoria is a land where history clings like fog and truth is often found between the cracks of official records. Queen Thalena Vaer now leads it toward reunification with the Soltpeak Federation.
+word_description:
+  - Highland Kingdom
+  - Fragile Peace
+population: "20000"
+leader: "[[Thalena Vaer]]"
 theme:
 terrain: 
-govtType:
+govtType: Democratic Monarchy
 defences:
 imports:
 exports:
+  - Veiliron Wood
+  - Antiquities & Relics (Semi-legal)
+  - Sulfur
+  - Wheat
 urls:
 img: "[[placeHolderLocations.png]]"
 ---

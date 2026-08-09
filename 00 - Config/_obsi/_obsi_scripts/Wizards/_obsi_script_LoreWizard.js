@@ -1,9 +1,10 @@
-// Lore wizard — one form: name, lore type (which drives icon/iconColor), and the
-// lore it relates to, since a piece of lore is usually a retelling of something
-// already recorded. `relations` is a YAML list, so that picker takes several.
+// Lore wizard — one form: name, lore type (which drives icon/iconColor), the
+// dimension it belongs to, and the lore it relates to, since a piece of lore is
+// usually a retelling of something already recorded. `relations` is a YAML list, so
+// that picker takes several.
 //
-// `locations` is not asked for — it is set to the campaign world, like every other
-// note type's, and narrowed afterwards through the property.
+// No finer location than the dimension is asked for — a lore entry's place is usually
+// a whole realm, and the GM narrows it afterwards through the `locations` property.
 //
 // Runs after _obsi_script_SetParamsInCapGetCampaignFolder, which sets
 // variables.folderName to "01 - Campaigns/{campaign}"; the macro's template step
@@ -34,6 +35,10 @@ module.exports = async (params) => {
         fields: [
             { key: "name", label: "Lore name", required: true, placeholder: "The Sundering" },
             form.typeField({ key: "lore_type", label: "Lore type", domain: "lore" }),
+            form.dimensionField({
+                root: campaignRoot,
+                description: "The realm this belongs to — narrow it further afterwards through the property.",
+            }),
             form.noteMultiField({
                 key: "relations",
                 label: "Related lore",
@@ -56,8 +61,8 @@ module.exports = async (params) => {
     variables.icon = style.icon;
     variables.iconColor = style.iconColor;
     variables.relations = form.yamlList(related);
-    // Not asked — a lore entry's place is usually the whole world, and the GM narrows
-    // it afterwards through the `locations` property. Assigning it is not optional: an
-    // unset {{VALUE:x}} makes QuickAdd stop and prompt for it.
-    variables.locations = form.yamlList(form.withWorld(campaignRoot, []));
+    // The dimension alone — the GM narrows it afterwards through the `locations`
+    // property. Assigning it is not optional: an unset {{VALUE:x}} makes QuickAdd stop
+    // and prompt for it.
+    variables.locations = form.yamlList(form.withDimension(campaignRoot, answers.dimension, []));
 };

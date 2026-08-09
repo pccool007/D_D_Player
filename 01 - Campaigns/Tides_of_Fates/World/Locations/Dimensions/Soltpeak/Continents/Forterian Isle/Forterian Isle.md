@@ -1,10 +1,12 @@
 ---
 version: "2.0"
-type: Location
+type: location
 icon: LiSquare
 iconColor: blue
 name: Forterian Isle
 aliases:
+  - The Forterran Isles
+  - South-East Sea
 world: "Soltpeak"
 date: 2026-07-28
 campaigns: "[[Tides_of_Fates]]"
@@ -13,8 +15,10 @@ locations:
   - "[[Soltpeak]]"
 location_type: Continent
 location_tier_level: 1
-description: ""
-word_description: 
+description: The south-eastern sea of the Archipelago — scattered island chains, the kingdom of Forterra, and the trade and exploration that run between them.
+word_description:
+  - South-East Sea
+  - Trade & Exploration
 population:
 leader: 
 theme:

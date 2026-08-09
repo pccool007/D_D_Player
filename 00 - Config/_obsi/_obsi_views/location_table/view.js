@@ -2,8 +2,9 @@
  * manager's "List of Locations".
  *
  * One of five views over `table_search`, all sharing their helpers via
- * `table_kit`. Search box only: the tier callouts are already narrowed to one
- * `location_type`, so a Type dropdown would offer a single option.
+ * `table_kit`. The tier callouts get a search box only — they are already
+ * narrowed to one `location_type`, so a Type dropdown would offer a single
+ * option; the campaign manager's unscoped list gets the dropdown too.
  *
  * Replaced twenty-one hand-written DQL copies — the tier loop and the
  * Other/Dungeons callouts in Template_Location, the nineteen baked into the four
@@ -25,6 +26,10 @@
  *   showType     : add a `location_type` pill column. On for the campaign
  *                  manager, which lists every type at once; off for the tier
  *                  callouts, where the column would be a constant.
+ *   typeFilter   : add a `location_type` dropdown, options collected from the
+ *                  rows the table actually holds. Defaults to `showType` —
+ *                  the same "does this table mix types?" question answers both —
+ *                  so pass it explicitly only to break that pairing.
  *   campaign / folder / limit : as in the other table views. `folder` defaults to
  *                  `01 - Campaigns/{campaign}/World` — the whole world tree, not
  *                  `World/Locations`, matching the DQL this replaced. Locations
@@ -52,6 +57,7 @@ const link = input?.link ?? null;
 const wantType = input?.type ?? null;
 const excluded = (input?.excludeTypes ?? []).map(slug);
 const showType = input?.showType ?? false;
+const typeFilter = input?.typeFilter ?? showType;
 
 const campaign = campaignOf(dv, input);
 if (!campaign) {
@@ -75,8 +81,9 @@ await dv.view("00 - Config/_obsi/_obsi_views/table_search", {
 	from: `"${folder}"`,
 	where: (p) => String(p.type ?? "").toLowerCase() === "location"
 		&& typeOk(p) && (!here || here(p)),
-	headers: ["Leader", "Description", ...(showType ? ["Type"] : []), "Locations"],
+	headers: ["Aliases", "Leader", "Description", ...(showType ? ["Type"] : []), "Locations"],
 	row: (p) => [
+		arr(p.aliases).join(", ") || "—",
 		avatar(dv, p.leader, linkEl),
 		p.word_description ?? p.description ?? "—",
 		...(showType ? [pill(p.location_type, "locationType")] : []),
@@ -86,4 +93,5 @@ await dv.view("00 - Config/_obsi/_obsi_views/table_search", {
 	limit: input?.limit ?? 10,
 	placeholder: "Search locations…",
 	searchText: (p) => [p.location_type, p.terrain, p.theme, p.govtType, p.population, p.locations, leaderName(p)],
+	filters: typeFilter ? [{ label: "Type", value: (p) => p.location_type }] : [],
 });

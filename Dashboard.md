@@ -7,7 +7,6 @@ iconColor: blue
 cssclasses:
   - dashboard
 ---
-# Dashboard
 
 > [!infobox]
 > ```dataviewjs
@@ -18,28 +17,6 @@ cssclasses:
 >       ["New Campaign", "Macro - Create Campaign", "#56606e"],
 >     ]],
 >   ],
-> });
-> ```
-
-## Search
-
-> [!table-data] Search everything
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/table_search", {
->   from: '"01 - Campaigns"',
->   where: p => dv.array(p.type).some(t => !["campaign", "session"].includes(String(t).toLowerCase())),
->   headers: ["Type", "Campaign", "Description"],
->   row: p => [
->     dv.array(p.type).join(", "),
->     (p.file.path.match(/^01 - Campaigns\/([^/]+)\//) ?? [])[1]?.replace(/_/g, " ") ?? "—",
->     p.word_description ?? p.description ?? "—",
->   ],
->   sort: [p => String(dv.array(p.type)[0] ?? ""), p => p.file.name],
->   limit: 15,
->   placeholder: "Search NPCs, locations, factions, lore, quests, items…",
->   searchText: p => [p.race, p.location_type, p.faction_type, p.lore_type, p.item_type, p.establishment_type],
->   filters: [{ label: "Type", value: p => dv.array(p.type) }],
->   requireQuery: true,
 > });
 > ```
 

@@ -1,6 +1,6 @@
 ---
 version: "1.0"
-type: Quest
+type: quest
 icon: {{VALUE:icon}}
 iconColor: {{VALUE:iconColor}}
 name: <% tp.file.title %>
