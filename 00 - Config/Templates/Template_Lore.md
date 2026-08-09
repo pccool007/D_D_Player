@@ -9,21 +9,16 @@ world: "<% tp.user._obsi_script_GetWorldName(tp) %>"
 date: <% tp.date.now("YYYY-MM-DD") %>
 campaigns: <% tp.user.getFileRacineForProperties(tp) %>
 tags:
+img: "[[placeHolderLore.png]]"
 lore_type: {{VALUE:lore_type}}
 description:
 relations: {{VALUE:relations}}
 secret:
-locations:
+locations: {{VALUE:locations}}
 ---
-# [[<% tp.file.title %>]]
 > [!infobox]
-> # `=this.file.name`
-> ![[placeHolderLore.png|cover hm-sm]]
-> ###### Info
->  |
-> ---|---|
-> **Alias** | `=this.aliases` |
-> **Type** | `=this.lore_type` |
-> **Location** | `=link(this.locations)` |
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
+> ```
 
 ## Information

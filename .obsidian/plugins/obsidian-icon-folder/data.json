@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiLayoutDashboard",
+      "LiCpu",
       "LiCircle",
       "LiSquare",
       "LiTriangle",
-      "LiRectangleHorizontal"
+      "LiBuilding"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -91,6 +91,46 @@
   },
   "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Cities/Amberhall/Amberhall.md": {
     "iconName": "LiBuilding",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/NPC/Construct/Bob.md": {
+    "iconName": "LiCpu",
+    "iconColor": "gray"
+  },
+  "01 - Campaigns/Tides_of_Fates/Sessions/002_20260809.md": {
+    "iconName": "LiBookA",
+    "iconColor": "red"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Factions/test1.md": {
+    "iconName": "LiChurch",
+    "iconColor": "purple"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Factions/tesafsd.md": {
+    "iconName": "LiSkull",
+    "iconColor": "red"
+  },
+  "01 - Campaigns/Tides_of_Fates/Sessions/001_20260808.md": {
+    "iconName": "LiBookA",
+    "iconColor": "red"
+  },
+  "01 - Campaigns/Tides_of_Fates/Inventory/test.md": {
+    "iconName": "LiSword",
+    "iconColor": "orange"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Continents/Forterian Isle/Countries/Veilmoria/Cities/Amberhall/Establishments/Bar.md": {
+    "iconName": "LiStore",
+    "iconColor": "orange"
+  },
+  "01 - Campaigns/Tides_of_Fates/Quests/Test.md": {
+    "iconName": "LiHandCoins",
+    "iconColor": "yellow"
+  },
+  "01 - Campaigns/Tides_of_Fates/PC/test.md": {
+    "iconName": "LiAxe",
+    "iconColor": "red"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Lores/Test.md": {
+    "iconName": "LiBookOpen",
     "iconColor": "blue"
   }
 }

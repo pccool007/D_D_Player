@@ -1,0 +1,361 @@
+/* ============================================================
+   pc-card.css — player characters, everywhere they appear.
+
+   Rendered by two dataviewjs views:
+     pc_roster  → the card grid (Dashboard, Campaign Manager, Session)
+     pc_card    → the Stats / Bio / Info / Party panels in a PC note
+
+   Requires dnd-tokens.css for the --dnd-* values.
+
+   Markup contract:
+
+     .pc-themed                     palette host; carries the data attrs
+       [data-pc-class]              class name, slugged  → --pc-accent
+       [data-pc-condition]          alive/dead/missing/… → --pc-cond
+       [data-pc-tint]               0–5, portrait gradient → --pc-tint-a/b
+
+     .pc-roster                     the card grid
+       .pc-rcard                    one character
+         .pc-rcard-portrait         art or monogram + scrim + badge
+         .pc-rcard-body             name, class, race, tiles, meta
+
+     .pc-panels                     the PC note's infobox column
+       .pc-stats / .pc-stat         the Level / HP / AC tiles
+       .pc-row                      a key/value line inside a panel
+
+   The panel FRAME around pc_card comes from the shared `panels` view,
+   not from here, so a PC's infobox keeps matching an NPC's.
+   ============================================================ */
+
+.pc-roster,
+.pc-panels {
+  --pc-gap: 16px;
+  --pc-card-min: 250px;
+
+  /* overridden per character by the data attributes below */
+  --pc-accent: #9aa9c0;
+  --pc-cond: var(--dnd-good);
+  --pc-tint-a: #3a3f4b;
+  --pc-tint-b: #262a33;
+}
+
+/* ============================================================
+   1. CLASS PALETTE — --pc-accent per D&D class
+   Add a class by adding a line; the views pass through whatever
+   `class:` says, slugged, and fall back to the neutral above.
+   ============================================================ */
+.pc-themed[data-pc-class="artificer"] { --pc-accent: #4fb0a0; }
+.pc-themed[data-pc-class="barbarian"] { --pc-accent: #cc5a4a; }
+.pc-themed[data-pc-class="bard"]      { --pc-accent: #c56ad0; }
+.pc-themed[data-pc-class="cleric"]    { --pc-accent: #e6c05a; }
+.pc-themed[data-pc-class="druid"]     { --pc-accent: #5fae5f; }
+.pc-themed[data-pc-class="fighter"]   { --pc-accent: #d4744a; }
+.pc-themed[data-pc-class="monk"]      { --pc-accent: #5ac0d0; }
+.pc-themed[data-pc-class="paladin"]   { --pc-accent: #e0b84a; }
+.pc-themed[data-pc-class="ranger"]    { --pc-accent: #5fae7a; }
+.pc-themed[data-pc-class="rogue"]     { --pc-accent: #c9a24b; }
+.pc-themed[data-pc-class="sorcerer"]  { --pc-accent: #e0728f; }
+.pc-themed[data-pc-class="warlock"]   { --pc-accent: #a06ae0; }
+.pc-themed[data-pc-class="wizard"]    { --pc-accent: #6aa9f0; }
+
+/* ============================================================
+   2. CONDITION PALETTE — --pc-cond drives the badge
+   ============================================================ */
+.pc-themed[data-pc-condition="dead"]         { --pc-cond: var(--dnd-bad); }
+.pc-themed[data-pc-condition="missing"]      { --pc-cond: var(--dnd-warn); }
+.pc-themed[data-pc-condition="presume-dead"] { --pc-cond: var(--dnd-warn); }
+
+/* ============================================================
+   3. PORTRAIT TINTS — the placeholder gradient behind a portrait.
+   Blended into the theme background so light mode isn't a slab of
+   charcoal. Cycled by index so a roster doesn't read as one colour.
+   ============================================================ */
+.pc-themed[data-pc-tint="0"] { --pc-tint-a: #3a3f4b; --pc-tint-b: #262a33; }
+.pc-themed[data-pc-tint="1"] { --pc-tint-a: #4a3f3a; --pc-tint-b: #2e2622; }
+.pc-themed[data-pc-tint="2"] { --pc-tint-a: #3a4a44; --pc-tint-b: #232e2a; }
+.pc-themed[data-pc-tint="3"] { --pc-tint-a: #453a4a; --pc-tint-b: #2a2230; }
+.pc-themed[data-pc-tint="4"] { --pc-tint-a: #4a3a42; --pc-tint-b: #2e2228; }
+.pc-themed[data-pc-tint="5"] { --pc-tint-a: #3f4438; --pc-tint-b: #262a20; }
+
+/* ============================================================
+   4. ROSTER GRID  (Dashboard, Campaign Manager, Session)
+   ============================================================ */
+.pc-roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--pc-card-min), 1fr));
+  gap: var(--pc-gap);
+}
+
+.pc-rcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dnd-border);
+  border-radius: var(--dnd-radius);
+  background: var(--background-primary);
+  overflow: hidden;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.pc-rcard:hover {
+  border-color: color-mix(in srgb, var(--pc-accent) 55%, var(--dnd-border));
+  box-shadow: var(--dnd-shadow);
+}
+
+/* the accent hairline that tells you the class at a glance */
+.pc-rcard::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--pc-accent);
+  z-index: 2;
+}
+
+/* a fallen character reads greyer until you hover it */
+.pc-rcard[data-pc-condition="dead"] .pc-rcard-portrait {
+  filter: grayscale(0.65);
+}
+.pc-rcard[data-pc-condition="dead"]:hover .pc-rcard-portrait {
+  filter: none;
+}
+
+/* ---- portrait ---- */
+.pc-rcard-portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--pc-tint-a) 70%, var(--background-secondary)),
+    color-mix(in srgb, var(--pc-tint-b) 70%, var(--background-secondary))
+  );
+  transition: filter 160ms ease;
+}
+
+.pc-rcard-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* first letter of the name, when there is no art yet */
+.pc-rcard-initial {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-text, serif);
+  font-size: 64px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text-muted) 40%, transparent);
+  user-select: none;
+}
+
+/* keeps the badge legible over a bright portrait */
+.pc-rcard-scrim {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 64px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent);
+}
+
+.pc-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pc-cond);
+  background: color-mix(in srgb, var(--pc-cond) 12%, var(--background-secondary));
+  border: 1px solid color-mix(in srgb, var(--pc-cond) 32%, transparent);
+}
+.pc-badge::before {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: var(--pc-cond);
+}
+
+/* ---- body ---- */
+.pc-rcard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.6rem 0.75rem 0.7rem;
+}
+
+.pc-rcard-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* the theme styles a.internal-link, so these need the extra class to win */
+.pc-roster a.pc-rcard-name {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-normal);
+  text-decoration: none;
+}
+.pc-roster a.pc-rcard-name:hover {
+  color: var(--pc-accent);
+  text-decoration: none;
+}
+
+.pc-rcard-level {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.pc-rcard-class {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pc-accent);
+}
+
+.pc-rcard-race {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.pc-rcard-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   5. STAT TILES — shared by the roster card and the PC note.
+   .pc-stats is the grid, .pc-stat one tile, `is-compact` the
+   roster's denser variant.
+   ============================================================ */
+.pc-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+}
+
+.pc-stat {
+  min-width: 0;
+  padding: 0.35rem 0.2rem;
+  text-align: center;
+  border: 1px solid var(--dnd-border);
+  border-top: 2px solid var(--pc-stat-color, var(--pc-accent));
+  border-radius: var(--dnd-radius-sm);
+  background: var(--background-primary);
+}
+
+.pc-stat-value {
+  font-family: var(--font-text, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-normal);
+}
+
+.pc-stat-label {
+  margin-top: 1px;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.pc-stat.is-level { --pc-stat-color: #e0b84a; }
+.pc-stat.is-hp    { --pc-stat-color: #cc5a4a; }
+.pc-stat.is-ac    { --pc-stat-color: #6aa9f0; }
+
+/* the roster's three-up strip: tighter, no accent border, sits on the
+   secondary background so it reads as part of the card body */
+.pc-stats.is-compact {
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+}
+.pc-stats.is-compact .pc-stat {
+  padding: 0.2rem;
+  border: none;
+  border-radius: 5px;
+  background: var(--background-secondary);
+}
+.pc-stats.is-compact .pc-stat-value { font-size: 0.85rem; }
+.pc-stats.is-compact .pc-stat-label { font-size: 0.5rem; }
+
+/* ============================================================
+   6. PC NOTE PANELS  (pc_card, inside the [!infobox])
+   ============================================================ */
+.pc-panels .pc-stats {
+  padding: 0.45rem 0 0.5rem;
+}
+
+.pc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--dnd-hairline);
+  font-size: 0.86rem;
+}
+.pc-row:last-child {
+  border-bottom: none;
+}
+
+.pc-row-key {
+  color: var(--text-muted);
+}
+
+.pc-row-val {
+  text-align: right;
+  font-weight: 500;
+  color: var(--text-normal);
+}
+.pc-row-val.is-muted {
+  font-weight: 400;
+  color: var(--text-faint);
+}
+.pc-panels .pc-row-val a.internal-link {
+  text-decoration: none;
+}
+
+/* the Condition row picks up the same colour as the roster badge */
+.pc-row.is-condition .pc-row-val {
+  color: var(--pc-cond);
+  font-weight: 600;
+}
+
+/* ============================================================
+   7. RESPONSIVE
+   The grid is auto-fill, so it reflows on its own. This is only the
+   genuinely narrow case: a split pane, a phone.
+   ============================================================ */
+@media (max-width: 500px) {
+  .pc-roster {
+    --pc-card-min: 190px;
+    --pc-gap: 10px;
+  }
+  .pc-rcard-initial {
+    font-size: 44px;
+  }
+}

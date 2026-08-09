@@ -21,6 +21,7 @@
 const CAPTURE_SPECS = "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_CaptureSpecs.js";
 const ICON_REGISTRY = "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_IconRegistry.js";
 const LOCATION_HIERARCHY = "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_LocationHierarchy.js";
+const WIZARD_FORM = "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_WizardForm.js";
 
 module.exports = async (domain, params) => {
     const { app, quickAddApi, variables } = params;
@@ -29,6 +30,9 @@ module.exports = async (domain, params) => {
 
     const specs = helper(CAPTURE_SPECS)();
     const iconRegistry = helper(ICON_REGISTRY);
+    // Only for withWorld() — a promoted note must carry the same campaign world in
+    // `locations` that the matching "Add …" wizard puts there.
+    const form = helper(WIZARD_FORM)(params);
     const spec = specs.get(domain);
 
     // Throwing is the only thing QuickAdd honours — setting variables.cancelled
@@ -139,7 +143,9 @@ module.exports = async (domain, params) => {
         variables.description = plain(values.looks);
 
         const where = noteNamed(values.where, ["location", "establishment"]);
-        variables.locations = where ? `\n  - "[[${where.basename}]]"` : "";
+        // Same split as NPCWizard: the world leads `locations`, but it is not where
+        // they were met, so the two scalars stay the captured place alone.
+        variables.locations = yamlList(form.withWorld(campaignRoot, where ? [where.basename] : []));
         variables.first_location = where ? `"[[${where.basename}]]"` : "";
         variables.last_seen = where ? `"[[${where.basename}]]"` : "";
 
@@ -159,14 +165,18 @@ module.exports = async (domain, params) => {
 
         const leader = noteNamed(values.leader, ["npc"]);
         variables.leader = leader ? `"[[${leader.basename}]]"` : quoted(values.leader);
-        const hq = noteNamed(values.hq, ["location", "establishment"]);
-        variables.locations = hq ? `\n  - "[[${hq.basename}]]"` : "";
+        const locations = (values.locations || [])
+            .map(n => noteNamed(n, ["location", "establishment"]))
+            .filter(Boolean)
+            .map(f => f.basename);
+        variables.locations = yamlList(form.withWorld(campaignRoot, locations));
         variables.goal = plain(values.goal);
         variables.emblem_description = plain(values.emblem);
 
         const factionsRoot = `${campaignRoot}/World/Factions`;
         const parent = noteNamed(values.parent_faction, ["faction"]);
-        variables.parent_faction = parent ? `\n  - "[[${parent.basename}]]"` : "";
+        // Scalar, matching FactionWizard and the single-value metadata-menu preset.
+        variables.parent_faction = parent ? `"[[${parent.basename}]]"` : "";
         // Same layout Macro - Add Faction produces.
         variables.folderName = parent
             ? `${factionsRoot}/sub-factions/${parent.basename}`
@@ -204,6 +214,8 @@ module.exports = async (domain, params) => {
         variables.location_type = picked.label;
         variables.icon = picked.icon;
         variables.location_tier_level = picked.tier === null ? "" : String(picked.tier);
+        // The one branch that does NOT get withWorld(): a location's `locations` is its
+        // hierarchy parent and decides its folder just below.
         variables.locations = parent ? `\n  - "[[${parent.basename}]]"` : "";
 
         // Locations are folder notes: {folder}/{name}/{name}.md
@@ -224,7 +236,7 @@ module.exports = async (domain, params) => {
         variables.description = plain(values.known_for);
 
         const where = noteNamed(values.where, ["location"]);
-        variables.locations = where ? `\n  - "[[${where.basename}]]"` : "";
+        variables.locations = yamlList(form.withWorld(campaignRoot, where ? [where.basename] : []));
         // Establishments live inside their location's folder when that location is
         // a folder note, exactly like Macro - Add Establishment.
         const isFolderNote = where && where.parent?.name === where.basename;

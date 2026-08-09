@@ -123,16 +123,18 @@ parent. The tier also decides which subfolder it lands in:
 So a city inside a country ends up at
 `World/Locations/Dimensions/{World}/Countries/{Country}/Cities/{City}/{City}.md`.
 
-**The wizard asks for the parent *before* the type**, precisely so it can offer only the types that
-are legal under that parent. Pick a City as parent and you'll only be offered environments — nothing
-tiered nests inside a city.
+**Parent sits above type on the form, and changes it as you pick.** The type dropdown only ever
+offers what is legal under the parent you chose: pick a City as parent and you'll be offered the
+environments only — nothing tiered nests inside a city. Change your mind about the parent and the
+list follows, keeping your chosen type when it is still legal.
 
 Two ways in:
 
-- **`New Location`** — asks for a name, whether it has a parent, then the type. Skip the parent and
-  it goes to `World/Locations/{Type}/{Name}/{Name}.md`.
-- **`Macro - Add Location (Child)`** (from the command palette, `ctrl + o`) — same thing, but it
-  offers the note you're currently in as the parent. Handy while reading a country note.
+- **`New Location`** — name, parent, type. Skip the parent and it goes to
+  `World/Locations/{Type}/{Name}/{Name}.md`.
+- The same button **on a location note** (also `Macro - Add Location (Child)` from the command
+  palette, `ctrl + o`) — same form, but the note you're currently in is already filled in as the
+  parent. Handy while reading a country note.
 
 The `locations` property on a location holds its **parent**, and the wizard fills it in. Once set,
 the parent's index picks the child up automatically.
@@ -159,30 +161,46 @@ A new location note carries these properties:
 
 ## 3. Everything else
 
-Same shape everywhere: click the button and answer the prompts. The first prompt is almost always
-the name. To leave an optional field empty, choose its `— Skip —` option — `Esc` cancels the whole
-wizard and creates nothing.
+Same shape everywhere: click the button and you get **one form** with every question on it, exactly
+like `New Campaign` and the quick captures. Only the name is required. To leave an optional field
+empty, choose its `— Skip —` option; `Enter` creates the note and `Esc` cancels the whole thing and
+creates nothing.
 
-The wizard picks the icon and colour for you from the type you choose — icons are never a free
-choice.
+A few things the form does for you:
+
+- A picker with nothing to offer yet — factions in a brand-new campaign — is **greyed out and says
+  so**, rather than quietly disappearing.
+- Where the note you clicked from is the obvious answer, it is **already filled in**: the parent
+  location for `New Establishment`, and the parent for `New Location` when you are in a location.
+- The icon and colour come from the type you choose — icons are never a free choice.
 
 | Button | It asks | It lands in |
 |---|---|---|
 | `New Session` | nothing | `Sessions/{NNN}_{YYYYMMDD}.md`, numbered and dated for you |
-| `New Player` | name, class (14), player, race | `PC/` |
-| `New Quest` | name, reward, owner, location | `Quests/` |
-| `New NPC` | name, creature type (14 + `Unknown`), gender, where you met | `World/NPC/{CreatureType}/` |
-| `New Faction` | name, faction type (5), parent faction | `World/Factions/`, or `World/Factions/sub-factions/{Parent}/` |
+| `New Player` | name, class (14), player, race (creature type — same 15 as NPCs) | `PC/` |
+| `New Quest` | name, reward, owner, locations | `Quests/` |
+| `New NPC` | name, creature type (14 + `Unknown`), gender, where you met, factions | `World/NPC/{CreatureType}/` |
+| `New Faction` | name, faction type (5), parent faction, leader, locations | `World/Factions/`, or `World/Factions/sub-factions/{Parent}/` |
 | `New Location` | see above | the location tree |
-| `New Establishment` | name, category (8), parent location | `{parent location}/Establishments/`, or `World/Establishments/` with no parent |
+| `New Establishment` | name, category (8), parent location, owner | `{parent location}/Establishments/`, or `World/Establishments/` with no parent |
 | `New Lore` | name, lore type (7), related lore | `World/Lores/` |
 | `New Item` | name, item type (9), gold value, owner | `Inventory/` |
 
 Every picker (parent, owner, location, faction) is **scoped to the current campaign** and filtered to
 the right note type, and every one offers a `— Skip —`.
 
-If you're unsure what an NPC is, file them as **`Unknown`** — you can change `race` later from the
-property dropdown and move the note.
+Some of them take **several** values — an NPC's factions, a faction's locations, a quest's locations,
+a lore entry's related lore. Those are a **button** rather than a dropdown: click it, a searchable
+list opens on top of the form, tick what you want, `Save` (or `Alt+Enter`) and you're back on the
+form with nothing else lost. The button then says which one you picked, or `3 selected` when it's
+more than one. `Esc` in that list closes only the list — your form is still there behind it.
+
+The rest stay single on purpose: a parent location, a parent faction and an establishment's location
+each decide which **folder** the note lands in, so there can only be one.
+
+If you're unsure what an NPC is, file them as **`Unknown`** — it's what the creature type starts on,
+and you can change `race` later from the property dropdown and move the note. A player character's
+**race** is that same list, so both sides of the table use one vocabulary.
 
 ### Sessions
 
@@ -202,15 +220,15 @@ keeps its `{hint}`, so a half-filled capture is fine:
 - `Note_Sending` — receiving or sending, who the other party is (NPC or player), then the message
   with a live word counter that warns you past 25 words
 - `Note_New_NPC` — race, sub-race, gender, age, occupation, where you met them, factions, vibe…
-- `Note_New_Faction` — type, parent faction, leader, HQ, goal, vibe
+- `Note_New_Faction` — type, parent faction, leader, locations (tick several), goal, vibe
 - `Note_New_Location` — parent location, type, ruler, terrain, vibe
 - `Note_New_Establishment` — category, where it sits, owner, what it's known for, vibe
 
 The four world captures ask everything in **one form**, and you pick rather than type wherever the
 answer already exists: types come from the same tables the `New NPC` / `New Faction` / `New Location`
 / `New Establishment` buttons use, and locations, factions, leaders and owners are **dropdowns of the
-notes in this campaign** (an NPC's factions are a multi-select — tick as many as you need, `Alt+Enter`
-to save). So nothing has to be retyped later.
+notes in this campaign**. The two fields that take several — an NPC's factions and a faction's
+locations — are the same picker button described above. So nothing has to be retyped later.
 
 ### Promoting a capture into a real note
 

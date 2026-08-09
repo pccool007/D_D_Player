@@ -11,33 +11,13 @@ session_num: <% tp.user._obsi_script_GetThisGameNum(tp) %>
 locations:
 important_event:
 ---
-# [[<% tp.file.title %>]]
-
 ```dataviewjs
 await dv.view("00 - Config/_obsi/_obsi_views/session_hero");
 ```
 
 > [!infobox]
-> ###### Info
->  |
-> ---|---|
-> **Session Number** | `=this.session_num` |
-> **Location** | `=link(this.locations)` |
-> **Events**  | `=this.important_event` |
->  **Date** | `=this.date`|
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/action_bar", {
->   actions: [
->     ["New NPC",           "Macro - Add NPC",           "#8a5a2b"],
->     ["New Location",      "Macro - Add Location",      "#2f6d4f"],
->     ["New Establishment", "Macro - Add Establishment", "#9c4a2e"],
->     ["New Faction",       "Macro - Add Faction",       "#6a3d9a"],
->     ["New Quest",         "Macro - Add Quest",         "#2c6e49"],
->     ["New Lore",          "Macro - Add Lore",          "#34508c"],
->     ["New Item",          "Macro - Add Inventory",     "#4f5f28"],
->   ],
->   compact: true,
-> });
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
 > ```
 
 
@@ -85,10 +65,9 @@ await dv.view("00 - Config/_obsi/_obsi_views/pc_roster", { folder: "01 - Campaig
 - [ ] 
 
 ## Quests
-> [!table-data] Active Quest
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/campaign_quests", { status: "active" });
-> ```
+```dataviewjs
+await dv.view("00 - Config/_obsi/_obsi_views/quest_cards", { status: "active" });
+```
 
 ## Log
 

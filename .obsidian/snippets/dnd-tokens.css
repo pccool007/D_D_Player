@@ -1,0 +1,45 @@
+/* ============================================================
+   dnd-tokens.css — the values every card view agrees on.
+
+   Load-bearing for pc-card.css, campaign-card.css, quest-card.css and
+   dnd-tables.css: they consume these custom properties and define none
+   of their own shared ones. Disable this snippet and those sheets lose
+   their borders, radii and status colours.
+
+   Order does not matter. Custom properties resolve where they are
+   USED, not where they are declared, so these files can be enabled in
+   any sequence.
+
+   Everything routes through Obsidian's theme variables where one
+   exists, so light and dark both work from a single palette.
+   ============================================================ */
+
+.pc-roster,
+.pc-panels,
+.cc-grid,
+.qc-grid,
+.npc-table,
+.faction-table,
+.location-table,
+.establishment-table,
+.lore-table {
+  /* ---- shape ---- */
+  --dnd-radius: 12px;
+  --dnd-radius-md: 10px;
+  --dnd-radius-sm: 6px;
+  --dnd-border: var(--background-modifier-border);
+  --dnd-hairline: color-mix(in srgb, var(--background-modifier-border) 55%, transparent);
+  --dnd-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+
+  /* ---- the accent a card falls back to when nothing more specific applies ---- */
+  --dnd-accent: var(--interactive-accent, #4c8bf5);
+
+  /* ---- status tones ----
+     Shared on purpose: the PC condition badge, the campaign consistency
+     bar and a completed quest all mean the same thing by "good", so they
+     are the same green. Change it here and all three follow. */
+  --dnd-good: #2bb34a;
+  --dnd-warn: #e8923a;
+  --dnd-bad: #e05a5a;
+  --dnd-idle: #8a8a8a;
+}

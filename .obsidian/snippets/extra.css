@@ -1,4 +1,35 @@
+/* ============================================================
+   extra.css — vault-wide odds and ends.
+
+   The card views each have their own sheet; nothing about them belongs
+   here. Enable all five in Settings → Appearance → CSS snippets:
+
+     dnd-tokens.css      shared --dnd-* values. REQUIRED by the three below
+     pc-card.css         pc_roster + pc_card
+     campaign-card.css   campaign_cards
+     quest-card.css      quest_cards
+     extra.css           this file
+
+   The three card sheets read their borders, radii and status colours
+   from dnd-tokens.css and define no shared values of their own — turn
+   that one off and all three lose their palette. Order between them
+   doesn't matter: custom properties resolve where they are used, not
+   where they are declared.
+
+   Anything that isn't a card and isn't worth its own file goes here.
+   ============================================================ */
+
+/* Dataview renders a linked image at its natural size, which turns one
+   portrait in a table into a full-height row. */
 table.dataview img {
-    max-height: 400px;
-  }
-  
+  max-height: 400px;
+}
+
+/* Same cap for the infobox header image: a tall portrait would otherwise push
+   the Stats and action panels far below the fold. `object-fit: contain` keeps
+   the aspect ratio instead of squashing what the height clips. */
+.callout[data-callout="infobox"] img {
+  max-height: 400px;
+  max-width: 100%;
+  object-fit: contain;
+}

@@ -360,7 +360,7 @@
       "options": {
         "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"location\", \"establishment\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
         "customRendering": "page.name || page.file.name",
-        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+        "customSorting": "a.basename.localeCompare(b.basename)"
       },
       "name": "locations",
       "id": "locati",
@@ -375,7 +375,7 @@
       "options": {
         "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"location\", \"establishment\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
         "customRendering": "page.name || page.file.name",
-        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+        "customSorting": "a.basename.localeCompare(b.basename)"
       },
       "name": "first_location",
       "id": "first_",
@@ -390,7 +390,7 @@
       "options": {
         "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"location\", \"establishment\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
         "customRendering": "page.name || page.file.name",
-        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+        "customSorting": "a.basename.localeCompare(b.basename)"
       },
       "name": "last_seen",
       "id": "last_s",
@@ -405,10 +405,175 @@
       "options": {
         "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"faction\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
         "customRendering": "page.name || page.file.name",
-        "customSorting": "(a, b) => (a.name || a.file.name).localeCompare(b.name || b.file.name)"
+        "customSorting": "a.basename.localeCompare(b.basename)"
       },
       "name": "factions",
       "id": "factio",
+      "path": ""
+    },
+    {
+      "type": "File",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Single internal link \u2014 the faction this one sits under, in this campaign",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => String(p.type).toLowerCase() === \"faction\"\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "a.basename.localeCompare(b.basename)"
+      },
+      "name": "parent_faction",
+      "id": "parent",
+      "path": ""
+    },
+    {
+      "type": "File",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Single internal link \u2014 the NPC who leads this faction or location, in this campaign",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => String(p.type).toLowerCase() === \"npc\"\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "a.basename.localeCompare(b.basename)"
+      },
+      "name": "leader",
+      "id": "leader",
+      "path": ""
+    },
+    {
+      "type": "File",
+      "tagName": "file",
+      "icon": "link",
+      "tooltip": "Single internal link \u2014 who owns it: player characters first, then NPCs, then factions",
+      "colorClass": "file",
+      "options": {
+        "dvQueryString": "dv.pages('\"01 - Campaigns/' + current.file.path.split(\"/\")[1] + '\"')\n  .where(p => [\"player\", \"npc\", \"faction\"].includes(String(p.type).toLowerCase())\n    && p.file.path !== current.file.path)",
+        "customRendering": "page.name || page.file.name",
+        "customSorting": "(() => { const mc = globalThis.app?.metadataCache; const rank = (f) => ({ player: 0, npc: 1, faction: 2 })[String(mc?.getFileCache(f)?.frontmatter?.type || \"\").toLowerCase()] ?? 3; return rank(a) - rank(b) || a.basename.localeCompare(b.basename); })()"
+      },
+      "name": "owner",
+      "id": "owner0",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Item type \u2014 the values the Inventory wizard offers (IconRegistry inventory domain)",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Weapon",
+          "2": "Armor",
+          "3": "Potion",
+          "4": "Scroll",
+          "5": "Wondrous",
+          "6": "Tool",
+          "7": "Treasure",
+          "8": "Consumable",
+          "9": "Other"
+        }
+      },
+      "name": "item_type",
+      "id": "item_t",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "5e class \u2014 the values the PC wizard offers (IconRegistry pc domain)",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Artificer",
+          "2": "Barbarian",
+          "3": "Bard",
+          "4": "Cleric",
+          "5": "Druid",
+          "6": "Fighter",
+          "7": "Monk",
+          "8": "Paladin",
+          "9": "Ranger",
+          "10": "Rogue",
+          "11": "Sorcerer",
+          "12": "Warlock",
+          "13": "Wizard",
+          "14": "Other"
+        }
+      },
+      "name": "class",
+      "id": "class0",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Active",
+          "2": "Disbanded",
+          "3": "Hidden",
+          "4": "Destroyed",
+          "5": "Absorbed"
+        }
+      },
+      "name": "faction_status",
+      "id": "fac_st",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Lawful Good",
+          "2": "Neutral Good",
+          "3": "Chaotic Good",
+          "4": "Lawful Neutral",
+          "5": "True Neutral",
+          "6": "Chaotic Neutral",
+          "7": "Lawful Evil",
+          "8": "Neutral Evil",
+          "9": "Chaotic Evil",
+          "10": "Unaligned"
+        }
+      },
+      "name": "alignment",
+      "id": "align0",
+      "path": ""
+    },
+    {
+      "type": "Select",
+      "tagName": "select",
+      "icon": "right-triangle",
+      "tooltip": "Accepts a single value from a list",
+      "colorClass": "select",
+      "options": {
+        "sourceType": "ValuesList",
+        "valuesList": {
+          "1": "Heterosexual",
+          "2": "Homosexual",
+          "3": "Bisexual",
+          "4": "Pansexual",
+          "5": "Asexual",
+          "6": "Unknown",
+          "7": "Other"
+        }
+      },
+      "name": "sexuality",
+      "id": "sexual",
       "path": ""
     }
   ],

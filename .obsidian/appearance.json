@@ -4,7 +4,13 @@
   "theme": "obsidian",
   "enabledCssSnippets": [
     "test",
-    "extra"
+    "extra",
+    "dnd-tokens",
+    "pc-card",
+    "campaign-card",
+    "quest-card",
+    "npc-table",
+    "dnd-tables"
   ],
   "monospaceFontFamily": "Bookerly",
   "textFontFamily": "Bookerly",

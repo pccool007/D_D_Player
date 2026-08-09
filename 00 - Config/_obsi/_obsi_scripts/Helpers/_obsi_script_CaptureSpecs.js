@@ -40,6 +40,8 @@ const GENDERS = ["Male", "Female", "Non-binary", "Unknown", "Other"];
 //   noteSelect dropdown of existing notes of the given frontmatter types
 //   noteMulti  multi-select of existing notes (comma-separated in the capture)
 //   hint       never prompted — the line is written with its {hint} for later
+// A field may also carry `aliases: ["OldLabel"]`, which `parse` falls back to so a
+// capture written before a label was renamed still promotes.
 const SPECS = {
     npc: {
         type: "NPC",
@@ -71,8 +73,11 @@ const SPECS = {
             { label: "Parent faction", key: "parent_faction", input: "noteSelect",
               noteTypes: ["faction"], hint: "{bigger faction this one belongs to}" },
             { label: "Leader", key: "leader", input: "noteSelect", noteTypes: ["npc"], hint: "{NPC}" },
-            { label: "HQ", key: "hq", input: "noteSelect",
-              noteTypes: ["location", "establishment"], hint: "{primary base or location}" },
+            // Was a single "HQ" — a faction usually holds ground in several places,
+            // and it lands in the note's `locations` list either way. `aliases` keeps
+            // a capture written before the change parsing.
+            { label: "Locations", key: "locations", input: "noteMulti", aliases: ["HQ"],
+              noteTypes: ["location", "establishment"], hint: "{bases and territory}" },
             { label: "Goal", key: "goal", input: "text", hint: "{primary aim or ideology}" },
             { label: "Vibe", key: "vibe", input: "text", hint: "{3 adjectives – secretive, militant, decadent}" },
             { label: "Emblem", key: "emblem", input: "hint", hint: "{symbol, insignia, colors}" },
@@ -171,7 +176,12 @@ const parse = (spec, blockText) => {
     const clean = (value) => (isHint(value) ? "" : String(value).trim());
     const values = {};
     for (const field of spec.fields) {
-        const raw = found[field.label.toLowerCase()];
+        // `aliases` are labels this field used to carry — a capture typed before a
+        // rename still promotes instead of quietly losing the line.
+        const raw = found[field.label.toLowerCase()]
+            ?? (field.aliases ?? [])
+                .map(a => found[a.toLowerCase()])
+                .find(v => v !== undefined);
         values[field.key] = field.input === "noteMulti"
             ? clean(raw).split(",").map(s => s.trim()).filter(Boolean)
             : clean(raw);

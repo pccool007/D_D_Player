@@ -39,6 +39,10 @@ function _obsi_script_GetWorldName (tp) {
     );
 }
 module.exports = _obsi_script_GetWorldName;
+// Templater registers the function itself; the attached property is inert there and
+// is how _obsi_script_WizardForm.worldName() reuses this unwrapping instead of
+// carrying a second copy of the regex.
+module.exports.bareWorldName = bareWorldName;
 
 // The goal of this script is for campaign & world to have the
 // child folders to have the same World setting target as

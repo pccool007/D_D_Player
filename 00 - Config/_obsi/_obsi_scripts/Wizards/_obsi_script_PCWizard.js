@@ -1,40 +1,55 @@
-// PC wizard — prompts character name + class (which drives icon/iconColor),
-// the real person playing them, and the character's race.
+// PC wizard — one form: character name, class (which drives icon/iconColor), the
+// real person playing them, and the character's race.
 //
 // Runs after _obsi_script_SetParamsInCapGetCampaignFolder, which sets
-// variables.folderName to "01 - Campaigns/{campaign}".
+// variables.folderName to "01 - Campaigns/{campaign}"; the macro's template step
+// appends /PC.
 //
-// `race` is free text here rather than a suggester: player races are an open set
-// (and expand with every supplement), unlike the fixed 5e creature types NPCs use.
+// `race` is the same creature-type list `Macro - Add NPC` offers — one vocabulary
+// for every character in the vault, and the same list metadata-menu's `race` preset
+// is generated from, so the wizard and the property dropdown agree.
 module.exports = async (params) => {
-    const { quickAddApi, variables } = params;
+    const { variables } = params;
     // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
     // macro's template step run on to create a note from empty values.
     const cancel = () => { variables.cancelled = true; throw "cancelled"; };
     const path = require("path");
-    const iconRegistry = require(path.join(
+    const form = require(path.join(
         params.app.vault.adapter.basePath,
-        "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_IconRegistry.js"
-    ));
+        "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_WizardForm.js"
+    ))(params);
 
-    const name = await quickAddApi.inputPrompt("Character name?");
-    if (!name) cancel();
+    const OTHER = "Other";
+    const UNKNOWN_RACE = "Unknown";
 
-    const classes = iconRegistry("pc");
-    const labels = Object.keys(classes);
-    const pcClass = await quickAddApi.suggester(labels, labels, "Class?");
-    if (!pcClass) cancel();
+    const answers = await form.formPrompt({
+        title: "New player character",
+        saveLabel: "Create character",
+        fields: [
+            { key: "name", label: "Character name", required: true, placeholder: "Grish Ironhand" },
+            form.typeField({ key: "class", label: "Class", domain: "pc", value: OTHER }),
+            { key: "player", label: "Who plays them?", placeholder: "Real name" },
+            form.typeField({
+                key: "race",
+                label: "Race",
+                domain: "npc",
+                value: UNKNOWN_RACE,
+                description: "Creature type — the same list NPCs use. Unknown if not sure yet.",
+            }),
+        ],
+    });
+    if (!answers) cancel();
 
-    const style = classes[pcClass];
+    const style = form.styleFor("pc", answers.class);
 
-    const player = await quickAddApi.inputPrompt("Who plays them? (real name)");
-    const race = await quickAddApi.inputPrompt("Race? (blank to fill in later)");
-
-    variables.name = name;
-    variables.fileName = name;
-    variables.class = pcClass === "Other" ? "" : pcClass;
+    variables.name = answers.name;
+    variables.fileName = answers.name;
+    // "Other" is the catch-all option, not a class — leave the property empty so
+    // the roster does not display it.
+    variables.class = answers.class === OTHER ? "" : answers.class;
     variables.icon = style.icon;
     variables.iconColor = style.iconColor;
-    variables.player = player ? String(player).trim() : "";
-    variables.race = race ? String(race).trim() : "";
+    variables.player = form.plain(answers.player);
+    // A registry label, so the template's unquoted `race:` slot is safe.
+    variables.race = answers.race;
 };

@@ -1,0 +1,563 @@
+/* ============================================================
+   campaign-card.css — the Active Campaigns grid on Dashboard.md.
+
+   Rendered by the `campaign_cards` dataviewjs view.
+   Requires dnd-tokens.css for the --dnd-* values.
+
+   Markup contract:
+
+     .cc-grid
+       .cc-card                     one campaign
+         .cc-body
+           .cc-head                 title, date range, meta chips, pin button
+           .cc-cols                 1.35fr / 1fr split
+             .cc-col                left column
+               .cc-hero  .is-today  next (or today's) session
+               .cc-row              session count + last session
+               .cc-players          the living roster as avatar chips
+             .cc-panel              right column: consistency + status
+
+   TONE: .cc-hero and .cc-cons set --cc-tone from a state class or from
+   data-cc-tone, and everything inside them mixes against it. One colour
+   per state, not one per element — retoning "today's session" is a
+   single line. The view pushes exactly one value, --cc-pct, because CSS
+   can't derive a percentage from a session count.
+   ============================================================ */
+
+.cc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  gap: 20px;
+  align-items: start;
+
+  --cc-tone: var(--dnd-accent);
+}
+
+/* the label above a block — "Last Session", "Players", "Consistency" */
+.cc-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.cc-card {
+  position: relative;
+  border: 1px solid var(--dnd-border);
+  border-radius: var(--dnd-radius);
+  background: var(--background-primary);
+  overflow: hidden;
+}
+
+/* the accent bar across the top of the card */
+.cc-card::before {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--dnd-accent),
+    color-mix(in srgb, var(--dnd-accent) 30%, transparent)
+  );
+}
+
+.cc-body {
+  padding: 18px 22px 22px;
+}
+
+/* ============================================================
+   1. HEADER
+   ============================================================ */
+.cc-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cc-head-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.cc-title-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.cc-grid a.cc-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-normal);
+  text-decoration: none;
+}
+.cc-grid a.cc-title:hover {
+  color: var(--dnd-accent);
+  text-decoration: none;
+}
+
+.cc-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.cc-icon {
+  display: inline-flex;
+}
+.cc-icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.cc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.cc-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--dnd-radius-sm);
+  background: var(--background-secondary);
+  border: 1px solid var(--dnd-border);
+  font-size: 12px;
+}
+.cc-chip-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.cc-chip-value {
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+/* the open + pin button, top right. Hover is CSS, not two JS listeners. */
+.cc-open {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-normal);
+  border: 1px solid color-mix(in srgb, var(--dnd-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--dnd-accent) 12%, var(--background-secondary));
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.cc-open:hover {
+  background: color-mix(in srgb, var(--dnd-accent) 24%, var(--background-secondary));
+  border-color: var(--dnd-accent);
+}
+.cc-open svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ============================================================
+   2. TWO-COLUMN BODY
+   ============================================================ */
+.cc-cols {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+  align-items: stretch;
+}
+
+.cc-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* ============================================================
+   3. NEXT-SESSION HERO
+   ============================================================ */
+.cc-hero {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: var(--dnd-radius-md);
+  background: color-mix(in srgb, var(--cc-tone) 9%, var(--background-secondary));
+  border: 1px solid color-mix(in srgb, var(--cc-tone) 28%, transparent);
+  overflow: hidden;
+}
+/* a session happening today outranks any future one, and says so in green */
+.cc-hero.is-today {
+  --cc-tone: var(--dnd-good);
+}
+.cc-hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--cc-tone);
+}
+
+.cc-hero-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.cc-hero-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cc-tone);
+}
+.cc-hero-when {
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cc-tone);
+  background: color-mix(in srgb, var(--cc-tone) 16%, transparent);
+}
+.cc-grid a.cc-hero-name {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-normal);
+  text-decoration: none;
+}
+.cc-grid a.cc-hero-name:hover {
+  color: var(--cc-tone);
+}
+.cc-hero-date {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   4. SESSION COUNT + LAST SESSION
+   ============================================================ */
+.cc-row {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.cc-count {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  padding: 8px 12px;
+  border-radius: var(--dnd-radius-md);
+  background: var(--background-secondary);
+  border: 1px solid var(--dnd-border);
+  border-top: 2px solid var(--dnd-accent);
+}
+.cc-count-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-normal);
+}
+.cc-count-label {
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.cc-last {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: var(--dnd-radius-md);
+  background: var(--background-secondary);
+  border: 1px solid var(--dnd-border);
+}
+.cc-grid a.cc-last-name {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-normal);
+  text-decoration: none;
+}
+.cc-grid a.cc-last-name:hover {
+  color: var(--dnd-accent);
+}
+.cc-last-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.cc-events {
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--dnd-border) 70%, transparent);
+}
+.cc-events-label {
+  margin-bottom: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+.cc-events-list {
+  margin: 0;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cc-events-list li {
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--text-normal);
+}
+
+/* "— none yet", "No played session yet." */
+.cc-empty {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-muted);
+}
+.cc-last .cc-empty {
+  margin-top: 4px;
+}
+.cc-panel .cc-empty {
+  font-size: 11px;
+  padding: 2px;
+}
+
+/* ============================================================
+   5. PLAYER CHIPS
+   ============================================================ */
+.cc-players-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.cc-players-count {
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-normal);
+  background: var(--background-secondary);
+  border: 1px solid var(--dnd-border);
+}
+
+.cc-player-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cc-player {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-normal);
+  background: var(--background-secondary);
+  border: 1px solid var(--dnd-border);
+}
+
+.cc-avatar {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dnd-accent);
+  background: color-mix(in srgb, var(--dnd-accent) 22%, var(--background-primary));
+}
+.cc-avatar-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.cc-player-name {
+  padding-left: 2px;
+}
+
+.cc-player-open {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--dnd-accent);
+  border: 1px solid color-mix(in srgb, var(--dnd-accent) 30%, transparent);
+  background: color-mix(in srgb, var(--dnd-accent) 10%, var(--background-primary));
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.cc-player-open:hover {
+  background: color-mix(in srgb, var(--dnd-accent) 22%, var(--background-primary));
+  border-color: var(--dnd-accent);
+}
+.cc-player-open svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ============================================================
+   6. RIGHT-HAND STATUS PANEL
+   ============================================================ */
+.cc-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--dnd-radius-md);
+  background: var(--background-secondary);
+  border: 1px solid var(--dnd-border);
+}
+
+.cc-cons[data-cc-tone="good"] { --cc-tone: var(--dnd-good); }
+.cc-cons[data-cc-tone="warn"] { --cc-tone: var(--dnd-warn); }
+.cc-cons[data-cc-tone="bad"]  { --cc-tone: var(--dnd-bad); }
+
+.cc-cons-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.cc-cons-pct {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--cc-tone);
+}
+
+.cc-track {
+  height: 7px;
+  border-radius: 5px;
+  background: var(--background-primary);
+  overflow: hidden;
+}
+/* --cc-pct is the one genuinely dynamic value; the view sets it per card */
+.cc-fill {
+  height: 100%;
+  width: var(--cc-pct, 0%);
+  border-radius: 5px;
+  background: var(--cc-tone);
+  transition: width 200ms ease;
+}
+
+.cc-cons-note {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* shown instead of the bar when the maths can't run yet */
+.cc-hint {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-muted);
+  background: var(--background-primary);
+  border: 1px dashed var(--dnd-border);
+}
+
+/* open checkboxes left in the last session's wrap-up sections */
+.cc-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--dnd-border);
+}
+.cc-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--background-primary);
+}
+.cc-status-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.cc-status-value {
+  font-size: 12px;
+  font-weight: 600;
+}
+.cc-status-value.is-ok   { color: var(--dnd-good); }
+.cc-status-value.is-warn { color: var(--dnd-warn); }
+
+/* ============================================================
+   7. RESPONSIVE
+   The grid is auto-fit, but the card's two columns are not — they
+   have to stack before the card itself needs a scrollbar.
+   ============================================================ */
+@media (max-width: 900px) {
+  .cc-grid {
+    grid-template-columns: 1fr;
+  }
+  .cc-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .cc-body {
+    padding: 14px 14px 16px;
+  }
+  .cc-grid a.cc-title {
+    font-size: 19px;
+  }
+}

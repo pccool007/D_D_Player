@@ -16,18 +16,10 @@ time_delay:
 locations: {{VALUE:locations}}
 description:
 ---
-# [[<% tp.file.title %>]]
-
 > [!infobox]
-> # `=this.file.name`
-> ###### Info
->  |
-> ---|---|
-> **Status** | `=this.quest_status` |
-> **reward** | `=this.reward` |
-> **owner** | `=link(this.owner)` |
-> **timeDelay** | `=this.time_delay` |
-> **locations** | `=link(this.locations)` |
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
+> ```
 
 
 ## Information

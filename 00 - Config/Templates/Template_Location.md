@@ -25,43 +25,9 @@ exports:
 urls:
 img: "[[placeHolderLocations.png]]"
 ---
-# [[<% tp.file.title %>]]
 > [!infobox]
-> # `=this.file.name`
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "img", label: "Location" });
-> ```
-> ###### Info
->  |
-> ---|---|
-> **Alias** | `=this.aliases` |
-> **Type** | `=this.location_type` |
-> **Parent** | `=link(this.locations)` |
-> **Population** | `=this.population` |
-> **Theme** | `=this.theme` |
-> **Terrain** | `=this.terrain` |
-> ###### Politics
->  |
-> ---|---|
-> **Leaders** | `=this.leader` |
-> **Govt Type** | `=this.govtType` |
-> **Defenses** | `=this.defences` |
-> ###### Commerce
->  |
-> ---|---|
-> **Imports** | `=this.imports` |
-> **Exports** | `=this.exports` |
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/action_bar", {
->   actions: [
->     ["New Location",      "Macro - Add Location (Child)", "#2f6d4f"],
->     ["New Establishment", "Macro - Add Establishment",    "#9c4a2e"],
->     ["New NPC",           "Macro - Add NPC",              "#8a5a2b"],
->     ["New Faction",       "Macro - Add Faction",          "#6a3d9a"],
->     ["New Quest",         "Macro - Add Quest",            "#2c6e49"],
->   ],
->   compact: true,
-> });
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
 > ```
 
 > [!map] Map
@@ -88,8 +54,6 @@ img: "[[placeHolderLocations.png]]"
 const _rawTier = "{{VALUE:location_tier_level}}";
 const myTier = _rawTier === "" ? null : parseInt(_rawTier, 10);
 const showBelow = (tier) => myTier !== null && !isNaN(myTier) && myTier < tier;
-const campaign = tp.user._obsi_script_GetFileRacine(tp);
-const me = tp.file.title;
 const tiers = [
   { n: 0, label: "Dimensions", type: "Dimension" },
   { n: 1, label: "Continents", type: "Continent" },
@@ -100,65 +64,39 @@ const tiers = [
 ];
 for (const t of tiers) {
   if (showBelow(t.n)) {
-    tR += `> [!table-data]- ${t.label}\n>\`\`\`dataview\n> table word_description as "Description", location_type as "Type"\n> from "01 - Campaigns/${campaign}/World"\n> WHERE lower(type) = "location" \n> and contains(location_type, "${t.type}")\n> and contains(locations,[[${me}]])\n> SORT file.name ASC\n> \`\`\`\n\n`;
+    // The view resolves campaign and identity at render time, so nothing about
+    // this note gets baked in — renaming it no longer empties its own tables.
+    tR += `> [!table-data]- ${t.label}\n> \`\`\`dataviewjs\n> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", type: "${t.type}" });\n> \`\`\`\n\n`;
   }
 }
 -%>
 > [!table-data]- Other
->```dataview
-> table word_description as "Description", location_type as "Type"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World"
-> WHERE lower(type) = "location" 
-> and !contains(location_type,"Dimension")
-> and !contains(location_type,"Continent")
-> and !contains(location_type,"Region")
-> and !contains(location_type,"Country")
-> and !contains(location_type,"State")
-> and !contains(location_type,"City")
-> and !contains(location_type,"Dungeon")
-> and contains(locations,[[<% tp.file.title %>]])
-> SORT file.name ASC, location_type ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", excludeTypes: ["Dimension", "Continent", "Region", "Country", "State", "City", "Dungeon"] });
 > ```
 
 > [!table-data]- Dungeons
->```dataview
-> table word_description as "Description", location_type as "Type"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World"
-> WHERE lower(type) = "location" 
-> and contains(location_type,"Dungeon")
-> and contains(locations,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", type: "Dungeon" });
 > ```
 
 ### Associated Establishment 
 > [!table-data]- Table Shops/Services
-> ```dataview
-> table description as "Description", owner as "Owner", establishment_type as "type"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World"
-> WHERE lower(type) = "establishment" 
-> and contains(locations,[[<% tp.file.title %>]])
-> SORT file.establishment_type ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/establishment_table", { link: "locations" });
 > ```
 
 ### Associated Characters
 > [!table-data] List of NPC's
->```dataview
-> table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
-> WHERE lower(type) = "npc" 
-> and contains(locations,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/npc_table", { link: "locations" });
 > ```
 
 
 ### Associated Factions 
 > [!table-data]- Factions
-> ```dataview
-> table description as "Description"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Factions"
-> WHERE lower(type) = "faction" 
-> and contains(locations,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/faction_table", { link: "locations" });
 > ```
 
 ### Associated Quest
@@ -180,12 +118,8 @@ for (const t of tiers) {
 
 --- 
 >[!table-data]- Lores
->```dataview
-> table description as "Description", lore_type as "Type"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE lower(type) = "lore" 
-> and contains(relations,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/lore_table", { link: "relations" });
 > ```
 
 ## History

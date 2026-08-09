@@ -1,5 +1,5 @@
-// NPC wizard — prompts name + creature-type race (which drives icon/iconColor),
-// gender, the location they were met at, and their factions.
+// NPC wizard — one form: name, creature-type race (which drives icon/iconColor),
+// gender, the location they were met at, and the factions they belong to.
 //
 // Runs after _obsi_script_SetParamsInCapGetCampaignFolder, which sets
 // variables.folderName to "01 - Campaigns/{campaign}". The macro's template step
@@ -10,32 +10,72 @@
 // `race` here is the 5e creature type. A player-facing race (Half-Elf, Tiefling…)
 // belongs in the template's `subRace` field, which is left blank for the GM to fill.
 module.exports = async (params) => {
-    const { app, quickAddApi, variables } = params;
+    const { variables } = params;
     // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
     // macro's template step run on to create a note from empty values.
     const cancel = () => { variables.cancelled = true; throw "cancelled"; };
+    const Notice = params?.obsidian?.Notice;
     const path = require("path");
-    const iconRegistry = require(path.join(
-        app.vault.adapter.basePath,
-        "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_IconRegistry.js"
-    ));
+    const form = require(path.join(
+        params.app.vault.adapter.basePath,
+        "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_WizardForm.js"
+    ))(params);
 
-    const SKIP = "— Skip —";
     // Mirrors the `gender` ValuesList in .obsidian/plugins/metadata-menu/data.json —
     // keep the two in sync so the wizard and the property dropdown offer the same set.
     const GENDERS = ["Male", "Female", "Non-binary", "Unknown", "Other"];
+    // The README's answer for "I don't know what they are yet", so it is the default.
+    const UNKNOWN_RACE = "Unknown";
 
-    const name = await quickAddApi.inputPrompt("NPC name?");
-    if (!name) cancel();
+    const campaignRoot = form.campaignRoot();
+    if (!campaignRoot) {
+        if (Notice) new Notice("Cannot resolve the campaign folder — open a note inside a campaign first.");
+        cancel();
+    }
 
-    const races = iconRegistry("npc");
-    const labels = Object.keys(races);
-    const race = await quickAddApi.suggester(labels, labels, "Creature type?");
-    if (!race) cancel();
+    const places = form.notesOf(campaignRoot, ["location", "establishment"]);
+    const factions = form.notesOf(campaignRoot, ["faction"]);
 
-    const style = races[race];
+    const answers = await form.formPrompt({
+        title: "New NPC",
+        saveLabel: "Create NPC",
+        fields: [
+            { key: "name", label: "NPC name", required: true, placeholder: "Elowen Marsh" },
+            form.typeField({
+                key: "race",
+                label: "Creature type",
+                domain: "npc",
+                value: UNKNOWN_RACE,
+                description: "Files the note under World/NPC/{type}. Pick Unknown if you are not sure.",
+            }),
+            {
+                key: "gender",
+                label: "Gender",
+                type: "select",
+                value: "",
+                options: [[form.SKIP, ""], ...GENDERS.map(g => [g, g])],
+            },
+            form.noteField({
+                key: "where",
+                label: "Where were they met?",
+                files: places,
+                description: "Also fills first seen and last seen.",
+                emptyHint: "No location or establishment in this campaign yet.",
+            }),
+            form.noteMultiField({
+                key: "factions",
+                label: "Factions",
+                files: factions,
+                description: "Opens a picker — tick as many as apply.",
+                emptyHint: "No faction in this campaign yet.",
+            }),
+        ],
+    });
+    if (!answers) cancel();
 
-    variables.name = name;
+    const style = form.styleFor("npc", answers.race);
+
+    variables.name = answers.name;
     // Frontmatter the promote parser fills in from a session capture — set blank
     // here so QuickAdd never prompts for them on the plain "Add" path.
     variables.subRace = "";
@@ -43,92 +83,18 @@ module.exports = async (params) => {
     variables.occupation = "";
     variables.description = "";
     variables.word_description = "";
-    variables.fileName = `${race}/${name}`;
-    variables.race = race;
+    variables.fileName = `${answers.race}/${answers.name}`;
+    variables.race = answers.race;
     variables.icon = style.icon;
     variables.iconColor = style.iconColor;
-    variables.gender = "";
-    variables.locations = "";
-    variables.first_location = "";
-    variables.last_seen = "";
-    variables.factions = "";
-
-    const gender = await quickAddApi.suggester(
-        [SKIP, ...GENDERS],
-        [SKIP, ...GENDERS],
-        "Gender?"
-    );
-    if (gender && gender !== SKIP) variables.gender = gender;
-
-    const campaignRoot = variables.folderName;
-    if (!campaignRoot) return;
-
-    const inCampaign = (f) => f.path.startsWith(campaignRoot + "/");
-    const typeOf = (f) =>
-        String(app.metadataCache.getFileCache(f)?.frontmatter?.type || "").toLowerCase();
-    const byName = (a, b) => a.basename.localeCompare(b.basename);
-
-    // Optional "where did we meet them" link — locations and establishments.
-    const places = app.vault.getMarkdownFiles()
-        .filter(f => inCampaign(f) && ["location", "establishment"].includes(typeOf(f)))
-        .sort(byName);
-
-    if (places.length) {
-        const picked = await quickAddApi.suggester(
-            [SKIP, ...places.map(f => f.basename)],
-            [SKIP, ...places],
-            "Where were they met?"
-        );
-        if (picked && picked !== SKIP) {
-            // Where they were met is also where they were first met and last seen —
-            // the GM moves last_seen on later. `locations` is a YAML list; the other
-            // two are scalars.
-            variables.locations = `\n  - "[[${picked.basename}]]"`;
-            variables.first_location = `"[[${picked.basename}]]"`;
-            variables.last_seen = `"[[${picked.basename}]]"`;
-        }
-    }
-
-    // Factions the NPC belongs to — multi-select, since an NPC can hold several
-    // allegiances. Falls back to a single-pick suggester on older QuickAdd builds.
-    const factions = app.vault.getMarkdownFiles()
-        .filter(f => inCampaign(f) && typeOf(f) === "faction")
-        .sort(byName);
-    if (!factions.length) return;
-
-    const factionNames = factions.map(f => f.basename);
-    const FACTION_QUESTION = "Which factions does this NPC belong to?";
-    let chosen = [];
-
-    try {
-        const multiSelect = require(path.join(
-            app.vault.adapter.basePath,
-            "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_MultiSelectPrompt.js"
-        ));
-        const picked = await multiSelect({
-            question: FACTION_QUESTION,
-            options: factions.map(f => ({ label: f.basename, sublabel: f.path, value: f })),
-            filterPlaceholder: "Filter factions…",
-        });
-        if (picked === null) return;
-        chosen = picked.map(f => f.basename);
-    } catch (e) {
-        // Never let a broken prompt take the whole wizard down — log it so the
-        // fallback is not silent, then use QuickAdd's own pickers.
-        console.error("[NPCWizard] faction multi-select failed", e);
-        if (typeof quickAddApi.checkboxPrompt === "function") {
-            chosen = (await quickAddApi.checkboxPrompt(factionNames)) || [];
-        } else {
-            const picked = await quickAddApi.suggester(
-                [SKIP, ...factionNames],
-                [SKIP, ...factionNames],
-                FACTION_QUESTION
-            );
-            if (picked && picked !== SKIP) chosen = [picked];
-        }
-    }
-
-    if (chosen.length) {
-        variables.factions = chosen.map(n => `\n  - "[[${n}]]"`).join("");
-    }
+    variables.gender = answers.gender;
+    // Where they were met is also where they were first met and last seen — the GM
+    // moves last_seen on later. `locations` is a YAML list; the other two are scalars.
+    // The campaign world leads that list whatever was picked, so an NPC met nowhere in
+    // particular still has a home — it is not where they were *met*, so the two scalars
+    // stay the answer alone.
+    variables.locations = form.yamlList(form.withWorld(campaignRoot, answers.where));
+    variables.first_location = form.link(answers.where);
+    variables.last_seen = form.link(answers.where);
+    variables.factions = form.yamlList(answers.factions);
 };

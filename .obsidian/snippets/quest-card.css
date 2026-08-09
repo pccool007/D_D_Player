@@ -1,0 +1,128 @@
+/* ============================================================
+   quest-card.css — the quest grid on a Campaign Manager / Session.
+
+   Rendered by the `quest_cards` dataviewjs view.
+   Requires dnd-tokens.css for the --dnd-* values.
+
+   Markup contract:
+
+     .qc-grid
+       .qc-card [data-qc-status]    slugged quest_status → --qc-tone
+         .qc-head > a.qc-title + .qc-pill
+         .qc-desc
+         .qc-row > .qc-row-key + .qc-row-val
+
+   One tone per card drives the top border, the pill and the hover, so
+   adding a status is one line in the palette below. A status with no
+   rule keeps the neutral grey rather than breaking.
+   ============================================================ */
+
+.qc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 0.3rem 0;
+}
+
+/* ============================================================
+   1. STATUS PALETTE — --qc-tone per quest_status
+   ============================================================ */
+.qc-card[data-qc-status="to-do"]       { --qc-tone: #c9a24b; }
+.qc-card[data-qc-status="in-progress"] { --qc-tone: #6aa9f0; }
+.qc-card[data-qc-status="completed"]   { --qc-tone: #5fae5f; }
+.qc-card[data-qc-status="done"]        { --qc-tone: #5fae5f; }
+.qc-card[data-qc-status="failed"]      { --qc-tone: #cc5a4a; }
+.qc-card[data-qc-status="abandoned"]   { --qc-tone: var(--dnd-idle); }
+
+/* ============================================================
+   2. CARD
+   ============================================================ */
+.qc-card {
+  --qc-tone: var(--dnd-idle);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.6rem 0.75rem 0.7rem;
+  border: 1px solid var(--dnd-border);
+  border-top: 3px solid var(--qc-tone);
+  border-radius: var(--dnd-radius-md);
+  background: var(--background-primary);
+  transition: border-color 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+/* a finished quest steps back so the live ones read first */
+.qc-card[data-qc-status="completed"],
+.qc-card[data-qc-status="done"],
+.qc-card[data-qc-status="abandoned"] {
+  opacity: 0.82;
+}
+
+/* one hover rule, after the dimming above so it wins on equal specificity */
+.qc-card:hover {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--qc-tone) 45%, var(--dnd-border));
+  border-top-color: var(--qc-tone);
+  box-shadow: var(--dnd-shadow);
+}
+
+/* ============================================================
+   3. CONTENTS
+   ============================================================ */
+.qc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.qc-grid a.qc-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-normal);
+  text-decoration: none;
+}
+.qc-grid a.qc-title:hover {
+  color: var(--qc-tone);
+  text-decoration: none;
+}
+
+.qc-pill {
+  flex: none;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.7;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--qc-tone);
+  background: color-mix(in srgb, var(--qc-tone) 14%, var(--background-secondary));
+  border: 1px solid color-mix(in srgb, var(--qc-tone) 32%, transparent);
+  white-space: nowrap;
+}
+
+.qc-desc {
+  margin: 0.15rem 0 0.25rem;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+.qc-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.18rem 0;
+  font-size: 0.74rem;
+}
+.qc-row-key {
+  color: var(--text-muted);
+}
+.qc-row-val {
+  text-align: right;
+  font-weight: 500;
+}
+.qc-grid .qc-row-val a.internal-link {
+  text-decoration: none;
+}

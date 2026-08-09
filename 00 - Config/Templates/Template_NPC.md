@@ -30,29 +30,10 @@ languages:
 likes:
 dislikes:
 ---
-# [[<% tp.file.title %>]]
-
 > [!infobox]
-> # `=this.file.name` (`=this.aliases`)
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "npc_img", label: "NPC" });
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
 > ```
-> ###### Bio
->  |
-> ---|---|
-> **Race** | `=this.race` (`=this.subRace`) |
-> **Sex** | `=this.gender` |
-> **Age** | `=this.age` |
-> **Sexuality** | `=this.sexuality` |
-> **Condition** | `=this.condition` |
-> **Languages** | `=this.languages` |
-> ###### Info
->  |
-> ---|---|
-> **Occupation(s)** | `=this.occupation` |
-> **Faction(s)** | `=link(this.factions)` |
-> **Location** | `=link(this.locations)` |
->  **First Meeting Location** | `=link(this.first_location)` |
 
 > [!info|bg-c-purple]- Description
 > `=this.description`
@@ -75,12 +56,8 @@ dislikes:
 
 --- 
 >[!table-data]- Lores
->```dataview
-> table description as "Description", lore_type as "Type"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE lower(type) = "lore" 
-> and contains(relations,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/lore_table", { link: "relations" });
 > ```
 ## General Information
 #### Inventory 

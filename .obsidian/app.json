@@ -4,7 +4,8 @@
   "newFileLocation": "current",
   "readableLineLength": false,
   "promptDelete": false,
-  "livePreview": false,
+  "livePreview": true,
   "alwaysUpdateLinks": true,
-  "propertiesInDocument": "hidden"
+  "propertiesInDocument": "hidden",
+  "defaultViewMode": "source"
 }

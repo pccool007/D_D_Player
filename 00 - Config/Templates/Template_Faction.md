@@ -22,29 +22,9 @@ goal: "{{VALUE:goal}}"
 alignment:
 ---
 
-# [[<% tp.file.title %>]]
 > [!infobox]
-> # `=this.file.name` 
-> **Aliases:**  "`=this.aliases`"
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "img", label: "Faction" });
-> ```
-> ###### Bio
->  |
-> ---|---|
-> **Leader** | `=this.leader`
-> **Emblem Description** | `=this.emblem_description`
-> **Faction Type** | `=this.faction_type`  |
-> **Status** | `=this.faction_status` |
-> **Current Location** | `=link(this.locations)` |
-> **Alignment** | `=this.alignment` |
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/action_bar", {
->   actions: [
->     ["New NPC", "Macro - Add NPC", "#8a5a2b"],
->   ],
->   compact: true,
-> });
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
 > ```
 
 > [!info|bg-c-purple] Description
@@ -55,12 +35,8 @@ alignment:
 
 ## Members List
 > [!table-data] List of NPC's
->```dataview
-> table embed(npc_img) AS "Portrait", word_description as "Description", condition as "Condition", party_standing as "Relation", factions as "Factions", first_location as "First Meeting Location", last_seen as "Last Seen Location"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/NPC"
-> WHERE lower(type) = "npc" 
-> and contains(factions,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/npc_table", { link: "factions" });
 > ```
 
 ## Index
@@ -73,12 +49,8 @@ alignment:
 
 --- 
 >[!table-data]- Lores
->```dataview
-> table description as "Description", lore_type as "Type"
-> from "01 - Campaigns/<% tp.user._obsi_script_GetFileRacine(tp) %>/World/Lores"
-> WHERE lower(type) = "lore" 
-> and contains(relations,[[<% tp.file.title %>]])
-> SORT file.name ASC
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/lore_table", { link: "relations" });
 > ```
 
 ### History

@@ -15,20 +15,10 @@ description:
 gold_value: {{VALUE:gold_value}}
 item_type: {{VALUE:item_type}}
 ---
-# [[<% tp.file.title %>]]
-
 > [!infobox]
-> # `=this.file.name`
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "img", label: "Item" });
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
 > ```
-> ###### Info
->  |
-> ---|---|
-> **Alias** | `=this.aliases` |
-> **Type** | `=this.item_type` |
-> **Owner** | `=link(this.owner)` |
-> **Value (gp)** | `=this.gold_value` |
 
 > [!info|bg-c-purple] Description
 > `=this.description`

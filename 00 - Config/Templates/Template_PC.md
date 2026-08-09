@@ -28,14 +28,9 @@ factions:
 likes:
 dislikes:
 ---
-# [[<% tp.file.title %>]]
 > [!infobox]
-> # `=this.file.name` (`=this.aliases`)
 > ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/infobox_img", { field: "img", label: "Player" });
-> ```
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/pc_card");
+> await dv.view("00 - Config/_obsi/_obsi_views/note_aside");
 > ```
 
 > [!info|bg-c-purple] Description

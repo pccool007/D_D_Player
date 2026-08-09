@@ -1,59 +1,59 @@
-// Inventory wizard — prompts name + item_type (which drives icon/iconColor),
-// an optional gold value, and an optional owner picked from the party's PCs.
+// Inventory wizard — one form: name, item type (which drives icon/iconColor), an
+// optional gold value, and an optional owner picked from the party's PCs.
 //
 // Runs after _obsi_script_SetParamsInCapGetCampaignFolder, which sets
-// variables.folderName to "01 - Campaigns/{campaign}".
+// variables.folderName to "01 - Campaigns/{campaign}"; the macro's template step
+// appends /Inventory.
 module.exports = async (params) => {
-    const { app, quickAddApi, variables } = params;
+    const { variables } = params;
     // QuickAdd only honours a THROW: setting variables.cancelled alone lets the
     // macro's template step run on to create a note from empty values.
     const cancel = () => { variables.cancelled = true; throw "cancelled"; };
+    const Notice = params?.obsidian?.Notice;
     const path = require("path");
-    const iconRegistry = require(path.join(
-        app.vault.adapter.basePath,
-        "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_IconRegistry.js"
-    ));
+    const form = require(path.join(
+        params.app.vault.adapter.basePath,
+        "00 - Config/_obsi/_obsi_scripts/Helpers/_obsi_script_WizardForm.js"
+    ))(params);
 
-    const SKIP = "— Skip —";
+    const campaignRoot = form.campaignRoot();
+    if (!campaignRoot) {
+        if (Notice) new Notice("Cannot resolve the campaign folder — open a note inside a campaign first.");
+        cancel();
+    }
 
-    const name = await quickAddApi.inputPrompt("Item name?");
-    if (!name) cancel();
+    const pcs = form.notesOf(campaignRoot, ["player"]);
 
-    const types = iconRegistry("inventory");
-    const labels = Object.keys(types);
-    const item_type = await quickAddApi.suggester(labels, labels, "Item type?");
-    if (!item_type) cancel();
+    const answers = await form.formPrompt({
+        title: "New item",
+        saveLabel: "Create item",
+        fields: [
+            { key: "name", label: "Item name", required: true, placeholder: "Sunblade" },
+            form.typeField({ key: "item_type", label: "Item type", domain: "inventory" }),
+            {
+                key: "gold_value",
+                label: "Gold value",
+                type: "number",
+                min: 0,
+                placeholder: "Blank if unknown",
+            },
+            form.noteField({
+                key: "owner",
+                label: "Who carries it?",
+                files: pcs,
+                emptyHint: "No player character in this campaign yet.",
+            }),
+        ],
+    });
+    if (!answers) cancel();
 
-    const style = types[item_type];
+    const style = form.styleFor("inventory", answers.item_type);
 
-    const gold = await quickAddApi.inputPrompt("Gold value? (blank if unknown)");
-
-    variables.name = name;
-    variables.fileName = name;
-    variables.item_type = item_type;
+    variables.name = answers.name;
+    variables.fileName = answers.name;
+    variables.item_type = answers.item_type;
     variables.icon = style.icon;
     variables.iconColor = style.iconColor;
-    variables.gold_value = gold ? String(gold).trim() : "";
-    variables.owner = "";
-
-    const campaignRoot = variables.folderName;
-    if (!campaignRoot) return;
-
-    const pcs = app.vault.getMarkdownFiles()
-        .filter(f => {
-            if (!f.path.startsWith(campaignRoot + "/")) return false;
-            const t = String(app.metadataCache.getFileCache(f)?.frontmatter?.type || "").toLowerCase();
-            return t === "player";
-        })
-        .sort((a, b) => a.basename.localeCompare(b.basename));
-    if (!pcs.length) return;
-
-    const picked = await quickAddApi.suggester(
-        [SKIP, ...pcs.map(f => f.basename)],
-        [SKIP, ...pcs],
-        "Who carries it?"
-    );
-    if (!picked || picked === SKIP) return;
-
-    variables.owner = `"[[${picked.basename}]]"`;
+    variables.gold_value = answers.gold_value;
+    variables.owner = form.link(answers.owner);
 };

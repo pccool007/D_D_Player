@@ -19,6 +19,8 @@
  *           (default: derived from `field` — npc_img → "NPC"; a bare "img"
  *           gives the generic "No image found.").
  *   upload: false to render the image alone, without the "Set image" button.
+ *   container: render into the caller's own element instead of dv.container —
+ *           what `note_aside` passes so the image sits inside a panel.
  *
  * NOTE: this is a Dataview dv.view() file, NOT a Templater user script.
  * It MUST live outside _obsi_scripts — Templater scans that folder
@@ -35,13 +37,16 @@ const LABELS = {
 const field = input?.field ?? "img";
 const label = input?.label ?? LABELS[field] ?? "";
 
+const host = input?.container ?? dv.container;
+
 const img = dv.current()[field];
 if (img) {
-	dv.paragraph(`!${img}`);
+	dv.paragraph(`!${img}`, { container: host });
 } else {
-	dv.paragraph(label ? `No ${label} image found.` : "No image found.");
+	dv.paragraph(label ? `No ${label} image found.` : "No image found.", { container: host });
 }
 
 if (input?.upload !== false) {
-	await dv.view("00 - Config/_obsi/_obsi_views/image_upload", { field, compact: true });
+	await dv.view("00 - Config/_obsi/_obsi_views/image_upload",
+		{ field, compact: true, container: host });
 }
