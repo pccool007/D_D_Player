@@ -103,39 +103,16 @@ const addRowMixed = (parent, label, value) => {
 };
 
 // --- open + pin (Active Campaigns card buttons) ------------------------------
-// This vault has no separate Worlds tree, so unlike the GM vault there is no
-// world note to anchor beside the campaign — we pin the campaign manager, and
-// today's session too when one exists.
+// The card pins the campaign manager, and today's session too when one exists.
+// The campaign's world is deliberately NOT pinned here — it hangs off the
+// manager's own "Open World" button (`world_pin`), so a card click stays two
+// tabs rather than three.
 
-const _notify = (msg) => {
-	// `Notice` is an Obsidian global; require("obsidian") doesn't resolve from a
-	// dv.view() module, so fall back to console if it isn't in scope.
-	try { new Notice(msg); } catch (e) { console.log("[Dashboard]", msg); }
-};
-
-// Force a markdown leaf into reading (preview) view.
-const _toReadingView = async (leaf) => {
-	const state = leaf.view?.getState?.() ?? {};
-	if (state.mode === "preview") return;
-	await leaf.setViewState({ type: "markdown", state: { ...state, mode: "preview" }, active: true });
-};
-
-// Open a file in reading view and pin it. Reuses an existing tab already
-// showing the file (re-pinning it) so repeated clicks don't spawn duplicates.
-const _openPinned = async (file, { reuseActive = false } = {}) => {
-	const existing = app.workspace.getLeavesOfType("markdown")
-		.find(l => l.view?.file?.path === file.path);
-	if (existing) {
-		app.workspace.setActiveLeaf(existing, { focus: true });
-		await _toReadingView(existing);
-		existing.setPinned(true);
-		return existing;
-	}
-	const leaf = app.workspace.getLeaf(reuseActive ? false : "tab");
-	await leaf.openFile(file, { state: { mode: "preview" } });
-	leaf.setPinned(true);
-	return leaf;
-};
+// The open+pin itself now lives in `panels` — `world_pin` pins a world with the
+// same three lines, and two copies is how one of them quietly stops reusing an
+// open tab.
+await dv.view("00 - Config/_obsi/_obsi_views/panels");
+const { notify: _notify, openPinned: _openPinned } = globalThis.DnDPanels;
 
 // Open + pin a campaign manager, and today's session after it when passed.
 // `campaign` / `todaySession` are Dataview pages — they need `.file.path`.

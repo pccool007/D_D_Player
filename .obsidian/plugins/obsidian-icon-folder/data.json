@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiSun",
-      "LiUser",
-      "LiHelpCircle",
+      "LiBuilding",
+      "LiEyeOff",
       "LiBookOpen",
-      "LiLayoutDashboard"
+      "LiSwords",
+      "LiChurch"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -220,5 +220,25 @@
   "01 - Campaigns/Tides_of_Fates/World/NPC/Humanoid/Katherine de Chatillion.md": {
     "iconName": "LiUser",
     "iconColor": "green"
+  },
+  "01 - Campaigns/Tides_of_Fates/PC/Kalmar.md": {
+    "iconName": "LiChurch",
+    "iconColor": "yellow"
+  },
+  "01 - Campaigns/Tides_of_Fates/PC/Millicent.md": {
+    "iconName": "LiSwords",
+    "iconColor": "orange"
+  },
+  "01 - Campaigns/Tides_of_Fates/PC/Jasper.md": {
+    "iconName": "LiBookOpen",
+    "iconColor": "blue"
+  },
+  "01 - Campaigns/Tides_of_Fates/PC/Hommel.md": {
+    "iconName": "LiEyeOff",
+    "iconColor": "gray"
+  },
+  "01 - Campaigns/Tides_of_Fates/World/Locations/Dimensions/Soltpeak/Cities/Edenheim/Edenheim.md": {
+    "iconName": "LiBuilding",
+    "iconColor": "blue"
   }
 }

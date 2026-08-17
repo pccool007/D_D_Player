@@ -48,7 +48,9 @@ There are three notes you'll live in, and each one has its own set of buttons:
 - **The campaign manager** (`{Campaign}.md`) — everything for one campaign: the party, sessions,
   quests, index tables for NPCs / factions / locations / lore, and a coin purse. The infobox on the
   right holds the full set of `New …` buttons grouped as **Play** (session, player, quest),
-  **World** (NPC, faction, location, establishment, lore) and **Items** (item).
+  **World** (NPC, faction, location, establishment, lore) and **Items** (item). The **World**
+  group also carries `Open World`, which opens the note in the campaign's `world` property and
+  pins its tab — one click from the manager to your setting's root location.
 - **The session note** — where you write while playing. It carries a compact row of the seven
   buttons you need mid-session (NPC, location, establishment, faction, quest, lore, item), so you
   never leave the note. Location notes carry a shorter row: location, establishment, NPC, faction,
@@ -91,7 +93,8 @@ The manager opens in a side tab — that's your campaign dashboard. At the top a
 - `type` — **never change this.** It's how every table and view knows what the note is (`campaign`,
   `NPC`, `location`, …).
 - `tags` — free-form, optional. Use them if you like tag systems.
-- `world` — link to your setting's root location. Filled by the wizard.
+- `world` — link to your setting's root location. Filled by the wizard, and what the infobox's
+  `Open World` button opens and pins.
 - `status` — `Active` / anything else. The Dashboard's *Active Campaigns* cards read this.
 - `role` — `player`. The only role this vault supports today.
 - `system` — `5e` by default. Organisational only.
@@ -205,9 +208,13 @@ and you can change `race` later from the property dropdown and move the note. A 
 ### Sessions
 
 `New Session` is the one that behaves differently: it numbers itself, dates itself, and embeds the
-**previous** session's summary, log, goals and housekeeping at the top so you start each game with
-last week's recap already in front of you. Write as you play under **Log**, and fill **Summary** and
-**Housekeeping** after the game — that's what the next session will pull in.
+**previous** session's summary and log at the top so you start each game with last week's recap
+already in front of you. Write as you play under **Log**, and fill the **Summary** after the game —
+that's what the next session will pull in.
+
+The summary is what the infobox's **Add Resume** button writes: it opens a textarea, and saving puts
+what you typed inside the `[!tldr]` callout under *Summary*, `> ` prefixes and `^summary` block ref
+intact. Click it again to edit — the box opens with the resume already in it.
 
 ---
 

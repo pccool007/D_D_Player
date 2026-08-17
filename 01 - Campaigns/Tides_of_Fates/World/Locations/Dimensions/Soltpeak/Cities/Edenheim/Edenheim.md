@@ -1,28 +1,26 @@
 ---
 version: "2.0"
 type: location
-icon: LiTriangle
+icon: LiBuilding
 iconColor: blue
-name: Forterra
+name: Edenheim
 aliases:
-  - Human Kingdom
 world: Soltpeak
-date: 2026-08-09
+date: 2026-08-16
 campaigns: "[[Tides_of_Fates]]"
 tags:
 locations:
-  - "[[Forterian Isle]]"
   - "[[Soltpeak]]"
-location_type: Country
-location_tier_level: 3
-description: The great human kingdom of the south-eastern isles, ruled by the Radiant Monarch. Its island chains carry much of the Archipelago's trade and most of its appetite for exploration.
+location_type: City
+location_tier_level: 5
+description: ""
 word_description:
-  - Human Kingdom
-  - Trade & Exploration
+  - Federation Capital
+  - Center of the world
 population:
-leader: "[[Roland Thatchborne]]"
+leader: "[[Elion Vark]]"
 theme:
-terrain:
+terrain: ""
 govtType:
 defences:
 imports:
@@ -37,7 +35,7 @@ img: "[[placeHolderLocations.png]]"
 
 > [!map] Map
 > ```leaflet
-> id: Forterra_map_Leaflet_
+> id: Edenheim_map_Leaflet_
 > image: [[placeHolderMap.jpeg]]
 > height: 600px
 > width: 640px
@@ -55,16 +53,6 @@ img: "[[placeHolderLocations.png]]"
 >`=this.description`
 ## Index
 ### Associated Locations
-> [!table-data]- States
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", type: "State" });
-> ```
-
-> [!table-data]- Cities
-> ```dataviewjs
-> await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", type: "City" });
-> ```
-
 > [!table-data]- Other
 > ```dataviewjs
 > await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", excludeTypes: ["Dimension", "Continent", "Region", "Country", "State", "City", "Dungeon"] });
@@ -75,7 +63,7 @@ img: "[[placeHolderLocations.png]]"
 > await dv.view("00 - Config/_obsi/_obsi_views/location_table", { link: "locations", type: "Dungeon" });
 > ```
 
-### Associated Establishment
+### Associated Establishment 
 > [!table-data]- Table Shops/Services
 > ```dataviewjs
 > await dv.view("00 - Config/_obsi/_obsi_views/establishment_table", { link: "locations" });
@@ -88,19 +76,19 @@ img: "[[placeHolderLocations.png]]"
 > ```
 
 
-### Associated Factions
+### Associated Factions 
 > [!table-data]- Factions
 > ```dataviewjs
 > await dv.view("00 - Config/_obsi/_obsi_views/faction_table", { link: "locations" });
 > ```
 
 ### Associated Quest
-> [!table-data]- Quest's For Forterra
+> [!table-data]- Quest's For Edenheim
 > ```dataview
 > table description as "Description", owner as "Owner of the Quest", reward as "Reward", quest_status as "Status"
 > from "01 - Campaigns/Tides_of_Fates/Quests"
-> WHERE lower(type) = "quest"
-> and contains(locations,[[Forterra]])
+> WHERE lower(type) = "quest" 
+> and contains(locations,[[Edenheim]])
 > SORT file.name ASC
 > ```
 
@@ -111,7 +99,7 @@ img: "[[placeHolderLocations.png]]"
 > WHERE file.path = this.file.path
 > ```
 
----
+--- 
 >[!table-data]- Lores
 > ```dataviewjs
 > await dv.view("00 - Config/_obsi/_obsi_views/lore_table", { link: "relations" });

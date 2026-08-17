@@ -132,26 +132,135 @@ const textRow = (body, key, value) =>
 	row(body, key, value, (span, val) => span.appendText(list(val).map(linkName).join(" · ")));
 const linkRow = (body, key, value) => row(body, key, value, appendValue);
 
+const BUTTON = "border:none;border-radius:5px;padding:.3em .4em;cursor:pointer;font-weight:600;font-size:11px;"
+	+ "line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f2e8d0;";
+
+// One button in the action look. Handed out on its own so a view that puts its
+// OWN button in an action grid (session_resume) matches the QuickAdd ones
+// instead of growing a second, nearly-identical style string.
+const actionButton = (parent, label, color, onClick) => {
+	const btn = parent.createEl("button", { text: label, attr: { style: BUTTON + `background:${color};` } });
+	btn.onmouseenter = () => (btn.style.filter = "brightness(1.12)");
+	btn.onmouseleave = () => (btn.style.filter = "");
+	btn.onclick = onClick;
+	return btn;
+};
+
 // A grid of QuickAdd buttons, the shape manager_aside's action panels use.
+// Returns the grid, so a caller can append more buttons into the same cells.
 const actionGrid = (body, actions, columns = 2) => {
 	const qa = app.plugins.plugins.quickadd?.api;
 	const bar = el(body, "div",
 		`display:grid;grid-template-columns:repeat(${columns},1fr);gap:.3rem;padding:.45rem 0 .5rem;`);
 	for (const [label, choice, color] of actions) {
-		const btn = bar.createEl("button", { text: label, attr: { style:
-			"border:none;border-radius:5px;padding:.3em .4em;cursor:pointer;font-weight:600;font-size:11px;"
-			+ `line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f2e8d0;background:${color};` } });
-		btn.onmouseenter = () => (btn.style.filter = "brightness(1.12)");
-		btn.onmouseleave = () => (btn.style.filter = "");
-		btn.onclick = () => qa?.executeChoice
+		actionButton(bar, label, color, () => qa?.executeChoice
 			? qa.executeChoice(choice)
-			: new Notice("QuickAdd API unavailable");
+			: new Notice("QuickAdd API unavailable"));
 	}
 	return bar;
 };
 
+// --- open + pin --------------------------------------------------------------
+// Opening a note in reading view and pinning its tab. Lived privately inside
+// `dashboard` (the Active Campaigns card buttons) until `world_pin` needed the
+// same three lines.
+//
+// `Macro - Open Current Campaign` still carries its own copy on purpose: it is a
+// Templater module and cannot count on this global being loaded — the same
+// reason `promptTextarea` is duplicated in `_obsi_script_SendingWizard`.
+
+// `Notice` is an Obsidian global; require("obsidian") doesn't resolve from a
+// dv.view() module, so fall back to the console when it isn't in scope.
+const notify = (msg) => {
+	try { new Notice(msg); } catch (e) { console.log("[panels]", msg); }
+};
+
+const toReadingView = async (leaf) => {
+	const state = leaf.view?.getState?.() ?? {};
+	if (state.mode === "preview") return;
+	await leaf.setViewState({ type: "markdown", state: { ...state, mode: "preview" }, active: true });
+};
+
+// Open a file in reading view and pin it. Reuses a tab already showing the file
+// (re-pinning it) so repeated clicks don't spawn duplicates.
+const openPinned = async (file, { reuseActive = false } = {}) => {
+	const existing = app.workspace.getLeavesOfType("markdown")
+		.find(l => l.view?.file?.path === file.path);
+	if (existing) {
+		app.workspace.setActiveLeaf(existing, { focus: true });
+		await toReadingView(existing);
+		existing.setPinned(true);
+		return existing;
+	}
+	const leaf = app.workspace.getLeaf(reuseActive ? false : "tab");
+	await leaf.openFile(file, { state: { mode: "preview" } });
+	leaf.setPinned(true);
+	return leaf;
+};
+
+// A modal holding one textarea. Resolves to the typed text, or null when
+// cancelled (Escape, the close button, or a click on the backdrop).
+// Ctrl/Cmd+Enter confirms, so a long resume never needs the mouse.
+//
+// Hand-rolled on Obsidian's `modal-*` classes rather than the Modal class, which
+// does not reliably resolve through require("obsidian") outside a plugin — the
+// same reason `_obsi_script_SendingWizard` builds its prompt this way. That one
+// stays a Templater module and cannot count on this global being loaded, so the
+// two do not share code; a THIRD copy should live here instead.
+const promptTextarea = ({ title, subtitle = "", value = "", placeholder = "", cta = "Save", rows = 12 }) =>
+	new Promise((resolve) => {
+		const container = document.body.createDiv({ cls: "modal-container mod-dim" });
+		const bg = container.createDiv({ cls: "modal-bg" });
+		const modal = container.createDiv({ cls: "modal" });
+		modal.style.width = "min(42rem, 92vw)";
+
+		modal.createDiv({ cls: "modal-close-button" }).onclick = () => close(null);
+		modal.createDiv({ cls: "modal-title", text: title });
+
+		const content = modal.createDiv({ cls: "modal-content" });
+		if (subtitle) content.createDiv({ cls: "setting-item-description", text: subtitle });
+
+		const textarea = content.createEl("textarea");
+		textarea.rows = rows;
+		textarea.value = value;
+		textarea.placeholder = placeholder;
+		textarea.style.width = "100%";
+		textarea.style.marginTop = "0.75em";
+		textarea.style.resize = "vertical";
+
+		const buttons = modal.createDiv({ cls: "modal-button-container" });
+		buttons.createEl("button", { cls: "mod-cta", text: cta }).onclick = () => close(textarea.value);
+		buttons.createEl("button", { text: "Cancel" }).onclick = () => close(null);
+
+		bg.onclick = () => close(null);
+		textarea.addEventListener("keydown", (evt) => {
+			if (evt.key === "Enter" && (evt.ctrlKey || evt.metaKey)) {
+				evt.preventDefault();
+				close(textarea.value);
+			}
+		});
+		const onKey = (evt) => {
+			if (evt.key === "Escape") {
+				evt.preventDefault();
+				close(null);
+			}
+		};
+		document.addEventListener("keydown", onKey);
+
+		function close(result) {
+			document.removeEventListener("keydown", onKey);
+			container.remove();
+			resolve(result);
+		}
+
+		textarea.focus();
+		// Caret at the end, not over the text it opened with — this is an edit box.
+		textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+	});
+
 globalThis.DnDPanels = {
 	el, list, has, linkName, linkEl, appendValue, fmtDate,
-	stack, panel, header, row, textRow, linkRow, actionGrid,
-	ROW, VAL, MUTED, CARD, CARD_TITLE, STACK_CLASS,
+	stack, panel, header, row, textRow, linkRow, actionButton, actionGrid, promptTextarea,
+	notify, openPinned,
+	ROW, VAL, MUTED, CARD, CARD_TITLE, BUTTON, STACK_CLASS,
 };

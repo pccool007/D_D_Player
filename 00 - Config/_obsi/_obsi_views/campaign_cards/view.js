@@ -258,7 +258,9 @@ for (const campaign of campaigns) {
 		el(cwrap, "div", "cc-hint", cons.hint);
 	}
 
-	// Open checkboxes left over in the last played session's wrap-up sections.
+	// Open checkboxes left over in the last played session's Log. Housekeeping was
+	// a second row here until that section was dropped from the session template —
+	// a header no note carries any more can only ever report "✅ Done!".
 	const status = el(right, "div", "cc-status");
 	const statusRow = (label, n) => {
 		const r = el(status, "div", "cc-status-row");
@@ -269,7 +271,6 @@ for (const campaign of campaigns) {
 	if (lastSession) {
 		const openIn = (header) => lastSession.file.tasks
 			.where(t => !t.completed && t.section?.subpath === header && t.text?.trim()).length;
-		statusRow("Housekeeping", openIn("Housekeeping"));
 		statusRow("Log", openIn("Log"));
 	} else {
 		el(status, "div", "cc-empty", "No played session yet.");

@@ -181,6 +181,13 @@ note without checking it, so from a note outside `01 - Campaigns/` it produces t
 - [ ] `New Session` again → Recap embeds resolve to session 1, not to a broken
       `![[No games found#^summary]]`
 - [ ] Filenames increment: `001_…` then `002_…`, and `session_num` matches
+- [ ] The session infobox's **Add Resume** button opens a textarea; type two
+      paragraphs and save → they land inside the `[!tldr]` callout under *Summary*,
+      each line `> `-prefixed, with `>  ^summary` still the callout's last line
+- [ ] Click **Add Resume** again → the box opens with that text in it, and saving
+      edited text **replaces** it rather than appending a second copy
+- [ ] The next session's Recap embed shows that resume — the block ref still
+      resolves after the rewrite
 
 ## 6. Capture → promote round trip
 
@@ -208,6 +215,13 @@ note without checking it, so from a note outside `01 - Campaigns/` it produces t
 - [ ] `Dashboard.md` opens on startup and its count tiles are non-zero
 - [ ] The campaign card shows the throwaway campaign with its date range
 - [ ] `ctrl+o` (`Macro - Open Current Campaign`) opens and pins the campaign
+- [ ] The card's own open+pin button still works — it shares `panels.openPinned`
+      with `Open World` now, so a break here is a break there
+- [ ] On the campaign manager, the World panel's **Open World** button opens the
+      note in `world` in reading view, in a pinned tab
+- [ ] Click it a second time → the same tab is focused, **not** a duplicate
+- [ ] Clear the campaign's `world` property → the button is greyed out and
+      clicking it says the campaign has no world set (it creates nothing)
 
 ## 8. Clean up
 

@@ -25,6 +25,8 @@
  *   actionGroups : [[panel title, actions], …] to replace the default
  *                  Play / World / Items grouping with your own panels.
  *   stats        : false to drop the Stats panel.
+ *   world        : false to drop the "Open World" button from the World panel
+ *                  (campaign only — the vault Dashboard owns no world).
  *
  * NOTE: this is a Dataview dv.view() file, NOT a Templater user script.
  * It MUST live outside _obsi_scripts (Templater errors on non-module .js).
@@ -156,9 +158,20 @@ const CAMPAIGN_ACTION_GROUPS = [
 // One panel per group: [title, [[label, choice, color], …]].
 const groups = input?.actionGroups
 	?? (input?.actions ? [["Actions", input.actions]] : CAMPAIGN_ACTION_GROUPS);
+const grids = new Map();
 for (const [title, acts] of groups) {
 	if (!acts?.length) continue;
-	P.actionGrid(panel(title), acts);
+	grids.set(title, P.actionGrid(panel(title), acts));
+}
+
+// `Open World` sits with the World buttons, but it is navigation rather than a
+// wizard: it opens and pins the note in the campaign's `world` property, so it
+// renders its own button (the `actionViews` shape note_aside uses) instead of
+// going through a QuickAdd choice. A caller that replaced the World panel with
+// actionGroups of its own gets it in a panel by itself.
+if (!isVault && input?.world !== false) {
+	const bar = grids.get("World") ?? P.actionGrid(panel("World"), []);
+	await dv.view("00 - Config/_obsi/_obsi_views/world_pin", { container: bar });
 }
 
 // ---- ASSETS ----

@@ -23,6 +23,8 @@
  *   title   : false to drop the title panel
  *   image   : false to drop the image panel
  *   actions : [[label, choice, color], …] to replace the type's buttons; [] drops them
+ *   actionViews : view paths that render their own button into the Actions grid
+ *             (a session's "Add Resume"); [] drops them
  *
  * The `[!infobox]` callout itself is styled by ITS Theme (float:right, 300px
  * cap, hidden callout title). These panels are sized to live inside that, and
@@ -177,6 +179,9 @@ const SCHEMAS = {
 				["Date", "date", "date"],
 			]],
 		],
+		// The resume button is a view, not a QuickAdd choice: it writes into this
+		// note's own Summary callout rather than creating another one.
+		actionViews: ["00 - Config/_obsi/_obsi_views/session_resume"],
 		actions: [
 			["New NPC",           "Macro - Add NPC",           "#8a5a2b"],
 			["New Location",      "Macro - Add Location",      "#2f6d4f"],
@@ -255,6 +260,12 @@ if (!schema) {
 	}
 
 	// ---- actions ----
+	// `actionViews` are views that render their OWN button — they go into the same
+	// grid as the QuickAdd ones, so the panel stays one block of buttons.
 	const actions = input?.actions ?? schema.actions ?? [];
-	if (actions.length) actionGrid(panel(wrap, "Actions"), actions);
+	const actionViews = input?.actionViews ?? schema.actionViews ?? [];
+	if (actions.length || actionViews.length) {
+		const bar = actionGrid(panel(wrap, "Actions"), actions);
+		for (const view of actionViews) await dv.view(view, { container: bar });
+	}
 }
