@@ -46,7 +46,7 @@
  * recursively and errors on any .js without module.exports.
  */
 await dv.view("00 - Config/_obsi/_obsi_views/panels");
-const { actionButton, promptSelect } = globalThis.DnDPanels;
+const { actionButton, promptSelect, trashIfEmpty } = globalThis.DnDPanels;
 
 const notePath = input?.path ?? dv.currentFilePath;
 const label = input?.label ?? "Change Race";
@@ -116,9 +116,15 @@ const move = async (file, race) => {
 	const clash = app.vault.getAbstractFileByPath(target);
 	if (clash && clash !== file) return { moved: false, reason: `${target} already exists` };
 
+	// Captured before the move: `file.parent` is repointed by the rename.
+	const from = file.parent;
 	await ensureFolder(folder);
 	await app.fileManager.renameFile(file, target);
-	return { moved: true, folder };
+
+	// The race folder this NPC was the last one in. Never `World/NPC` itself, which
+	// is the root every race folder hangs off.
+	const emptied = (from && from.path !== root && await trashIfEmpty(from)) ? from.path : null;
+	return { moved: true, folder, emptied };
 };
 
 const run = async () => {
@@ -162,6 +168,7 @@ const run = async () => {
 
 	const done = [`Creature type → ${race}`];
 	if (moved.moved) done.push(`moved to ${moved.folder}`);
+	if (moved.emptied) done.push(`removed the empty ${moved.emptied.split("/").pop()} folder`);
 	if (moved.reason) done.push(`NOT moved (${moved.reason})`);
 	if (style.icon) done.push(`icon ${style.icon}${style.iconColor ? ` (${style.iconColor})` : ""}`);
 	if (portrait) done.push("placeholder portrait updated");

@@ -45,7 +45,7 @@
  * recursively and errors on any .js without module.exports.
  */
 await dv.view("00 - Config/_obsi/_obsi_views/panels");
-const { actionButton, promptSelect } = globalThis.DnDPanels;
+const { actionButton, promptSelect, trashIfEmpty } = globalThis.DnDPanels;
 
 const notePath = input?.path ?? dv.currentFilePath;
 const label = input?.label ?? "Move Location";
@@ -214,9 +214,15 @@ const move = async (file, parent) => {
 		return { error: "a location cannot move inside its own subtree" };
 	}
 
+	// Captured before the move: `parent` is repointed by the rename.
+	const from = source.parent;
 	await ensureFolder(isFolderNote(file) ? target.folder.split("/").slice(0, -1).join("/") : target.folder);
 	await app.fileManager.renameFile(source, destination);
-	return { moved: true, folder: target.folder };
+
+	// The tier folder this location was the last one in — `Countries/` with nothing
+	// left in it is litter, and `LocationForm` makes a new one whenever it needs it.
+	const emptied = (await trashIfEmpty(from)) ? from.path : null;
+	return { moved: true, folder: target.folder, emptied };
 };
 
 const run = async () => {
@@ -260,6 +266,7 @@ const run = async () => {
 	if (result.moved) {
 		done.push(result.folder);
 		if (riders) done.push(`${riders} note${riders === 1 ? "" : "s"} moved with it`);
+		if (result.emptied) done.push(`removed the empty ${result.emptied.split("/").pop()} folder`);
 	} else {
 		done.push("already in the right folder — parent link refreshed");
 	}

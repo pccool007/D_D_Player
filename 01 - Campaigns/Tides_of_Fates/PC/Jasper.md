@@ -57,6 +57,13 @@ dislikes:
 >> [!metadata|text-Center bg-c-yellow] Professional
 >> TBD
 
+## Index
+---
+>[!table-data]- Lores
+> ```dataviewjs
+> await dv.view("00 - Config/_obsi/_obsi_views/lore_table", { link: "relations" });
+> ```
+
 # Player Notes
 
 ## Backstory

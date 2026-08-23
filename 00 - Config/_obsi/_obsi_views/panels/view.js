@@ -198,6 +198,22 @@ const openPinned = async (file, { reuseActive = false } = {}) => {
 	return leaf;
 };
 
+/* The folder a note just left, when moving it emptied that folder. An empty
+ * `World/NPC/Dragon` (from a creature type tried on and changed back) or an empty
+ * `…/Countries` is litter the file explorer shows forever, and the wizards recreate
+ * either on demand — so the buttons that move notes tidy up behind themselves.
+ *
+ * TRASHED, not deleted: `trashFile` follows the vault's own "Deleted files"
+ * setting, so this is recoverable however the user has it configured. Callers pass
+ * the note's IMMEDIATE former parent and nothing above it — one level, only when it
+ * holds nothing at all, is a rule that cannot eat a folder someone cares about.
+ * `children` is live, so capture the folder BEFORE the move, read it after. */
+const trashIfEmpty = async (folder) => {
+	if (!folder?.path || !Array.isArray(folder.children) || folder.children.length) return false;
+	await app.fileManager.trashFile(folder);
+	return true;
+};
+
 // --- prompts -----------------------------------------------------------------
 // The shell every prompt below is built on: backdrop, title, content div and the
 // Save/Cancel row. `build` fills the content and returns a getter for what Save
@@ -300,6 +316,6 @@ globalThis.DnDPanels = {
 	el, list, has, linkName, linkEl, appendValue, fmtDate,
 	stack, panel, header, row, textRow, linkRow, actionButton, actionGrid,
 	promptTextarea, promptSelect,
-	notify, openPinned,
+	notify, openPinned, trashIfEmpty,
 	ROW, VAL, MUTED, CARD, CARD_TITLE, BUTTON, STACK_CLASS,
 };

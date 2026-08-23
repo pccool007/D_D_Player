@@ -103,7 +103,12 @@ const TABLES = deepFreeze({
         "Myth":        { icon: "LiStar",      iconColor: "pink"   },
         "Player_Lore": { icon: "LiBook",      iconColor: "yellow" },
         "Language":    { icon: "LiLanguages", iconColor: "green"  },
-        "Music":       { icon: "LiMusic",     iconColor: "purple" }
+        "Music":       { icon: "LiMusic",     iconColor: "purple" },
+        // Someone's recollection of an event rather than the event itself — a
+        // flashback, a vision, a scryed scene. Appended rather than slotted next to
+        // History on purpose: key order is dropdown order, and inserting in the
+        // middle reshuffles a list the GM already knows by position.
+        "Memory":      { icon: "LiBrain",     iconColor: "cyan"   }
     },
 
     // QuestWizard — keyed off quest_status

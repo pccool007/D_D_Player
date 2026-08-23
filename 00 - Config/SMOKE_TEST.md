@@ -170,7 +170,44 @@ disagreeing with each other.
       placeholder
 - [ ] Now upload real art with **Set image**, change the type again → the folder,
       icon and colour follow, and `npc_img` keeps the **uploaded art**
+- [ ] Move the LAST NPC out of a creature-type folder → that now-empty folder is
+      gone from the file explorer (trashed, so it is in *Deleted files* if wanted)
 - [ ] Cancel the dropdown (Escape) → nothing moved, nothing rewritten
+
+## 3e. Moving a location takes its children with it
+
+The failure this catches: a location's parent is its FOLDER — re-parenting by hand
+means dragging the folder and remembering to fix `locations`, and getting the tier
+folder right (`Countries/`, not `Country/`).
+
+- [ ] On a location with children (`Veilmoria`, which holds `Cities/Amberhall`),
+      click **Move Location** → the dropdown opens on its current parent
+- [ ] Only legal parents are listed: nothing at its own tier or deeper, and
+      **nothing from its own subtree** (Amberhall is not offered)
+- [ ] Pick another dimension → the note is now at
+      `{that dimension}/Countries/Veilmoria/`, and `Cities/Amberhall/` — with
+      Amberhall's `Establishments/` — came with it
+- [ ] Amberhall's own `locations` still says `[[Veilmoria]]`; Veilmoria's now says
+      the new parent, and nothing else
+- [ ] The tier folder it left (`Forterian Isle/Countries/`) is gone **if** it held
+      nothing else, and still there if it did
+- [ ] Every `[[Veilmoria]]` / `[[Amberhall]]` link elsewhere still resolves, and the
+      location tables on the new parent's page list them
+- [ ] On a **Dimension**, the only option is "— None (top level) —": nothing nests
+      at tier 0 under a tier-0 parent, the same rule the wizards gate on
+
+## 3f. Lore relates to people, and shows up on their pages
+
+- [ ] `New Lore` → the **Lore type** dropdown ends with **Memory**, and the form has
+      three picker buttons: *Related lore*, *Related players*, *Related NPCs*
+- [ ] Pick a PC and an NPC, create it → the note's `relations` holds **both**, in one
+      list (that single field is what every scoped *Lores* callout filters on)
+- [ ] Open that NPC → its **Lores** table lists the new entry
+- [ ] Open that PC → its **Lores** table lists it too, with the search box and the
+      Type dropdown working (older PC notes have the table; new ones get it from
+      `Template_PC`)
+- [ ] The entry's icon is a brain in cyan, and `lore_type: Memory` shows a pill in
+      every lore table — a missing pill colour means `dnd-tables.css` was not updated
 
 ## 4. Folders are the plural tier names, with or without a parent
 

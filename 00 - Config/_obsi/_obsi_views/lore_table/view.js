@@ -17,9 +17,10 @@
  *
  * Options:
  *   link     : the lore frontmatter field that must point back at THIS note.
- *              "relations" everywhere it is scoped — an NPC, faction or location
- *              collects the lore that names it. Omit for every lore entry in the
- *              campaign (the Campaign Manager).
+ *              "relations" everywhere it is scoped — an NPC, PC, faction or
+ *              location collects the lore that names it, and `LoreWizard`'s three
+ *              pickers all write into that one field so they all land here. Omit
+ *              for every lore entry in the campaign (the Campaign Manager).
  *   campaign : campaign name (default: the note's `campaigns` frontmatter link,
  *              else the campaign folder in its path).
  *   folder   : lore folder (default: `01 - Campaigns/{campaign}/World/Lores`).

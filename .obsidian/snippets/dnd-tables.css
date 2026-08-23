@@ -98,7 +98,7 @@
 .dnd-pill[data-establishment-type="shady-underworld"]    { --dnd-tone: #b05a7a; }
 .dnd-pill[data-establishment-type="other"]               { --dnd-tone: var(--dnd-idle); }
 
-/* lore_type — 7 values */
+/* lore_type — 8 values */
 .dnd-pill[data-lore-type="lore"]        { --dnd-tone: #4f9dd9; }
 .dnd-pill[data-lore-type="concept"]     { --dnd-tone: #4aa39a; }
 .dnd-pill[data-lore-type="history"]     { --dnd-tone: #a8794a; }
@@ -106,6 +106,7 @@
 .dnd-pill[data-lore-type="player-lore"] { --dnd-tone: #4aa36b; }
 .dnd-pill[data-lore-type="language"]    { --dnd-tone: #d1913c; }
 .dnd-pill[data-lore-type="music"]       { --dnd-tone: #c96a9e; }
+.dnd-pill[data-lore-type="memory"]      { --dnd-tone: #6b7fd4; }
 
 /* location_type — 11 values. Tiers run cool-to-warm as they narrow, so the
    scale itself reads as "how far in are we"; the four terrain types and the
