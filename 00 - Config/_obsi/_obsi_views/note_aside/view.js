@@ -123,6 +123,9 @@ const SCHEMAS = {
 				["Exports", "exports"],
 			]],
 		],
+		// Re-parenting is a view, not a QuickAdd choice: it moves this location's
+		// whole folder — children and all — instead of creating another note.
+		actionViews: ["00 - Config/_obsi/_obsi_views/location_move"],
 		actions: [
 			["New Location",      "Macro - Add Location (Child)", "#2f6d4f"],
 			["New Establishment", "Macro - Add Establishment",    "#9c4a2e"],
