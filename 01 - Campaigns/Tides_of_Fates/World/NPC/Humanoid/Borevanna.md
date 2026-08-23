@@ -6,12 +6,12 @@ iconColor: green
 name: Borevanna
 aliases:
   - The Snow Witch
-world: "Soltpeak"
+world: "[[Soltpeak]]"
 date: 2026-08-09
 campaigns: "[[Tides_of_Fates]]"
 tags:
 urls:
-description: "Known to most as the Snow Witch, Borevanna is a figure shrouded in myth and half-truths. She wanders Soltpeak like a drifting storm, feared and admired in equal measure. Some remember her as a savior who parted blizzards or led the lost to safety; others whisper of manipulations and cold designs. She keeps her distance from kings and courts, weaving her own path free of crowns and banners, and to meet her is to feel both awe and unease — as though one stood before the living embodiment of winter itself."
+description: Known to most as the Snow Witch, Borevanna is a figure shrouded in myth and half-truths. She wanders Soltpeak like a drifting storm, feared and admired in equal measure. Some remember her as a savior who parted blizzards or led the lost to safety; others whisper of manipulations and cold designs. She keeps her distance from kings and courts, weaving her own path free of crowns and banners, and to meet her is to feel both awe and unease — as though one stood before the living embodiment of winter itself.
 word_description:
   - Myth and Half-Truths
   - Wandering Storm

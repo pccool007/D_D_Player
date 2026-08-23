@@ -198,21 +198,22 @@ const openPinned = async (file, { reuseActive = false } = {}) => {
 	return leaf;
 };
 
-// A modal holding one textarea. Resolves to the typed text, or null when
-// cancelled (Escape, the close button, or a click on the backdrop).
-// Ctrl/Cmd+Enter confirms, so a long resume never needs the mouse.
+// --- prompts -----------------------------------------------------------------
+// The shell every prompt below is built on: backdrop, title, content div and the
+// Save/Cancel row. `build` fills the content and returns a getter for what Save
+// resolves to; it may `close(value)` itself for an in-field shortcut.
 //
 // Hand-rolled on Obsidian's `modal-*` classes rather than the Modal class, which
 // does not reliably resolve through require("obsidian") outside a plugin — the
 // same reason `_obsi_script_SendingWizard` builds its prompt this way. That one
 // stays a Templater module and cannot count on this global being loaded, so the
 // two do not share code; a THIRD copy should live here instead.
-const promptTextarea = ({ title, subtitle = "", value = "", placeholder = "", cta = "Save", rows = 12 }) =>
+const modalShell = ({ title, subtitle = "", cta = "Save", width = "min(42rem, 92vw)" }, build) =>
 	new Promise((resolve) => {
 		const container = document.body.createDiv({ cls: "modal-container mod-dim" });
 		const bg = container.createDiv({ cls: "modal-bg" });
 		const modal = container.createDiv({ cls: "modal" });
-		modal.style.width = "min(42rem, 92vw)";
+		modal.style.width = width;
 
 		modal.createDiv({ cls: "modal-close-button" }).onclick = () => close(null);
 		modal.createDiv({ cls: "modal-title", text: title });
@@ -220,25 +221,13 @@ const promptTextarea = ({ title, subtitle = "", value = "", placeholder = "", ct
 		const content = modal.createDiv({ cls: "modal-content" });
 		if (subtitle) content.createDiv({ cls: "setting-item-description", text: subtitle });
 
-		const textarea = content.createEl("textarea");
-		textarea.rows = rows;
-		textarea.value = value;
-		textarea.placeholder = placeholder;
-		textarea.style.width = "100%";
-		textarea.style.marginTop = "0.75em";
-		textarea.style.resize = "vertical";
+		const getValue = build({ content, close: (v) => close(v) });
 
 		const buttons = modal.createDiv({ cls: "modal-button-container" });
-		buttons.createEl("button", { cls: "mod-cta", text: cta }).onclick = () => close(textarea.value);
+		buttons.createEl("button", { cls: "mod-cta", text: cta }).onclick = () => close(getValue());
 		buttons.createEl("button", { text: "Cancel" }).onclick = () => close(null);
 
 		bg.onclick = () => close(null);
-		textarea.addEventListener("keydown", (evt) => {
-			if (evt.key === "Enter" && (evt.ctrlKey || evt.metaKey)) {
-				evt.preventDefault();
-				close(textarea.value);
-			}
-		});
 		const onKey = (evt) => {
 			if (evt.key === "Escape") {
 				evt.preventDefault();
@@ -252,15 +241,65 @@ const promptTextarea = ({ title, subtitle = "", value = "", placeholder = "", ct
 			container.remove();
 			resolve(result);
 		}
+	});
+
+// A modal holding one textarea. Resolves to the typed text, or null when
+// cancelled (Escape, the close button, or a click on the backdrop).
+// Ctrl/Cmd+Enter confirms, so a long resume never needs the mouse.
+const promptTextarea = ({ title, subtitle = "", value = "", placeholder = "", cta = "Save", rows = 12 }) =>
+	modalShell({ title, subtitle, cta }, ({ content, close }) => {
+		const textarea = content.createEl("textarea");
+		textarea.rows = rows;
+		textarea.value = value;
+		textarea.placeholder = placeholder;
+		textarea.style.width = "100%";
+		textarea.style.marginTop = "0.75em";
+		textarea.style.resize = "vertical";
+
+		textarea.addEventListener("keydown", (evt) => {
+			if (evt.key === "Enter" && (evt.ctrlKey || evt.metaKey)) {
+				evt.preventDefault();
+				close(textarea.value);
+			}
+		});
 
 		textarea.focus();
 		// Caret at the end, not over the text it opened with — this is an edit box.
 		textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+		return () => textarea.value;
+	});
+
+// A modal holding one dropdown. `options` is a list of "Label" or [label, value].
+// Resolves to the chosen value, or null when cancelled. Enter confirms.
+//
+// `value` outside the option list is NOT forced onto the select — that would show
+// a blank row. It falls back to the first option, which is what a note whose
+// `race` predates the registry (or was typed by hand) should offer to become.
+const promptSelect = ({ title, subtitle = "", options = [], value = "", cta = "Save" }) =>
+	modalShell({ title, subtitle, cta, width: "min(24rem, 92vw)" }, ({ content, close }) => {
+		const select = content.createEl("select", { cls: "dropdown" });
+		select.style.cssText = "width:100%;margin-top:0.75em;";
+		for (const opt of options) {
+			const [label, val] = Array.isArray(opt) ? opt : [opt, opt];
+			select.createEl("option", { text: label, attr: { value: String(val) } });
+		}
+		const wanted = String(value);
+		if (Array.from(select.options).some(o => o.value === wanted)) select.value = wanted;
+
+		select.addEventListener("keydown", (evt) => {
+			if (evt.key === "Enter") {
+				evt.preventDefault();
+				close(select.value);
+			}
+		});
+		select.focus();
+		return () => select.value;
 	});
 
 globalThis.DnDPanels = {
 	el, list, has, linkName, linkEl, appendValue, fmtDate,
-	stack, panel, header, row, textRow, linkRow, actionButton, actionGrid, promptTextarea,
+	stack, panel, header, row, textRow, linkRow, actionButton, actionGrid,
+	promptTextarea, promptSelect,
 	notify, openPinned,
 	ROW, VAL, MUTED, CARD, CARD_TITLE, BUTTON, STACK_CLASS,
 };

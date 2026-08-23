@@ -154,6 +154,24 @@ note without checking it, so from a note outside `01 - Campaigns/` it produces t
 - [ ] A notice says the campaign folder cannot be resolved, **no form opens**, and no
       `01 - Campaigns/undefined/` folder appears
 
+## 3d. Changing a creature type refiles the NPC
+
+The failure this catches: `race` picks the NPC's folder, icon, colour **and**
+placeholder portrait, so editing it in the property editor alone leaves four things
+disagreeing with each other.
+
+- [ ] Open the NPC from step 2 → the infobox has an **Actions** panel with one
+      full-width **Change Race** button
+- [ ] Click it, pick a different creature type (the dropdown opens on the NPC's
+      current one), confirm
+- [ ] The note moved to `World/NPC/{new type}/` and every `[[link]]` to it still
+      resolves (check the location's **Associated Characters** table)
+- [ ] `icon` / `iconColor` are the new type's, and `npc_img` is the new type's
+      placeholder
+- [ ] Now upload real art with **Set image**, change the type again → the folder,
+      icon and colour follow, and `npc_img` keeps the **uploaded art**
+- [ ] Cancel the dropdown (Escape) → nothing moved, nothing rewritten
+
 ## 4. Folders are the plural tier names, with or without a parent
 
 - [ ] The throwaway campaign's world landed in

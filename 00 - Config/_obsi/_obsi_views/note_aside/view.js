@@ -59,6 +59,10 @@ const SCHEMAS = {
 				["First Meeting Location", "first_location", "link"],
 			]],
 		],
+		// Changing the creature type is a view, not a QuickAdd choice: it refiles
+		// this note and rewrites its icon/colour/portrait rather than creating
+		// another note. Editing `race` in the property editor does none of that.
+		actionViews: ["00 - Config/_obsi/_obsi_views/npc_race"],
 	},
 
 	player: {
@@ -265,7 +269,10 @@ if (!schema) {
 	const actions = input?.actions ?? schema.actions ?? [];
 	const actionViews = input?.actionViews ?? schema.actionViews ?? [];
 	if (actions.length || actionViews.length) {
-		const bar = actionGrid(panel(wrap, "Actions"), actions);
+		// One lone button (an NPC's "Change Race") in a two-column grid renders at
+		// half the panel's width, which reads as a missing second button.
+		const columns = actions.length + actionViews.length === 1 ? 1 : 2;
+		const bar = actionGrid(panel(wrap, "Actions"), actions, columns);
 		for (const view of actionViews) await dv.view(view, { container: bar });
 	}
 }
